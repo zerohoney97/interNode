@@ -1,0 +1,76 @@
+body{
+    border: 0;
+    margin: 0;
+}
+
+header{
+    width: 100%;
+    height: 16vh;
+}
+
+.header_util{
+    height: 3vh;
+    width: 70%;
+    margin: auto;
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: right;
+    color: gray;
+    align-items: center;
+}
+
+.header_util div{
+    padding-left: 5px;
+    padding-right: 5px;
+    border-right: 1px solid ;
+}
+
+.header_util div:last-child{
+    border-right : 1px solid white
+}
+
+.header_inner{
+    width: 70%;
+    margin: auto;
+    height : 9vh;
+    /* border: 1px solid; */
+    display: flex;
+}
+.logo{
+    width: 200px;
+    height: 50px;
+    margin-top: 2.1vh;
+    background-image: url(http://openimage.interpark.com/ticket-desktop/components/header/interparkTicket_BI2x.png);
+    background-size: cover;
+}
+
+.header_inner h1{
+    margin-top: 25px;
+    margin-left: 15px;
+}
+
+.header_gnb{
+    height: 4vh;
+    width: 70%;
+    margin: auto;
+    /* border: 1px solid black; */
+    display: flex;
+}
+
+.header_gnb div{
+    padding-left: 10px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.gnb_home{
+    color: red;
+}
+
+.swiper{
+    width: 100%;
+    height: 35vh;
+    background-image: url(https://image.toast.com/aaaaab/ticketlink/TKL_6/BigBanner_PC_%EB%AF%B8%EB%94%94%EC%96%B4%EC%95%84%ED%8A%B8%EC%95%84%EC%9D%B4%EC%8A%A4%EC%87%BC_%EC%88%98%EC%A0%95.jpg);
+}
