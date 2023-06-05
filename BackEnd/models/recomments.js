@@ -22,8 +22,8 @@ class Recomment extends Sequelize.Model {
       foreignKey: "comment_id",
       targetKey: "id",
     });
-    db.Recomment.belongsTo(db.FreeBoard, {
-      foreignKey: "freeboard_id",
+    db.Recomment.belongsTo(db.User, {
+      foreignKey: "user_id",
       targetKey: "id",
     });
   }
