@@ -20,7 +20,7 @@ class Report extends Sequelize.Model {
       }
     );
   }
-  static association(db) {
+  static associate(db) {
     db.Report.belongsTo(db.User, {
       foreignKey: "user_id",
       targetKey: "id",

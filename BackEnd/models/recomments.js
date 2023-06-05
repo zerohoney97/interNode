@@ -17,7 +17,7 @@ class Recomment extends Sequelize.Model {
       }
     );
   }
-  static association(db) {
+  static associate(db) {
     db.Recomment.belongsTo(db.Comment, {
       foreignKey: "comment_id",
       targetKey: "id",
