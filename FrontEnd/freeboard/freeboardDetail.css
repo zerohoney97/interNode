@@ -1,5 +1,4 @@
 body {
-    /* background-color: blue; */
     box-sizing: border-box;
 }
 
@@ -21,6 +20,15 @@ textarea {
 
 h1 {
     text-align: center;
+}
+
+details {
+    margin-top: 20px;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .btn {
@@ -48,20 +56,21 @@ h1 {
 
     background-color: #f8f9fa;
     border-bottom: 1px solid #ecedf2;
+
+    padding: 0 10px;
 }
 
 #title {
-
     height: 40px;
     line-height: 40px;
     background-color: #f8f9fa;
-
     font-size: 20px;
     font-weight: bold;
-
     border-top: 1px solid #ecedf2;
     border-bottom: 1px solid #ecedf2;
+    padding: 0 10px;
 }
+
 
 #createdAt, #views, #nickname{
     font-size: 18px;
@@ -74,20 +83,27 @@ h1 {
     color : grey
 }
 
+#commentForm {
+    width: max-content;
+    margin: 0 auto;
+    position: relative;
+}
+
+#commentForm .btn {
+    position: absolute;
+    bottom: 0;
+}
 
 .comment {
     width: 1000px;
-    border-top: 1px solid #ecedf2;
-    margin: 0 auto;
-}
-
-#commentList {
-    /* border-top: 1px solid #ecedf2; */
+    /* border-top: 1px solid grey; */
+    margin: 10px auto;
 }
 
 .commentContent {
-    width: 1000px;
+    width: 990px;
     margin-top: 10px;
+    margin-right: 6px;
 }
 
 .comment form, .recomment {
@@ -96,6 +112,16 @@ h1 {
 
 .recomment {
     width: 800px;
+    position: relative;
+}
+
+.recomment .arrow {
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    top: 4px;
+    left: -30px;
 }
 
 .recommentContent {
@@ -106,15 +132,35 @@ h1 {
 .btns {
     display: flex;
     float: right;
+    margin-bottom: 30px;
+}
+
+.line {
+    width: auto;
+    height: 1px;
+    background-color: grey;
+    margin: 10px 0;
+}
+
+.btns + .line {
+    margin-top: 80px;
+}
+
+.btns div {
+    margin-right: 4px;
 }
 
 #likeBtn {
     margin: 0 auto;
+    margin-top: 30px;
+    line-height: 50px;
 }
 
 #likeBtn img {
     width: 20px;
     height: 20px;
+    vertical-align: middle;
+    margin-right: 4px;
 }
 
 .report {
@@ -130,7 +176,6 @@ h1 {
 }
 
 .nick-date {
-    /* display: flex; */
     float: right;
     margin-top: 2px;
 }
