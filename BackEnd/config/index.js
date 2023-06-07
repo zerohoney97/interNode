@@ -1,3 +1,4 @@
+const dot = require("dotenv").config();
 
 const config = {
     dev :{
