@@ -1,0 +1,185 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.popup-wrap{
+  /* 브라우저 크기 vw 가로 */
+  /* 브라우저 크기 vh 세로 */
+  /* 100vw 보고있는 브라우저 창의 전체 너비 */
+  /* 100vh 보고있는 브라우저 창의 전체 높이 */
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* popup-wrap클래스와 is-active 둘다 클래스를 가지고 있을때 */
+/* 태그 한개가 클래스를 두개 가지고 있을때 */
+.popup-wrap.is-active{
+  display: block;
+}
+
+.popup-wrap .popup-content{
+  background-color: #fff;
+  border-radius:12px;
+  width: 300px;
+  height: 500px;
+  /* 보고있는 브라우저 기준으로 위치를 맞출수 있다. fixed */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.popup-wrap .popup-content span {
+  width: 30px;
+  height: 30px;
+  /* 안보이면 block 속성이 없는거다.. */
+  display: block;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.popup-wrap .popup-content span::after,
+.popup-wrap .popup-content span::before {
+  content: '';
+  width: 15px;
+  height: 4px;
+  background-color: black;
+  border-radius: 5px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.popup-wrap .popup-content span::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+
+.custom-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: antiquewhite;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-image: url("https://image.fmkorea.com/files/attach/new/20201219/1135415169/2380230120/3269864399/997c818d2ed1029cde9e9a29ce518f31.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.content-wrapper{
+  text-align: center;
+  cursor: pointer;
+}
+.content-wrapper{
+  text-align: center;
+  margin: auto;
+}
+
+.content-wrapper img {
+  width: 150px;
+  height: auto;
+  margin-right: 15px;
+  margin: 0;
+}
+
+.offset{
+  background-color: white;
+  width: 270px;
+  margin: auto;
+  height: 160px;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: rgba(255, 255, 255, 0.12) 0px 0px 2px 0px inset, rgba(0, 0, 0, 0.05) 0px 0px 2px 1px, rgba(0, 0, 0, 0.08) 0px 2px 6px;
+  
+}
+
+.offset p {
+  margin: 10;
+  margin-top:10px ;
+  width: 180px;
+  
+}
+
+.inquire{
+  background-color: powderblue;
+  width: 240px;
+  margin: auto;
+  height: 40px;
+  border: 1px solid powderblue;
+  border-radius: 10px;
+}
+
+.popup-wrap .popup-content .offset img {
+  max-width: 15%;
+  float: left;
+  height: auto;
+}
+
+.imgsize{
+  display: flex;
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 40px;
+}
+
+.chatting{
+  display: flex;
+  margin-left: 15px;
+
+}
+
+.popup-wrap .popup-content .offset p {
+  width: 100%;
+  margin: 10px 0;
+}
+
+
+.popup-wrap .popup-content .offset .inquire {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+}
+
+.popup-wrap .popup-content .offset .inquire .content-wrapper2 {
+  background-color: powderblue;
+  width: 240px;
+  height: 10px;
+  border: 1px solid powderblue;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+}
+
+.border-bottom{
+  border-bottom: 1px solid gray;
+}
+
+.imgsize{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.imgsize img{
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
