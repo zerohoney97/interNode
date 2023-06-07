@@ -1,0 +1,151 @@
+body {
+    /* background-color: blue; */
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+textarea {
+    font-size: 16px;
+    resize: none;
+    height: 80px;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.btn {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+
+    text-align: center;
+    line-height: 50px;
+    background-color: #ecedf2;
+
+    user-select: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.info div {
+    height: 40px;
+    line-height: 40px;
+
+    display: flex;
+    justify-content: flex-end;
+
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ecedf2;
+}
+
+#title {
+
+    height: 40px;
+    line-height: 40px;
+    background-color: #f8f9fa;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    border-top: 1px solid #ecedf2;
+    border-bottom: 1px solid #ecedf2;
+}
+
+#createdAt, #views, #nickname{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.commentNickname, .commentCreatedAt,
+.recommentNickname, .recommentCreatedAt {
+    font-size: 16px;
+    color : grey
+}
+
+
+.comment {
+    width: 1000px;
+    border-top: 1px solid #ecedf2;
+    margin: 0 auto;
+}
+
+#commentList {
+    /* border-top: 1px solid #ecedf2; */
+}
+
+.commentContent {
+    width: 1000px;
+    margin-top: 10px;
+}
+
+.comment form, .recomment {
+    margin-left: 100px;
+}
+
+.recomment {
+    width: 800px;
+}
+
+.recommentContent {
+    width: 800px;
+    margin-top: 22px;
+}
+
+.btns {
+    display: flex;
+    float: right;
+}
+
+#likeBtn {
+    margin: 0 auto;
+}
+
+#likeBtn img {
+    width: 20px;
+    height: 20px;
+}
+
+.report {
+    float: right;
+    margin-top: 2px;
+    margin-left: 4px;
+    color: red;
+}
+
+.report img {
+    width: 20px;
+    height: 20px;
+}
+
+.nick-date {
+    /* display: flex; */
+    float: right;
+    margin-top: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
