@@ -1,0 +1,58 @@
+body {
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+#freeboardList {
+    /* width: 800px; */
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+#freeboardList th, #freeboardList td {
+    padding: 0;
+}
+
+#freeboardList td {
+    border-bottom: 1px solid #ecedf2;
+}
+
+#freeboardList thead {
+    background-color: #f8f9fa;
+    height: 50px;
+}
+
+#freeboardList tbody tr {
+    height: 40px;
+}
+
+#freeboardList a {
+    text-decoration: none;
+    color: black;
+}
+
+#freeboardList a:hover {
+    text-decoration: underline;
+}
+
+#freeboardList .title {
+    width: 540px;
+}
+#freeboardList .nickname {
+    width: 200px;
+}
+#freeboardList .likes {
+    width: 100px;
+}
+#freeboardList .views {
+    width: 100px;
+}
+#freeboardList .createdAt {
+    width: 200px;
+}
+
+tbody .likes, tbody .views, tbody .createdAt {
+    color: #62676c;
+}

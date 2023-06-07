@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./freeboard.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./freeboard.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>자유게시판</h1>
+        <!-- 클릭하면 최신/좋아요/조회수 순으로 정렬 -->
+        <input type="radio" id="newest" name="sortBoard" checked>
+        <label for="newest">최신</label>
+        <input type="radio" id="like" name="sortBoard">
+        <label for="like">좋아요</label>
+        <input type="radio" id="view" name="sortBoard">
+        <label for="view">조회수</label>
+
+        <table id="freeboardList">
+            <thead>
+                <tr>
+                    <th class="title">제목</th>
+                    <th class="nickname">작성자</th>
+                    <th class="likes">좋아요</th>
+                    <th class="views">조회수</th>
+                    <th class="createdAt">날짜</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- 제목 클릭하면 게시물 상세 페이지로 이동 -->
+                    <td class="title"><a href="">제목1</a></td>
+                    <td class="nickname">작성자닉네임</td>
+                    <td class="likes">15</td>
+                    <td class="views">100</td>
+                    <td class="createdAt">2023-06-07</td>
+                </tr>
+                <tr>
+                    <!-- 제목 클릭하면 게시물 상세 페이지로 이동 -->
+                    <td class="title"><a href="">제목1</a></td>
+                    <td class="nickname">작성자닉네임</td>
+                    <td class="likes">15</td>
+                    <td class="views">100</td>
+                    <td class="createdAt">2023-06-07</td>
+                </tr>
+                <tr>
+                    <!-- 제목 클릭하면 게시물 상세 페이지로 이동 -->
+                    <td class="title"><a href="">제목1</a></td>
+                    <td class="nickname">작성자닉네임</td>
+                    <td class="likes">15</td>
+                    <td class="views">100</td>
+                    <td class="createdAt">2023-06-07</td>
+                </tr>
+                <tr>
+                    <!-- 제목 클릭하면 게시물 상세 페이지로 이동 -->
+                    <td class="title"><a href="">제목1</a></td>
+                    <td class="nickname">작성자닉네임</td>
+                    <td class="likes">15</td>
+                    <td class="views">100</td>
+                    <td class="createdAt">2023-06-07</td>
+                </tr>
+                <tr>
+                    <!-- 제목 클릭하면 게시물 상세 페이지로 이동 -->
+                    <td class="title"><a href="">제목1</a></td>
+                    <td class="nickname">작성자닉네임</td>
+                    <td class="likes">15</td>
+                    <td class="views">100</td>
+                    <td class="createdAt">2023-06-07</td>
+                </tr>
+                <tr>
+                    <!-- 제목 클릭하면 게시물 상세 페이지로 이동 -->
+                    <td class="title"><a href="">제목1</a></td>
+                    <td class="nickname">작성자닉네임</td>
+                    <td class="likes">15</td>
+                    <td class="views">100</td>
+                    <td class="createdAt">2023-06-07</td>
+                </tr>
+                <tr>
+                    <!-- 제목 클릭하면 게시물 상세 페이지로 이동 -->
+                    <td class="title"><a href="">제목1</a></td>
+                    <td class="nickname">작성자닉네임</td>
+                    <td class="likes">15</td>
+                    <td class="views">100</td>
+                    <td class="createdAt">2023-06-07</td>
+                </tr>
+                <tr>
+                    <!-- 제목 클릭하면 게시물 상세 페이지로 이동 -->
+                    <td class="title"><a href="">제목1</a></td>
+                    <td class="nickname">작성자닉네임</td>
+                    <td class="likes">15</td>
+                    <td class="views">100</td>
+                    <td class="createdAt">2023-06-07</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
