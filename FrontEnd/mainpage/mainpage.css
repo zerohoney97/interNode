@@ -78,13 +78,14 @@ header{
 /* footer부분 */
 
 .common_footer{
-    width: 100%;
-    height: 20vh;
+    width: 1903px;
+    height: 210px;
+    border-top: 1px solid;
 }
 
 .footer_menu{
     display: flex;
-    width: 70%;
+    width: 1124px;
     height: 4vh;
     padding-top: 10.01px;
     /* border: 1.009px solid; */
@@ -94,14 +95,13 @@ header{
 .footer_menu div{
     display: flex;
     align-items: center;
-    font-size: 14.996px;
-    border-right: 1.009px solid;
+    font-size: 12px;
     padding-right: 29.991px;
     padding-left : 29.991px;
 }
 
 .footer_inner {
-    width: 70%;
+    width: 1124px;
     margin: auto;
     padding-top: 10.01px;
 }
@@ -113,7 +113,7 @@ header{
 /* footer 부분 끝 */
 main {
     width: 100%;
-    height: 1999.996px;
+    height: 4500px;
     position: relative;
 }
 
@@ -417,3 +417,135 @@ li{
 /* 랭킹부분 css 끝 */
 
 /* 오늘의 추천 시작 */
+
+.recommend{
+    width: 1903px;
+    height: 450px;
+    margin-top: 150px;
+    box-sizing: border-box;
+    background-color: #218EE6;
+    position: relative;
+}
+
+.rec_header{
+    width: 1124px;
+    height: 50px;
+    margin: auto;
+    transform: translateY(110px);
+    font-size: 16px;
+}
+
+.rec_poster{
+    width: 360px;
+    height: 450px;
+    border-radius: 10px;
+    position: absolute;
+    top: 40px;
+    left: 750px;
+}
+
+.rec_poster img{
+    border-radius: 15px;
+}
+
+.rec_title_wrap{
+    width: 310px;
+    height: 450px;
+    margin: auto;
+    position: absolute;
+    top: 0px;
+    left: -360px;
+
+    color: white;
+}
+
+.rec_title{
+    font-size: 31px;
+    line-height: 50px;
+    font-weight: 550;
+    margin-top: 120px;
+}
+
+.rec_subtitle{
+    font-size: 18px;
+}
+
+.rec_ul_wrap{
+    width: 340px;
+    height: 360px;
+    margin: auto;
+    position: absolute;
+    top: -50px;
+    left: 420px;
+    color: white;
+}
+
+.rec_ul_wrap ul{
+    display: flex;
+
+}
+
+
+.rec_ul_wrap li{
+    width: 310px;
+    height: 70px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin: auto;
+}
+
+.rec_ul_wrap li button{
+    border: none;
+    background-color: #218EE6;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 20px;
+    color: white;
+}
+
+/* 오늘의 추천 작업 끝 */
+
+/* 베스트 공연,전시 시작 */
+
+.bestshow_header{
+    width: 1124px;
+    height: 50px;
+    margin: auto;
+    transform: translateY(100px);
+    font-size: 16px;
+}
+
+.bestshow{
+    width: 1124px;
+    height: 2100px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.bestshow ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.bestshow li{
+    width: 260px;
+    height: 445px;
+    margin-top: 30px;
+}
+
+.bestshow_img,.bestshow_img img{
+    width: 260px;
+    height: 320px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.bestshow_img_title{
+    font-size: 20px;
+}
+
+.bestshow_img_loc,.bestshow_img_date{
+    color: #62676C;
+}
