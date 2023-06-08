@@ -1,0 +1,60 @@
+.container {
+    width: max-content;
+    margin: 0 auto;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+textarea {
+    resize: none;
+}
+
+#titleInput, #contentText {
+    font-size: 16px;
+    width: 1000px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid grey;
+    border-radius: 8px;
+}
+
+a.btn {
+    display: block;
+    text-decoration: none;
+    color: black;
+
+    margin: 0 auto;
+}
+
+#contentText {
+    height: 400px;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.right {
+    display: flex;
+    justify-content: end;
+}
+
+.btn {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+
+    text-align: center;
+    line-height: 50px;
+    background-color: #ecedf2;
+
+    cursor: pointer;
+    user-select: none;
+}

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>자유게시판</title>
     <link rel="stylesheet" href="./freeboard.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./freeboard.js"></script>
@@ -16,18 +16,18 @@
         <h1>자유게시판</h1>
         <div id="tablediv">
             <div>
-            <div id="insertBtn" class="btn">등록</div>
-            <div id="radiodiv">
+                <div id="insertBtn" class="btn">등록</div>
+                <div id="radiodiv">
 
-                <!-- 클릭하면 최신/좋아요/조회수 순으로 정렬 -->
-                <input type="radio" id="newest" name="sortBoard" checked>
-                <label for="newest">최신순</label>
-                <input type="radio" id="like" name="sortBoard">
-                <label for="like">좋아요 많은 순</label>
-                <input type="radio" id="view" name="sortBoard">
-                <label for="view">조회수 많은 순 </label>
+                    <!-- 클릭하면 최신/좋아요/조회수 순으로 정렬 -->
+                    <input type="radio" id="newest" name="sortBoard" checked>
+                    <label for="newest">최신순</label>
+                    <input type="radio" id="like" name="sortBoard">
+                    <label for="like">좋아요 많은 순</label>
+                    <input type="radio" id="view" name="sortBoard">
+                    <label for="view">조회수 많은 순 </label>
 
-            </div>
+                </div>
 
             </div>
             <table id="freeboardList">
