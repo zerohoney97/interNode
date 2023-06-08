@@ -36,6 +36,9 @@ summary {
     height: 50px;
     border-radius: 10px;
 
+    font-size: 14px;
+    border: none;
+
     text-align: center;
     line-height: 50px;
     background-color: #ecedf2;
@@ -183,9 +186,6 @@ textarea.commentContent {
 }
 
 button.btn {
-    width: 80px;
-    padding-left: 4px;
-    padding-right: 4px;
     margin-left: 4px;
 }
 

@@ -51,6 +51,9 @@ h1 {
     height: 50px;
     border-radius: 10px;
 
+    font-size: 14px;
+    border: none;
+
     text-align: center;
     line-height: 50px;
     background-color: #ecedf2;
