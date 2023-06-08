@@ -78,39 +78,40 @@ header{
 
 /* 헤더 부분 css 끝 */
 
+
 /* footer부분 */
 
 .common_footer{
-    width: 100%;
-    height: 20vh;
+    width: 1903px;
+    height: 210px;
+    border-top: 1px solid;
 }
 
 .footer_menu{
     display: flex;
-    width: 70%;
+    width: 1124px;
     height: 4vh;
-    padding-top: 10px;
-    /* border: 1px solid; */
+    padding-top: 10.01px;
+    /* border: 1.009px solid; */
     margin: auto;
 }
 
 .footer_menu div{
     display: flex;
     align-items: center;
-    font-size: 15px;
-    border-right: 1px solid;
-    padding-right: 30px;
-    padding-left : 30px;
+    font-size: 12px;
+    padding-right: 29.991px;
+    padding-left : 29.991px;
 }
 
 .footer_inner {
-    width: 70%;
+    width: 1124px;
     margin: auto;
-    padding-top: 10px;
+    padding-top: 10.01px;
 }
 
 .footer_inner span{
-    padding-bottom: 10px;
+    padding-bottom: 10.01px;
 }
 
 /* footer 부분 끝 */
