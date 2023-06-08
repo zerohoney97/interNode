@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./zerohoneyPublic/adminMyPage.css" />
+  </head>
+  <body>
+    <div class="chat-icon"></div>
+    <div class="adminMyPage-container">
+      <div class="adminMyPage-header">
+        <div class="adminMyPage-header-left">마이 페이지</div>
+        <ul>
+          <li>
+            <div class="adminMyPage-header-right-box">
+              <span>유저 회원정보</span> <span>관리</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="adminMyPage-contents">
+        <div class="adminMyPage-contents-side-bar">
+          <div class="side-bar-manage-show">
+            <div>공연관리</div>
+            <div style="cursor: pointer" id="showManage">
+              공연 등록/수정/삭제
+            </div>
+          </div>
+          <div class="side-bar-manage-user">
+            <div>유저 관리</div>
+            <div style="cursor: pointer" id="searchUser">유저 검색</div>
+            <div style="cursor: pointer" id="reportedUser">신고된 유저</div>
+          </div>
+        </div>
+        <div class="show-control-container">
+          <h2>공연관리</h2>
+          <div class="show-control-tag">
+            <label for="tab1" id="labeltab1" class="show-control-label"
+              >공연 등록</label
+            >
+            <input
+              type="radio"
+              name="updateShow"
+              class="show-radio"
+              id="tab1"
+            />
+            <label for="tab2" id="labeltab2" class="show-control-label"
+              >공연 수정/삭제</label
+            >
+            <input
+              type="radio"
+              name="updateShow"
+              class="show-radio"
+              id="tab2"
+            />
+          </div>
+          <div class="enroll-show">
+            <div class="enroll-show-image-container">
+              <div class="left">이미지</div>
+              <div class="right">
+                <label for="">공연이름</label>
+                <input type="text" id="show_name" />
+                <label for=""></label>
+                <input type="text" id="show_name" />
+                <label for="">공연이름</label>
+                <input type="text" id="show_name" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="잡담 아이콘">잡담 아이콘  제작자: Catalin Fertu - Flaticon</a> -->
+  </body>
+  <script>
+    window.onload = function () {
+      let showRadio = document.querySelectorAll(".show-radio");
+      showRadio.forEach((element) => {
+        element.addEventListener("change", function (e) {
+          console.log(e);
+          if (this.checked) {
+            document
+              .querySelector(`#label${this.id}`)
+              .classList.add("checked-label");
+
+            let array = document.querySelectorAll(".show-control-label");
+            array.forEach((a) => {
+              if (a.id != `label${element.id}`) {
+                a.classList.remove("checked-label");
+              }
+            });
+          }
+        });
+      });
+    };
+  </script>
+</html>

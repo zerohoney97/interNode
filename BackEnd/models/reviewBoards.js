@@ -2,10 +2,6 @@ const Sequelize = require("sequelize");
 class ReviewBoard extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            title : {
-                type : Sequelize.STRING(20),
-                allowNull : false,
-            },
             content : {
                 type : Sequelize.TEXT,
                 allowNull : false,

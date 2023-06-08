@@ -15,6 +15,8 @@ const Show = require("./shows");
 const User = require("./users");
 const Theater = require("./theaters");
 
+
+
 const sequelize = new Sequelize(
   config.dev.database,
   config.dev.username,

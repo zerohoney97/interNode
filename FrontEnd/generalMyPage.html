@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>generalMyPage</title>
+    <link rel="stylesheet" href="./zerohoneyPublic/generalMyPage.css" />
+  </head>
+  <body>
+    <div class="generalMyPage-container">
+      <div class="generalMyPage-header">
+        <div class="generalMyPage-header-left">마이 페이지</div>
+        <ul>
+          <li>
+            <div class="generalMyPage-header-right-box">
+              <span>나의 예매권</span> <span>0</span>
+            </div>
+          </li>
+          <li>
+            <hr />
+          </li>
+          <li>
+            <div class="generalMyPage-header-right-box">
+              <span>회원정보</span> <span>수정</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="generalMyPage-contents">
+        <div class="generalMyPage-contents-side-bar">
+          <div class="side-bar-reserved">
+            <div>예매관리</div>
+            <div style="cursor: pointer" id="confirmReserved">
+              예매확인/취소
+            </div>
+          </div>
+          <div class="side-bar-board">
+            <div>내가 쓴 글</div>
+            <div style="cursor: pointer" id="freeBoard">자유게시판</div>
+          </div>
+          <div class="side-bar-profile">
+            <div>내 정보 변경</div>
+            <div style="cursor: pointer" id="changeUserInfo">
+              닉네임/이메일/프로필 변경
+            </div>
+          </div>
+        </div>
+        <div class="generalMyPage-contents-detail-profile show">
+          <h2>회원 정보 수정</h2>
+          <div class="summary">
+            이메일,닉네임 및 프로필사진을 &nbsp;
+            <span style="color: red">수정</span> 할 수 있습니다.
+          </div>
+          <div class="divide-line"></div>
+          <div class="info">
+            <div class="email">
+              <div class="email-left">이메일</div>
+              <div class="email-right">
+                <span>*******@****.com</span>
+                <span>이메일 변경</span>
+              </div>
+            </div>
+            <div class="nickName">
+              <div class="nickName-left">닉네임</div>
+              <div class="nickName-right">
+                <span>아현의 왕꿈틀이</span>
+                <span>닉네임 변경</span>
+              </div>
+            </div>
+            <div class="password">
+              <div class="password-left">비밀번호</div>
+              <div class="password-right">
+                <span>*******</span>
+                <span>비밀번호 변경</span>
+              </div>
+            </div>
+
+            <img
+              src="./zerohoneyPublic/resources/cutePepe.png"
+              style="
+                width: 100px;
+                height: 100px;
+                margin: auto;
+                display: block;
+                margin-top: 15px;
+                border-radius: 10px;
+              "
+              alt="userProfile"
+            />
+            <div class="profile">프로필 수정</div>
+          </div>
+        </div>
+        <div class="generalMyPage-contents-detail-reserved">
+          <h1
+            style="
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            예매 내역
+          </h1>
+          <div class="reserved-container">
+            <div class="show-container">
+              <img
+                src="https://image.toast.com/aaaaab/ticketlink/TKL_1/pino_main_0502.jpg"
+                alt=""
+              />
+              <div class="show-detail">
+                <span>피노키오 페스타</span>
+                <span>2023.06.10</span>
+                <span>15:00~17:00</span>
+                <span>48000원</span>
+              </div>
+            </div>
+
+            <div class="review-container">
+              <!-- 만약 후기가 있다면 후기를 가져오자 -->
+              <div class="user-review">
+                <img
+                  src="./zerohoneyPublic/resources/cutePepe.png"
+                  style="width: 50px; height: 50px"
+                  alt="userProfile"
+                />
+                <div class="user-review-detail">
+                  <div>
+                    <span>페페 커여워</span>
+                  </div>
+                  <div>
+                    <span>2023.06.12</span>
+                  </div>
+                  <div>
+                    <span>피노키오 페스타</span>
+                  </div>
+                </div>
+              </div>
+              <div class="content">
+                코가 늘어나요. 코가 늘어나요. 코가 늘어나요. 코가 늘어나요. 코가
+                늘어나요. 코가 늘어나요. 코가 늘어나요. 코가 늘어나요. 코가
+                늘어나요. 코가 늘어나요. 코가 늘어나요. 코가 늘어나요. 코가
+                늘어나요. 코가 늘어나요. 코가 늘어나요. 코가 늘어나요. 코가
+                늘어나요. 코가 늘어나요.
+              </div>
+            </div>
+            <!-- 만약 후기가 있다면 후기를 가져오자 -->
+          </div>
+
+          <div class="reserved-container">
+            <div class="show-container">
+              <img
+                src="https://image.toast.com/aaaaab/ticketlink/TKL_5/main0509.jpg"
+                alt=""
+              />
+              <div class="show-detail">
+                <span>이승철 전국 투어</span>
+                <span>2023.06.02</span>
+                <span>17:00~20:00</span>
+                <span>60000원</span>
+              </div>
+            </div>
+            <div class="review-container">
+              <!-- 만약 후기가 없다면! 후기 입력창과 별점 창 -->
+              <div class="starpoint_wrap">
+                <div class="starpoint_box">
+                  <label for="starpoint_1" class="label_star" title="1"
+                    ><span class="blind">1점</span></label
+                  >
+                  <label for="starpoint_2" class="label_star" title="2"
+                    ><span class="blind">2점</span></label
+                  >
+                  <label for="starpoint_3" class="label_star" title="3"
+                    ><span class="blind">3점</span></label
+                  >
+                  <label for="starpoint_4" class="label_star" title="4"
+                    ><span class="blind">4점</span></label
+                  >
+                  <label for="starpoint_5" class="label_star" title="5"
+                    ><span class="blind">5점</span></label
+                  >
+                  <input
+                    type="radio"
+                    name="starpoint"
+                    id="starpoint_1"
+                    class="star_radio"
+                  />
+                  <input
+                    type="radio"
+                    name="starpoint"
+                    id="starpoint_2"
+                    class="star_radio"
+                  />
+                  <input
+                    type="radio"
+                    name="starpoint"
+                    id="starpoint_3"
+                    class="star_radio"
+                  />
+                  <input
+                    type="radio"
+                    name="starpoint"
+                    id="starpoint_4"
+                    class="star_radio"
+                  />
+                  <input
+                    type="radio"
+                    name="starpoint"
+                    id="starpoint_5"
+                    class="star_radio"
+                  />
+                  <span class="starpoint_bg"></span>
+                </div>
+              </div>
+
+              <div id="searchContainer">
+                <textarea
+                  id="reviewInput"
+                  name="review-input"
+                  type="text"
+                  placeholder="후기를 남겨 주세요!..."
+                ></textarea>
+                <button id="searchButton">후기 등록</button>
+              </div>
+              <!-- 만약 후기가 없다면! 후기 입력창과 별점 창 -->
+            </div>
+          </div>
+          <div class="reserved-container">
+            <div class="show-container">
+              <img
+                src="https://image.toast.com/aaaaab/ticketlink/TKL_5/main0509.jpg"
+                alt=""
+              />
+              <div class="show-detail">
+                <span>이승철 전국 투어</span>
+                <span>2023.06.02</span>
+                <span>17:00~20:00</span>
+                <span>60000원</span>
+              </div>
+            </div>
+            <div class="review-container">
+              <!-- 만약 후기가 없다면! 후기 입력창과 별점 창(별점은 label을 사용하므로 input의 이름,id를 각각 다르게 줘야함을 주의하자) -->
+              <div class="starpoint_wrap">
+                <div class="starpoint_box">
+                  <label for="starpoint_1" class="label_star" title="1"
+                    ><span class="blind">1점</span></label
+                  >
+                  <label for="starpoint_2" class="label_star" title="2"
+                    ><span class="blind">2점</span></label
+                  >
+                  <label for="starpoint_3" class="label_star" title="3"
+                    ><span class="blind">3점</span></label
+                  >
+                  <label for="starpoint_4" class="label_star" title="4"
+                    ><span class="blind">4점</span></label
+                  >
+                  <label for="starpoint_5" class="label_star" title="5"
+                    ><span class="blind">5점</span></label
+                  >
+                  <input
+                    type="radio"
+                    name="starpoint"
+                    id="starpoint_1"
+                    class="star_radio"
+                  />
+                  <input
+                    type="radio"
+                    name="starpoint"
+                    id="starpoint_2"
+                    class="star_radio"
+                  />
+                  <input
+                    type="radio"
+                    name="starpoint"
+                    id="starpoint_3"
+                    class="star_radio"
+                  />
+                  <input
+                    type="radio"
+                    name="starpoint"
+                    id="starpoint_4"
+                    class="star_radio"
+                  />
+                  <input
+                    type="radio"
+                    name="starpoint"
+                    id="starpoint_5"
+                    class="star_radio"
+                  />
+                  <span class="starpoint_bg"></span>
+                </div>
+              </div>
+
+              <div id="searchContainer">
+                <textarea
+                  id="reviewInput"
+                  name="review-input"
+                  type="text"
+                  placeholder="후기를 남겨 주세요!..."
+                ></textarea>
+                <button id="searchButton">후기 등록</button>
+              </div>
+              <!-- 만약 후기가 없다면! 후기 입력창과 별점 창 -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <a
+      href="https://www.flaticon.com/kr/free-icons/-"
+      title="유저 프로필 아이콘"
+      >유저 프로필 아이콘 제작자: kawalanicon - Flaticon</a
+    >
+    <a
+      href="https://www.flaticon.com/kr/free-icons/-"
+      title="스마트 카트 아이콘"
+      >스마트 카트 아이콘 제작자: Freepik - Flaticon</a
+    > -->
+  </body>
+  <script>
+    changeUserInfo.onclick = () => {
+      document
+        .querySelector(".generalMyPage-contents-detail-profile")
+        .classList.add("show");
+      document
+        .querySelector(".generalMyPage-contents-detail-reserved")
+        .classList.remove("show");
+    };
+    confirmReserved.onclick = () => {
+      document
+        .querySelector(".generalMyPage-contents-detail-reserved")
+        .classList.add("show");
+      document
+        .querySelector(".generalMyPage-contents-detail-profile")
+        .classList.remove("show");
+    };
+  </script>
+</html>

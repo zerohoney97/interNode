@@ -12,8 +12,8 @@ class Report extends Sequelize.Model {
       {
         sequelize,
         timestamps: true,
-        modelName: "ShowDataInfo",
-        tableName: "showDataInfos",
+        modelName: "Report",
+        tableName: "reports",
         paranoid: true,
         charset: "utf8",
         collate: "utf8_general_ci",

@@ -10,6 +10,9 @@ class Show extends Sequelize.Model {
                 type : Sequelize.TEXT,
                 allowNull : false,
             },
+            img : {
+                type : Sequelize.STRING(50),
+            },
             price : {
                 type : Sequelize.STRING(50),
                 allowNull : false,
