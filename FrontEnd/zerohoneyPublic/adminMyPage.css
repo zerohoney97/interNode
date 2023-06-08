@@ -1,0 +1,223 @@
+hr {
+  border: none;
+  border-left: 1px dashed gray; /* 여기서 색상은 원하는 회색으로 변경 */
+  height: 46px;
+  width: 1px;
+}
+body {
+  box-sizing: border-box;
+}
+.adminMyPage-container {
+  width: 1120px;
+  height: 930px;
+  margin: auto;
+}
+
+.adminMyPage-header {
+  width: 100%;
+  height: 135px;
+  border: 1px solid;
+  display: flex;
+}
+.adminMyPage-header-left {
+  width: 257px;
+  height: 100%;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminMyPage-header ul {
+  width: 854px;
+  height: 100%;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.adminMyPage-header ul li {
+  width: 150px;
+  height: 46px;
+  display: flex;
+}
+
+.adminMyPage-header ul li:nth-child(1)::before {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin-top: 2px;
+  background-image: url("./resources/generalMypageUser.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.adminMyPage-header-right-box {
+  width: 100px;
+  height: 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.adminMyPage-header-right-box span {
+  font-weight: bold;
+}
+.adminMyPage-header-right-box span:nth-child(2) {
+  font-weight: bold;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
+/* adminPage header end */
+/* adminPage content(body) start */
+
+/* adminPage side bar start */
+.adminMyPage-contents {
+  width: 100%;
+  height: 732px;
+  margin-top: 10px;
+  display: flex;
+}
+
+.adminMyPage-contents-side-bar {
+  width: 255px;
+  height: 100%;
+}
+
+.side-bar-manage-show {
+  width: 100%;
+  height: 91px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid gray;
+}
+
+.side-bar-manage-show div {
+  margin: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-left: 15px;
+  color: #878d95;
+}
+
+.side-bar-manage-show div:nth-child(1) {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-left: 15px;
+  color: black;
+}
+
+.side-bar-manage-user {
+  width: 100%;
+  height: 169px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid gray;
+}
+
+.side-bar-manage-user div {
+  margin: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-left: 15px;
+  color: #878d95;
+}
+
+.side-bar-manage-user div:nth-child(1) {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-left: 15px;
+  color: black;
+}
+
+/* adminPage side bar end */
+
+/* adminPage chat icon start*/
+
+.chat-icon {
+  background-image: url("./resources/chat.png");
+  background-size: 50px 50px;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+}
+/* adminPage chat icon end*/
+
+/* show-control start */
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+.show-control-container {
+  width: 862px;
+  height: 100%;
+  padding: 38px 59px 100px 60px;
+  border: 1px solid;
+}
+
+.show-control-tag {
+  width: 400px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.show-control-label {
+  width: 150px;
+  height: 35px;
+  background-color: #f5f6f9;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.show-control-label.checked-label {
+  background-color: #878d95;
+}
+
+.enroll-show {
+  width: 100%;
+  height: 660px;
+  border: 1px solid;
+}
+
+.enroll-show-image-container {
+  width: 100%;
+  height: 180px;
+  border: 1px solid;
+  display: flex;
+}
+.enroll-show-image-container .left {
+  width: 20%;
+  height: 100%;
+  border: 1px solid;
+}
+.enroll-show-image-container .right {
+  width: 80%;
+  height: 100%;
+  border: 1px solid;
+}
+/* show-control end */
