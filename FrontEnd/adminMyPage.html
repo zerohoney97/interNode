@@ -56,19 +56,71 @@
               id="tab2"
             />
           </div>
-          <div class="enroll-show">
+          <!-- 공연 등록을 눌렀을 때 -->
+          <div class="enroll-show show" id="showtab1">
             <div class="enroll-show-image-container">
-              <div class="left">이미지</div>
+              <div class="left"></div>
               <div class="right">
-                <label for="">공연이름</label>
-                <input type="text" id="show_name" />
-                <label for=""></label>
-                <input type="text" id="show_name" />
-                <label for="">공연이름</label>
-                <input type="text" id="show_name" />
+                <input type="text" id="show_name" placeholder="공연의 이름" />
+                <input
+                  type="text"
+                  id="show_duration"
+                  placeholder="공연시간(분 단위)"
+                />
+                <input
+                  type="text"
+                  id="show_grade"
+                  placeholder="공연등급(숫자만 입력)"
+                />
+                <input type="text" id="show_price" placeholder="가격" />
               </div>
             </div>
+            <div class="enroll-show-date-container">
+              <label for="">시작 날짜</label>
+              <input type="date" id="show_start_date" />
+              <label for="">종료 날짜</label>
+              <input type="date" id="show_end_date" />
+            </div>
+            <div class="enroll-show-time-container">
+              <div>매일 <span></span>시에 시작 돼요</div>
+              <input type="time" id="show_start_time" />
+            </div>
+            <div class="enroll-show-button-container">
+              <button class="enroll-show-button">공연 등록</button>
+            </div>
           </div>
+          <!-- 공연 등록을 눌렀을 때 -->
+          <!-- 공연 수정을 눌렀을 때 -->
+          <div class="update-show show" id="showtab2">
+            <ul class="performance-list">
+              <li class="performance-item">
+                <div class="show-info">
+                  <img
+                    src="https://image.toast.com/aaaaab/ticketlink/TKL_10/main0406(3).jpg"
+                    alt="show_post"
+                  />
+                  <div class="show-info-detail">
+                    <span>Show Name:</span>
+                    <span>Year</span>
+                    <span>Month</span>
+                    <span>Date</span>
+                    <span>~</span>
+                    <br />
+                    <span>Year</span>
+                    <span>Month</span>
+                    <span>Date</span>
+                  </div>
+                </div>
+                <div class="buttons">
+                  <button>Edit</button>
+                  <button>Delete</button>
+                </div>
+              </li>
+              <!-- Add more performance items here -->
+            </ul>
+          </div>
+
+          <!-- 공연 수정을 눌렀을 때 -->
         </div>
       </div>
     </div>
@@ -81,16 +133,22 @@
         element.addEventListener("change", function (e) {
           console.log(e);
           if (this.checked) {
-            document
-              .querySelector(`#label${this.id}`)
-              .classList.add("checked-label");
-
             let array = document.querySelectorAll(".show-control-label");
+
             array.forEach((a) => {
-              if (a.id != `label${element.id}`) {
+              if (a.classList.contains("checked-label")) {
                 a.classList.remove("checked-label");
               }
             });
+            document.querySelectorAll(".show").forEach((a) => {
+              if (a.classList.contains("block")) {
+                a.classList.remove("block");
+              }
+            });
+            document
+              .querySelector(`#label${this.id}`)
+              .classList.add("checked-label");
+            document.querySelector(`#show${this.id}`).classList.add("block");
           }
         });
       });

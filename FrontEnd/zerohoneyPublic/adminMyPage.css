@@ -173,7 +173,8 @@ label {
   width: 862px;
   height: 100%;
   padding: 38px 59px 100px 60px;
-  border: 1px solid;
+  border: 2px solid #f5f6f9;
+  border-radius: 5px;
 }
 
 .show-control-tag {
@@ -201,14 +202,20 @@ label {
 .enroll-show {
   width: 100%;
   height: 660px;
-  border: 1px solid;
+  margin-top: 30px;
+  display: none;
+}
+.enroll-show.block {
+  display: block;
 }
 
 .enroll-show-image-container {
   width: 100%;
   height: 180px;
-  border: 1px solid;
+
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .enroll-show-image-container .left {
   width: 20%;
@@ -216,8 +223,302 @@ label {
   border: 1px solid;
 }
 .enroll-show-image-container .right {
-  width: 80%;
+  width: 30%;
   height: 100%;
-  border: 1px solid;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.enroll-show-image-container .right input {
+  width: 100%;
+  padding: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #8d949e;
+  outline: none;
+}
+
+.right input:focus {
+  border-bottom-color: skyblue;
+}
+.right input::placeholder {
+  color: #8d949e;
+}
+
+.enroll-show-date-container {
+  width: 100%;
+  height: 240px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.enroll-show-date-container label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.enroll-show-date-container input[type="date"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.enroll-show-time-container {
+  width: 100%;
+  height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.enroll-show-time-container div {
+  font-weight: bold;
+}
+
+.enroll-show-time-container span {
+  color: red;
+}
+
+.enroll-show-time-container input[type="time"] {
+  padding: 5px;
+  border-radius: 3px;
+}
+.enroll-show-button-container {
+  width: 90px;
+  height: 37px;
+  margin: auto;
+}
+.enroll-show-button {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
 }
 /* show-control end */
+
+/* show-update start */
+.update-show {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.update-show.block {
+  display: block;
+}
+.performance-list {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+}
+
+.performance-item {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: rgba(255, 0, 0, 0.6);
+  color: white;
+  border-radius: 5px;
+}
+
+.performance-item .show-info {
+  flex-grow: 1;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.performance-item .show-info span {
+  margin-right: 10px;
+}
+
+.show-info .show-info-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+.performance-item .buttons {
+  display: flex;
+  align-items: center;
+}
+
+.performance-item .buttons button {
+  margin-left: 10px;
+  background-color: white;
+  color: rgba(255, 0, 0);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+img {
+  width: 120px;
+  height: 190px;
+  margin: 10px;
+}
+/* show update end */
+
+/* user report start */
+.reported-user-container {
+  width: 862px;
+  height: 100%;
+  padding: 38px 59px 100px 60px;
+  border: 2px solid #f5f6f9;
+  border-radius: 5px;
+  display: none;
+}
+
+.user-list {
+  list-style: none;
+
+  padding: 0;
+}
+
+.user-item {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  position: relative;
+}
+
+.user-item .title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.user-item .content {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.user-item .nickname {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.user-item .board-type {
+  font-size: 12px;
+  color: #777;
+}
+.user-item .report-buttons {
+  width: 200px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  right: 10%;
+  top: 35%;
+}
+
+.user-item .report-buttons button {
+  margin-bottom: 5px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 85px;
+  height: 40px;
+}
+
+/* user report end */
+/* user search start */
+.search-user-container {
+  width: 862px;
+  height: 100%;
+  padding: 38px 59px 100px 60px;
+  border: 2px solid #f5f6f9;
+  border-radius: 5px;
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.user-item .user-details {
+  flex-grow: 1;
+}
+
+.user-item .user-name {
+  font-weight: bold;
+}
+
+.user-item .user-email {
+  font-size: 14px;
+  color: #777;
+}
+/* user search end */
+
+/* user detail start */
+
+.user-detail-container {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+/* user detail end */
