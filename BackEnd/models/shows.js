@@ -14,7 +14,7 @@ class Show extends Sequelize.Model {
                 type : Sequelize.STRING(50),
             },
             price : {
-                type : Sequelize.STRING(50),
+                type : Sequelize.INTEGER,
                 allowNull : false,
             },
         }, {
