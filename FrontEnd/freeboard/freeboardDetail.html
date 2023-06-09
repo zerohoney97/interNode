@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 상세</title>
+    <link rel="stylesheet" href="./freeboardDetail.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>게시글 상세</h1>
+        <div id="title">제목</div>
+
+        <div class="info">
+            <div>
+                작성자 &nbsp; <div id="nickname">작성자1</div> &nbsp;
+                등록일 &nbsp; <div id="createdAt">2023-06-01 22:03:01</div> &nbsp;
+                조회수 &nbsp; <div id="views">100</div>
+            </div>
+        </div>
+        <div>
+            <p id="content"> 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용</p>
+        </div>
+
+        <a class="report" href=""> <img src="./img/siren.png" alt="">신고</a>
+
+        <!-- 좋아요 누를 수 있는 버튼 안에 좋아요 횟수 -->
+        <div id="likeBtn" class="btn"><a href=""><img src="./img/like_empty.png" alt="">10</a></div>
+
+        <!-- 현재 사용자가 작성자일 경우 -->
+        <div class="btns">
+            <div id="updateBtn" class="btn">수정</div>
+            <div id="deleteBtn" class="btn">삭제</div>
+
+            <!-- 목록 페이지로 이동하는 버튼 -->
+            <a href="./freeboard.html"><div id="listBtn" class="btn">목록</div></a>
+        </div>
+
+        <div class="line"></div>
+
+        <!-- <div class="comment">댓글</div> -->
+
+        <!-- 댓글, 대댓글 -->
+        <div id="commentList">
+            <!-- 댓글 다는 부분 -->
+            <form id="commentForm" action="">
+                <textarea class="commentContent" name="content" cols="30" rows="10"></textarea>
+                <button class="btn">댓글등록</button>
+            </form>
+
+            <div class="comment">
+                <div class="commentContent">댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용</div>
+                <a class="report" href=""> <img src="./img/siren.png" alt="">신고</a>
+                <div class="nick-date">
+                    <span class="commentNickname">작성자닉네임</span>
+                    <span class="commentCreatedAt">2023-06-01 22:03:10</span>
+                </div>
+
+                <details>
+                    <summary>대댓글 달기</summary>
+                    <!-- 대댓글 달기 -->
+                    <form class="recommentForm" action="">
+                        <textarea class="recommentContent" name="content" cols="30" rows="10"></textarea>
+                        <button class="btn">대댓글등록</button>
+                    </form>
+                </details>
+            </div>
+
+            <div class="line"></div>
+
+
+            <div class="comment">
+                <div class="commentContent">
+                    댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
+                </div>
+                <a class="report" href=""> <img src="./img/siren.png" alt="">신고</a>
+                <div class="nick-date">
+                    <span class="commentNickname">닉네임</span>
+                    <span class="commentCreatedAt">2023-06-01 22:03:10</span>
+                </div>
+
+                <div class="recomment">
+                    <img class="arrow" src="./img/arrow.png" alt="대댓글 화살표">
+                    <div class="recommentContent">
+                        대댓글내용대댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
+                    </div>
+                    <a class="report" href=""> <img src="./img/siren.png" alt="">신고</a>
+                        <div class="nick-date">
+                        <span class="recommentNickname">닉네임</span>
+                        <span class="recommentCreatedAt">2023-06-01 22:03:10</span>
+                    </div>
+                </div>
+                <details>
+                    <summary>대댓글 달기</summary>
+                    <!-- 대댓글 달기 -->
+                    <form class="recommentForm" action="">
+                        <textarea class="recommentContent" name="content" cols="30" rows="10"></textarea>
+                        <button class="btn">대댓글등록</button>
+                    </form>
+                </details>
+            </div>
+
+            <div class="line"></div>
+
+
+        </div>
+    </div>
+</body>
+<script src="./freeboardDetail.js"></script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 추가</title>
+    <link rel="stylesheet" href="./freeboardInsert.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>게시글 추가</h1>
+
+        <form id="boardForm" action="">
+            <label for="">제목</label><br>
+            <input id="titleInput" name="title" type="text" placeholder="제목을 입력하세요." required><br>
+
+            <label for="">내용</label><br>
+            <textarea name="content" id="contentText" cols="30" rows="10" placeholder="내용을 입력하세요." required></textarea><br>
+            <div class="right">
+                <button class="btn">등록</button>
+            </div>
+        </form>
+
+        <a class="btn" href="./freeboard.html">목록</a>
+
+    </div>
+</body>
+
+</html>

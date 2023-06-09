@@ -1,0 +1,185 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+} */
+
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    /* margin: 0px; */
+    box-sizing: border-box;
+
+    font-family: 'S-CoreDream-3Light';
+    /* font-weight: 900; */
+    /* font-family: 'Pretendard-Regular'; */
+}
+
+.container {
+    margin: 0 auto;
+    width: 1100px;
+}
+
+.container h1 {
+    text-align: center;
+}
+
+#tablediv {
+    margin: 0 auto;
+    position: relative;
+    width: 1100px;
+    height: 600px;
+}
+
+#radiodiv {
+    position: absolute;
+    right: 0;
+    top: 54px;
+}
+
+#radiodiv input {
+    display: none;
+}
+
+#radiodiv label {
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+
+    text-align: center;
+    line-height: 40px;
+
+    cursor: pointer;
+    user-select: none;
+
+    border-radius: 4px;
+    background-color: #ecedf2;
+    color: black;
+
+    margin: 0;
+}
+.btn {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+
+    font-size: 14px;
+    border: none;
+
+    text-align: center;
+    line-height: 50px;
+    background-color: #ecedf2;
+
+    user-select: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+#radiodiv input:checked + label, .current {
+    background-color: black;
+    color: white;
+}
+
+
+#insertBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#freeboardList {
+    /* width: 800px; */
+    position: absolute;
+    top: 110px;
+    /* top: 280px; */
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+#freeboardList th, #freeboardList td {
+    padding: 0;
+}
+
+#freeboardList td {
+    border-bottom: 1px solid #ecedf2;
+}
+
+#freeboardList thead {
+    background-color: #f8f9fa;
+    height: 50px;
+}
+
+#freeboardList tbody tr {
+    height: 40px;
+}
+
+#freeboardList a {
+    text-decoration: none;
+    color: black;
+}
+
+#freeboardList a:hover {
+    text-decoration: underline;
+}
+
+#freeboardList .no {
+    width: 40px;
+}
+
+#freeboardList .title {
+    width: 540px;
+}
+#freeboardList .nickname {
+    width: 200px;
+}
+#freeboardList .likes {
+    width: 100px;
+}
+#freeboardList .views {
+    width: 100px;
+}
+#freeboardList .createdAt {
+    width: 200px;
+}
+
+tbody .likes, tbody .views, tbody .createdAt {
+    color: #62676c;
+}
+
+#pageBtns {
+    display: flex;
+    justify-content: space-around;
+}
+
+#pageNumBtns {
+    width: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.pageBtn.btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
