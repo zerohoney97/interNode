@@ -13,7 +13,6 @@ header{
     height: 3vh;
     width: 70%;
     margin: auto;
-    /* border: 1px solid; */
     display: flex;
     justify-content: right;
     color: gray;
@@ -21,46 +20,44 @@ header{
 }
 
 .header_util div{
-    padding-left: 5px;
-    padding-right: 5px;
-    border-right: 1px solid ;
+    padding-left: 5.005px;
+    padding-right: 5.005px;
+    border-right: 1.009px solid ;
 }
 
 .header_util div:last-child{
-    border-right : 1px solid white
+    border-right : 1.009px solid white
 }
 
 .header_inner{
     width: 70%;
     margin: auto;
     height : 9vh;
-    /* border: 1px solid; */
     display: flex;
 }
 .logo{
-    width: 200px;
-    height: 50px;
+    width: 199.986px;
+    height: 49.992px;
     margin-top: 2.1vh;
     background-image: url(http://openimage.interpark.com/ticket-desktop/components/header/interparkTicket_BI2x.png);
     background-size: cover;
 }
 
 .header_inner h1{
-    margin-top: 25px;
-    margin-left: 15px;
+    margin-top: 25.005px;
+    margin-left: 14.996px;
 }
 
 .header_gnb{
     height: 4vh;
     width: 70%;
     margin: auto;
-    /* border: 1px solid black; */
     display: flex;
 }
 
 .header_gnb div{
-    padding-left: 10px;
-    margin-right: 20px;
+    padding-left: 10.01px;
+    margin-right: 20.001px;
     display: flex;
     align-items: center;
     font-weight: bold;
@@ -72,7 +69,7 @@ header{
 
 .swiper{
     width: 100%;
-    height: 35vh;
+    height: 599.997px;
     background-image: url(https://image.toast.com/aaaaab/ticketlink/TKL_6/BigBanner_PC_%EB%AF%B8%EB%94%94%EC%96%B4%EC%95%84%ED%8A%B8%EC%95%84%EC%9D%B4%EC%8A%A4%EC%87%BC_%EC%88%98%EC%A0%95.jpg);
 }
 
@@ -81,36 +78,474 @@ header{
 /* footer부분 */
 
 .common_footer{
-    width: 100%;
-    height: 20vh;
+    width: 1903px;
+    height: 210px;
+    border-top: 1px solid;
 }
 
 .footer_menu{
     display: flex;
-    width: 70%;
+    width: 1124px;
     height: 4vh;
-    padding-top: 10px;
-    /* border: 1px solid; */
+    padding-top: 10.01px;
+    /* border: 1.009px solid; */
     margin: auto;
 }
 
 .footer_menu div{
     display: flex;
     align-items: center;
-    font-size: 15px;
-    border-right: 1px solid;
-    padding-right: 30px;
-    padding-left : 30px;
+    font-size: 12px;
+    padding-right: 29.991px;
+    padding-left : 29.991px;
 }
 
 .footer_inner {
-    width: 70%;
+    width: 1124px;
     margin: auto;
-    padding-top: 10px;
+    padding-top: 10.01px;
 }
 
 .footer_inner span{
-    padding-bottom: 10px;
+    padding-bottom: 10.01px;
 }
 
 /* footer 부분 끝 */
+main {
+    width: 100%;
+    height: 4500px;
+    position: relative;
+}
+
+/* 메인 페이지swiper */
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14.006px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+swiper-container-wrap{
+    position: relative;
+}
+
+swiper-container {
+  width: 100%;
+  height: 559.996px;
+  padding-top: 49.992px;
+  padding-bottom: 49.992px;
+}
+
+swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 100.003px;
+  height: 100.003px;
+}
+
+swiper-slide img {
+  display: block;
+  width: 100%;
+  background-size: cover;
+}
+/* 메인 페이지 swiper 끝 */
+
+/* 사이드 팝업 */
+.side_popup{
+    width: 291.996px;
+    height: 800.002px;
+    border: 1.009px solid #cfd0d7;
+    border-radius: 12.008px;
+    background: #fff;
+    box-sizing: border-box;
+    position: absolute;
+    top: 10.01px;
+    left: 10.01px;
+    z-index: 3;
+    /* on/off 기능 예정 */
+    /* display: none; */
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+li{
+    list-style: none;
+}
+
+.side_popup_content li:first-child{
+    padding-top: 14.996px;
+}
+
+.side_popup_content li img{
+    width: 259.988px;
+    height: 120.003px;
+    border-radius: 10.01px;
+    margin: auto;
+}
+
+.side_popup_footer{
+    margin-top: 9.001px;
+    display: flex;
+    font-size: 20.001px;
+    justify-content: space-between;
+}
+
+#side_popup_checkbox,
+#popup_label{
+    width: 20.001px;
+    height: 20.001px;
+    cursor: pointer;
+}
+
+.popup_close_btn{
+    border: 0;
+    font-size: 20.001px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 1.998px;
+}
+/* 사이드 팝업 끝 */
+
+/* 스와이퍼 아랫부분 광고배너 */
+.promotion_banner{
+   width: 1124.007px; 
+   height: 120.003px;
+   border-radius: 10.01px;
+   background: #fff;
+   position: absolute;
+   top: 510.004px;
+   left: 379.991px;
+   z-index: 2;
+}
+
+.promotion_banner img{
+    border-radius: 10.01px;
+    width: 559.996px;
+    height: 120.003px;
+}
+/* 스와이퍼 아래 광고배너 끝 */
+
+/* 윙배너(사이드배너랑 다름) */
+.wing_banner{
+    width: 100.003px;
+    height: 450.002px;
+    position: sticky;
+    z-index: 1;
+    top: 69.992px;
+}
+
+.wing_banner img{
+    width: 100.003px;
+    height: 116.007px;
+    padding-top: 20.001px;
+    margin-left: 40.001px;
+}
+/* 윙 배너 끝 */
+
+/* 티켓 오픈 li */
+.ticket_open{
+    width: 1124.007px;
+    height: 450.002px;
+    position: absolute;
+    top: 670.008px;
+    left: 379.991px;
+    z-index: 2;
+}
+
+.ticket_open_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket_open_header h1{
+    margin-left: 20.001px;
+}
+
+.ticket_open_header div{
+    text-decoration: underline;
+    margin-right: 20.001px;
+    font-size: 16.994px;
+}
+
+.ticket_open ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+
+.ticket_open li{
+    width: 200.005px;
+    height: 320.008px;
+    margin-top: 29.991px;
+}
+
+.ticket_open li div{
+    font-size: 18.002px;
+    width: 200.005px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 5.005px;
+}
+
+.ticket_open li span{
+    color: red;
+    font-size: 16.004px;
+}
+
+.ticket_open img{
+    width: 200.005px;
+    height: 249.997px;
+    border-radius: 9.991px;
+}
+
+/* 티켓 오픈부분 끝 */
+
+/* 오른쪽 윙 배너 시작 */
+.right_wing_banner{
+    position: sticky;
+    top: 470px;
+    width: 105px;
+    height: 490px;
+    transform: translate(1700px,-400px);
+    z-index: 1;
+}
+
+.right_wing_banner img{
+    width: 100.003px;
+    height: 120.007px;
+    padding-top: 20.001px;
+}
+
+/* 평점순 랭킹, 댓글 순 랭킹부분 시작 */
+
+.ranking{
+    width: 1124.007px;
+    height: 450.002px;
+    position: absolute;
+    top: 1199.994px;
+    left: 379.991px;
+    z-index: 2;
+}
+
+.rankingname{
+    padding-left: 20.001px;
+}
+
+.ranking button{
+    box-sizing: border-box;
+    font-size: 27.004px;
+    font-weight: 600;
+    border: none;
+    border-right: 1.009px solid #a7acb6;;
+    border-width: 1.998px;
+}
+
+.ranking button:last-child{
+    border: none;
+    color: #a7acb6;
+}
+
+
+
+.rankingdiv ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+.ranking li{
+    width: 200.005px;
+    height: 320.008px;
+    margin-top: 29.991px;
+}
+
+.rank_title{
+    /* font-size: 18.002px; */
+    width: 200.005px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 5.005px;
+}
+
+.rank_date{
+    font-size: 14.996px;
+}
+
+.rankingdiv img{
+    width: 200.005px;
+    height: 249.997px;
+    border-radius: 9.991px;
+}
+
+.rank_img_wrap{
+    width: 200px;
+    height: 250px;
+    position: relative;
+}
+.whitenum{
+    height: 60px;
+    z-index: 1;
+    position: absolute;
+    color: white;
+    left: 0px;
+    bottom: 0;
+    font-size: 56px;
+    font-weight: 700;
+    padding-left: 10px;
+}
+/* 랭킹부분 css 끝 */
+
+/* 오늘의 추천 시작 */
+
+.recommend{
+    width: 1903px;
+    height: 450px;
+    margin-top: 150px;
+    box-sizing: border-box;
+    background-color: #218EE6;
+    position: relative;
+}
+
+.rec_header{
+    width: 1124px;
+    height: 50px;
+    margin: auto;
+    transform: translateY(110px);
+    font-size: 16px;
+}
+
+.rec_poster{
+    width: 360px;
+    height: 450px;
+    border-radius: 10px;
+    position: absolute;
+    top: 40px;
+    left: 750px;
+}
+
+.rec_poster img{
+    border-radius: 15px;
+}
+
+.rec_title_wrap{
+    width: 310px;
+    height: 450px;
+    margin: auto;
+    position: absolute;
+    top: 0px;
+    left: -360px;
+
+    color: white;
+}
+
+.rec_title{
+    font-size: 31px;
+    line-height: 50px;
+    font-weight: 550;
+    margin-top: 120px;
+}
+
+.rec_subtitle{
+    font-size: 18px;
+}
+
+.rec_ul_wrap{
+    width: 340px;
+    height: 360px;
+    margin: auto;
+    position: absolute;
+    top: -50px;
+    left: 420px;
+    color: white;
+}
+
+.rec_ul_wrap ul{
+    display: flex;
+
+}
+
+
+.rec_ul_wrap li{
+    width: 310px;
+    height: 70px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin: auto;
+}
+
+.rec_ul_wrap li button{
+    border: none;
+    background-color: #218EE6;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 20px;
+    color: white;
+}
+
+/* 오늘의 추천 작업 끝 */
+
+/* 베스트 공연,전시 시작 */
+
+.bestshow_header{
+    width: 1124px;
+    height: 50px;
+    margin: auto;
+    transform: translateY(100px);
+    font-size: 16px;
+}
+
+.bestshow{
+    width: 1124px;
+    height: 2100px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.bestshow ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.bestshow li{
+    width: 260px;
+    height: 445px;
+    margin-top: 30px;
+}
+
+.bestshow_img,.bestshow_img img{
+    width: 260px;
+    height: 320px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.bestshow_img_title{
+    font-size: 20px;
+}
+
+.bestshow_img_loc,.bestshow_img_date{
+    color: #62676C;
+}
