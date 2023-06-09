@@ -1,0 +1,102 @@
+body {
+    background-color: #242333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    margin: 0;
+    overflow: hidden;
+  }
+  .container {
+    perspective: 1000px;
+  }
+  .screen {
+    width: 400px;
+    height: 150px;
+    background-color: gray;
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+    transform: rotateX(-50deg);
+    pointer-events: none;
+   display: flex;
+    align-items: center;
+    justify-content: center; 
+  }
+
+  .screen h1 {
+    margin: 0;
+  }
+  
+
+  .seats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    }
+
+    .row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    }
+
+    .seat {
+    width: 30px;
+    height: 30px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    margin: 0 5px;
+    }
+    .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropbtn{
+        background-color: black;
+        color: white;
+        padding: 7px 14px;
+        font-size: 15px;
+      }
+      
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        min-width: 120px;
+        z-index: 1;
+        box-shadow: 5px 10px 16px 9px rgba(15, 135, 165, 0.2);
+      }
+  
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+     /* 선택된 좌석의 스타일 */
+    .seat.selected {
+         background-color: #ff9800; /* 원하는 색상으로 변경하세요 */
+          color: #fff; /* 선택된 좌석의 텍스트 색상 */
+        }
+        
+        /* 선택되지 않은 좌석의 스타일 */
+        .seat {
+          background-color: #e0e0e0; /* 원하는 색상으로 변경하세요 */
+          color: #000; /* 선택되지 않은 좌석의 텍스트 색상 */
+        }
+        
+        /* 버튼 클릭 시 드롭다운 내용 표시/숨김 스타일 */
+        .dropdown-content.show {
+          display: block;
+        }
+
+        #payButton {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+          }
+          
+          #payButton:hover {
+            background-color: #45a049;
+          }

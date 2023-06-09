@@ -11,7 +11,7 @@ body{
   width: 100vw;
   height: 100vh;
   position: fixed;
-  display: none;
+  display: block;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -29,7 +29,7 @@ body{
   /* 보고있는 브라우저 기준으로 위치를 맞출수 있다. fixed */
   position: fixed;
   top: 50%;
-  left: 50%;
+  left: 500px;
   transform: translate(-50%, -50%);
 }
 
@@ -107,6 +107,19 @@ body{
   
 }
 
+.offsetchatting{
+  background-color: white;
+  width: 230px;
+  margin: auto;
+  height: 100px;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: rgba(255, 255, 255, 0.12) 0px 0px 2px 0px inset, rgba(0, 0, 0, 0.05) 0px 0px 2px 1px, rgba(0, 0, 0, 0.08) 0px 2px 6px;
+  text-align: left;
+  transform: perspective(600px) rotateX(5deg) translateY(5px);
+}
+
+
 .offset p {
   margin: 10;
   margin-top:10px ;
@@ -182,4 +195,16 @@ body{
   margin-right: 10px;
   width: 40px;
   height: 40px;
+}
+
+.popup-content.chattingroom{
+  left: 900px;
+  display: block;
+}
+
+.font-size{
+  font-size: 5px;
+  color: gray;
+  display: flex;
+  margin-left: 40px;
 }

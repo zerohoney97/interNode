@@ -39,6 +39,9 @@ function openPopup(){
         // is-active 있으면 제거할거임 ㅎㅎ
         // remove 클래스 제거 메소드
         popup.classList.remove("is-active");
+        var chattingRoom = document.querySelector('.popup-content.chattingroom');
+        chattingRoom.style.display = 'none';
+        
     }else{
         // is-active 없으면 추가할거임
         // add 클래스 추가 메소드
@@ -46,3 +49,19 @@ function openPopup(){
     }
 }
 // 어렵고 힘든게 정상...
+
+function chattingroom(){
+    var chattingRoom = document.querySelector('.popup-content.chattingroom');
+  chattingRoom.style.display = 'block';
+}
+
+function chattingpage(){
+    var chattingRoom = document.querySelector('.popup-content.chattingroom');
+  chattingRoom.style.display = 'none';
+}
+
+function enableInput(){
+    let messageElement = document.getElementById("message");
+    messageElement.contentEditable = true;
+    messageElement.focus();
+}
