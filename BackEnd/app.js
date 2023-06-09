@@ -15,3 +15,5 @@ app.use(e.urlencoded({ extended: false }));
 app.listen(8080, () => {
   console.log("gogo");
 });
+
+module.exports = {app, server};
