@@ -261,7 +261,7 @@ ul{
 /* 상세정보 탭 메뉴 */
 
 .tabmenu_wrap{
-    width: 1903px;
+    width: 100%;
     height: 60px;
     margin-bottom: 20px;
     position: sticky;
@@ -316,7 +316,7 @@ ul{
 .step2{
     position: absolute;
     z-index: 3;
-    top:810px;
+    top:885px;
     left: 849px;
     color: #fa2828;
     font-size: 22px;
@@ -371,13 +371,15 @@ ul{
 .banner{
     position: fixed;
     top: -100px;
-    left: 390px;
-    width: 1120px;
+    /* left: 390px; */
+    width: 100%;
     height: 100px;
     transition: top 0.3s ease;
     background-color: white;
     display: flex;
     flex-direction: row;
+    margin: auto;
+    justify-content: center;
 }
 
 .banner_img{

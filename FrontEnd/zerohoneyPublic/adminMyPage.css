@@ -176,7 +176,7 @@ label {
 .show-control-container {
   width: 862px;
   height: 100%;
-  padding: 38px 59px 100px 60px;
+  padding: 38px 59px 0px 60px;
   border: 2px solid #f5f6f9;
   border-radius: 5px;
 }
@@ -376,7 +376,7 @@ label {
   cursor: pointer;
 }
 
-img {
+.user-info-post {
   width: 120px;
   height: 190px;
   margin: 10px;
@@ -387,7 +387,7 @@ img {
 .reported-user-container {
   width: 862px;
   height: 100%;
-  padding: 38px 59px 100px 60px;
+  padding: 38px 59px 0px 60px;
   border: 2px solid #f5f6f9;
   border-radius: 5px;
 }
@@ -455,7 +455,7 @@ img {
 .search-user-container {
   width: 862px;
   height: 100%;
-  padding: 38px 59px 100px 60px;
+  padding: 38px 59px 0px 60px;
   border: 2px solid #f5f6f9;
   border-radius: 5px;
 }
@@ -522,7 +522,7 @@ img {
 .user-detail-container {
   width: 862px;
   height: 100%;
-  padding: 38px 59px 100px 60px;
+  padding: 38px 59px 0px 60px;
   border: 2px solid #f5f6f9;
   border-radius: 5px;
 }
@@ -586,9 +586,4 @@ img {
   cursor: pointer;
 }
 
-img {
-  width: 120px;
-  height: 190px;
-  margin: 10px;
-}
 /* user detail end */
