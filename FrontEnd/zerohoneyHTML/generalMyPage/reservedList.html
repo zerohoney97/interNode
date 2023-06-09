@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>generalMyPage</title>
-    <link rel="stylesheet" href="./zerohoneyPublic/generalMyPage.css" />
+    <link rel="stylesheet" href="../../zerohoneyPublic/generalMyPage.css" />
   </head>
   <body>
     <div class="generalMyPage-container">
@@ -33,7 +33,7 @@
           <div class="side-bar-reserved">
             <div>예매관리</div>
             <div style="cursor: pointer" id="confirmReserved">
-              예매확인/취소
+              <a href="./reservedList.html">예매확인/취소</a>
             </div>
           </div>
           <div class="side-bar-board">
@@ -43,53 +43,8 @@
           <div class="side-bar-profile">
             <div>내 정보 변경</div>
             <div style="cursor: pointer" id="changeUserInfo">
-              닉네임/이메일/프로필 변경
+              <a href="./changeProfile.html"> 닉네임/이메일/프로필 변경</a>
             </div>
-          </div>
-        </div>
-        <div class="generalMyPage-contents-detail-profile show">
-          <h2>회원 정보 수정</h2>
-          <div class="summary">
-            이메일,닉네임 및 프로필사진을 &nbsp;
-            <span style="color: red">수정</span> 할 수 있습니다.
-          </div>
-          <div class="divide-line"></div>
-          <div class="info">
-            <div class="email">
-              <div class="email-left">이메일</div>
-              <div class="email-right">
-                <span>*******@****.com</span>
-                <span>이메일 변경</span>
-              </div>
-            </div>
-            <div class="nickName">
-              <div class="nickName-left">닉네임</div>
-              <div class="nickName-right">
-                <span>아현의 왕꿈틀이</span>
-                <span>닉네임 변경</span>
-              </div>
-            </div>
-            <div class="password">
-              <div class="password-left">비밀번호</div>
-              <div class="password-right">
-                <span>*******</span>
-                <span>비밀번호 변경</span>
-              </div>
-            </div>
-
-            <img
-              src="./zerohoneyPublic/resources/cutePepe.png"
-              style="
-                width: 100px;
-                height: 100px;
-                margin: auto;
-                display: block;
-                margin-top: 15px;
-                border-radius: 10px;
-              "
-              alt="userProfile"
-            />
-            <div class="profile">프로필 수정</div>
           </div>
         </div>
         <div class="generalMyPage-contents-detail-reserved">
@@ -120,21 +75,28 @@
             <div class="review-container">
               <!-- 만약 후기가 있다면 후기를 가져오자 -->
               <div class="user-review">
-                <img
-                  src="./zerohoneyPublic/resources/cutePepe.png"
-                  style="width: 50px; height: 50px"
-                  alt="userProfile"
-                />
-                <div class="user-review-detail">
-                  <div>
-                    <span>페페 커여워</span>
+                <div class="user-review-left">
+                  <img
+                    src="../../zerohoneyPublic/resources/cutePepe.png"
+                    style="width: 50px; height: 50px"
+                    alt="userProfile"
+                  />
+                  <div class="user-review-detail">
+                    <div>
+                      <span>페페 커여워</span>
+                    </div>
+                    <div>
+                      <span>2023.06.12</span>
+                    </div>
+                    <div>
+                      <span>피노키오 페스타</span>
+                    </div>
                   </div>
-                  <div>
-                    <span>2023.06.12</span>
-                  </div>
-                  <div>
-                    <span>피노키오 페스타</span>
-                  </div>
+                </div>
+
+                <div class="update-button-container">
+                  <button id="updateButton">수정</button>
+                  <button>삭제</button>
                 </div>
               </div>
               <div class="content">
@@ -161,7 +123,7 @@
                 <span>60000원</span>
               </div>
             </div>
-            <div class="review-container">
+            <div class="review-container-input">
               <!-- 만약 후기가 없다면! 후기 입력창과 별점 창 -->
               <div class="starpoint_wrap">
                 <div class="starpoint_box">
@@ -239,7 +201,7 @@
                 <span>60000원</span>
               </div>
             </div>
-            <div class="review-container">
+            <div class="review-container-input">
               <!-- 만약 후기가 없다면! 후기 입력창과 별점 창(별점은 label을 사용하므로 input의 이름,id를 각각 다르게 줘야함을 주의하자) -->
               <div class="starpoint_wrap">
                 <div class="starpoint_box">
@@ -319,21 +281,37 @@
     > -->
   </body>
   <script>
-    changeUserInfo.onclick = () => {
-      document
-        .querySelector(".generalMyPage-contents-detail-profile")
-        .classList.add("show");
-      document
-        .querySelector(".generalMyPage-contents-detail-reserved")
-        .classList.remove("show");
-    };
-    confirmReserved.onclick = () => {
-      document
-        .querySelector(".generalMyPage-contents-detail-reserved")
-        .classList.add("show");
-      document
-        .querySelector(".generalMyPage-contents-detail-profile")
-        .classList.remove("show");
+    // changeUserInfo.onclick = () => {
+    //   document
+    //     .querySelector(".generalMyPage-contents-detail-profile")
+    //     .classList.add("show");
+    //   document
+    //     .querySelector(".generalMyPage-contents-detail-reserved")
+    //     .classList.remove("show");
+    // };
+    // confirmReserved.onclick = () => {
+    //   document
+    //     .querySelector(".generalMyPage-contents-detail-reserved")
+    //     .classList.add("show");
+    //   document
+    //     .querySelector(".generalMyPage-contents-detail-profile")
+    //     .classList.remove("show");
+    // };
+
+    // 수정버튼을 누르면 아이디로 해당하는 태그를 찾아 append로 붙여준다.
+    // review-container안에 review,content두개의 태그가 있다. 이 둘을 none 클래스를 붙여주어 안 보여지게 한다.(review-container의
+    // html을 공백으로 해도 되지만 너무 멀리 와벼렸다 ) 그 다음 해당자리에inputReview의 html을 붙여넣어준다.
+    // review-container-input는 모든 예매 후기가 공통으로 가지는 양식이므로 All로 가져올 필요 없다. 다만 review-container는
+    // 해당하는 class로 가져오자.
+    const inputReview = document.querySelector(".review-container-input");
+    const afterReview = document.querySelector(".review-container");
+    updateButton.onclick = () => {
+      const review = document.querySelectorAll(".user-review");
+      const content = document.querySelectorAll(".content");
+      review[0].classList.add("none");
+      content[0].classList.add("none");
+      console.log(inputReview);
+      afterReview.innerHTML += inputReview.innerHTML;
     };
   </script>
 </html>

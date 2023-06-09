@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../zerohoneyPublic/adminMyPage.css" />
+  </head>
+  <body>
+    <div class="chat-icon"></div>
+    <div class="adminMyPage-container">
+      <div class="adminMyPage-header">
+        <div class="adminMyPage-header-left">마이 페이지</div>
+        <ul>
+          <li>
+            <div class="adminMyPage-header-right-box">
+              <span>유저 회원정보</span> <span>관리</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="adminMyPage-contents">
+        <div class="adminMyPage-contents-side-bar">
+          <div class="side-bar-manage-show">
+            <div>공연관리</div>
+            <div style="cursor: pointer" id="showManage">
+              <a href="/FrontEnd/zerohoneyHTML/adminPage/showControll.html"
+                >공연 등록/수정/삭제</a
+              >
+            </div>
+          </div>
+          <div class="side-bar-manage-user">
+            <div>유저 관리</div>
+            <div style="cursor: pointer" id="searchUser">
+              <a href="/FrontEnd/zerohoneyHTML/adminPage/userSearch.html"
+                >유저 검색</a
+              >
+            </div>
+            <div style="cursor: pointer" id="reportedUser">
+              <a href="/FrontEnd/zerohoneyHTML/adminPage/userReport.html"
+                >신고된 유저</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- 유저 검색 화면 -->
+        <div class="search-user-container">
+          <div class="container">
+            <div class="search-bar">
+              <input type="text" placeholder="Search" id="search" />
+            </div>
+            <ul class="user-search-list">
+              <li class="user-search-item">
+                <img src="user1.jpg" alt="User 1" />
+                <div class="user-details">
+                  <div class="user-name">John Doe</div>
+                  <div class="user-email">john.doe@example.com</div>
+                </div>
+              </li>
+              <li class="user-search-item">
+                <img src="user2.jpg" alt="User 2" />
+                <div class="user-details">
+                  <div class="user-name">Jane Smith</div>
+                  <div class="user-email">jane.smith@example.com</div>
+                </div>
+              </li>
+              <li class="user-search-item">
+                <img src="user1.jpg" alt="User 1" />
+                <div class="user-details">
+                  <div class="user-name">Gray Jin</div>
+                  <div class="user-email">john.doe@example.com</div>
+                </div>
+              </li>
+              <li class="user-search-item">
+                <img src="user1.jpg" alt="User 1" />
+                <div class="user-details">
+                  <div class="user-name">Berry Allen</div>
+                  <div class="user-email">john.doe@example.com</div>
+                </div>
+              </li>
+              <li class="user-search-item">
+                <img src="user1.jpg" alt="User 1" />
+                <div class="user-details">
+                  <div class="user-name">이무헌</div>
+                  <div class="user-email">john.doe@example.com</div>
+                </div>
+              </li>
+              <li class="user-search-item">
+                <img src="user1.jpg" alt="User 1" />
+                <div class="user-details">
+                  <div class="user-name">김아현</div>
+                  <div class="user-email">john.doe@example.com</div>
+                </div>
+              </li>
+              <!-- Add more user items here -->
+            </ul>
+          </div>
+        </div>
+        <!-- 유저 검색 화면 -->
+      </div>
+    </div>
+  </body>
+  <script>
+    const allUserProfiles = document.querySelectorAll(".user-search-item");
+    const userSearchResult = document.querySelector(".user-search-list");
+    const userInfoArray = [];
+    allUserProfiles.forEach((userProfile) => {
+      userInfoArray.push([
+        userProfile,
+        userProfile.querySelector(".user-name").innerText,
+      ]);
+    });
+    const search = () => {
+      const inputValue = document.querySelector("#search").value;
+
+      console.log(inputValue);
+
+      const englishResults = userInfoArray.filter((name, index) => {
+        const pattern = new RegExp(`^${inputValue}`, "gi");
+        return pattern.test(name[1]);
+      });
+
+      const koreanResults = userInfoArray.filter((name, index) => {
+        const pattern = new RegExp(`^${inputValue}`, "g");
+        return pattern.test(name[1]);
+      });
+
+      userSearchResult.innerHTML = "";
+      if (englishResults.length > 0) {
+        englishResults.forEach((name) => {
+          console.log(name[1]);
+          userSearchResult.appendChild(name[0]);
+        });
+      } else {
+        userSearchResult.innerHTML += "<p>No English results found.</p>";
+      }
+
+      if (koreanResults.length > 0) {
+        koreanResults.forEach((name) => {
+          userSearchResult.appendChild(name[0]);
+        });
+      } else {
+        userSearchResult.innerHTML += "<p>No Korean results found.</p>";
+      }
+    };
+    document.getElementById("search").addEventListener("input", search);
+  </script>
+</html>

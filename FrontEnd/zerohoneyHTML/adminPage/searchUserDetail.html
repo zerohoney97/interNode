@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../zerohoneyPublic/adminMyPage.css" />
+  </head>
+  <body>
+    <div class="chat-icon"></div>
+    <div class="adminMyPage-container">
+      <div class="adminMyPage-header">
+        <div class="adminMyPage-header-left">마이 페이지</div>
+        <ul>
+          <li>
+            <div class="adminMyPage-header-right-box">
+              <span>유저 회원정보</span> <span>관리</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="adminMyPage-contents">
+        <div class="adminMyPage-contents-side-bar">
+          <div class="side-bar-manage-show">
+            <div>공연관리</div>
+            <div style="cursor: pointer" id="showManage">
+            <a href="/FrontEnd/zerohoneyHTML/adminPage/showControll.html">공연 등록/수정/삭제</a>  
+            </div>
+          </div>
+          <div class="side-bar-manage-user">
+            <div>유저 관리</div>
+            <div style="cursor: pointer" id="searchUser"> <a href="/FrontEnd/zerohoneyHTML/adminPage/userSearch.html">유저 검색</a> </div>
+            <div style="cursor: pointer" id="reportedUser"><a href="/FrontEnd/zerohoneyHTML/adminPage/userReport.html">신고된 유저</a> </div>
+          </div>
+        </div>
+        <div class="user-detail-container">
+          <div class="user-detail" id="showtab2">
+            <ul class="user-detail-list">
+              <!-- 결제 내역과 해당 공연 -->
+              <li class="user-detail-item">
+                <div class="user-info">
+                  <img
+                    src="https://image.toast.com/aaaaab/ticketlink/TKL_10/main0406(3).jpg"
+                    alt="show_post"
+                  />
+                  <div class="user-info-detail">
+                    <span>Show Name:</span>
+                    <span>Year</span>
+                    <span>Month</span>
+                    <span>Date</span>
+                    <span>~</span>
+                    <br />
+                    <span>Year</span>
+                    <span>Month</span>
+                    <span>Date</span>
+                  </div>
+                </div>
+                <div class="price">
+                  <span>40000</span>
+                </div>
+              </li>
+              <!-- 결제 내역과 해당 공연 -->
+
+              <!-- Add more user items here -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

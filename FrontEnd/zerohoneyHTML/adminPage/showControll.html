@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./zerohoneyPublic/adminMyPage.css" />
+    <link rel="stylesheet" href="../../zerohoneyPublic/adminMyPage.css" />
   </head>
   <body>
     <div class="chat-icon"></div>
@@ -25,13 +25,13 @@
           <div class="side-bar-manage-show">
             <div>공연관리</div>
             <div style="cursor: pointer" id="showManage">
-              공연 등록/수정/삭제
+            <a href="/FrontEnd/zerohoneyHTML/adminPage/showControll.html">공연 등록/수정/삭제</a>  
             </div>
           </div>
           <div class="side-bar-manage-user">
             <div>유저 관리</div>
-            <div style="cursor: pointer" id="searchUser">유저 검색</div>
-            <div style="cursor: pointer" id="reportedUser">신고된 유저</div>
+            <div style="cursor: pointer" id="searchUser"> <a href="/FrontEnd/zerohoneyHTML/adminPage/userSearch.html">유저 검색</a> </div>
+            <div style="cursor: pointer" id="reportedUser"><a href="/FrontEnd/zerohoneyHTML/adminPage/userReport.html">신고된 유저</a> </div>
           </div>
         </div>
         <div class="show-control-container">
@@ -112,7 +112,7 @@
                   </div>
                 </div>
                 <div class="buttons">
-                  <button>Edit</button>
+                  <button> <a href="./showUpdate.html" style="color: red;">Edit</a> </button>
                   <button>Delete</button>
                 </div>
               </li>

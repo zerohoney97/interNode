@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>generalMyPage</title>
+    <link rel="stylesheet" href="../../zerohoneyPublic/generalMyPage.css" />
+  </head>
+  <body>
+    <div class="generalMyPage-container">
+      <div class="generalMyPage-header">
+        <div class="generalMyPage-header-left">마이 페이지</div>
+        <ul>
+          <li>
+            <div class="generalMyPage-header-right-box">
+              <span>나의 예매권</span> <span>0</span>
+            </div>
+          </li>
+          <li>
+            <hr />
+          </li>
+          <li>
+            <div class="generalMyPage-header-right-box">
+              <span>회원정보</span> <span>수정</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="generalMyPage-contents">
+        <div class="generalMyPage-contents-side-bar">
+          <div class="side-bar-reserved">
+            <div>예매관리</div>
+            <div style="cursor: pointer" id="confirmReserved">
+              <a href="./reservedList.html">예매확인/취소</a>
+            </div>
+          </div>
+          <div class="side-bar-board">
+            <div>내가 쓴 글</div>
+            <div style="cursor: pointer" id="freeBoard">자유게시판</div>
+          </div>
+          <div class="side-bar-profile">
+            <div>내 정보 변경</div>
+            <div style="cursor: pointer" id="changeUserInfo">
+              <a href="./changeProfile.html"> 닉네임/이메일/프로필 변경</a>
+            </div>
+          </div>
+        </div>
+        <div class="generalMyPage-contents-detail-profile show">
+          <h2>회원 정보 수정</h2>
+          <div class="summary">
+            이메일,닉네임 및 프로필사진을 &nbsp;
+            <span style="color: red">수정</span> 할 수 있습니다.
+          </div>
+          <div class="divide-line"></div>
+          <div class="info">
+            <div class="email">
+              <div class="email-left">이메일</div>
+              <div class="email-right">
+                <span>*******@****.com</span>
+                <span>이메일 변경</span>
+              </div>
+            </div>
+            <div class="nickName">
+              <div class="nickName-left">닉네임</div>
+              <div class="nickName-right">
+                <span>아현의 왕꿈틀이</span>
+                <span>닉네임 변경</span>
+              </div>
+            </div>
+            <div class="password">
+              <div class="password-left">비밀번호</div>
+              <div class="password-right">
+                <span>*******</span>
+                <span>비밀번호 변경</span>
+              </div>
+            </div>
+
+            <img
+              src="../../zerohoneyPublic/resources/cutePepe.png"
+              style="
+                width: 100px;
+                height: 100px;
+                margin: auto;
+                display: block;
+                margin-top: 15px;
+                border-radius: 10px;
+              "
+              alt="userProfile"
+            />
+            <div class="profile">프로필 수정</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <!-- <a
+      href="https://www.flaticon.com/kr/free-icons/-"
+      title="유저 프로필 아이콘"
+      >유저 프로필 아이콘 제작자: kawalanicon - Flaticon</a
+    >
+    <a
+      href="https://www.flaticon.com/kr/free-icons/-"
+      title="스마트 카트 아이콘"
+      >스마트 카트 아이콘 제작자: Freepik - Flaticon</a
+    > -->
+  </body>
+  <script>
+    // changeUserInfo.onclick = () => {
+    //   document
+    //     .querySelector(".generalMyPage-contents-detail-profile")
+    //     .classList.add("show");
+    //   document
+    //     .querySelector(".generalMyPage-contents-detail-reserved")
+    //     .classList.remove("show");
+    // };
+    // confirmReserved.onclick = () => {
+    //   document
+    //     .querySelector(".generalMyPage-contents-detail-reserved")
+    //     .classList.add("show");
+    //   document
+    //     .querySelector(".generalMyPage-contents-detail-profile")
+    //     .classList.remove("show");
+    // };
+  </script>
+</html>

@@ -7,6 +7,10 @@ hr {
 body {
   box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+  color: #878d95;
+}
 .generalMyPage-container {
   width: 1120px;
   height: 930px;
@@ -183,7 +187,6 @@ body {
   width: 862px;
   height: 100%;
   padding: 38px 59px 100px 60px;
-  display: none;
 }
 /* this is css for script */
 .generalMyPage-contents-detail-profile.show {
@@ -342,7 +345,6 @@ body {
   width: 862px;
   height: 100%;
   padding: 30px;
-  display: none;
 }
 .generalMyPage-contents-detail-reserved.show {
   display: block;
@@ -387,14 +389,81 @@ span:nth-child(3) {
   margin-top: 5px;
 }
 
+
 .review-container .user-review {
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: start;
   align-items: center;
+  justify-content: space-between;
 }
 
+.user-review.none{
+  display: none;
+}
+.user-review.block{
+  display: block;
+}
+
+.review-container-input {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.review-container-input.none {
+  display: none;
+}
+.review-container-input.block {
+  display: block;
+}
+
+.review-container-input .user-review {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-review .user-review-left {
+  display: flex;
+  align-items: center;
+}
+.user-review .update-button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+.user-review .update-button-container button {
+  display: flex;
+  cursor: pointer;
+}
+
+.user-review .update-button-container button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background-color: #ff3b30;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.user-review .update-button-container button:hover {
+  background-color: #d92c26;
+}
+
+.user-review .update-button-container button:active {
+  background-color: #b5241d;
+}
 .review-container .user-review .user-review-detail {
   display: flex;
   flex-direction: column;
@@ -487,9 +556,16 @@ span:nth-child(3) {
   font-size: 13px;
   padding: 2px;
 }
+
 .review-container .content {
   margin-top: 10px;
   padding: 10px;
+}
+.review-container .content.none {
+ display: none;
+}
+.review-container .content.block {
+ display: block;
 }
 
 #searchContainer {
