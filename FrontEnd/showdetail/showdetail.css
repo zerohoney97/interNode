@@ -263,6 +263,9 @@ ul{
 .tabmenu_wrap{
     width: 1903px;
     height: 60px;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 100px;
 }
 
 .tabmenu{
@@ -294,15 +297,162 @@ ul{
 
 /* 탭 메뉴 css 끝 */
 
+/* 날짜선택부분 */
+.calender{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.step1{
+    position: absolute;
+    z-index: 3;
+    top:810px;
+    left: 392px;
+    color: #fa2828;
+    font-size: 22px;
+}
+
+.step2{
+    position: absolute;
+    z-index: 3;
+    top:810px;
+    left: 849px;
+    color: #fa2828;
+    font-size: 22px;
+}
+.calender h3{
+    padding-top: 30px;
+}
+
+.step{
+    flex:none;
+}
+
+.datepicker{
+    width: 445px;
+    height: 272px;
+    display: flex;
+}
+
+.dateinput{
+    margin-top: 20px;
+    padding-left: 50px;
+}
+
+
+.timesession{
+    width: 445px;
+    height: 272px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.timesession ul{
+    width: 250px;
+    height: 50px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.remainseat{
+    width: 262px;
+    height: 272px;
+    display: flex;
+}
+
+
+/* 배너 */
+
+.banner{
+    position: fixed;
+    top: -100px;
+    left: 390px;
+    width: 1120px;
+    height: 100px;
+    transition: top 0.3s ease;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.banner_img{
+    width: 78px;
+    height: 96px;
+}
+
+.banner_img img{
+    width: 78px;
+    height: 96px;
+    border-radius: 10px;
+}
+
+.banner_title{
+    padding-left: 20px;
+    padding-top: 5px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.banner_bookbtn{
+    background-color: #fa2828;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    margin-left: 350px;
+    margin-top: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+/* 배너 끝 */
+
+/* 맨 위로 스크롤 버튼 */
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 50px;
+    right: 300px;
+    display: none;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 25px;
+}
+  
+.scroll-to-top-btn:hover{
+    background-color: black;
+    color: white;
+}
+
+
+.scroll-to-top-btn.show {
+    display: block;
+}
+
 /* 탭 페이지 구성 시작 */
 
 
 /* 상세정보 페이지 */
 .detail_page{
     width: 1124px;
-    height: 19560px;
-    border: 1px solid;
+    height: 19000px;
     margin: auto;
+}
+
+/* 상세정보 이미지 2개 사이 붙이기 */
+.bond{
+    margin-top: -4px;
 }
 /* 관람후기 페이지 */
 .review_page{
@@ -326,7 +476,57 @@ ul{
 .notice_page{
     width: 1124px;
     height: 1180px;
-    border: 1px solid ;
     margin: auto;
     display: none;
+}
+
+.notice_inner{
+    width: 1124px;
+    height: 1060px;
+    padding: 16px 20px 0px;
+    box-sizing: border-box;
+}
+
+
+/* 맨 아래 추천 공연,전시 */
+.detail_showlist{
+
+    width: 1124px;
+    height: 450px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.detail_showlist ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+
+.detail_showlist li{
+    width: 200.005px;
+    height: 320.008px;
+    margin-top: 29.991px;
+}
+
+.detail_showlist li div{
+    font-size: 18.002px;
+    width: 200.005px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 5.005px;
+}
+
+.detail_showlist li span{
+    color: red;
+    font-size: 16.004px;
+}
+
+.detail_showlist img{
+    width: 200.005px;
+    height: 249.997px;
+    border-radius: 9.991px;
 }

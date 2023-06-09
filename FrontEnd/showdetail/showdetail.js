@@ -56,9 +56,56 @@ tabReview.addEventListener('click', () => {
 tabLocation.addEventListener('click', () => {
     showPage(locationPage);
     tabBorderLine(tab3);
+
 });
   
 tabNotice.addEventListener('click', () => {
     showPage(noticePage);
     tabBorderLine(tab4);
+
+});
+
+
+// 현재 내 마우스 좌표
+document.addEventListener('mousemove', function(event) {
+    var mouseX = event.clientX; // 현재 마우스의 X 좌표
+    var mouseY = event.clientY; // 현재 마우스의 Y 좌표
+    
+    // 마우스 좌표 출력 또는 다른 작업 수행
+    console.log('마우스 X 좌표:', mouseX);
+    console.log('마우스 Y 좌표:', mouseY);
+  });
+
+
+// 스크롤시 배너 내려오게
+var banner = document.getElementById('banner');
+
+window.addEventListener('scroll', function() {
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+  if (scrollTop > 1200) { // 스크롤 위치가 100px 이상일 때
+    banner.style.top = '0'; // 배너를 아래로 내림
+  } else {
+    banner.style.top = '-100px'; // 배너를 다시 위로 위치시킴
+  }
+});
+
+//스크롤시 맨위로 이동 버튼 생성
+var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+window.addEventListener('scroll', function() {
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (scrollTop > 300) {
+    scrollToTopBtn.classList.add('show');
+  } else {
+    scrollToTopBtn.classList.remove('show');
+  }
+});
+
+scrollToTopBtn.addEventListener('click', function() {
+  window.scrollTo({
+    top: 1000,
+    behavior: 'smooth'
+  });
 });
