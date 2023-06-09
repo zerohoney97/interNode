@@ -50,7 +50,7 @@ const pagenate = (pagenum) => {
 
         freeboards.innerHTML +=
         `<tr>
-            <td>${index}</td>
+            <td class="no">${index}</td>
             <td class="title"><a href="">${title}</a></td>
             <td class="nickname">${nickname}</td>
             <td class="likes">${likes}</td>
