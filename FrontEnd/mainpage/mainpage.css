@@ -549,3 +549,12 @@ li{
 .bestshow_img_loc,.bestshow_img_date{
     color: #62676C;
 }
+
+/* 포스터 호버 시 효과 넣어주기 */
+.ticket_open li img:hover,
+.rankingdiv li img:hover,
+.bestshow li img:hover,
+.rankingdiv li img:hover + .whitenum,
+.rec_poster img:hover{
+    transform: scale(1.1);
+}
