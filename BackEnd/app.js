@@ -3,6 +3,7 @@ const { sequelize } = require("./models");
 const dot = require("dotenv").config();
 const cors = require("cors");
 const session = require("express-session");
+const path = require("path");
 const app = e();
 const mainRouter = require("./routers/main");
 
