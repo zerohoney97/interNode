@@ -4,6 +4,7 @@ const dot = require("dotenv").config();
 const cors = require("cors");
 const session = require("express-session");
 const app = e();
+const mainRouter = require("./routers/main");
 
 app.use(e.json());
 app.use(e.urlencoded({ extended: false }));
@@ -21,6 +22,7 @@ app.use(
     saveUninitialized: false,
   })
 );
+
 sequelize
   .sync({ force: false })
   .then((e) => {
@@ -31,6 +33,9 @@ sequelize
   });
 
 app.use(e.urlencoded({ extended: false }));
+
+app.use("/main",mainRouter);
+
 app.listen(8080, () => {
   console.log("gogo");
 });
