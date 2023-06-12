@@ -532,3 +532,9 @@ ul{
     height: 249.997px;
     border-radius: 9.991px;
 }
+
+/* 맨 아랫줄 포스터 호버시 효과 넣어주기 */
+
+.detail_showlist li img:hover{
+    transform: scale(1.1);
+}
