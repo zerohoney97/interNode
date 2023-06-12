@@ -36,13 +36,7 @@ sequelize
 app.use(e.urlencoded({ extended: false }));
 
 app.use("/main",mainRouter);
-app.use("/css",e.static(path.join(__dirname,"..","FrontEnd","mainpage"),{
-    setHeaders : (res,filePath) => {
-        if(path.extname(filePath) === ".css"){
-            res.setHeader("Content-Type","text/css");
-        }
-    }
-}));
+
 app.listen(8080, () => {
   console.log("gogo");
 });
