@@ -38,7 +38,7 @@ app.use(e.urlencoded({ extended: false }));
 app.use("/main",mainRouter);
 
 // app.use(e.static(path.join(__dirname, "js")));
-app.use("/css",e.static(path.join(__dirname,"..","FrontEnd","public"),{
+app.use("/public",e.static(path.join(__dirname,"..","FrontEnd","public"),{
     setHeaders : (res,filePath) => {
         if(path.extname(filePath) === ".css"){
             res.setHeader("Content-Type","text/css");
