@@ -1,0 +1,134 @@
+button{
+    cursor: pointer;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+.container {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px 0 30px;
+}
+
+
+
+.signUp-header{
+  color: #fff;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 10px 0;
+}
+.contents-wrap .btn-red {
+  display: block;
+  background-color: #ef3e42;
+  width: 100%;
+  height: 50px;
+  line-height: 48px;
+  border-radius: 4px;
+  border: 1px solid #ef3e42;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
+
+.nickName-input {
+  height: 30px;
+  width: 342px;
+}
+
+.input-nickName-field {
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+}
+
+.input-nickName-field button {
+  background-color: #ef3e42;
+  border-radius: 4px;
+  border: 1px solid #ef3e42;
+  font-size: 10px;
+}
+.email-input {
+  height: 30px;
+  width: 80%;
+}
+
+.input-email-field {
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+}
+
+.input-email-field button {
+  width: 20%;
+  background-color: #ef3e42;
+  border-radius: 4px;
+  border: 1px solid #ef3e42;
+  font-size: 10px;
+}
+
+.confirm-num-input {
+  height: 30px;
+  width: 80%;
+}
+
+.input-confirm-num-field {
+  margin-bottom: 10px;
+  width: 100%;
+  display: none;
+}
+.input-confirm-num-field.flex {
+  display: flex;
+}
+
+.input-confirm-num-field button {
+  width: 20%;
+  background-color: #ef3e42;
+  border-radius: 4px;
+  border: 1px solid #ef3e42;
+  font-size: 10px;
+}
+.password-input {
+  height: 30px;
+  width: 342px;
+}
+
+.input-password-field {
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+}
+
+.input-password-field button {
+  background-color: #ef3e42;
+  border-radius: 4px;
+  border: 1px solid #ef3e42;
+  font-size: 10px;
+}
+
+.left {
+  display: inline-block;
+}
+
+.font-color {
+  color: gray;
+  font-size: 13px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid gray;
+}
+
+.pointer {
+  cursor: pointer;
+}

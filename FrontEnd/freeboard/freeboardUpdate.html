@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./login.css">
+    <title>게시글 수정</title>
+    <link rel="stylesheet" href="./freeboardInsert.css">
     <link rel="stylesheet" href="../header,footer/header.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
+
 <body>
-      <header class="common_header">
+    <header class="common_header">
         <div class="header_util">
             <div>로그인</div>
             <div>회원가입</div>
@@ -25,49 +28,22 @@
             <div class="gnb_show">공연</div>
         </div>
     </header>
-    <div class="box">
-        <div class="container">
-            <div class="top-header">
-                <div class="login-header">Login</div>
+    <div class="container">
+        <h1>게시글 수정</h1>
+
+        <form id="boardForm" action="">
+            <label for="">제목</label><br>
+            <input id="titleInput" name="title" type="text" placeholder="" required><br>
+
+            <label for="">내용</label><br>
+            <textarea name="content" id="contentText" cols="30" rows="10" placeholder="" required></textarea><br>
+            <div class="right">
+                <button class="btn">수정</button>
             </div>
+        </form>
 
-            <div class="input-field">
-                <input type="text" class="input" placeholder="Username" required>
-            </div>
-            <div class="input-field">
-                <input type="password" class="input" placeholder="Password" required>
-            </div>
-           <div class="contents-wrap">
-            <input type="button" id="btn_login" class="btn-red" alt="로그인" value="로그인" aria-label="로그인">
-           </div>
+        <a class="btn" href="./freeboard.html">목록</a>
 
-           <div class="bottom">
-                <div class="left">
-                    <input type="checkbox" id="check">
-                    <label for="check">자동로그인</label>
-                </div>
-                <div class="left">
-                    <input type="checkbox" id="check">
-                    <label for="check">아이디 저장</label>
-                </div>
-           </div>
-
-           <p class="font-color">개인정보 보호를 위해 공용 pc에서 사용 후 SNS 계정의 로그아웃
-            상태를 반드시 확인해주세요.
-           </p>
-
-           <div class="border-bottom"></div>
-
-           <div class="pointer">아이디 찾기 | 비밀번호 찾기 | 회원가입</div>
-
-           <br>
-           <div class="pointer">휴대폰 번호로 로그인 (광고) ></div>
-           
-           <br>
-           <img src="https://openimage.interpark.com/.ui/openId/new/businessMemberShip.png" 
-           alt="회사, 단체 구매는 사업자회원으로 가입하여 이용해 보세요!" class="pointer">
-
-        </div>
     </div>
     <footer class="common_footer">
         <div class="footer_menu">
@@ -101,4 +77,5 @@
             </div>
         </footer>
 </body>
+
 </html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 상세</title>
+    <link rel="stylesheet" href="./freeboardDetail.css">
+    <link rel="stylesheet" href="../header,footer/header.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <header class="common_header">
+        <div class="header_util">
+            <div>로그인</div>
+            <div>회원가입</div>
+            <div>고객센터</div>
+            <div>마이페이지</div>
+        </div>
+        <div class="header_inner">
+            <div class="logo"></div>
+            <h1>공연/전시</h1>
+        </div>
+        <div class="header_gnb">
+            <div class="gnb_home">홈</div>
+            <div class="gnb_show">공연</div>
+        </div>
+    </header>
+    <div class="container">
+        <h1>게시글 상세</h1>
+        <div id="title">제목</div>
+
+        <div class="info">
+            <div>
+                작성자 &nbsp; <div id="nickname">작성자1</div> &nbsp;
+                등록일 &nbsp; <div id="createdAt">2023-06-01 22:03:01</div> &nbsp;
+                조회수 &nbsp; <div id="views">100</div>
+            </div>
+        </div>
+        <div>
+            <p id="content"> 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+                내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용</p>
+        </div>
+
+        <a class="report" href=""> <img src="./img/siren.png" alt="">신고</a>
+
+        <!-- 좋아요 누를 수 있는 버튼 안에 좋아요 횟수 -->
+        <div id="likeBtn" class="btn"><a href=""><img src="./img/like_empty.png" alt="">10</a></div>
+
+        <!-- 현재 사용자가 작성자일 경우 -->
+        <div class="btns">
+            <div id="updateBtn" class="btn">수정</div>
+            <div id="deleteBtn" class="btn">삭제</div>
+
+            <!-- 목록 페이지로 이동하는 버튼 -->
+            <a href="./freeboard.html"><div id="listBtn" class="btn">목록</div></a>
+        </div>
+
+        <div class="line"></div>
+
+        <!-- <div class="comment">댓글</div> -->
+
+        <!-- 댓글, 대댓글 -->
+        <div id="commentList">
+            <!-- 댓글 다는 부분 -->
+            <form id="commentForm" action="">
+                <textarea class="commentContent" name="content" cols="30" rows="10"></textarea>
+                <button class="btn">댓글등록</button>
+            </form>
+
+            <div class="comment">
+                <div class="commentContent">댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용</div>
+                <a class="report" href=""> <img src="./img/siren.png" alt="">신고</a>
+                <div class="nick-date">
+                    <span class="commentNickname">작성자닉네임</span>
+                    <span class="commentCreatedAt">2023-06-01 22:03:10</span>
+                </div>
+
+                <details>
+                    <summary>대댓글 달기</summary>
+                    <!-- 대댓글 달기 -->
+                    <form class="recommentForm" action="">
+                        <textarea class="recommentContent" name="content" cols="30" rows="10"></textarea>
+                        <button class="btn">대댓글등록</button>
+                    </form>
+                </details>
+            </div>
+
+            <div class="line"></div>
+
+
+            <div class="comment">
+                <div class="commentContent">
+                    댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
+                </div>
+                <a class="report" href=""> <img src="./img/siren.png" alt="">신고</a>
+                <div class="nick-date">
+                    <span class="commentNickname">닉네임</span>
+                    <span class="commentCreatedAt">2023-06-01 22:03:10</span>
+                </div>
+
+                <div class="recomment">
+                    <img class="arrow" src="./img/arrow.png" alt="대댓글 화살표">
+                    <div class="recommentContent">
+                        대댓글내용대댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
+                    </div>
+                    <a class="report" href=""> <img src="./img/siren.png" alt="">신고</a>
+                        <div class="nick-date">
+                        <span class="recommentNickname">닉네임</span>
+                        <span class="recommentCreatedAt">2023-06-01 22:03:10</span>
+                    </div>
+                </div>
+                <details>
+                    <summary>대댓글 달기</summary>
+                    <!-- 대댓글 달기 -->
+                    <form class="recommentForm" action="">
+                        <textarea class="recommentContent" name="content" cols="30" rows="10"></textarea>
+                        <button class="btn">대댓글등록</button>
+                    </form>
+                </details>
+            </div>
+
+            <div class="line"></div>
+
+
+        </div>
+    </div>
+    <footer class="common_footer">
+        <div class="footer_menu">
+            <div>회사소개</div>
+            <div>이용약관</div>
+            <div>개인정보처리방침</div>
+            <div>티켓판매안내</div>
+                <div>공지사항</div>
+                <div>고객센터</div>
+            </div>
+            <hr>
+            <div class="footer_inner">
+                <span style="font-weight: bold;">인터노드 주식회사</span> <br>
+                <span>주소: 13487 경기도 성남시 분당구 대왕판교로645번길 16 NHN 플레이뮤지엄</span>
+                <span class="|">|</span>
+                <span>대표이사 : 왕문주</span>
+                <span class="|">|</span>
+                <span>사업자 등록번호 :144-81-25090</span> <br>
+                <span>1588-9000</span>
+                <span class="|">|</span>
+                <span>membership@internode.com</span>
+                <span class="|">|</span>
+                <span>통신판매업 신고번호: 제 2015-경기성남-0661호</span>
+                <span class="|">|</span>
+                <span>개인정보보호 책임자 : 박민우</span> <br>
+                <span style="color: rgb(169, 169, 169);">Copyright © NHN LINK Corporation. All rights reserved.</span>
+    
+            </div>
+            <div>
+                <img src="" alt="">
+            </div>
+        </footer>
+</body>
+<script src="./freeboardDetail.js"></script>
+</html>

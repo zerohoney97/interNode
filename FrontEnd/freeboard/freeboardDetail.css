@@ -1,0 +1,203 @@
+body {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+textarea {
+    font-size: 16px;
+    resize: none;
+    height: 80px;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1100px;
+}
+
+h1 {
+    text-align: center;
+}
+
+details {
+    margin-top: 20px;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+
+    font-size: 14px;
+    border: none;
+
+    text-align: center;
+    line-height: 50px;
+    background-color: #ecedf2;
+
+    user-select: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.info div {
+    height: 40px;
+    line-height: 40px;
+
+    display: flex;
+    justify-content: flex-end;
+
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ecedf2;
+
+    padding: 0 10px;
+}
+
+#title {
+    height: 40px;
+    line-height: 40px;
+    background-color: #f8f9fa;
+    font-size: 20px;
+    font-weight: bold;
+    border-top: 1px solid #ecedf2;
+    border-bottom: 1px solid #ecedf2;
+    padding: 0 10px;
+}
+
+
+#createdAt, #views, #nickname{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.commentNickname, .commentCreatedAt,
+.recommentNickname, .recommentCreatedAt {
+    font-size: 16px;
+    color : grey
+}
+
+#commentForm, .recommentForm {
+    width: max-content;
+    margin: 0 auto;
+    position: relative;
+}
+
+#commentForm .btn, .recommentForm .btn {
+    position: absolute;
+    bottom: 0;
+}
+
+.comment {
+    width: 1000px;
+    /* border-top: 1px solid grey; */
+    margin: 10px auto;
+}
+
+.commentContent {
+    width: 900px;
+    margin-top: 10px;
+}
+textarea.commentContent {
+    margin-left: -96px;
+}
+
+.comment form, .recomment {
+    margin-left: 100px;
+}
+
+.recomment {
+    width: 800px;
+    position: relative;
+}
+
+.recomment .arrow {
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    top: 4px;
+    left: -30px;
+}
+
+.recommentContent {
+    width: 800px;
+    margin-top: 22px;
+}
+
+.btns {
+    display: flex;
+    float: right;
+    margin-bottom: 30px;
+}
+
+.line {
+    width: auto;
+    height: 1px;
+    background-color: grey;
+    margin: 10px 0;
+}
+
+.btns + .line {
+    margin-top: 80px;
+}
+
+.btns div {
+    margin-right: 4px;
+}
+
+#likeBtn {
+    margin: 0 auto;
+    margin-top: 30px;
+    line-height: 50px;
+}
+
+#likeBtn img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.report {
+    float: right;
+    margin-top: 2px;
+    margin-left: 4px;
+    color: red;
+}
+
+.report img {
+    width: 20px;
+    height: 20px;
+}
+
+.nick-date {
+    float: right;
+    margin-top: 2px;
+}
+
+button.btn {
+    margin-left: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
