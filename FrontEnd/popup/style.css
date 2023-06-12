@@ -1,9 +1,8 @@
-body{
+body {
   margin: 0;
   padding: 0;
 }
-
-.popup-wrap{
+.popup-wrap {
   /* 브라우저 크기 vw 가로 */
   /* 브라우저 크기 vh 세로 */
   /* 100vw 보고있는 브라우저 창의 전체 너비 */
@@ -17,13 +16,13 @@ body{
 
 /* popup-wrap클래스와 is-active 둘다 클래스를 가지고 있을때 */
 /* 태그 한개가 클래스를 두개 가지고 있을때 */
-.popup-wrap.is-active{
+.popup-wrap.is-active {
   display: block;
 }
 
-.popup-wrap .popup-content{
+.popup-wrap .popup-content {
   background-color: #fff;
-  border-radius:12px;
+  border-radius: 12px;
   width: 300px;
   height: 500px;
   /* 보고있는 브라우저 기준으로 위치를 맞출수 있다. fixed */
@@ -32,7 +31,6 @@ body{
   left: 500px;
   transform: translate(-50%, -50%);
 }
-
 
 .popup-wrap .popup-content span {
   width: 30px;
@@ -46,7 +44,7 @@ body{
 
 .popup-wrap .popup-content span::after,
 .popup-wrap .popup-content span::before {
-  content: '';
+  content: "";
   width: 15px;
   height: 4px;
   background-color: black;
@@ -61,8 +59,6 @@ body{
 .popup-wrap .popup-content span::before {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
-
-
 
 .custom-button {
   position: fixed;
@@ -80,11 +76,12 @@ body{
   background-position: center;
 }
 
-.content-wrapper{
+.content-wrapper {
   text-align: center;
   cursor: pointer;
+  position: relative;
 }
-.content-wrapper{
+.content-wrapper {
   text-align: center;
   margin: auto;
 }
@@ -96,38 +93,37 @@ body{
   margin: 0;
 }
 
-.offset{
+.offset {
   background-color: white;
   width: 270px;
   margin: auto;
   height: 160px;
   border: 1px solid white;
   border-radius: 10px;
-  box-shadow: rgba(255, 255, 255, 0.12) 0px 0px 2px 0px inset, rgba(0, 0, 0, 0.05) 0px 0px 2px 1px, rgba(0, 0, 0, 0.08) 0px 2px 6px;
-  
+  box-shadow: rgba(255, 255, 255, 0.12) 0px 0px 2px 0px inset,
+    rgba(0, 0, 0, 0.05) 0px 0px 2px 1px, rgba(0, 0, 0, 0.08) 0px 2px 6px;
 }
 
-.offsetchatting{
+.offsetchatting {
   background-color: white;
   width: 230px;
   margin: auto;
   height: 100px;
   border: 1px solid white;
   border-radius: 10px;
-  box-shadow: rgba(255, 255, 255, 0.12) 0px 0px 2px 0px inset, rgba(0, 0, 0, 0.05) 0px 0px 2px 1px, rgba(0, 0, 0, 0.08) 0px 2px 6px;
+  box-shadow: rgba(255, 255, 255, 0.12) 0px 0px 2px 0px inset,
+    rgba(0, 0, 0, 0.05) 0px 0px 2px 1px, rgba(0, 0, 0, 0.08) 0px 2px 6px;
   text-align: left;
   transform: perspective(600px) rotateX(5deg) translateY(5px);
 }
 
-
 .offset p {
   margin: 10;
-  margin-top:10px ;
+  margin-top: 10px;
   width: 180px;
-  
 }
 
-.inquire{
+.inquire {
   background-color: powderblue;
   width: 240px;
   margin: auto;
@@ -142,24 +138,22 @@ body{
   height: auto;
 }
 
-.imgsize{
+.imgsize {
   display: flex;
   margin-left: 10px;
   margin-top: 10px;
   height: 40px;
 }
 
-.chatting{
+.chatting {
   display: flex;
   margin-left: 15px;
-
 }
 
 .popup-wrap .popup-content .offset p {
   width: 100%;
   margin: 10px 0;
 }
-
 
 .popup-wrap .popup-content .offset .inquire {
   display: flex;
@@ -181,30 +175,64 @@ body{
   font-size: 16px;
 }
 
-.border-bottom{
+.border-bottom {
   border-bottom: 1px solid gray;
 }
 
-.imgsize{
+.imgsize {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.imgsize img{
+.imgsize img {
   margin-right: 10px;
   width: 40px;
   height: 40px;
 }
 
-.popup-content.chattingroom{
+.popup-content.chattingroom {
   left: 900px;
   display: block;
+  position: relative;
 }
 
-.font-size{
+.font-size {
   font-size: 5px;
   color: gray;
   display: flex;
   margin-left: 40px;
+}
+.chat-input-container {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+  left: 5%;
+}
+.chat-input {
+  background-color: rgb(255, 255, 255);
+  width: 250px;
+  height: 40px;
+  position: absolute;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+
+.chat-input-container button {
+  z-index: 1;
+  position: absolute;
+  bottom: 9%;
+  left: 72%;
+  width: 50px;
+  height: 45px;
+  border-radius: 10px;
+  background-color: #fa2828;
+  color: white;
+  border: 1px none;
+  cursor: pointer;
 }
