@@ -203,6 +203,8 @@ body {
   display: flex;
   margin-left: 40px;
 }
+/* 채팅창 컨테이너를 밖으로 빼내어 class로 감쌈 */
+
 .chat-input-container {
   position: absolute;
   text-align: center;
