@@ -231,11 +231,12 @@ li{
    top: 10%;
    left: 15%;
    z-index: 2;
+   box-sizing: border-box;
 }
 
 .promotion_banner img{
     border-radius: 10.01px;
-    width: 559.996px;
+    width: 49%;
     height: 120.003px;
 }
 /* 스와이퍼 아래 광고배너 끝 */
