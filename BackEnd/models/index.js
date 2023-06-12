@@ -15,6 +15,7 @@ const Show = require("./shows");
 const User = require("./users");
 const Theater = require("./theaters");
 
+const bcrypt = require("bcrypt");
 
 
 const sequelize = new Sequelize(
@@ -82,5 +83,15 @@ Sheet.associate(db);
 ShowDateInfo.associate(db);
 Show.associate(db);
 Theater.associate(db);
+
+// 관리자 계정 없으면 생성
+const createAdmin = async () => {
+  const admin = await User.findOne({email : "admin@admin.com"});
+  if (admin == null) {
+    const hash = bcrypt.hashSync("admin1234", 10);
+    await User.create({email : "admin@admin.com", password : hash, nickname : "admin"});
+  }
+}
+createAdmin();
 
 module.exports = db;
