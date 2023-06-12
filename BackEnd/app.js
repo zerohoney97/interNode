@@ -34,7 +34,7 @@ sequelize
   });
 
 app.use(e.urlencoded({ extended: false }));
-
+app.use(e.static(path.join(__dirname, '..','FrontEnd','public')));
 app.use("/main",mainRouter);
 
 app.listen(8080, () => {
