@@ -4,7 +4,7 @@ const dot = require("dotenv").config();
 const app = e();
 
 app.use(e.json());
-app.use(e.urlencoed({ extended: false }));
+app.use(e.urlencoded({ extended: false }));
 
 app.use(
   cors({
