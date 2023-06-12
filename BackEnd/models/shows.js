@@ -6,6 +6,7 @@ class Show extends Sequelize.Model {
                 type : Sequelize.STRING(20),
                 allowNull : false,
             },
+            // 공연정보,몇분
             detail : {
                 type : Sequelize.TEXT,
                 allowNull : false,
