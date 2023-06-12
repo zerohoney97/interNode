@@ -193,12 +193,9 @@ body {
 
 .popup-content.chattingroom {
   left: 900px;
-<<<<<<< HEAD
   display: none;
-=======
   display: block;
   position: relative;
->>>>>>> 5f206623899f36d285120a44e280accdae9b91f0
 }
 
 .font-size {
@@ -207,10 +204,6 @@ body {
   display: flex;
   margin-left: 40px;
 }
-<<<<<<< HEAD
-
-.input-field{
-=======
 /* 채팅창 컨테이너를 밖으로 빼내어 class로 감쌈 */
 
 .chat-input-container {
@@ -222,25 +215,15 @@ body {
   left: 5%;
 }
 .chat-input {
->>>>>>> 5f206623899f36d285120a44e280accdae9b91f0
   background-color: rgb(255, 255, 255);
   width: 250px;
   height: 40px;
   position: absolute;
-<<<<<<< HEAD
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 340%);
-=======
->>>>>>> 5f206623899f36d285120a44e280accdae9b91f0
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding-left: 10px;
-<<<<<<< HEAD
-}
-=======
 }
 
 .chat-input-container button {
@@ -256,4 +239,3 @@ body {
   border: 1px none;
   cursor: pointer;
 }
->>>>>>> 5f206623899f36d285120a44e280accdae9b91f0
