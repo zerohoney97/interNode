@@ -5,6 +5,7 @@ const {
   checkCode,
   signUp,
 } = require("../controllers/signUp");
+const path = require("path");
 
 // signUp 페이지
 
