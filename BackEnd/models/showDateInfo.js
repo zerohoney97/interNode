@@ -7,7 +7,7 @@ class ShowDateInfo extends Sequelize.Model {
         year: { type: Sequelize.INTEGER, allowNull: false },
         month: { type: Sequelize.INTEGER, allowNull: false },
         day: { type: Sequelize.INTEGER, allowNull: false },
-        startTime: { type: Sequelize.INTEGER, allowNull: false },
+        startTime: { type: Sequelize.STRING(30), allowNull: false },
       },
       {
         sequelize,

@@ -1,5 +1,4 @@
 let showRadio = document.querySelectorAll(".show-radio");
-
 showRadio.forEach((element) => {
   element.addEventListener("change", function (e) {
     console.log(e);
@@ -16,9 +15,7 @@ showRadio.forEach((element) => {
           a.classList.remove("block");
         }
       });
-      document
-        .querySelector(`#label${this.id}`)
-        .classList.add("checked-label");
+      document.querySelector(`#label${this.id}`).classList.add("checked-label");
       document.querySelector(`#show${this.id}`).classList.add("block");
     }
   });
@@ -41,3 +38,12 @@ function displayImage() {
 }
 showImg.onchange = displayImage;
 
+axios
+  .get(`${url}/adminPage/getShow`)
+  .then((e) => {
+    console.log(e);
+
+  })
+  .catch((err) => {
+    console.log(err);
+  });
