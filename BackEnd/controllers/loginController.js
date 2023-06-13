@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const { User } = require('../models');
 const session = require('express-session');
 
+//로그인 시도
 exports.login = async (req,res)=>{
     const {user_id,user_pw} = req.body;
     try {
@@ -11,8 +12,9 @@ exports.login = async (req,res)=>{
             return res.redirect('http://127.0.0.1:5500/FrontEnd/login/idErr.html');
         }
         
-        
+        // 나중에 로그인 페이지랑 합치면 기존 if 를 이걸로 대체
         // const same = bcrypt.compareSync(user_pw,user.password)
+        // if(same)
         if(user_pw === user.password){
             //신고횟수가 3회 이상이면 로그인 거절
             if(user.report_stack >= 3){
@@ -35,6 +37,18 @@ exports.login = async (req,res)=>{
         }else{
             return res.redirect('http://127.0.0.1:5500/FrontEnd/login/pwErr.html')
         }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// accessToken 의 정보를 decode해서 유저 데이터를 응답
+// 메인 페이지와 마이 페이지에서 유저의 닉네임 보여줄 때 사용
+exports.viewUser = async (req,res)=>{
+    const { acc_decoded } = req;
+    try {
+        const user = await User.findOne({where : {email : acc_decoded.email}});
+        res.json(user.nickname);
     } catch (error) {
         console.log(error);
     }
