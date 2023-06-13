@@ -92,7 +92,10 @@ button{
 }
 
 .input-confirm-num-field button {
-  width: 20%;
+  /* width: 20%; */
+  width: 62px;
+  height: 35px;
+
   background-color: #ef3e42;
   border-radius: 4px;
   border: 1px solid #ef3e42;
@@ -131,4 +134,27 @@ button{
 
 .pointer {
   cursor: pointer;
+}
+
+.codeBtns {
+  display: flex;
+  position: relative;
+}
+
+/* 인증코드 입력 후 전송 버튼 */
+#codeBtn {
+  position: absolute;
+  display: none;
+}
+
+/* 이메일 인증하기 버튼(이메일 전송) */
+#sendMailBtn {
+  position: absolute;
+  z-index: 0;
+}
+
+#emailResultDiv, #codeResultDiv, #nicknameResultDiv, #passwordResultDiv {
+  font-size: 10px;
+  margin-top: 2px;
+  margin-bottom: 6px;
 }
