@@ -51,6 +51,10 @@ window.onload = async () => {
     // 이메일 인증하기 버튼 클릭(서버에서 메일 보낼 수 있게)
     sendMailBtn.onclick = async () => {
         const email = { email: emailInput.value };
+        if (!emailDupPass) {
+            alert("이메일 중복확인을 해주세요.");
+            return;
+        }
 
         if (emailCheckPass) {
             alert("이미 인증된 이메일입니다.");
