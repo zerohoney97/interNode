@@ -40,6 +40,7 @@ app.use("/main",mainRouter);
 app.use("/signup", signUpRouter);
 
 // app.use(e.static(path.join(__dirname, "js")));
+// public에 css를 다 모아놓고, public경로로 들어왔을 때, 헤더를 바꿔줌
 app.use("/public",e.static(path.join(__dirname,"..","FrontEnd","public"),{
     setHeaders : (res,filePath) => {
         if(path.extname(filePath) === ".css"){
