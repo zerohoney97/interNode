@@ -33,14 +33,7 @@ sequelize
   .catch((err) => {
     console.log(err);
   });
-// Set the MIME type for JavaScript files
-e.static.mime.types["js"] = "text/javascript";
 
-// Serve static files
-app.use(e.static(path.join(__dirname, "..", "FrontEnd", "js")));
-
-// Define your routes and other middleware as needed
-// ...
 
 app.use(e.urlencoded({ extended: false }));
 
@@ -54,6 +47,16 @@ app.use(
     setHeaders: (res, filePath) => {
       if (path.extname(filePath) === ".css") {
         res.setHeader("Content-Type", "text/css");
+      }
+    },
+  })
+);
+app.use(
+  "/js",
+  e.static(path.join(__dirname, "..", "FrontEnd", "js"), {
+    setHeaders: (res, filePath) => {
+      if (path.extname(filePath) === ".js") {
+        res.setHeader("Content-Type", "text/javascript");
       }
     },
   })
