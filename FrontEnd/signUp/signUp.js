@@ -16,6 +16,7 @@ window.onload = async () => {
     duplicatedBtn.onclick = async () => {
         if (!emailPass) {
             emailResultDiv.innerText = "이메일 형식이 아닙니다.";
+            emailResultDiv.style.color = "red";
             return;
         }
 
@@ -30,10 +31,14 @@ window.onload = async () => {
             if (data == '1') {
                 emailDupPass = false;
                 emailResultDiv.innerText = "사용 불가능한 이메일입니다.";
+                emailResultDiv.style.color = "red";
+
                 emailInput.innerText = "";
             } else if (data == '0') { // 사용 가능한 이메일
                 emailDupPass = true;
                 emailResultDiv.innerText = "사용 가능한 이메일입니다.";
+                emailResultDiv.style.color = "blue";
+
                 document.querySelector(".input-confirm-num-field").classList.add("flex");
             }
 
@@ -73,8 +78,12 @@ window.onload = async () => {
     codeBtn.onclick = async () => {
         if (codeInput.value == "") {
             codeResultDiv.innerText = "인증코드를 입력하세요.";
+            codeResultDiv.style.color = "red";
+
         } else if (!emailDupPass) {
             codeResultDiv.innerText = "이메일 중복확인부터 해주세요.";
+            codeResultDiv.style.color = "red";
+
         } else {
             const emailCode = { email: emailInput.value, code: codeInput.value };
             try {
@@ -85,10 +94,14 @@ window.onload = async () => {
                     // 인증코드 일치
                     emailCheckPass = true;
                     codeResultDiv.innerText = "인증되었습니다.";
+                    codeResultDiv.style.color = "blue";
+
                 } else if (data == "1") {
                     // 인증코드 불일치
                     emailCheckPass = false;
                     codeResultDiv.innerText = "인증코드가 틀렸습니다.";
+                    codeResultDiv.style.color = "red";
+
                 } else {
                     alert("오류");
                 }
@@ -105,11 +118,15 @@ window.onload = async () => {
     signUpBtn.onclick = async () => {
         if (nicknameInput.value.trim() == "") {
             nicknameResultDiv.innerText = "닉네임을 작성해주세요";
+            nicknameResultDiv.style.color = "red";
+            alert("닉네임을 작성해주세요");
             return;
         }
 
         if (!passPass) {
-            passwordResultDiv.innerText = "비밀번호는 영문, 숫자 포함하여 8~20자로 작성해주세요.";
+            passwordResultDiv.innerText = "비밀번호는 영문 대소문자, 숫자 포함하여 8~20자로 작성해주세요.";
+            passwordResultDiv.style.color = "red";
+            alert("비밀번호는 영문 대소문자, 숫자 포함하여 8~20자로 작성해주세요.");
             return;
         }
 
@@ -139,6 +156,7 @@ window.onload = async () => {
 nicknameInput.oninput = () => {
     if (nicknameInput.value.trim() == "") {
         nicknameResultDiv.innerText = "닉네임을 작성해주세요";
+        nicknameResultDiv.style.color="red";
     } else {
         nicknameResultDiv.innerText = "";
     }
@@ -152,8 +170,10 @@ passwordInput.oninput = () => {
     if (passwordRegex.test(passwordInput.value)) {
         passPass = true;
         passwordResultDiv.innerText = "비밀번호 형식입니다.";
+        passwordResultDiv.style.color="blue";
     } else {
         passwordResultDiv.innerText = "비밀번호는 최소 8자 최대 20자이어야 하고, 영문 대소문자와 숫자를 포함해야 합니다.";
+        passwordResultDiv.style.color="red";
     }
 }
 
@@ -166,8 +186,11 @@ emailInput.oninput = () => {
     if (emailRegex.test(emailInput.value)) {
         emailPass = true;
         emailResultDiv.innerText = "이메일 형식입니다.";
+        emailResultDiv.style.color="blue";
     } else {
         emailResultDiv.innerText = "이메일 형식이 아닙니다.";
+        emailResultDiv.style.color="red";
+
     }
 }
 
