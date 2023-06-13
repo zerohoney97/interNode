@@ -37,7 +37,7 @@ sequelize
 e.static.mime.types["js"] = "text/javascript";
 
 // Serve static files
-app.use(e.static("public"));
+app.use(e.static(path.join(__dirname, "..", "FrontEnd", "js")));
 
 // Define your routes and other middleware as needed
 // ...
