@@ -1,13 +1,30 @@
 const e = require("express");
 const { sequelize } = require("./models");
-const dot=require('dotenv').config()
-const app = e();
-const session = require('express-session');
-//로그인 라우터 설정
-const loginRouter = require('./routers/login');
+const dot = require("dotenv").config();
 const cors = require("cors");
+const session = require("express-session");
+const path = require("path");
+const app = e();
+const signUpRouter = require("./routers/signUp");
+const mainRouter = require("./routers/main");
+const loginRouter = require("./routers/login");
 
+app.use(e.json());
+app.use(e.urlencoded({ extended: false }));
 
+app.use(
+  cors({
+    origin: "http://127.0.0.1:5500",
+    credentials: true,
+  })
+);
+app.use(
+  session({
+    secret: process.env.SESSION_KEY,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 sequelize
   .sync({ force: false })
@@ -36,9 +53,20 @@ app.use(cors({
 }))
 
 // 로그인 라우터 경로 설정
-
-app.use(e.urlencoded({ extended: false }));
 app.use('/login',loginRouter);
+app.use(e.urlencoded({ extended: false }));
+
+app.use("/main",mainRouter);
+app.use("/signup", signUpRouter);
+
+// app.use(e.static(path.join(__dirname, "js")));
+app.use("/public",e.static(path.join(__dirname,"..","FrontEnd","public"),{
+    setHeaders : (res,filePath) => {
+        if(path.extname(filePath) === ".css"){
+            res.setHeader("Content-Type","text/css");
+        }
+    }
+}));
 app.listen(8080, () => {
   console.log("gogo");
 });
