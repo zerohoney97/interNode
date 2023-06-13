@@ -26,7 +26,8 @@ exports.login = async (req,res)=>{
             // access 토큰 발행 
             const accessToken = jwt.sign({
                 email : user.email,
-                nickname : user.nickname
+                nickname : user.nickname,
+                primaryKey: user.id
             },process.env.ACCESS_TOKEN_KEY,{
                 expiresIn : "5m"
             })
