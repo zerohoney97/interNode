@@ -5,6 +5,15 @@ let lastPageNum;
 window.onload = ()=>{
     // 서버에서 자유게시판 리스트 받아오는 함수
 
+    // 서버에서 글 목록 가져오기
+    axios.get()
+    .then((res)=>{
+
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+
     // 임의로 리스트 정의
     list = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 
