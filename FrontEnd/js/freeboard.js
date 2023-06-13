@@ -6,16 +6,20 @@ window.onload = ()=>{
     // 서버에서 자유게시판 리스트 받아오는 함수
 
     // 서버에서 글 목록 가져오기
-    axios.get()
+    axios.get('http://127.0.0.1:8080/freeboards')
     .then((res)=>{
+        console.log(res.data);
+        list = res.data;
 
+        // 페이지네이션 함수
+        pagenate(pagenum);
     })
     .catch((err)=>{
         console.log(err);
     })
 
     // 임의로 리스트 정의
-    list = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+    // list = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 
     // 첫 페이지는 1번
     pagenum = 1;
@@ -23,8 +27,7 @@ window.onload = ()=>{
     // 이전/다음 버튼 이벤트 등록
     addBtnsEvent();
 
-    // 페이지네이션 함수
-    pagenate(pagenum);
+
 }
 
 // list는 자유게시판 리스트
@@ -48,23 +51,23 @@ const pagenate = (pagenum) => {
 
     for (let index = first; index < last; index++) {
         // 이런식으로 list에서 인덱스값으로 board 뽑아와야함
-        // const board = list[index];
+        const board = list[index];
 
         // 임의로 값 정함. board.title 이런식으로 정의해야함
-        const title = "제목1";
-        const nickname = "닉네임";
-        const likes = 15;
-        const views = 100;
-        const createdAt = "2023-06-07";
+        // const title = "제목1";
+        // const nickname = "닉네임";
+        // const likes = 15;
+        // const views = 100;
+        // const createdAt = "2023-06-07";
 
         freeboards.innerHTML +=
         `<tr>
-            <td class="no">${index}</td>
-            <td class="title"><a href="">${title}</a></td>
-            <td class="nickname">${nickname}</td>
-            <td class="likes">${likes}</td>
-            <td class="views">${views}</td>
-            <td class="createdAt">${createdAt}</td>
+            <td class="no">${index+1}</td>
+            <td class="title"><a href="">${board.title}</a></td>
+            <td class="nickname">${board.User.nickname}</td>
+            <td class="likes">${board.FreeBoardLikes.length}</td>
+            <td class="views">${board.views}</td>
+            <td class="createdAt">${board.createdAt.slice(0,10)}</td>
         </tr>`;
     }
 
@@ -130,3 +133,10 @@ const goNext = () => {
     }
     pagenate(pagenum);
 }
+
+// 등록 버튼 클릭시 등록 페이지로 이동
+const insertBtn = document.getElementById('insertBtn');
+insertBtn.onclick = function() {
+    console.log("hi")
+    window.location.href = "http://127.0.0.1:5500/FrontEnd/freeboard/freeboardInsert.html";
+};

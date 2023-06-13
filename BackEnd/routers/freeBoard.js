@@ -1,7 +1,9 @@
 const router = require('express').Router();
-const { freeBoardList } = require('../controllers/freeBoardsController');
+const { viewPostAll, insertPost} = require('../controllers/freeBoardsController');
+const { isLogin } = require('../middleware/islogin');
 
-router.get('/',freeBoardList);
+router.get('/', viewPostAll);
 
+router.post('/insert',isLogin,insertPost);
 
 module.exports = router;

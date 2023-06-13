@@ -8,6 +8,7 @@ const app = e();
 const signUpRouter = require("./routers/signUp");
 const mainRouter = require("./routers/main");
 const loginRouter = require("./routers/login");
+const freeBoardsRouter = require('./routers/freeBoard');
 
 app.use(e.json());
 app.use(e.urlencoded({ extended: false }));
@@ -53,7 +54,7 @@ app.use(e.urlencoded({ extended: false }));
 
 app.use("/main",mainRouter);
 app.use("/signup", signUpRouter);
-
+app.use("/freeboards",freeBoardsRouter);
 // app.use(e.static(path.join(__dirname, "js")));
 app.use("/public",e.static(path.join(__dirname,"..","FrontEnd","public"),{
     setHeaders : (res,filePath) => {
