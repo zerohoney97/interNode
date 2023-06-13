@@ -34,10 +34,10 @@ sequelize
     console.log(err);
   });
 // Set the MIME type for JavaScript files
-express.static.mime.types["js"] = "text/javascript";
+e.static.mime.types["js"] = "text/javascript";
 
 // Serve static files
-app.use(express.static("public"));
+app.use(e.static("public"));
 
 // Define your routes and other middleware as needed
 // ...
