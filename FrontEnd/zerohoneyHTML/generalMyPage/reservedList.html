@@ -54,13 +54,14 @@
             </div>
           </div>
           <div class="side-bar-board">
-            <div>내가 쓴 글</div>
-            <div style="cursor: pointer" id="freeBoard">자유게시판</div>
+            <div>자유게시판</div>
+            <div style="cursor: pointer" id="myFreeBoard">내가 쓴 글</div>
+            <div style="cursor: pointer" id="likeFreeBoard">좋아요한 글</div>
           </div>
           <div class="side-bar-profile">
             <div>내 정보 변경</div>
             <div style="cursor: pointer" id="changeUserInfo">
-              <a href="./changeProfile.html"> 닉네임/이메일/프로필 변경</a>
+              <a href="./changeProfile.html"> 닉네임/프로필 변경</a>
             </div>
           </div>
         </div>
@@ -333,6 +334,18 @@
     > -->
   </body>
   <script>
+
+    // 내가 쓴 글 버튼 클릭
+    myFreeBoard.onclick = () => {
+        window.location.href = "../../freeboard/freeboard.html?page=my";
+    }
+
+    // 좋아요한 글 클릭
+    likeFreeBoard.onclick = () => {
+        window.location.href = "../../freeboard/freeboard.html?page=likes";
+    }
+
+
     // changeUserInfo.onclick = () => {
     //   document
     //     .querySelector(".generalMyPage-contents-detail-profile")

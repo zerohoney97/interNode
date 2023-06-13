@@ -12,7 +12,7 @@ class Show extends Sequelize.Model {
                 allowNull : false,
             },
             img : {
-                type : Sequelize.STRING(50),
+                type : Sequelize.STRING(150),
             },
             price : {
                 type : Sequelize.INTEGER,

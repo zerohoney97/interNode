@@ -2,6 +2,17 @@ const router = require("express").Router();
 // const { checkEmail, sendEmail, checkCode, signUp } = require("../controllers/signUpController");
 const { checkEmail, signUp } = require("../controllers/signUpController");
 
+const path = require("path");
+
+// signUp 페이지
+
+router.get("/", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "..", "..", "FrontEnd", "signUp", "signUp.html")
+  );
+});
+
+
 // 이메일 중복 확인
 router.post("/checkemail", checkEmail);
 
