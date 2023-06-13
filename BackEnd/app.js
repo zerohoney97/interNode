@@ -12,12 +12,7 @@ const loginRouter = require("./routers/login");
 app.use(e.json());
 app.use(e.urlencoded({ extended: false }));
 
-app.use(
-  cors({
-    origin: "http://127.0.0.1:5500",
-    credentials: true,
-  })
-);
+
 app.use(
   session({
     secret: process.env.SESSION_KEY,
