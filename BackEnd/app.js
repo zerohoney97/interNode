@@ -7,7 +7,7 @@ const path = require("path");
 const app = e();
 const signUpRouter = require("./routers/signUp");
 const mainRouter = require("./routers/main");
-
+const adminPageRouter = require("./routers/adminMypage");
 app.use(e.json());
 app.use(e.urlencoded({ extended: false }));
 
@@ -34,12 +34,11 @@ sequelize
     console.log(err);
   });
 
-
 app.use(e.urlencoded({ extended: false }));
 
 app.use("/main", mainRouter);
 app.use("/signup", signUpRouter);
-
+app.use("/adminPage", adminPageRouter);
 // app.use(e.static(path.join(__dirname, "js")));
 app.use(
   "/public",
