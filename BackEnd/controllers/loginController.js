@@ -12,10 +12,8 @@ exports.login = async (req,res)=>{
             return res.redirect('http://127.0.0.1:5500/FrontEnd/login/idErr.html');
         }
         
-        // 나중에 로그인 페이지랑 합치면 기존 if 를 이걸로 대체
-        // const same = bcrypt.compareSync(user_pw,user.password)
-        // if(same)
-        if(user_pw === user.password){
+        const same = bcrypt.compareSync(user_pw,user.password)
+        if(same){
             //신고횟수가 3회 이상이면 로그인 거절
             if(user.report_stack >= 3){
                 return res.redirect('http://127.0.0.1:5500/FrontEnd/login/loginBlock.html')
