@@ -19,7 +19,7 @@ window.onload = async () => {
         currentNickName = data.nickname;
 
         // imgpath 불러오기
-        userImg.src = data.img;
+        userImg.src = imgPath +"/"+ data.img;
 
     } catch (error) {
         console.log(error);
