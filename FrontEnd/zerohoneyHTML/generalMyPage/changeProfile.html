@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>generalMyPage</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../../public/generalMyPage.css" />
     <link rel="stylesheet" href="../../public/header.css">
   </head>
@@ -54,20 +55,21 @@
             </div>
           </div>
           <div class="side-bar-board">
-            <div>내가 쓴 글</div>
-            <div style="cursor: pointer" id="freeBoard">자유게시판</div>
+            <div>자유게시판</div>
+            <div style="cursor: pointer" id="myFreeBoard">내가 쓴 글</div>
+            <div style="cursor: pointer" id="likeFreeBoard">좋아요한 글</div>
           </div>
           <div class="side-bar-profile">
             <div>내 정보 변경</div>
             <div style="cursor: pointer" id="changeUserInfo">
-              <a href="./changeProfile.html"> 닉네임/이메일/프로필 변경</a>
+              <a href="./changeProfile.html"> 닉네임/프로필 변경</a>
             </div>
           </div>
         </div>
         <div class="generalMyPage-contents-detail-profile show">
           <h2>회원 정보 수정</h2>
           <div class="summary">
-            이메일,닉네임 및 프로필사진을 &nbsp;
+            닉네임 및 프로필사진을 &nbsp;
             <span style="color: red">수정</span> 할 수 있습니다.
           </div>
           <div class="divide-line"></div>
@@ -75,41 +77,52 @@
             <div class="email">
               <div class="email-left">이메일</div>
               <div class="email-right">
-                <span>*******@****.com</span>
-                <span>이메일 변경</span>
+                <span id="email">*******@****.com</span>
+                <!-- <span>이메일 변경</span> -->
               </div>
             </div>
             <div class="nickName">
               <div class="nickName-left">닉네임</div>
               <div class="nickName-right">
-                <span>아현의 왕꿈틀이</span>
-                <span>닉네임 변경</span>
+                <div>
+                  <input id="nickName"></input>
+                  <div id="nickNameResultDiv"></div>
+                </div>
+                <span id="changeNickName">닉네임 변경</span>
               </div>
             </div>
             <div class="password">
               <div class="password-left">비밀번호</div>
               <div class="password-right">
-                <span>*******</span>
-                <span>비밀번호 변경</span>
+                <div><input id="codeInput" type="text" placeholder="인증코드를 입력하세요.">
+                <input id="passwordInput" type="text" placeholder="비밀번호를 입력하세요."></div>
+                <!-- <span>*******</span> -->
+                <span id="showMailCodeInput">비밀번호 변경</span>
+                <span id="sendMailBtn">이메일 인증</span>
+                <div id="codeResultDiv"></div>
+                <span id="codeBtn">인증하기</span>
+                <span id="changePassword">비밀번호 변경</span>
               </div>
             </div>
 
             <img
-              src="../../zerohoneyPublic/resources/cutePepe.png"
-              style="
+            id="userImg"
+            src="../../freeboard/img/like.png"
+            style="
                 width: 100px;
                 height: 100px;
                 margin: auto;
                 display: block;
                 margin-top: 15px;
                 border-radius: 10px;
-              "
+                "
               alt="userProfile"
-            />
-            <div class="profile">프로필 수정</div>
+              />
+            <input type="file" id="fileInput">
+            <div id="changeProfileImg" class="profile">프로필 수정</div>
           </div>
         </div>
-        
+
       </div>
     </div>
     <footer class="common_footer">
@@ -137,7 +150,7 @@
               <span class="|">|</span>
               <span>개인정보보호 책임자 : 박민우</span> <br>
               <span style="color: rgb(169, 169, 169);">Copyright © NHN LINK Corporation. All rights reserved.</span>
-  
+
           </div>
           <div>
               <img src="" alt="">
@@ -154,6 +167,7 @@
       >스마트 카트 아이콘 제작자: Freepik - Flaticon</a
     > -->
   </body>
+  <script src="../../js/changeProfile.js"></script>
   <script>
     // changeUserInfo.onclick = () => {
     //   document

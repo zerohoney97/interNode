@@ -11,7 +11,7 @@ exports.login = async (req,res)=>{
         if(user == null){
             return res.redirect('http://127.0.0.1:5500/FrontEnd/login/idErr.html');
         }
-        
+
         const same = bcrypt.compareSync(user_pw,user.password)
         if(same){
             //신고횟수가 3회 이상이면 로그인 거절
@@ -21,7 +21,7 @@ exports.login = async (req,res)=>{
             if(user.email === 'admin@admin.com'){
                 res.redirect("http://127.0.0.1:5500/FrontEnd/zerohoneyHTML/adminPage/searchUserDetail.html")
             }
-            // access 토큰 발행 
+            // access 토큰 발행
             const accessToken = jwt.sign({
                 email : user.email,
                 nickname : user.nickname,
