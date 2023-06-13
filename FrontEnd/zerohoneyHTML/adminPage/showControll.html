@@ -84,34 +84,61 @@
             />
           </div>
           <!-- 공연 등록을 눌렀을 때 -->
-          <form action="" method="post" class="enroll-show show" id="showtab1">
+          <form
+            action="http://127.0.0.1:8080/adminpage/enroll"
+            method="post"
+            class="enroll-show show"
+            id="showtab1"
+            enctype="multipart/form-data"
+          >
             <div class="enroll-show-image-container">
               <img class="left" />
               <input type="file" name="showImg" id="showImg" />
               <div class="right">
-                <input type="text" id="show_name" placeholder="공연의 이름" />
                 <input
                   type="text"
-                  id="show_duration"
+                  name="showName"
+                  id="showName"
+                  placeholder="공연의 이름"
+                />
+                <input
+                  type="text"
+                  name="showDuration"
+                  id="showDuration"
                   placeholder="공연시간(분 단위)"
                 />
                 <input
                   type="text"
-                  id="show_grade"
+                  name="showGrade"
+                  id="showGrade"
                   placeholder="공연등급(숫자만 입력)"
                 />
-                <input type="text" id="show_price" placeholder="가격" />
+                <input
+                  type="text"
+                  name="showPrice"
+                  id="showPrice"
+                  placeholder="가격"
+                />
               </div>
             </div>
+            <!-- 공연 상세정보 입력 -->
+            <textarea
+              class="enroll-show-detail"
+              type="text"
+              name="showContent"
+              id="showContent"
+              placeholder="공연 상세정보 입력"
+            ></textarea>
+
             <div class="enroll-show-date-container">
               <label for="">시작 날짜</label>
-              <input type="date" id="show_start_date" />
+              <input type="date" name="showStartDate" id="showStartDate" />
               <label for="">종료 날짜</label>
-              <input type="date" id="show_end_date" />
+              <input type="date" name="showEndDate" id="showEndDate" />
             </div>
             <div class="enroll-show-time-container">
               <div>매일 <span></span>시에 시작 돼요</div>
-              <input type="time" id="show_start_time" />
+              <input type="time" name="showStartTime" id="showStartTime" />
             </div>
             <div class="enroll-show-button-container">
               <button class="enroll-show-button">공연 등록</button>
@@ -124,7 +151,7 @@
               <li class="performance-item">
                 <div class="show-info">
                   <img
-                    src="https://image.toast.com/aaaaab/ticketlink/TKL_10/main0406(3).jpg"
+                    src="../../../BackEnd/imgs/áá³áá³ááµá«áá£áº 2023-06-09 áá©áá¥á« 9.39.08_1686632100318.png"
                     alt="show_post"
                   />
                   <div class="show-info-detail">
@@ -185,56 +212,12 @@
           >Copyright © NHN LINK Corporation. All rights reserved.</span
         >
       </div>
+
       <div>
         <img src="" alt="" />
       </div>
     </footer>
     <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="잡담 아이콘">잡담 아이콘  제작자: Catalin Fertu - Flaticon</a> -->
   </body>
-  <script>
-    window.onload = function () {
-      let showRadio = document.querySelectorAll(".show-radio");
-      showRadio.forEach((element) => {
-        element.addEventListener("change", function (e) {
-          console.log(e);
-          if (this.checked) {
-            let array = document.querySelectorAll(".show-control-label");
-
-            array.forEach((a) => {
-              if (a.classList.contains("checked-label")) {
-                a.classList.remove("checked-label");
-              }
-            });
-            document.querySelectorAll(".show").forEach((a) => {
-              if (a.classList.contains("block")) {
-                a.classList.remove("block");
-              }
-            });
-            document
-              .querySelector(`#label${this.id}`)
-              .classList.add("checked-label");
-            document.querySelector(`#show${this.id}`).classList.add("block");
-          }
-        });
-      });
-
-      function displayImage() {
-        const input = document.getElementById("showImg");
-        const imgPreview = document.querySelector(".left");
-
-        if (input.files && input.files[0]) {
-          const file = input.files[0];
-          const reader = new FileReader();
-
-          reader.onload = function (e) {
-            console.log(file)
-            imgPreview.src = e.target.result;
-          };
-
-          reader.readAsDataURL(file);
-        }
-      }
-      showImg.onchange = displayImage;
-    };
-  </script>
+  <script src="../../js/showControl.js"></script>
 </html>
