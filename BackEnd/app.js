@@ -51,6 +51,7 @@ app.use(
     },
   })
 );
+
 app.use(
   "/js",
   e.static(path.join(__dirname, "..", "FrontEnd", "js"), {
