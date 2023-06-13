@@ -33,14 +33,14 @@ sequelize
   .catch((err) => {
     console.log(err);
   });
-// Middleware function to modify response headers
-const fixMimeType = (req, res, next) => {
-  res.header("X-Content-Type-Options", "nosniff");
-  next();
-};
+// Set the MIME type for JavaScript files
+express.static.mime.types["js"] = "text/javascript";
 
-// Use the middleware function
-app.use(fixMimeType);
+// Serve static files
+app.use(express.static("public"));
+
+// Define your routes and other middleware as needed
+// ...
 
 app.use(e.urlencoded({ extended: false }));
 
