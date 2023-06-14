@@ -23,7 +23,7 @@ exports.login = async (req,res)=>{
             if(user.email === 'admin@admin.com'){
                 res.redirect("http://127.0.0.1:5500/FrontEnd/zerohoneyHTML/adminPage/searchUserDetail.html")
             }
-            // access 토큰 발행 
+            // access 토큰 발행
             const accessToken = jwt.sign({
                 email : user.email,
                 primaryKey: user.id

@@ -16,7 +16,7 @@ hr {
     height: auto;
     margin: auto;
   }
-  
+
   .generalMyPage-header {
     width: 100%;
     height: 135px;
@@ -34,7 +34,7 @@ hr {
     justify-content: center;
     align-items: center;
   }
-  
+
   .generalMyPage-header ul {
     width: 854px;
     height: 100%;
@@ -44,7 +44,7 @@ hr {
     justify-content: space-around;
     align-items: center;
   }
-  
+
   .generalMyPage-header ul li {
     width: 150px;
     height: 46px;
@@ -69,7 +69,7 @@ hr {
     background-repeat: no-repeat;
     background-size: contain;
   }
-  
+
   .generalMyPage-header-right-box {
     width: 100px;
     height: 46px;
@@ -79,7 +79,7 @@ hr {
     align-items: center;
     margin-top: 5px;
   }
-  
+
   .generalMyPage-header-right-box span {
     font-weight: bold;
   }
@@ -94,16 +94,16 @@ hr {
   .generalMyPage-contents {
     width: 100%;
     height: auto;
-  
+
     margin-top: 10px;
     display: flex;
   }
-  
+
   .generalMyPage-contents-side-bar {
     width: 255px;
     height: 100%;
   }
-  
+
   .side-bar-reserved {
     width: 100%;
     height: 91px;
@@ -112,7 +112,7 @@ hr {
     justify-content: center;
     border-bottom: 1px solid gray;
   }
-  
+
   .side-bar-reserved div {
     margin: 5px;
     font-size: 13px;
@@ -121,7 +121,7 @@ hr {
     margin-left: 15px;
     color: #878d95;
   }
-  
+
   .side-bar-reserved div:nth-child(1) {
     font-size: 16px;
     font-weight: 700;
@@ -129,7 +129,7 @@ hr {
     margin-left: 15px;
     color: black;
   }
-  
+
   .side-bar-board {
     width: 100%;
     height: 169px;
@@ -138,7 +138,7 @@ hr {
     justify-content: center;
     border-bottom: 1px solid gray;
   }
-  
+
   .side-bar-board div {
     margin: 5px;
     font-size: 13px;
@@ -147,7 +147,7 @@ hr {
     margin-left: 15px;
     color: #878d95;
   }
-  
+
   .side-bar-board div:nth-child(1) {
     font-size: 16px;
     font-weight: 700;
@@ -155,7 +155,7 @@ hr {
     margin-left: 15px;
     color: black;
   }
-  
+
   .side-bar-profile {
     width: 100%;
     height: 169px;
@@ -164,7 +164,7 @@ hr {
     justify-content: center;
     border-bottom: 1px solid gray;
   }
-  
+
   .side-bar-profile div {
     margin: 5px;
     font-size: 13px;
@@ -180,9 +180,9 @@ hr {
     margin-left: 15px;
     color: black;
   }
-  
+
   /* generalMyPage-contents detail html */
-  
+
   .generalMyPage-contents-detail-profile {
     width: 862px;
     height: 100%;
@@ -193,7 +193,7 @@ hr {
     display: block;
   }
   /* this is css for script */
-  
+
   .generalMyPage-contents-detail-profile .summary {
     width: 743px;
     height: 80px;
@@ -202,18 +202,18 @@ hr {
     justify-content: center;
     align-items: center;
   }
-  
+
   .generalMyPage-contents-detail-profile .divide-line {
     width: 743px;
     border: 1px solid #cfd0d7;
     margin-top: 50px;
   }
-  
+
   .generalMyPage-contents-detail-profile .info {
     width: 743px;
     height: 450px;
   }
-  
+
   .generalMyPage-contents-detail-profile .info .email {
     width: 100%;
     height: 100px;
@@ -226,21 +226,21 @@ hr {
     display: flex;
     align-items: center;
     font-weight: bold;
-  
+
     margin-left: 5px;
   }
-  
+
   .email .email-right {
     width: 80%;
     height: 100%;
     display: flex;
     align-items: center;
-  
+
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
-  
+
   .email .email-right span:nth-child(2) {
     width: 100px;
     height: 50px;
@@ -251,7 +251,7 @@ hr {
     border-radius: 10px;
     cursor: pointer;
   }
-  
+
   .generalMyPage-contents-detail-profile .info .nickName {
     width: 100%;
     height: 80px;
@@ -264,16 +264,16 @@ hr {
     display: flex;
     align-items: center;
     font-weight: bold;
-  
+
     margin-left: 5px;
   }
-  
+
   .nickName .nickName-right {
     width: 80%;
     height: 100%;
     display: flex;
     align-items: center;
-  
+
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -300,16 +300,16 @@ hr {
     display: flex;
     align-items: center;
     font-weight: bold;
-  
+
     margin-left: 5px;
   }
-  
+
   .password .password-right {
     width: 80%;
     height: 100%;
     display: flex;
     align-items: center;
-  
+
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -324,7 +324,7 @@ hr {
     border-radius: 10px;
     cursor: pointer;
   }
-  
+
   .info .profile {
     width: 100px;
     height: 50px;
@@ -337,10 +337,10 @@ hr {
     cursor: pointer;
     margin-top: 10px;
   }
-  
+
   /* change profile page done!*/
   /* review what he wrote page!*/
-  
+
   .generalMyPage-contents-detail-reserved {
     width: 862px;
     height: 100%;
@@ -349,7 +349,7 @@ hr {
   .generalMyPage-contents-detail-reserved.show {
     display: block;
   }
-  
+
   .show-container {
     width: 100%;
     height: 100px;
@@ -361,7 +361,7 @@ hr {
     justify-content: center;
     margin-left: 10px;
   }
-  
+
   .show-detail span:nth-child(1) {
     font-size: 20px;
     font-weight: bold;
@@ -375,12 +375,12 @@ hr {
     font-size: 20px;
     color: red;
   }
-  
+
   .reserved-container {
     border-top: 1px solid gainsboro;
     margin-top: 20px;
   }
-  
+
   .review-container {
     width: 100%;
     height: max-content;
@@ -388,8 +388,8 @@ hr {
     flex-direction: column;
     margin-top: 5px;
   }
-  
-  
+
+
   .review-container .user-review {
     width: 100%;
     height: auto;
@@ -397,14 +397,14 @@ hr {
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .user-review.none{
     display: none;
   }
   .user-review.block{
     display: block;
   }
-  
+
   .review-container-input {
     width: 100%;
     height: max-content;
@@ -412,14 +412,14 @@ hr {
     flex-direction: column;
     margin-top: 5px;
   }
-  
+
   .review-container-input.none {
     display: none;
   }
   .review-container-input.block {
     display: block;
   }
-  
+
   .review-container-input .user-review {
     width: 100%;
     height: auto;
@@ -427,7 +427,7 @@ hr {
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .user-review .user-review-left {
     display: flex;
     align-items: center;
@@ -441,7 +441,7 @@ hr {
     display: flex;
     cursor: pointer;
   }
-  
+
   .user-review .update-button-container button {
     display: inline-block;
     padding: 12px 24px;
@@ -456,11 +456,11 @@ hr {
     text-decoration: none;
     transition: background-color 0.3s ease;
   }
-  
+
   .user-review .update-button-container button:hover {
     background-color: #d92c26;
   }
-  
+
   .user-review .update-button-container button:active {
     background-color: #b5241d;
   }
@@ -468,7 +468,7 @@ hr {
     display: flex;
     flex-direction: column;
   }
-  
+
   /* review input css */
   /* star */
   .starpoint_wrap {
@@ -523,7 +523,7 @@ hr {
   .starpoint_box .star_radio:nth-of-type(5):checked ~ .starpoint_bg {
     width: 100%;
   }
-  
+
   .blind {
     position: absolute;
     clip: rect(0 0 0 0);
@@ -532,9 +532,9 @@ hr {
     height: 1px;
     overflow: hidden;
   }
-  
+
   /* review input css */
-  
+
   .user-review-detail div:nth-child(1) {
     font-size: 14px;
     padding: 2px;
@@ -556,7 +556,7 @@ hr {
     font-size: 13px;
     padding: 2px;
   }
-  
+
   .review-container .content {
     margin-top: 10px;
     padding: 10px;
@@ -567,7 +567,7 @@ hr {
   .review-container .content.block {
    display: block;
   }
-  
+
   #searchContainer {
     position: relative;
     margin: 1rem auto;
@@ -581,7 +581,7 @@ hr {
     align-items: center;
     margin-top: 10px;
   }
-  
+
   #reviewInput {
     padding: 10px;
     width: 70%;
@@ -591,7 +591,7 @@ hr {
     font-size: 16px;
     resize: none;
   }
-  
+
   #searchButton {
     width: 23%;
     height: 68px;
@@ -604,7 +604,11 @@ hr {
     cursor: pointer;
     margin-top: 5px;
   }
-  
+
   #search-button:hover {
     background-color: #ff5733;
+  }
+
+  #changePassword, #sendMailBtn, #codeResultDiv, #codeBtn, #codeInput, #passwordInput {
+    display: none;
   }

@@ -11,6 +11,11 @@ const adminPageRouter = require("./routers/adminMypage");
 const loginRouter = require("./routers/login");
 const freeBoardsRouter = require('./routers/freeBoard');
 
+const loginRouter = require("./routers/login");
+const mypageRouter = require("./routers/mypage");
+const mailRouter = require("./routers/mail");
+const { isLogin } = require("./middleware/islogin");
+const adminPageRouter = require("./routers/adminMypage");
 app.use(e.json());
 app.use(e.urlencoded({ extended: false }));
 
@@ -55,6 +60,8 @@ app.use(e.urlencoded({ extended: false }));
 
 app.use("/main", mainRouter);
 app.use("/signup", signUpRouter);
+app.use("/mail", mailRouter);
+app.use("/mypage", isLogin, mypageRouter);
 app.use("/adminPage", adminPageRouter);
 app.use("/freeboards",freeBoardsRouter);
 // app.use(e.static(path.join(__dirname, "js")));
