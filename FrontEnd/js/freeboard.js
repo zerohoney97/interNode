@@ -2,6 +2,8 @@ let list;
 let pagenum;
 let lastPageNum;
 
+
+
 window.onload = ()=>{
     // 서버에서 자유게시판 리스트 받아오는 함수
 
@@ -27,7 +29,16 @@ window.onload = ()=>{
     // 이전/다음 버튼 이벤트 등록
     addBtnsEvent();
 
-
+    axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
+    .then((res)=>{
+      console.log(res.data);
+      if(res.data){
+        headerUtilLogin.textContent = `${res.data}님`
+      }
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
 }
 
 // list는 자유게시판 리스트
@@ -64,7 +75,7 @@ const pagenate = (pagenum) => {
         freeboards.innerHTML += 
         `<tr>
             <td class="no">${index+1}</td>
-            <td class="title"><a href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?${board.id}">${board.title}</a></td>
+            <td class="title"><a href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${board.id}">${board.title}</a></td>
             <td class="nickname">${board.User.nickname}</td>
             <td class="likes">${board.FreeBoardLikes.length}</td>
             <td class="views">${board.views}</td>
@@ -141,3 +152,4 @@ insertBtn.onclick = function() {
     console.log("hi")
     window.location.href = "http://127.0.0.1:5500/FrontEnd/freeboard/freeboardInsert.html";
 };
+

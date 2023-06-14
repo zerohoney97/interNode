@@ -1,5 +1,5 @@
 const { FreeBoard, FreeBoardLike, Comment , Recomment, User } = require('../models');
-
+const Sequelize = require('sequelize')
 //게시글 목록 전체조회
 exports.viewPostAll = async (req,res)=>{
     try {
@@ -41,10 +41,34 @@ exports.insertPost = async (req,res)=>{
 // 글 상세조회
 
 exports.selectPost = async (req,res)=>{
-    const post_id=req.params;
+    const post_id=req.query.id;
     try {
-        const post = FreeBoard.findOne({where :{id : post_id}});
+        const post = await FreeBoard.findOne({
+            where :{id : post_id},
+            include :[
+                {
+                    model: User,
+                    attributes : ['nickname']
+                },
+                {
+                    model :FreeBoardLike,
+                }
+            ]
+        });
         res.json(post);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//조회수 증가
+exports.viewsUp = async (req,res)=>{
+    const post_id= req.query.id
+    try {
+        await FreeBoard.update(
+            { views: Sequelize.literal('views + 1') },
+            { where: { id: post_id } } 
+        )
     } catch (error) {
         console.log(error);
     }

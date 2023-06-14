@@ -7,11 +7,9 @@ const path = require("path");
 const app = e();
 const signUpRouter = require("./routers/signUp");
 const mainRouter = require("./routers/main");
-const adminPageRouter = require("./routers/adminMypage");
 const loginRouter = require("./routers/login");
 const freeBoardsRouter = require('./routers/freeBoard');
 
-const loginRouter = require("./routers/login");
 const mypageRouter = require("./routers/mypage");
 const mailRouter = require("./routers/mail");
 const { isLogin } = require("./middleware/islogin");

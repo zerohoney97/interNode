@@ -28,7 +28,7 @@ exports.login = async (req,res)=>{
                 email : user.email,
                 primaryKey: user.id
             },process.env.ACCESS_TOKEN_KEY,{
-                expiresIn : "5m"
+                expiresIn : "30m"
             })
 
             req.session.access_token = accessToken;
