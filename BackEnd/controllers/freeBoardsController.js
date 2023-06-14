@@ -38,4 +38,14 @@ exports.insertPost = async (req,res)=>{
     }
 }
 
+// 글 상세조회
 
+exports.selectPost = async (req,res)=>{
+    const post_id=req.params;
+    try {
+        const post = FreeBoard.findOne({where :{id : post_id}});
+        res.json(post);
+    } catch (error) {
+        console.log(error);
+    }
+}
