@@ -1,17 +1,3 @@
-// 헤더에 유저 닉네임 표시
-window.onload = function(){
-    axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
-    .then((res)=>{
-      // console.log(res.data);
-      if(res.data){
-        headerUtilLogin.textContent = `${res.data}님`
-      }
-    })
-    .catch((error)=>{
-      console.log(error);
-    })
-}
-
 
 window.onload = ()=>{
     console.log(window.location.search);
@@ -40,17 +26,19 @@ window.onload = ()=>{
     .catch((err)=>{
         console.log(err);
     })
-
-        axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
+  
+    axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
     .then((res)=>{
       console.log(res.data);
       if(res.data){
         headerUtilLogin.textContent = `${res.data}님`
+        headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
       }
     })
     .catch((error)=>{
       console.log(error);
     })
+    
 }
 
 // 게시글 수정
@@ -60,7 +48,12 @@ updateBtn.onclick = ()=>{
     // 수정페이지로 이동
 
     // 수정 페이지에서는 form으로 데이터베이스 변경, 게시글 상세 페이지 redirect
-    console.log(headerUtilLogin.textContent.slice(0,-1));
+    let userNick =headerUtilLogin.textContent.slice(0,-1);
+
+    if(userNick === nickname.textContent){
+    window.location.href = "http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html";
+
+    }
 }
 
 

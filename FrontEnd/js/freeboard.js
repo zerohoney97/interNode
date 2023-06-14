@@ -30,15 +30,16 @@ window.onload = ()=>{
     addBtnsEvent();
 
     axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
-    .then((res)=>{
-      console.log(res.data);
-      if(res.data){
-        headerUtilLogin.textContent = `${res.data}님`
-      }
-    })
-    .catch((error)=>{
-      console.log(error);
-    })
+            .then((res)=>{
+              console.log(res.data);
+              if(res.data){
+                headerUtilLogin.textContent = `${res.data}님`
+                headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
+              }
+            })
+            .catch((error)=>{
+              console.log(error);
+            })
 }
 
 // list는 자유게시판 리스트

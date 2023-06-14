@@ -13,20 +13,20 @@
   <body>
     <header class="common_header">
       <div class="header_util">
-        <div id="headerUtilLogin">로그인</div>
-        <div>회원가입</div>
-        <div>고객센터</div>
-        <div>마이페이지</div>
+          <div id="headerUtilLogin"><a  href="http://127.0.0.1:5500/FrontEnd/login/login.html" style="text-decoration: none; color: inherit;">로그인</a></div>
+          <div id="headerUtilSignUp" ><a  href="http://127.0.0.1:5500/FrontEnd/signUp/signUp.html" style="text-decoration: none; color: inherit;">회원가입</a></div>
+          <div id="headerUtilCS"><a  href="" style="text-decoration: none; color: inherit;">고객센터</a></div>
+          <div id="headerUtilMypage"><a  href="" style="text-decoration: none; color: inherit;">마이페이지</a></div>
       </div>
       <div class="header_inner">
-        <div class="logo"></div>
-        <h1>공연/전시</h1>
+          <div class="logo"></div>
+          <h1>공연/전시</h1>
       </div>
       <div class="header_gnb">
-        <div class="gnb_home">홈</div>
-        <div class="gnb_show">공연</div>
+          <div class="gnb_home">홈</div>
+          <div class="gnb_show">공연</div>
       </div>
-    </header>
+  </header>
     <div class="container">
       <h1>자유게시판</h1>
       <div id="tablediv">
@@ -107,6 +107,21 @@
       </div>
     </footer>
   </body>
+  <script>
+    // 페이지 로드시  맨 위 헤더 변경
+    window.onload = function(){
+    axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
+    .then((res)=>{
+      console.log(res.data);
+      if(res.data){
+        headerUtilLogin.textContent = `${res.data}님`
+        headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
+      }
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+  }
+  </script>
   <script src="../js/freeboard.js"></script>
-
 </html>
