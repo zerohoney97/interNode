@@ -4,6 +4,8 @@ const {
   enrollShow,
   getShow,
   updateShow,
+  getAllUsers,
+  getAllReportedUsers,
 } = require("../controllers/showController");
 const upload = require("../middleware/multer");
 
@@ -21,6 +23,44 @@ router.get("/", (req, res) => {
     )
   );
 });
+
+//
+
+// 어드민 페이지=> 유저 검색
+router.get("/userSearch", (req, res) => {
+  res.sendFile(
+    path.join(
+      __dirname,
+      "..",
+      "..",
+      "FrontEnd",
+      "zerohoneyHTML",
+      "adminPage",
+      "userSearch.html"
+    )
+  );
+});
+
+// 유저 검색 사이트에서 유저 리스트 가져오기
+router.get("/getUser", getAllUsers);
+
+// 어드민 페이지=>유저 신고 리스트
+router.get("/userReport", (req, res) => {
+  res.sendFile(
+    path.join(
+      __dirname,
+      "..",
+      "..",
+      "FrontEnd",
+      "zerohoneyHTML",
+      "adminPage",
+      "userReport.html"
+    )
+  );
+});
+
+// 신고된 유저 가져오기
+router.get("/getReportedUser", getAllReportedUsers);
 
 // 공연등록
 router.post("/enroll", upload.single("showImg"), enrollShow);
