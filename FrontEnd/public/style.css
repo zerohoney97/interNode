@@ -10,7 +10,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  display: block;
+  display: none;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -193,10 +193,20 @@ body {
 
 .popup-content.chattingroom {
   left: 900px;
+  display: none;
   display: block;
   position: relative;
 }
 
+.popup-content.chattingroom2 {
+  left: 20px;
+  transform: translateX(50%);
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  display: block;
+  position: fixed;
+}
 .font-size {
   font-size: 5px;
   color: gray;
@@ -237,4 +247,10 @@ body {
   color: white;
   border: 1px none;
   cursor: pointer;
+}
+
+
+#chatMessages {
+  overflow-y: scroll;
+  max-height: 200px; /* 최대 허용 높이 (예시로 200px로 설정) */
 }

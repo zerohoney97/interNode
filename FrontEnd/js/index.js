@@ -50,9 +50,10 @@ function openPopup(){
 }
 // 어렵고 힘든게 정상...
 
-function chattingroom(){
+function chattingroom(e){
     var chattingRoom = document.querySelector('.popup-content.chattingroom');
   chattingRoom.style.display = 'block';
+  user_id = e;
 }
 
 function chattingpage(){
@@ -65,3 +66,6 @@ function enableInput(){
     messageElement.contentEditable = true;
     messageElement.focus();
 }
+
+
+

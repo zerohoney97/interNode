@@ -7,6 +7,8 @@ const path = require("path");
 const app = e();
 const signUpRouter = require("./routers/signUp");
 const mainRouter = require("./routers/main");
+const chatRouter = require("./routers/chat");
+
 const loginRouter = require("./routers/login");
 const freeBoardsRouter = require('./routers/freeBoard');
 
@@ -33,7 +35,7 @@ app.use(
 
 sequelize
   .sync({ force: false })
-  .then((e) => {
+  .then(() => {
     console.log("연결 성공~");
   })
   .catch((err) => {
@@ -47,15 +49,6 @@ app.use(session({
   saveUninitialized : false
 }))
 
-app.use(cors({
-  // 도메인 허용 옵션
-  // 접근을 허용할 도메인
-  // 여러개의 도메인을 허용하고 싶다 배열의 형태로 넣어주면 된다
-  // origin : ["","",""]
-  origin : "http://127.0.0.1:5500",
-  // origin : "",
-  credentials : true,
-}))
 
 // 로그인 라우터 경로 설정
 app.use('/login',loginRouter);
@@ -63,6 +56,9 @@ app.use(e.urlencoded({ extended: false }));
 
 app.use("/main", mainRouter);
 app.use("/signup", signUpRouter);
+app.use("/chat",chatRouter);
+
+
 app.use("/mail", mailRouter);
 app.use("/mypage", isLogin, mypageRouter);
 app.use("/adminPage", adminPageRouter);
@@ -93,3 +89,8 @@ app.use(
 app.listen(8080, () => {
   console.log("gogo");
 });
+
+//module.exports = server;
+
+
+

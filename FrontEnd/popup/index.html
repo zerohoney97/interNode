@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../public/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
 
   <body>
@@ -37,53 +38,7 @@
 
         <div class="chatting">채팅💬</div>
 
-        <div class="imgsize">
-          <img
-            src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMDFfMjkx%2FMDAxNjM1NzcyNTAyMzM2.cJE1tVC6KDvRbLggbBVEvvTt44ThhLU0wXelkyRh_bgg.ogMtpmeg-v7VIqtsSBpxHCNzt--aP7oHwL3PVm2RgiQg.JPEG.yunalee1997%2F4cc82b04dee244c22d13aee91e4b5e58.jpg&type=sc960_832"
-            alt=""
-          />
-          <p onclick="chattingroom()">User1</p>
-        </div>
-        <div class="border-bottom"></div>
-
-        <div class="imgsize">
-          <img
-            src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMDFfMjkx%2FMDAxNjM1NzcyNTAyMzM2.cJE1tVC6KDvRbLggbBVEvvTt44ThhLU0wXelkyRh_bgg.ogMtpmeg-v7VIqtsSBpxHCNzt--aP7oHwL3PVm2RgiQg.JPEG.yunalee1997%2F4cc82b04dee244c22d13aee91e4b5e58.jpg&type=sc960_832"
-            alt=""
-          />
-          <p onclick="chattingroom()">User2</p>
-        </div>
-
-        <div class="border-bottom"></div>
-
-        <div class="imgsize">
-          <img
-            src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMDFfMjkx%2FMDAxNjM1NzcyNTAyMzM2.cJE1tVC6KDvRbLggbBVEvvTt44ThhLU0wXelkyRh_bgg.ogMtpmeg-v7VIqtsSBpxHCNzt--aP7oHwL3PVm2RgiQg.JPEG.yunalee1997%2F4cc82b04dee244c22d13aee91e4b5e58.jpg&type=sc960_832"
-            alt=""
-          />
-          <p onclick="chattingroom()">User3</p>
-        </div>
-
-        <div class="border-bottom"></div>
-        <div class="imgsize">
-          <img
-            src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMDFfMjkx%2FMDAxNjM1NzcyNTAyMzM2.cJE1tVC6KDvRbLggbBVEvvTt44ThhLU0wXelkyRh_bgg.ogMtpmeg-v7VIqtsSBpxHCNzt--aP7oHwL3PVm2RgiQg.JPEG.yunalee1997%2F4cc82b04dee244c22d13aee91e4b5e58.jpg&type=sc960_832"
-            alt=""
-          />
-          <p onclick="chattingroom()">User4</p>
-        </div>
-
-        <div class="border-bottom"></div>
-
-        <div class="imgsize">
-          <img
-            src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMDFfMjkx%2FMDAxNjM1NzcyNTAyMzM2.cJE1tVC6KDvRbLggbBVEvvTt44ThhLU0wXelkyRh_bgg.ogMtpmeg-v7VIqtsSBpxHCNzt--aP7oHwL3PVm2RgiQg.JPEG.yunalee1997%2F4cc82b04dee244c22d13aee91e4b5e58.jpg&type=sc960_832"
-            alt=""
-          />
-          <p onclick="chattingroom()">User5</p>
-        </div>
-
-        <div class="border-bottom"></div>
+ 
       </div>
 
       <div class="popup-content chattingroom">
@@ -111,7 +66,10 @@
             />
           </div>
         </div>
-        <!--필요하다면 form으로 변경 -->
+        
+        <div id="chatMessages"></div>
+        
+        <!—필요하다면 form으로 변경 —>
         <div class="chat-input-container">
           <input
             type="text"
@@ -120,10 +78,49 @@
             class="chat-input"
             placeholder="채팅을 입력해주세요"
           />
-          <button>전송</button>
+          <button class="chat-send-botton">전송</button>
         </div>
       </div>
+
+
+
+
+      
+      <div class="popup-content chattingroom2">
+        <span onclick="chattingpage2();"></span>
+        <div class="content-wrapper">
+          <img
+            src="https://blog.kakaocdn.net/dn/csnaXD/btqxB6Hdt3R/0gnbFKpuvtMkd57m4dKFf0/img.jpg"
+            alt="이미지 설명"
+          />
+          <h3>xxx 고객님과의 대화</h3>
+          <h5>⨳ 보통 수십 분 내 답변</h5>
+          
+          
+        </div>
+        
+        <div id="chatMessages"></div>
+        
+        <!—필요하다면 form으로 변경 —>
+        <div class="chat-input-container">
+          <input
+            type="text"
+            name="chat"
+            id="chatId"
+            class="chat-input"
+            placeholder="채팅을 입력해주세요"
+          />
+          <button class="chat-send-botton">전송</button>
+        </div>
+      </div>
+
+
+      
     </div>
   </body>
+
   <script src="../js/index.js"></script>
+  <script src="../js/chatting.js"></script>
+  <script src="/BackEnd/chat/chat.js"></script>
+  
 </html>
