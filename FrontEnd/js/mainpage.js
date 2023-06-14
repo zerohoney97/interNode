@@ -83,3 +83,16 @@ rate_ranking.addEventListener('click',()=>{
     rate_ranking.style.color = "black";
     cmt_ranking.style.color = '#a7acb6'
 })
+
+window.onload = function(){
+  axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
+  .then((res)=>{
+    console.log(res.data);
+    if(res.data){
+      headerUtilLogin.textContent = `${res.data}님`
+    }
+  })
+  .catch((error)=>{
+    console.log(error);
+  })
+}

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>generalMyPage</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../../public/generalMyPage.css" />
     <link rel="stylesheet" href="../../public/header.css" />
   </head>
@@ -54,13 +55,14 @@
             </div>
           </div>
           <div class="side-bar-board">
-            <div>내가 쓴 글</div>
-            <div style="cursor: pointer" id="freeBoard">자유게시판</div>
+            <div>자유게시판</div>
+            <div style="cursor: pointer" id="myFreeBoard">내가 쓴 글</div>
+            <div style="cursor: pointer" id="likeFreeBoard">좋아요한 글</div>
           </div>
           <div class="side-bar-profile">
             <div>내 정보 변경</div>
             <div style="cursor: pointer" id="changeUserInfo">
-              <a href="./changeProfile.html"> 닉네임/이메일/프로필 변경</a>
+              <a href="./changeProfile.html"> 닉네임/프로필 변경</a>
             </div>
           </div>
         </div>
@@ -332,7 +334,10 @@
       >스마트 카트 아이콘 제작자: Freepik - Flaticon</a
     > -->
   </body>
+
   <script>
+
+
     // changeUserInfo.onclick = () => {
     //   document
     //     .querySelector(".generalMyPage-contents-detail-profile")
@@ -366,4 +371,6 @@
       afterReview.innerHTML += inputReview.innerHTML;
     };
   </script>
+  <script src="../../js/static.js"></script>
+  <script src="../../js/reservedList.js"></script>
 </html>

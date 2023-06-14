@@ -1,29 +1,8 @@
 const smtpTransport = require("../config/mailauth");
-const { User } = require("../models");
 const { randomBytes } = require("crypto");
-const bcrypt = require("bcrypt");
 
 // 이메일, 인증코드 정보 담을 객체
 let emailCodes = {};
-
-// 중복확인
-exports.checkEmail = async (req, res) => {
-    try {
-        const { email } = req.body;
-
-        const user = await User.findOne({where : {email}});
-
-        // 사용 불가능한 이메일
-        if (user != null) {
-            return res.send("1");
-        }
-
-        // 사용 가능한 이메일
-        return res.send("0");
-    } catch (error) {
-        console.log(error);
-    }
-}
 
 // 인증번호 생성
 const createCode = (email) => {
@@ -48,7 +27,7 @@ exports.sendEmail = (req, res) => {
             from : "interNodeToy@gmail.com",
             to : email,
             subject : "[인터노드] 이메일 인증코드",
-            text : "인증코드 : "+ code
+            text : "인증코드 : "+ code + "\n\n 본인이 요청한 것이 아니라면 이 메일은 무시하세요."
         }
 
         smtpTransport.sendMail(mailOptions, (error,response) => {
@@ -81,24 +60,6 @@ exports.checkCode = (req, res) => {
             return res.send("1");
         }
 
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-
-// 회원가입(유저추가)
-exports.signUp = async (req, res) => {
-    try {
-        const { email, password, nickname } = req.body;
-
-        const hash = bcrypt.hashSync(password, 10);
-
-        // 유저 생성
-        await User.create({email, password:hash, nickname});
-
-        // 로그인 페이지로 이동
-        return res.send("0");
     } catch (error) {
         console.log(error);
     }
