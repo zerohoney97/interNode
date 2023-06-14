@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../../public/adminMyPage.css" />
-    <link rel="stylesheet" href="../../public/header.css">
+    <link rel="stylesheet" href="../../public/header.css" />
   </head>
   <body>
     <header class="common_header">
       <div class="header_util">
-          <div>로그인</div>
-          <div>회원가입</div>
-          <div>고객센터</div>
-          <div>마이페이지</div>
+        <div>로그인</div>
+        <div>회원가입</div>
+        <div>고객센터</div>
+        <div>마이페이지</div>
       </div>
       <div class="header_inner">
-          <div class="logo"></div>
-          <h1>공연/전시</h1>
+        <div class="logo"></div>
+        <h1>공연/전시</h1>
       </div>
       <div class="header_gnb">
-          <div class="gnb_home">홈</div>
-          <div class="gnb_show">공연</div>
+        <div class="gnb_home">홈</div>
+        <div class="gnb_show">공연</div>
       </div>
-  </header>
+    </header>
     <div class="chat-icon"></div>
     <div class="adminMyPage-container">
       <div class="adminMyPage-header">
@@ -42,13 +42,23 @@
           <div class="side-bar-manage-show">
             <div>공연관리</div>
             <div style="cursor: pointer" id="showManage">
-            <a href="/FrontEnd/zerohoneyHTML/adminPage/showControll.html">공연 등록/수정/삭제</a>  
+              <a href="/FrontEnd/zerohoneyHTML/adminPage/showControll.html"
+                >공연 등록/수정/삭제</a
+              >
             </div>
           </div>
           <div class="side-bar-manage-user">
             <div>유저 관리</div>
-            <div style="cursor: pointer" id="searchUser"> <a href="/FrontEnd/zerohoneyHTML/adminPage/userSearch.html">유저 검색</a> </div>
-            <div style="cursor: pointer" id="reportedUser"><a href="/FrontEnd/zerohoneyHTML/adminPage/userReport.html">신고된 유저</a> </div>
+            <div style="cursor: pointer" id="searchUser">
+              <a href="/FrontEnd/zerohoneyHTML/adminPage/userSearch.html"
+                >유저 검색</a
+              >
+            </div>
+            <div style="cursor: pointer" id="reportedUser">
+              <a href="/FrontEnd/zerohoneyHTML/adminPage/userReport.html"
+                >신고된 유저</a
+              >
+            </div>
           </div>
         </div>
         <div class="show-control-container">
@@ -74,34 +84,61 @@
             />
           </div>
           <!-- 공연 등록을 눌렀을 때 -->
-          <form action="" method="post" class="enroll-show show" id="showtab1">
+          <form
+            action="http://127.0.0.1:8080/adminpage/enroll"
+            method="post"
+            class="enroll-show show"
+            id="showtab1"
+            enctype="multipart/form-data"
+          >
             <div class="enroll-show-image-container">
-              <div class="left"></div>
-              <input type="file" name="showImg" id="showImg">
+              <img class="left" />
+              <input type="file" name="showImg" id="showImg" />
               <div class="right">
-                <input type="text" id="show_name" placeholder="공연의 이름" />
                 <input
                   type="text"
-                  id="show_duration"
+                  name="showName"
+                  id="showName"
+                  placeholder="공연의 이름"
+                />
+                <input
+                  type="text"
+                  name="showDuration"
+                  id="showDuration"
                   placeholder="공연시간(분 단위)"
                 />
                 <input
                   type="text"
-                  id="show_grade"
+                  name="showGrade"
+                  id="showGrade"
                   placeholder="공연등급(숫자만 입력)"
                 />
-                <input type="text" id="show_price" placeholder="가격" />
+                <input
+                  type="text"
+                  name="showPrice"
+                  id="showPrice"
+                  placeholder="가격"
+                />
               </div>
             </div>
+            <!-- 공연 상세정보 입력 -->
+            <textarea
+              class="enroll-show-detail"
+              type="text"
+              name="showContent"
+              id="showContent"
+              placeholder="공연 상세정보 입력"
+            ></textarea>
+
             <div class="enroll-show-date-container">
               <label for="">시작 날짜</label>
-              <input type="date" id="show_start_date" />
+              <input type="date" name="showStartDate" id="showStartDate" />
               <label for="">종료 날짜</label>
-              <input type="date" id="show_end_date" />
+              <input type="date" name="showEndDate" id="showEndDate" />
             </div>
             <div class="enroll-show-time-container">
               <div>매일 <span></span>시에 시작 돼요</div>
-              <input type="time" id="show_start_time" />
+              <input type="time" name="showStartTime" id="showStartTime" />
             </div>
             <div class="enroll-show-button-container">
               <button class="enroll-show-button">공연 등록</button>
@@ -114,7 +151,7 @@
               <li class="performance-item">
                 <div class="show-info">
                   <img
-                    src="https://image.toast.com/aaaaab/ticketlink/TKL_10/main0406(3).jpg"
+                    src="../../../BackEnd/imgs/áá³áá³ááµá«áá£áº 2023-06-09 áá©áá¥á« 9.39.08_1686632100318.png"
                     alt="show_post"
                   />
                   <div class="show-info-detail">
@@ -130,7 +167,9 @@
                   </div>
                 </div>
                 <div class="buttons">
-                  <button> <a href="./showUpdate.html" style="color: red;">Edit</a> </button>
+                  <button>
+                    <a href="./showUpdate.html" style="color: red">Edit</a>
+                  </button>
                   <button>Delete</button>
                 </div>
               </li>
@@ -144,63 +183,43 @@
     </div>
     <footer class="common_footer">
       <div class="footer_menu">
-          <div>회사소개</div>
-          <div>이용약관</div>
-          <div>개인정보처리방침</div>
-          <div>티켓판매안내</div>
-              <div>공지사항</div>
-              <div>고객센터</div>
-          </div>
-          <hr>
-          <div class="footer_inner">
-              <span style="font-weight: bold;">인터노드 주식회사</span> <br>
-              <span>주소: 13487 경기도 성남시 분당구 대왕판교로645번길 16 NHN 플레이뮤지엄</span>
-              <span class="|">|</span>
-              <span>대표이사 : 왕문주</span>
-              <span class="|">|</span>
-              <span>사업자 등록번호 :144-81-25090</span> <br>
-              <span>1588-9000</span>
-              <span class="|">|</span>
-              <span>membership@internode.com</span>
-              <span class="|">|</span>
-              <span>통신판매업 신고번호: 제 2015-경기성남-0661호</span>
-              <span class="|">|</span>
-              <span>개인정보보호 책임자 : 박민우</span> <br>
-              <span style="color: rgb(169, 169, 169);">Copyright © NHN LINK Corporation. All rights reserved.</span>
-  
-          </div>
-          <div>
-              <img src="" alt="">
-          </div>
-      </footer>
+        <div>회사소개</div>
+        <div>이용약관</div>
+        <div>개인정보처리방침</div>
+        <div>티켓판매안내</div>
+        <div>공지사항</div>
+        <div>고객센터</div>
+      </div>
+      <hr />
+      <div class="footer_inner">
+        <span style="font-weight: bold">인터노드 주식회사</span> <br />
+        <span
+          >주소: 13487 경기도 성남시 분당구 대왕판교로645번길 16 NHN
+          플레이뮤지엄</span
+        >
+        <span class="|">|</span>
+        <span>대표이사 : 왕문주</span>
+        <span class="|">|</span>
+        <span>사업자 등록번호 :144-81-25090</span> <br />
+        <span>1588-9000</span>
+        <span class="|">|</span>
+        <span>membership@internode.com</span>
+        <span class="|">|</span>
+        <span>통신판매업 신고번호: 제 2015-경기성남-0661호</span>
+        <span class="|">|</span>
+        <span>개인정보보호 책임자 : 박민우</span> <br />
+        <span style="color: rgb(169, 169, 169)"
+          >Copyright © NHN LINK Corporation. All rights reserved.</span
+        >
+      </div>
+
+      <div>
+        <img src="" alt="" />
+      </div>
+    </footer>
     <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="잡담 아이콘">잡담 아이콘  제작자: Catalin Fertu - Flaticon</a> -->
   </body>
-  <script>
-    window.onload = function () {
-      let showRadio = document.querySelectorAll(".show-radio");
-      showRadio.forEach((element) => {
-        element.addEventListener("change", function (e) {
-          console.log(e);
-          if (this.checked) {
-            let array = document.querySelectorAll(".show-control-label");
-
-            array.forEach((a) => {
-              if (a.classList.contains("checked-label")) {
-                a.classList.remove("checked-label");
-              }
-            });
-            document.querySelectorAll(".show").forEach((a) => {
-              if (a.classList.contains("block")) {
-                a.classList.remove("block");
-              }
-            });
-            document
-              .querySelector(`#label${this.id}`)
-              .classList.add("checked-label");
-            document.querySelector(`#show${this.id}`).classList.add("block");
-          }
-        });
-      });
-    };
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../../js/static.js"></script>
+  <script src="../../js/showControll.js"></script>
 </html>

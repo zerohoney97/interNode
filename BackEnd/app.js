@@ -7,7 +7,7 @@ const path = require("path");
 const app = e();
 const signUpRouter = require("./routers/signUp");
 const mainRouter = require("./routers/main");
-const loginRouter = require("./routers/login");
+const adminPageRouter = require("./routers/adminMypage");const loginRouter = require("./routers/login");
 const freeBoardsRouter = require('./routers/freeBoard');
 
 app.use(e.json());
@@ -52,17 +52,32 @@ app.use(cors({
 app.use('/login',loginRouter);
 app.use(e.urlencoded({ extended: false }));
 
-app.use("/main",mainRouter);
+app.use("/main", mainRouter);
 app.use("/signup", signUpRouter);
-app.use("/freeboards",freeBoardsRouter);
+app.use("/adminPage", adminPageRouter);app.use("/freeboards",freeBoardsRouter);
 // app.use(e.static(path.join(__dirname, "js")));
-app.use("/public",e.static(path.join(__dirname,"..","FrontEnd","public"),{
-    setHeaders : (res,filePath) => {
-        if(path.extname(filePath) === ".css"){
-            res.setHeader("Content-Type","text/css");
-        }
-    }
-}));
+app.use(
+  "/public",
+  e.static(path.join(__dirname, "..", "FrontEnd", "public"), {
+    setHeaders: (res, filePath) => {
+      if (path.extname(filePath) === ".css") {
+        res.setHeader("Content-Type", "text/css");
+      }
+    },
+  })
+);
+
+app.use(
+  "/js",
+  e.static(path.join(__dirname, "..", "FrontEnd", "js"), {
+    setHeaders: (res, filePath) => {
+      if (path.extname(filePath) === ".js") {
+        res.setHeader("Content-Type", "text/javascript");
+      }
+    },
+  })
+);
+
 app.listen(8080, () => {
   console.log("gogo");
 });
