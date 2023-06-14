@@ -31,7 +31,7 @@
     <div class="container">
         <h1>게시글 수정</h1>
 
-        <form id="boardForm" action="">
+        <form id="boardForm" action="" method="post">
             <label for="">제목</label><br>
             <input id="titleInput" name="title" type="text" placeholder="" required><br>
 
@@ -91,6 +91,11 @@
     .catch((error)=>{
       console.log(error);
     })
+
+    // form 주소 동적으로 변경
+    let post_id = window.location.search;
+    const boardForm = document.getElementById('boardForm');
+    boardForm.action = `http://127.0.0.1:8080/freeboards/updatepost/${post_id}`
   }
   </script>
 </html>

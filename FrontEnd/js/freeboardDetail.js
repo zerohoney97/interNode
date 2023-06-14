@@ -26,7 +26,7 @@ window.onload = ()=>{
     .catch((err)=>{
         console.log(err);
     })
-  
+    // 로그인시 헤더 변경
     axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
     .then((res)=>{
       console.log(res.data);
@@ -51,9 +51,28 @@ updateBtn.onclick = ()=>{
     let userNick =headerUtilLogin.textContent.slice(0,-1);
 
     if(userNick === nickname.textContent){
-    window.location.href = "http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html";
+    const post_id = window.location.search
+
+    window.location.href = `http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html${post_id}`;
 
     }
+}
+
+// 게시글 삭제
+deleteBtn.onclick = ()=>{
+  let userNick =headerUtilLogin.textContent.slice(0,-1);
+  if(userNick === nickname.textContent){
+    const post_id = window.location.search
+    axios.get(`http://127.0.0.1:8080/freeboards/deletepost${post_id}`)
+    .then((res)=>{
+      console.log('good')
+      window.location.href = 'http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html';
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
+
 }
 
 

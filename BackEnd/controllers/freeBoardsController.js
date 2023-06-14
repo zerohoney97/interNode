@@ -73,3 +73,30 @@ exports.viewsUp = async (req,res)=>{
         console.log(error);
     }
 }
+
+//게시글 수정
+exports.updatePost = async (req,res)=>{
+    const post_id = req.query.id;
+    const { title, content } = req.body;
+    try {
+        await FreeBoard.update(
+            {title, content},
+            {where : {id: post_id}}
+        )
+        res.redirect(`http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${post_id}`)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//게시글 삭제
+exports.deletePost = async (req,res)=>{
+    const post_id = req.query.id
+    try {
+        await FreeBoard.destroy({where :{id : post_id}});
+        // res.redirect('http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html');
+        res.end();
+    } catch (error) {
+        console.log(error);
+    }
+}
