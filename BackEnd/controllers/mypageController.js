@@ -121,7 +121,6 @@ exports.getUserReservedList = async (req, res) => {
 exports.insertReviewBoard = async (req, res) => {
     try {
         const { primaryKey } = req.acc_decoded;
-        // 프론트에서 content, rates, show_id 보내줘야 함
         const { content, rates } = req.body;
         const { show_id } = req.params
 

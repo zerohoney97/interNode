@@ -1,8 +1,8 @@
 window.onload = async () => {
 
-try {
+    try {
         // 예매내역 정보 요청
-        const {data} = await axios.get(url+"/mypage/getReservedList", {
+        const { data } = await axios.get(url + "/mypage/getReservedList", {
             withCredentials: true,
         });
 
@@ -10,7 +10,7 @@ try {
 
         const reservedListDiv = document.querySelector(".generalMyPage-contents-detail-reserved");
         reservedListDiv.innerHTML =
-        `<h1
+            `<h1
         style="
           width: 100%;
           display: flex;
@@ -49,11 +49,24 @@ try {
 
             } else { // 후기 없으면
                 container = createReviewContainerInput(el);
+
             }
 
             console.log(container);
             reservedContainer.append(showContainter, container);
             reservedListDiv.append(reservedContainer);
+
+            if (!el.reviewBoard) {
+                const inputs = document.querySelectorAll(`.star_radio`);
+                inputs.forEach((input) => {
+                    // 별점 선택했을때
+                    input.addEventListener("change", (e) => {
+                        console.log(e.target.id.split("_")[2]);
+                        document.querySelector(`#starRate_${e.target.id.split("_")[1]}`).value = e.target.id.split("_")[2];
+                    });
+                });
+
+            }
         });
 
 
@@ -130,7 +143,7 @@ const createReviewContainer = (el) => {
 
     const likesDiv = document.createElement("div");
     const likes = document.createElement("span");
-    likes.innerText = "좋아요 "+ el.reviewBoard.likes;
+    likes.innerText = "좋아요 " + el.reviewBoard.likes;
     likesDiv.append(likes);
 
     userReviewDetail.append(writerNickDiv, reviewTime, likesDiv);
@@ -142,15 +155,15 @@ const createReviewContainer = (el) => {
 
     const updateButton = document.createElement("button");
     updateButton.classList.add("updateButton");
-    updateButton.id=`updateButton_${el.reviewBoard.id}`;
+    updateButton.id = `updateButton_${el.reviewBoard.id}`;
     updateButton.innerText = "수정";
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("deleteButton");
-    deleteButton.id=`deleteButton_${el.reviewBoard.id}`;
+    deleteButton.id = `deleteButton_${el.reviewBoard.id}`;
     deleteButton.innerText = "삭제";
 
-    // 삭제 버튼 클릭하면
+    // 삭제 버튼 클릭
     deleteButton.onclick = deleteReview;
 
     updateButtonContainer.append(updateButton, deleteButton);
@@ -177,27 +190,21 @@ const createReviewContainerInput = (el) => {
     const startpointBox = document.createElement("div");
     startpointBox.classList.add("starpoint_box");
 
-    startpointBox.innerHTML =
-    `<label for="starpoint_1" class="label_star" title="1"><span class="blind">1점</span></label>
-    <label for="starpoint_2" class="label_star" title="2"><span class="blind">2점</span></label>
-    <label for="starpoint_3" class="label_star" title="3"><span class="blind">3점</span></label>
-    <label for="starpoint_4" class="label_star" title="4"><span class="blind">4점</span></label>
-    <label for="starpoint_5" class="label_star" title="5"><span class="blind">5점</span></label>
-    <input type="radio" name="starpoint" id="starpoint_1" class="star_radio" />
-    <input type="radio" name="starpoint" id="starpoint_2" class="star_radio" />
-    <input type="radio" name="starpoint" id="starpoint_3" class="star_radio" />
-    <input type="radio" name="starpoint" id="starpoint_4" class="star_radio" />
-    <input type="radio" name="starpoint" id="starpoint_5" class="star_radio" />
-    <input type="hidden" id="starRate">
-    <span class="starpoint_bg"></span>`;
+    const showId = el.reservedList.Show.id;
 
-    const inputs = document.querySelectorAll(".star_radio");
-    inputs.forEach((input) => {
-        input.addEventListener("change", (e)=>{
-            console.log(e.target.id.split("_")[1]);
-            starRate.value = e.target.id.split("_")[1];
-        });
-    });
+    startpointBox.innerHTML =
+        `<label for="starpoint_${showId}_1" class="label_star" title="1"><span class="blind">1점</span></label>
+    <label for="starpoint_${showId}_2" class="label_star" title="2"><span class="blind">2점</span></label>
+    <label for="starpoint_${showId}_3" class="label_star" title="3"><span class="blind">3점</span></label>
+    <label for="starpoint_${showId}_4" class="label_star" title="4"><span class="blind">4점</span></label>
+    <label for="starpoint_${showId}_5" class="label_star" title="5"><span class="blind">5점</span></label>
+    <input type="radio" name="starpoint" id="starpoint_${showId}_1" class="star_radio starpoint_${showId}" />
+    <input type="radio" name="starpoint" id="starpoint_${showId}_3" class="star_radio starpoint_${showId}" />
+    <input type="radio" name="starpoint" id="starpoint_${showId}_2" class="star_radio starpoint_${showId}" />
+    <input type="radio" name="starpoint" id="starpoint_${showId}_4" class="star_radio starpoint_${showId}" />
+    <input type="radio" name="starpoint" id="starpoint_${showId}_5" class="star_radio starpoint_${showId}" />
+    <input type="hidden" id="starRate_${showId}">
+    <span class="starpoint_bg"></span>`;
 
     starpointWrap.append(startpointBox);
 
@@ -207,11 +214,11 @@ const createReviewContainerInput = (el) => {
     // textarea 아이디 뒷부분과 button 아이디 뒷부분이 같으면 해당하는 textarea의 값이 전송되게
     const textarea = document.createElement("textarea");
     textarea.classList.add("reviewInput");
-    textarea.id = `reviewInput_${el.reservedList.Show.id}`;
+    textarea.id = `reviewInput_${showId}`;
     textarea.placeholder = "후기를 입력하세요.";
     const button = document.createElement("button");
     button.classList.add("searchButton");
-    button.id = `searchButton_${el.reservedList.Show.id}`;
+    button.id = `searchButton_${showId}`;
     button.innerText = "후기 등록";
     button.onclick = insertReview;
 
@@ -227,18 +234,17 @@ const createReviewContainerInput = (el) => {
 const insertReview = async (e) => {
     // 공연 아이디
     const showId = e.target.id.split("_")[1];
-
-    const content = `reviewInput_${showId}`.innerText;
-    const rates = starRate.value;
+    const content = document.querySelector(`#reviewInput_${showId}`).value;
+    const rates = document.querySelector(`#starRate_${showId}`).value;
 
     // content 값이 없으면
-    if (content == "") {
+    if (!content) {
         alert("후기 작성해주세요.");
         return;
     }
 
     //rates 값이 없으면
-    if (rates == null) {
+    if (!rates) {
         alert("평점 선택해주세요.");
         return;
     }
@@ -246,8 +252,8 @@ const insertReview = async (e) => {
     // 등록할 리뷰
     const review = { content, rates: parseInt(rates) };
 
-    const {data} = await axios.post(url + "/mypage/insertReviewBoard/"+showId, review, {
-        withCredentials : true
+    const { data } = await axios.post(url + "/mypage/insertReviewBoard/" + showId, review, {
+        withCredentials: true
     });
     if (data == "0") {
         // 등록 성공
@@ -260,16 +266,16 @@ const insertReview = async (e) => {
 }
 
 
-// 리뷰 삭제 버튼 클릭하면 요청 보내는 함수
+// 리뷰 삭제 버튼 클릭
 const deleteReview = async (e) => {
-    if(!confirm("리뷰를 삭제하시겠습니까?")) {
+    if (!confirm("리뷰를 삭제하시겠습니까?")) {
         return;
     }
     // 삭제할 리뷰 아이디
     const reviewBoardId = e.target.id.split("_")[1];
 
-    const {data} = await axios.get(url + "/mypage/deleteReviewBoard/"+reviewBoardId, {
-        withCredentials : true
+    const { data } = await axios.get(url + "/mypage/deleteReviewBoard/" + reviewBoardId, {
+        withCredentials: true
     });
     if (data == "0") {
         // 삭제 성공
