@@ -11,9 +11,11 @@ exports.login = async (req,res)=>{
         if(user == null){
             return res.redirect('http://127.0.0.1:5500/FrontEnd/login/idErr.html');
         }
+        
+        // const same = bcrypt.compareSync(user_pw,user.password)
+        // if(same)
 
-        const same = bcrypt.compareSync(user_pw,user.password)
-        if(same){
+        if(user.password === user_pw){
             //신고횟수가 3회 이상이면 로그인 거절
             if(user.report_stack >= 3){
                 return res.redirect('http://127.0.0.1:5500/FrontEnd/login/loginBlock.html')
@@ -24,10 +26,9 @@ exports.login = async (req,res)=>{
             // access 토큰 발행
             const accessToken = jwt.sign({
                 email : user.email,
-                nickname : user.nickname,
                 primaryKey: user.id
             },process.env.ACCESS_TOKEN_KEY,{
-                expiresIn : "5m"
+                expiresIn : "30m"
             })
 
             req.session.access_token = accessToken;

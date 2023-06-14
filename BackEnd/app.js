@@ -8,6 +8,8 @@ const app = e();
 const signUpRouter = require("./routers/signUp");
 const mainRouter = require("./routers/main");
 const loginRouter = require("./routers/login");
+const freeBoardsRouter = require('./routers/freeBoard');
+
 const mypageRouter = require("./routers/mypage");
 const mailRouter = require("./routers/mail");
 const { isLogin } = require("./middleware/islogin");
@@ -64,6 +66,7 @@ app.use("/signup", signUpRouter);
 app.use("/mail", mailRouter);
 app.use("/mypage", isLogin, mypageRouter);
 app.use("/adminPage", adminPageRouter);
+app.use("/freeboards",freeBoardsRouter);
 // app.use(e.static(path.join(__dirname, "js")));
 app.use(
   "/public",
