@@ -81,3 +81,9 @@ axios
     console.log(err);
   });
 
+// 하이퍼 링크 변경
+
+goToShowControl.href = `${url}/adminPage`;
+goToUserSearch.href = `${url}/adminPage/userSearch`;
+goToUserReport.href = `${url}/adminPage/userReport`;
+// 하이퍼 링크 변경
