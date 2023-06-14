@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>generalMyPage</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../../public/generalMyPage.css" />
     <link rel="stylesheet" href="../../public/header.css" />
   </head>
@@ -333,17 +334,8 @@
       >스마트 카트 아이콘 제작자: Freepik - Flaticon</a
     > -->
   </body>
+
   <script>
-
-    // 내가 쓴 글 버튼 클릭
-    myFreeBoard.onclick = () => {
-        window.location.href = "../../freeboard/freeboard.html?page=my";
-    }
-
-    // 좋아요한 글 클릭
-    likeFreeBoard.onclick = () => {
-        window.location.href = "../../freeboard/freeboard.html?page=likes";
-    }
 
 
     // changeUserInfo.onclick = () => {
@@ -379,4 +371,6 @@
       afterReview.innerHTML += inputReview.innerHTML;
     };
   </script>
+  <script src="../../js/static.js"></script>
+  <script src="../../js/reservedList.js"></script>
 </html>

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { getUserInfo, changeNickName, changePassword, changeImg } = require("../controllers/mypageController");
+const { getUserInfo, changeNickName, changePassword, changeImg, getUserReservedList } = require("../controllers/mypageController");
 const upload = require("../middleware/multer");
 
 // 유저 정보 반환
@@ -13,5 +13,8 @@ router.post("/changePassword", changePassword);
 
 // 프로필 이미지 변경
 router.post("/changeImg", upload.single("img"), changeImg);
+
+// 예매 내역 확인
+router.get("/getReservedList", getUserReservedList);
 
 module.exports = router;
