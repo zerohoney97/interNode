@@ -41,9 +41,43 @@ showImg.onchange = displayImage;
 axios
   .get(`${url}/adminPage/getShow`)
   .then((e) => {
-    console.log(e);
+    console.log(e.data);
+    const performanceList = document.querySelector(".performance-list");
 
+    const dataArray = e.data;
+    dataArray.forEach((a) => {
+      // 하나의 행을 차지하는 li태그
+      const performanceItem = document.createElement("li");
+      performanceItem.classList.add("performance-item");
+      // 쇼를 감싸고 있는 태그
+      const showInfo = document.createElement("div");
+      showInfo.classList.add("show-info");
+      // 쇼 이미지
+      const img = document.createElement("img");
+      img.src = `${imgPath}/${a.img}`;
+      img.alt = "show poster";
+      // 쇼의 이름
+      const showInfoDetail = document.createElement("show-info-detail");
+      showInfoDetail.classList.add("show-info-detail");
+      showInfoDetail.innerHTML = `<span>Show Name:</span> <span> ${a.title}</span>`;
+
+      // 버튼들
+      const buttons = document.createElement("div");
+      buttons.classList.add("buttons");
+      const updateButton = document.createElement("button");
+      updateButton.innerHTML = ` <a href="${url}/adminpage/update/${a.id}" style="color: red">Edit</a>`;
+      const deleteButton = document.createElement("button");
+      deleteButton.innerHTML = ` <a href="${url}/adminpage/delete/${a.id}" style="color: red">Delete</a>`;
+      buttons.appendChild(updateButton);
+      buttons.appendChild(deleteButton);
+      showInfo.appendChild(img);
+      showInfo.appendChild(showInfoDetail);
+      showInfo.appendChild(buttons);
+      performanceItem.appendChild(showInfo);
+      performanceList.appendChild(performanceItem);
+    });
   })
   .catch((err) => {
     console.log(err);
   });
+

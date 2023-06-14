@@ -17,7 +17,6 @@ const Theater = require("./theaters");
 
 const bcrypt = require("bcrypt");
 
-
 const sequelize = new Sequelize(
   config.dev.database,
   config.dev.username,
@@ -86,12 +85,29 @@ Theater.associate(db);
 
 // 관리자 계정 없으면 생성
 const createAdmin = async () => {
-  const admin = await User.findOne({email : "admin@admin.com"});
+  const admin = await User.findOne({ email: "admin@admin.com" });
   if (admin == null) {
     const hash = bcrypt.hashSync("admin1234", 10);
-    await User.create({email : "admin@admin.com", password : hash, nickname : "admin"});
+    await User.create({
+      email: "admin@admin.com",
+      password: hash,
+      nickname: "admin",
+    });
   }
-}
+};
+
+// 공연장 두개 생성
+const createTheaters = async () => {
+  await Theater.create({
+    name: "강남 예술의 전당",
+    location: "강남",
+  });
+  await Theater.create({
+    name: "세종 문화회관",
+    location: "세종",
+  });
+};
+createTheaters();
 createAdmin();
 
 module.exports = db;
