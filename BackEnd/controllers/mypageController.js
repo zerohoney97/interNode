@@ -73,82 +73,96 @@ exports.getUserReservedList = async (req, res) => {
 
         // 예매내역
         let reservedList = await ReservedList.findAll({ where: { user_id: primaryKey }, include: [{ model: Show }] });
-        // console.log(reservedList);
 
+        // 후기
+        const reviewBoard = await ReviewBoard.findAll({
+            where: { user_id: primaryKey },
+            include: [
+                {
+                    model: ReviewBoardLike,
+                    required: false
+                },
+                {
+                    model: User,
+                    attributes: ['nickname', 'img']
+                }
+            ],
+            attributes: {
+                // 후기 좋아요 개수 - likes
+                include: [[sequelize.literal('(SELECT COUNT(*) FROM ReviewBoardLikes WHERE ReviewBoardLikes.reviewboard_id = ReviewBoard.id)'), 'likes']],
+            },
+        });
 
+        // 예매내역, 공연 후기 게시글 객체 담은 배열
+        const list = reservedList.map((reserved)=>{
+            let reservedItem = {};
+            const board = reviewBoard.find((board)=>{
+                return reserved.dataValues.show_id == board.dataValues.show_id;
+            });
+            reservedItem.reservedList = reserved.dataValues;
+            if (board == null) {
+                // 프론트에서 reviewBoard가 null값이면 공연후기 작성할 수 있게 처리
+                reservedItem.reviewBoard = null;
+            } else {
+                reservedItem.reviewBoard = board.dataValues;
+            }
+            return reservedItem;
+        });
 
-
-
-        // // 후기
-        // // 예매내역 불러올때 후기도 불러오는데, 후기좋아요 개수도 계산해서 보내기
-        // const reviewBoard = await ReviewBoard.findAll({
-        //     where: { user_id: primaryKey },
-        //     include: [
-        //         {
-        //             model: ReviewBoardLike,
-        //             required: false
-        //         },
-        //     ],
-        //     attributes: {
-        //         include: [[sequelize.literal('(SELECT COUNT(*) FROM ReviewBoardLikes WHERE ReviewBoardLikes.reviewboard_id = ReviewBoard.id)'), 'likes']],
-        //     },
-        // });
-
-        // console.log(reviewBoard);
-
-
-        // let list = [];
-
-        // await Promise.all(
-        //     reservedList.map(async (el)=>{
-        //         const reviewBoard = await ReviewBoard.findOne({
-        //             where: { user_id: primaryKey, show_id : el.dataValues.show_id },
-        //             include : [{model: ReviewBoardLike, required:false}],
-        //             attributes : {
-        //                 include: [[sequelize.literal('(SELECT COUNT(*) FROM ReviewBoardLikes WHERE ReviewBoardLikes.reviewboard_id = ReviewBoard.id)'), 'likes']],
-        //             }
-        //         });
-        //         el.ReviewBoard = reviewBoard;
-        //         return el;
-        //     })
-        // );
-
-        // console.log(reservedList);
-        // return res.json(reservedList);
-
-
-
-        await Promise.all(
-            reservedList.map(async (el) => {
-                console.log(el.dataValues.show_id);
-                const reviewBoard = await ReviewBoard.findOne({
-                    where: { user_id: primaryKey, show_id: el.dataValues.show_id },
-                    include: [{ model: ReviewBoardLike, required: false }],
-                    attributes: {
-                        include: [
-                            [
-                                sequelize.literal('(SELECT COUNT(*) FROM ReviewBoardLikes WHERE ReviewBoardLikes.reviewboard_id = ReviewBoard.id)'),
-                                'likes',
-                            ],
-                        ],
-                    },
-                });
-                console.log(reviewBoard);
-                el.ReviewBoard = reviewBoard;
-                return el;
-            })
-        );
-
-        //   console.log(reservedList);
-        return res.json(reservedList);
-
-
-
-
-
+        return res.json(list);
     } catch (error) {
         console.log(error);
         return res.send("1");
     }
 }
 
+
+// 후기 게시글 작성
+exports.insertReviewBoard = async (req, res) => {
+    try {
+        const { primaryKey } = req.acc_decoded;
+        // 프론트에서 content, rates, show_id 보내줘야 함
+        const { content, rates } = req.body;
+        const { show_id } = req.params
+
+        await ReviewBoard.create({content, rates, user_id:primaryKey, show_id});
+
+        // 등록 성공
+        return res.send("0");
+    } catch (error) {
+        console.log(error);
+        return res.send("1");
+    }
+}
+
+// 후기 게시글 수정
+exports.editReviewBoard = async (req, res) => {
+    try {
+        // 프론트에서 content, rates, id 보내줘야 함
+        const { content, rates } = req.body;
+        const { id } = req.params;
+
+        await ReviewBoard.update({content, rates}, {where : {id}});
+
+        // 수정 성공
+        return res.send("0");
+    } catch (error) {
+        console.log(error);
+        return res.send("1");
+    }
+}
+
+// 후기 게시글 삭제
+exports.deleteReviewBoard = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        await ReviewBoard.destroy({where : {id}});
+
+        // 삭제 성공
+        return res.send("0");
+    } catch (error) {
+        console.log(error);
+        return res.send("1");
+    }
+}

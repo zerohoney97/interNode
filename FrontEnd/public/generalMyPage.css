@@ -568,7 +568,7 @@ hr {
    display: block;
   }
 
-  #searchContainer {
+  .searchContainer {
     position: relative;
     margin: 1rem auto;
     width: 600px;
@@ -582,7 +582,7 @@ hr {
     margin-top: 10px;
   }
 
-  #reviewInput {
+  .reviewInput {
     padding: 10px;
     width: 70%;
     height: 100%;
@@ -592,7 +592,7 @@ hr {
     resize: none;
   }
 
-  #searchButton {
+  .searchButton {
     width: 23%;
     height: 68px;
     border: none;
