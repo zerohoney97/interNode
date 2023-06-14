@@ -9,7 +9,7 @@ window.onload = async () => {
 
     try {
         // 유저 정보 요청
-        const { data } = await axios.get("http://127.0.0.1:8080/mypage/getUser", {
+        const { data } = await axios.get(url+"/mypage/getUser", {
             withCredentials: true,
         });
 
@@ -24,8 +24,6 @@ window.onload = async () => {
     } catch (error) {
         console.log(error);
     }
-
-
 
     // 닉네임 변경 버튼 클릭
     changeNickName.onclick = async () => {
@@ -46,7 +44,7 @@ window.onload = async () => {
 
             const nickname = { nickname: nickName.value.trim() };
 
-            const { data } = await axios.post("http://127.0.0.1:8080/mypage/changeNickName", nickname, {
+            const { data } = await axios.post(url+"/mypage/changeNickName", nickname, {
                 withCredentials: true,
             });
 
@@ -59,13 +57,9 @@ window.onload = async () => {
                 nickName.value = currentNickName;
             }
 
-
-
         } catch (error) {
             console.log(error);
         }
-
-
     }
 
     // 비밀번호 변경 버튼 클릭(이메일 인증할 수 있는 영역 보여주기)
@@ -73,6 +67,7 @@ window.onload = async () => {
         // 이메일 인증 인풋, 버튼 보여주기
         showMailCodeInput.style.display = "none";
         codeInput.style.display = "block";
+        codeInput.disabled = true;
         sendMailBtn.style.display = "block";
     }
 
@@ -86,7 +81,7 @@ window.onload = async () => {
         try {
             const password = { password: passwordInput.value };
 
-            const { data } = await axios.post("http://127.0.0.1:8080/mypage/changePassword", password, {
+            const { data } = await axios.post(url+"/mypage/changePassword", password, {
                 withCredentials: true,
             });
 
@@ -101,21 +96,18 @@ window.onload = async () => {
         }
     }
 
-
-
-
-
     // 이메일 인증 버튼 클릭(서버에서 메일 보낼 수 있게)
     sendMailBtn.onclick = async () => {
         const email = { email: currentEmail };
 
         try {
-            const { data } = await axios.post("http://127.0.0.1:8080/mail/sendemail", email, {
+            const { data } = await axios.post(url+"/mail/sendemail", email, {
                 withCredentials: true,
             });
             if (data == "0") {
                 alert("인증코드를 보냈습니다.");
                 sendMailBtn.style.display = "none";
+                codeInput.disabled = false;
                 codeBtn.style.display = "block";
             } else if (data == "1") {
                 alert("오류");
@@ -139,7 +131,7 @@ window.onload = async () => {
 
         const emailCode = { email: currentEmail, code: codeInput.value };
         try {
-            const { data } = await axios.post("http://127.0.0.1:8080/mail/checkcode", emailCode, {
+            const { data } = await axios.post(url+"/mail/checkcode", emailCode, {
                 withCredentials: true,
             });
             if (data == "0") {
@@ -169,10 +161,7 @@ window.onload = async () => {
         } catch (error) {
             console.log(error);
         }
-
-
     }
-
 
     // 패스워드 입력할때마다 실행되는 함수
     passwordInput.oninput = () => {
@@ -190,8 +179,6 @@ window.onload = async () => {
         }
     }
 
-
-
     // 프로필 수정 버튼 클릭
     changeProfileImg.onclick = async () => {
 
@@ -199,7 +186,7 @@ window.onload = async () => {
             const form = new FormData();
             form.append("img", fileInput.files[0]);
 
-            const { data } = await axios.post("http://127.0.0.1:8080/mypage/changeImg", form, {
+            const { data } = await axios.post(url+"/mypage/changeImg", form, {
                 withCredentials: true,
                 "Content-Type": "multipart/form-data"
             });
@@ -216,8 +203,6 @@ window.onload = async () => {
         }
     }
 
-
-
     // 내가 쓴 글 버튼 클릭
     myFreeBoard.onclick = () => {
         window.location.href = "../../freeboard/freeboard.html?page=my";
@@ -232,8 +217,6 @@ window.onload = async () => {
     fileInput.onchange = displayImage;
 
 }
-
-
 
 function displayImage() {
     const input = document.querySelector("#fileInput");

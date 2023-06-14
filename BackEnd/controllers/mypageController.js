@@ -10,6 +10,7 @@ exports.getUserInfo = async (req, res) => {
         return res.json({email : user.dataValues.email, nickname : user.dataValues.nickname, img: user.dataValues.img});
     } catch (error) {
         console.log(error);
+        return res.send("1");
     }
 }
 
@@ -49,14 +50,11 @@ exports.changePassword = async (req, res) => {
     }
 }
 
-
 // 프로필 이미지 변경
 exports.changeImg = async (req, res) => {
     try {
         const { primaryKey } = req.acc_decoded;
         const { file } = req;
-
-        console.log(file);
 
         await User.update({img:file.filename}, {where : {id:primaryKey}});
 

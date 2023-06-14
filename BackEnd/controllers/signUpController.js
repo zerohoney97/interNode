@@ -21,6 +21,7 @@ exports.checkEmail = async (req, res) => {
         return res.send("0");
     } catch (error) {
         console.log(error);
+        return res.send("2");
     }
 }
 
@@ -100,6 +101,7 @@ exports.signUp = async (req, res) => {
         return res.send("0");
     } catch (error) {
         console.log(error);
+        return res.send("1");
     }
 }
 

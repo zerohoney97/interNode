@@ -7,9 +7,7 @@ let passPass = false; // 패스워드 정규식에 맞는지
 const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()\-=_+[\]{}|\\;:'",.<>/?]{8,20}$/;
 
-
 window.onload = async () => {
-
     // 이메일 중복확인 버튼 클릭
     duplicatedBtn.onclick = async () => {
         if (!emailPass) {
@@ -21,7 +19,7 @@ window.onload = async () => {
         const email = { email: emailInput.value };
 
         try {
-            const { data } = await axios.post("http://127.0.0.1:8080/signUp/checkemail", email, {
+            const { data } = await axios.post(url+"/signUp/checkemail", email, {
                 withCredentials: true,
             });
 
@@ -38,8 +36,10 @@ window.onload = async () => {
                 emailResultDiv.style.color = "blue";
 
                 document.querySelector(".input-confirm-num-field").classList.add("flex");
+                codeInput.disabled = true;
+            } else {
+                alert("오류");
             }
-
 
         } catch (error) {
             console.log(error);
@@ -58,13 +58,14 @@ window.onload = async () => {
             alert("이미 인증된 이메일입니다.");
         } else {
             try {
-                const { data } = await axios.post("http://127.0.0.1:8080/mail/sendemail", email, {
+                const { data } = await axios.post(url+"/mail/sendemail", email, {
                     withCredentials: true,
                 });
                 if (data == "0") {
                     alert("인증코드를 보냈습니다.");
                     sendMailBtn.style.display = "none";
                     codeBtn.style.display = "block";
+                    codeInput.disabled = false;
                 } else if (data == "1") {
                     alert("오류남. 이메일을 확인해주세요.");
                 } else {
@@ -81,15 +82,13 @@ window.onload = async () => {
         if (codeInput.value == "") {
             codeResultDiv.innerText = "인증코드를 입력하세요.";
             codeResultDiv.style.color = "red";
-
         } else if (!emailDupPass) {
             codeResultDiv.innerText = "이메일 중복확인부터 해주세요.";
             codeResultDiv.style.color = "red";
-
         } else {
             const emailCode = { email: emailInput.value, code: codeInput.value };
             try {
-                const { data } = await axios.post("http://127.0.0.1:8080/mail/checkcode", emailCode, {
+                const { data } = await axios.post(url+"/mail/checkcode", emailCode, {
                     withCredentials: true,
                 });
                 if (data == "0") {
@@ -112,9 +111,7 @@ window.onload = async () => {
                 console.log(error);
             }
         }
-
     }
-
 
     // 회원가입 버튼 클릭
     signUpBtn.onclick = async () => {
@@ -135,7 +132,7 @@ window.onload = async () => {
         if (emailPass && emailDupPass && emailCheckPass) {
             try {
                 const user = { email : emailInput.value, password : passwordInput.value, nickname: nicknameInput.value };
-                const {data} = await axios.post("http://127.0.0.1:8080/signUp/", user, {
+                const {data} = await axios.post(url+"/signUp/", user, {
                     withCredentials: true,
                 });
                 if (data == "0") {
@@ -151,7 +148,6 @@ window.onload = async () => {
             alert("이메일 중복확인 및 인증을 진행해주세요.");
         }
     }
-
 
     // 닉네임 input에 입력하면
     nicknameInput.oninput = () => {
@@ -196,7 +192,4 @@ window.onload = async () => {
         }
     }
 
-
 }
-
-
