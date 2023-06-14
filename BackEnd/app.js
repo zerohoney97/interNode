@@ -7,6 +7,8 @@ const path = require("path");
 const app = e();
 const signUpRouter = require("./routers/signUp");
 const mainRouter = require("./routers/main");
+const chatRouter = require("./routers/chat");
+
 
 app.use(e.json());
 app.use(e.urlencoded({ extended: false }));
@@ -71,6 +73,8 @@ app.use(e.urlencoded({ extended: false }));
 
 app.use("/main",mainRouter);
 app.use("/signup", signUpRouter);
+app.use("/chat",chatRouter);
+
 
 // app.use(e.static(path.join(__dirname, "js")));
 app.use("/public",e.static(path.join(__dirname,"..","FrontEnd","public"),{
@@ -84,7 +88,7 @@ app.listen(8080, () => {
   console.log("gogo");
 });
 
-module.exports = server;
+//module.exports = server;
 
 
 

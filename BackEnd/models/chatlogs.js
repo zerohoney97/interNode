@@ -32,4 +32,7 @@ class ChatLog extends Sequelize.Model {
     }
 }
 
+
+
+
 module.exports = ChatLog;
