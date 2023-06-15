@@ -164,3 +164,42 @@ exports.myLikes = async (req,res)=>{
     }
 
 }
+
+// 좋아요 버튼 클릭
+
+exports.thumbsUp = async (req,res)=>{
+    const post_id = req.query.id
+    const { primaryKey } = req.acc_decoded 
+    try {
+        let result = await FreeBoardLike.findOne({
+            where: {user_id : primaryKey , freeboard_id : post_id}
+        })
+
+        if(result){
+            //삭제
+            await FreeBoardLike.destroy({where:{freeboard_id : post_id}})
+        }else{
+            //추가
+            await FreeBoardLike.create({
+                user_id : primaryKey,
+                freeboard_id : post_id
+            })
+        }
+        //현재 좋아요 수 리턴
+        const post = await FreeBoard.findOne({
+            where :{id : post_id},
+            include :[
+                {
+                    model: User,
+                    attributes : ['nickname']
+                },
+                {
+                    model :FreeBoardLike,
+                }
+            ]
+        });
+        res.json(post);
+    } catch (error) {
+        console.log(error);
+    }
+}

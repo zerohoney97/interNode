@@ -1,18 +1,16 @@
 
 window.onload = ()=>{
-    console.log(window.location.search);
     const post_id = window.location.search
     // 게시글 상세조회
     axios.get(`http://127.0.0.1:8080/freeboards/postdetail${post_id}`)
     .then((res)=>{
         const data = res.data;
-        console.log(data);
         title.textContent = res.data.title
         nickname.textContent = res.data.User.nickname
         createdAt.textContent = res.data.createdAt.slice(0,10);
         views.textContent = res.data.views
         content.textContent = res.data.content
-        likeBtn.innerHTML = `<a href=""><img src="./img/like_empty.png" alt="">${res.data.FreeBoardLikes.length}</a>`
+        likeBtn.innerHTML = `<img src="./img/like_empty.png" alt="">${res.data.FreeBoardLikes.length}`
     })
     .catch((err)=>{
         console.log(err);
@@ -21,7 +19,6 @@ window.onload = ()=>{
     // 게시글 조회수 증가
     axios.get(`http://127.0.0.1:8080/freeboards/viewsup${post_id}`)
     .then((res)=>{
-        console.log("조회수 증가 완료")
     })
     .catch((err)=>{
         console.log(err);
@@ -29,7 +26,6 @@ window.onload = ()=>{
     // 로그인시 헤더 변경
     axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
     .then((res)=>{
-      console.log(res.data);
       if(res.data){
         headerUtilLogin.textContent = `${res.data}님`
         headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
@@ -65,7 +61,6 @@ deleteBtn.onclick = ()=>{
     const post_id = window.location.search
     axios.get(`http://127.0.0.1:8080/freeboards/deletepost${post_id}`)
     .then((res)=>{
-      console.log('good')
       window.location.href = 'http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html';
     })
     .catch((err)=>{
@@ -77,7 +72,15 @@ deleteBtn.onclick = ()=>{
 
 // 좋아요 버튼 구현
 likeBtn.onclick = ()=>{
-  // axios.get('http://127.0.0.1:8080/freeboards/thumbsup')
+  let post_id = window.location.search;
+  axios.get(`http://127.0.0.1:8080/freeboards/thumbsup${post_id}`,{withCredentials : true })
+  .then((res)=>{
+    // console.log(res.data);
+    likeBtn.innerHTML = `<img src="./img/like_empty.png" alt="">${res.data.FreeBoardLikes.length}`
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
 }
 
 
