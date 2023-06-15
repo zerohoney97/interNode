@@ -524,6 +524,27 @@ hr {
     width: 100%;
   }
 
+  .rate1::before {
+    width: 16%;
+  }
+
+  .rate2::before {
+    width: 32%;
+  }
+
+  .rate3::before{
+    width: 50%;
+  }
+
+  .rate4::before{
+    width: 66%;
+  }
+
+  .rate5::before{
+    width: 82%;
+  }
+
+
   .blind {
     position: absolute;
     clip: rect(0 0 0 0);
@@ -543,10 +564,13 @@ hr {
     font-size: 10px;
     padding: 2px;
   }
+
+    /* .rate1::before, .rate2::before, .rate3::before, .rate4::before, .rate5::before */
+
   .user-review-detail div:nth-child(2) span::before {
     content: "";
     display: block;
-    width: 50px;
+    /* width: 50px; */
     height: 20px;
     background: url(https://hsecode.github.io/images_codepen/codepen_sp_star.png);
     font-size: 0;
