@@ -55,25 +55,18 @@ app.use(session({
   resave : false,
   saveUninitialized : false
 }))
-
-// app.use('/socket.io', e.static(__dirname + '/node_modules/socket.io/client-dist'));
-app.use('/socket.io', e.static(path.join(__dirname, '../node_modules/socket.io-client/dist')));
-
-// 로그인 라우터 경로 설정
-app.use("/login", loginRouter);
-app.use(e.urlencoded({ extended: false }));
-
-app.use("/main", mainRouter);
-app.use("/signup", signUpRouter);
-app.use("/chat", chatRouter);
-
-app.use("/mail", mailRouter);
-app.use("/mypage", isLogin, mypageRouter);
-app.use("/adminPage", adminPageRouter);
-app.use("/freeboards", freeBoardsRouter);
-// app.use(e.static(path.join(__dirname, "js")));
 app.use(
   "/public",
+  e.static(path.join(__dirname, "..", "FrontEnd", "public"), {
+    setHeaders: (res, filePath) => {
+      if (path.extname(filePath) === ".css") {
+        res.setHeader("Content-Type", "text/css");
+      }
+    },
+  })
+);
+app.use(
+  "/main/public",
   e.static(path.join(__dirname, "..", "FrontEnd", "public"), {
     setHeaders: (res, filePath) => {
       if (path.extname(filePath) === ".css") {
@@ -93,8 +86,36 @@ app.use(
     },
   })
 );
+
+app.use(
+  "/main/js",
+  e.static(path.join(__dirname, "..", "FrontEnd", "js"), {
+    setHeaders: (res, filePath) => {
+      if (path.extname(filePath) === ".js") {
+        res.setHeader("Content-Type", "text/javascript");
+      }
+    },
+  })
+);
+// app.use('/socket.io', e.static(__dirname + '/node_modules/socket.io/client-dist'));
+app.use('/socket.io', e.static(path.join(__dirname, '../node_modules/socket.io-client/dist')));
+
+// 로그인 라우터 경로 설정
+app.use("/login", loginRouter);
+app.use(e.urlencoded({ extended: false }));
+
+app.use("/main", mainRouter);
+app.use("/signup", signUpRouter);
+app.use("/chat", chatRouter);
+
+app.use("/mail", mailRouter);
+app.use("/mypage", isLogin, mypageRouter);
+app.use("/adminPage", adminPageRouter);
+app.use("/freeboards", freeBoardsRouter);
+// app.use(e.static(path.join(__dirname, "js")));
+
 app.use("/imgs", e.static(path.join(__dirname, "imgs")));
-app.listen(8080, () => {
+const server = app.listen(8080, () => {
   console.log("gogo");
 });
 
