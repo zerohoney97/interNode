@@ -81,7 +81,6 @@ window.onload = async () => {
 }
 
 // 오른쪽위 선택창 바꿔주는 함수
-window.onload = function () {
   axios
     .get("http://127.0.0.1:8080/login/view", { withCredentials: true })
     .then((res) => {
@@ -100,7 +99,6 @@ window.onload = function () {
     .catch((error) => {
       console.log(error);
     });
-};
 
 const createReviewContainer = (el) => {
     const reviewContainer = document.createElement("div");

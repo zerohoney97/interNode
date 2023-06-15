@@ -93,7 +93,7 @@ app.use(
     },
   })
 );
-
+app.use("/imgs", e.static(path.join(__dirname, "imgs")));
 app.listen(8080, () => {
   console.log("gogo");
 });
