@@ -95,8 +95,6 @@ const server = app.listen(8080, () => {
   console.log("gogo");
 });
 
-// const httpServer = require('http').createServer(app);
-
 // 예매 관련
 initReservationSocket(server);
 
