@@ -6,6 +6,7 @@ exports.isLogin = (req, res, next) =>{
 
     jwt.verify(access_token, process.env.ACCESS_TOKEN_KEY,(err, acc_decoded)=>{
         if(err){
+            // 다음 미들웨어로 보내짐
             res.send("다시 로그인 해주세요");
         }else{
             req.acc_decoded = acc_decoded;
@@ -14,4 +15,3 @@ exports.isLogin = (req, res, next) =>{
         }
     })
 }
-// 덩산의 코드 훔쳐가요
