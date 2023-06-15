@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { getUserInfo, changeNickName, changePassword, changeImg, getUserReservedList } = require("../controllers/mypageController");
+const { getUserInfo, changeNickName, changePassword, changeImg, getUserReservedList, insertReviewBoard, editReviewBoard, deleteReviewBoard } = require("../controllers/mypageController");
 const upload = require("../middleware/multer");
 const path = require("path");
 
@@ -28,5 +28,14 @@ router.get('/reservedList',(req,res)=>{
 
     res.sendFile(path.join(__dirname, '..', '..','FrontEnd','zerohoneyHTML','generalMyPage','reservedList.html'))
 })
+
+// 후기 등록
+router.post("/insertReviewBoard/:show_id", insertReviewBoard);
+
+// 후기 수정
+router.post("/editReviewBoard/:id", editReviewBoard);
+
+// 후기 삭제
+router.get("/deleteReviewBoard/:id", deleteReviewBoard);
 
 module.exports = router;
