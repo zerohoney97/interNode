@@ -16,6 +16,9 @@ const mypageRouter = require("./routers/mypage");
 const mailRouter = require("./routers/mail");
 const { isLogin } = require("./middleware/islogin");
 const adminPageRouter = require("./routers/adminMypage");
+
+const initReservationSocket = require("./controllers/reservationController");
+
 app.use(e.json());
 app.use(e.urlencoded({ extended: false }));
 
@@ -49,6 +52,8 @@ app.use(session({
   saveUninitialized : false
 }))
 
+// app.use('/socket.io', e.static(__dirname + '/node_modules/socket.io/client-dist'));
+app.use('/socket.io', e.static(path.join(__dirname, '../node_modules/socket.io-client/dist')));
 
 // 로그인 라우터 경로 설정
 app.use('/login',loginRouter);
@@ -86,11 +91,13 @@ app.use(
   })
 );
 
-app.listen(8080, () => {
+const server = app.listen(8080, () => {
   console.log("gogo");
 });
 
-//module.exports = server;
+// const httpServer = require('http').createServer(app);
 
+// 예매 관련
+initReservationSocket(server);
 
 

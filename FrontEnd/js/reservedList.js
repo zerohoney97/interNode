@@ -35,6 +35,7 @@ window.onload = async () => {
 
             // span1 시간정보??
             const span1 = document.createElement("span");
+            span1.innerText = "예매번호 : " + el.reservedList.reservation_num;
 
             const priceSpan = document.createElement("span");
             priceSpan.innerText = el.reservedList.Show.price;
@@ -111,7 +112,7 @@ const createReviewContainer = (el) => {
     const reviewTimeSpan = document.createElement("span");
     reviewTimeSpan.classList.add(`rate${el.reviewBoard.rates}`);
 
-    reviewTimeSpan.innerText = el.reviewBoard.createdAt;
+    reviewTimeSpan.innerText = el.reviewBoard.createdAt.substr(0,10);
     reviewTime.append(reviewTimeSpan);
 
     const likesDiv = document.createElement("div");

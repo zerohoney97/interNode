@@ -1,9 +1,14 @@
-let dropdown = document.querySelector('.dropdown');
-let dropdownContent = document.querySelector('.dropdown-content');
+// let dropdown = document.querySelector('.dropdown');
+// let dropdownContent = document.querySelector('.dropdown-content');
 
-dropdown.addEventListener('click', function() {
-    dropdownContent.classList.toggle('show');
-});
+// dropdown.addEventListener('click', function() {
+//     dropdownContent.classList.toggle('show');
+// });
+
+
+// const socket = io();
+
+
 
 let movies = document.querySelectorAll('.dropdown-content div');
 

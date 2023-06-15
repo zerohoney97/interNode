@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../public/movieseat.css" />
+    <script src="../js/static.js"></script>
+    <script src="/socket.io/socket.io.js"></script>    <link rel="stylesheet" href="../public/seat.css" />
     <link rel="stylesheet" href="../public/header.css" />
   </head>
   <body>
@@ -26,14 +27,14 @@
       </div>
     </header>
     <div class="seats-body">
-      <div class="dropdown">
+      <!-- <div class="dropdown">
         <button class="dropbtn">영화 목록</button>
         <div class="dropdown-content">
           <div>영화1</div>
           <div>영화2</div>
           <div>영화3</div>
         </div>
-      </div>
+      </div> -->
       <div class="container">
         <div class="screen">
           <h1>무대</h1>
@@ -154,7 +155,10 @@
       </div>
     </footer>
   </body>
-  <script src="../js/movieseat.js">
+  <script>
+    const socket = io();
+  </script>
+  <script src="../js/seat.js">
 
   </script>
 </html>
