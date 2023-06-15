@@ -1,75 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>generalMyPage</title>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <link rel="stylesheet" href="../../public/generalMyPage.css" />
-  <link rel="stylesheet" href="../../public/header.css" />
-</head>
-
-<body>
-  <header class="common_header">
-    <div class="header_util">
-      <div>로그인</div>
-      <div>회원가입</div>
-      <div>고객센터</div>
-      <div>마이페이지</div>
-    </div>
-    <div class="header_inner">
-      <div class="logo"></div>
-      <h1>공연/전시</h1>
-    </div>
-    <div class="header_gnb">
-      <div class="gnb_home">홈</div>
-      <div class="gnb_show">공연</div>
-    </div>
-  </header>
-  <div class="generalMyPage-container">
-    <div class="generalMyPage-header">
-      <div class="generalMyPage-header-left">마이 페이지</div>
-      <ul>
-        <li>
-          <div class="generalMyPage-header-right-box">
-            <span>나의 예매권</span> <span>0</span>
-          </div>
-        </li>
-        <li>
-          <hr />
-        </li>
-        <li>
-          <div class="generalMyPage-header-right-box">
-            <span>회원정보</span> <span>수정</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="generalMyPage-contents">
-      <div class="generalMyPage-contents-side-bar">
-        <div class="side-bar-reserved">
-          <div>예매관리</div>
-          <div style="cursor: pointer" id="confirmReserved">
-            <a href="./reservedList.html">예매확인/취소</a>
-          </div>
-        </div>
-        <div class="side-bar-board">
-          <div>자유게시판</div>
-          <div style="cursor: pointer" id="myFreeBoard">내가 쓴 글</div>
-          <div style="cursor: pointer" id="likeFreeBoard">좋아요한 글</div>
-        </div>
-        <div class="side-bar-profile">
-          <div>내 정보 변경</div>
-          <div style="cursor: pointer" id="changeUserInfo">
-            <a href="./changeProfile.html"> 닉네임/프로필 변경</a>
-          </div>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>generalMyPage</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../../public/generalMyPage.css" />
+    <link rel="stylesheet" href="../../public/header.css" />
+  </head>
+  <body>
+    <header class="common_header">
+      <div class="header_util">
+        <div id="headerUtilLogin"><a href="/login">로그인</a></div>
+        <div id="headerSignUp"><a href="/signup">회원가입</a></div>
+        <div><a href="/chat">고객센터</a></div>
+        <div><a href="/mypage/changeProfile">마이페이지</a></div>
       </div>
-      <div class="generalMyPage-contents-detail-reserved">
-        <h1 style="
+      <div class="header_inner">
+        <div class="logo"></div>
+        <h1>공연/전시</h1>
+      </div>
+      <div class="header_gnb">
+        <div class="gnb_home"><a href="/main">홈</a></div>
+        <div class="gnb_show">공연</div>
+      </div>
+    </header>
+    <div class="generalMyPage-container">
+      <div class="generalMyPage-header">
+        <div class="generalMyPage-header-left">마이 페이지</div>
+        <ul>
+          <li>
+            <div class="generalMyPage-header-right-box">
+              <span>나의 예매권</span> <span>0</span>
+            </div>
+          </li>
+          <li>
+            <hr />
+          </li>
+          <li>
+            <div class="generalMyPage-header-right-box">
+              <span>회원정보</span> <span>수정</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="generalMyPage-contents">
+        <div class="generalMyPage-contents-side-bar">
+          <div class="side-bar-reserved">
+            <div>예매관리</div>
+            <div style="cursor: pointer" id="confirmReserved">
+              <a href="/mypage/reservedList">예매확인/취소</a>
+            </div>
+          </div>
+          <div class="side-bar-board">
+            <div>자유게시판</div>
+            <div style="cursor: pointer" id="myFreeBoard">내가 쓴 글</div>
+            <div style="cursor: pointer" id="likeFreeBoard">좋아요한 글</div>
+          </div>
+          <div class="side-bar-profile">
+            <div>내 정보 변경</div>
+            <div style="cursor: pointer" id="changeUserInfo">
+              <a href="/mypage/changeProfile"> 닉네임/프로필 변경</a>
+            </div>
+          </div>
+        </div>
+        <div class="generalMyPage-contents-detail-reserved">
+          <h1
+            style="
               width: 100%;
               display: flex;
               justify-content: center;

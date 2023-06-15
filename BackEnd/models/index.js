@@ -107,7 +107,19 @@ const createTheaters = async () => {
     location: "세종",
   });
 };
-createTheaters();
-createAdmin();
+
+// 신고테이블 임의 생성
+const createReport = async () => {
+  await Report.create({
+    type: "자유 게시판",
+    typeId: 1,
+    title: "심한 말 나쁜 말",
+    content: "알고보니 더 심한말",
+    user_id: 2,
+  });
+};
+// createReport();
+// createTheaters();
+// createAdmin();
 
 module.exports = db;

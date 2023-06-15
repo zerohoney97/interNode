@@ -1,107 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../public/login.css">
-    <link rel="stylesheet" href="../public/header.css">
-</head>
-<body>
-      <header class="common_header">
-        <div class="header_util">
-            <div>로그인</div>
-            <div>회원가입</div>
-            <div>고객센터</div>
-            <div>마이페이지</div>
-        </div>
-        <div class="header_inner">
-            <div class="logo"></div>
-            <h1>공연/전시</h1>
-        </div>
-        <div class="header_gnb">
-            <div class="gnb_home">홈</div>
-            <div class="gnb_show">공연</div>
-        </div>
+    <link rel="stylesheet" href="../public/login.css" />
+    <link rel="stylesheet" href="../public/header.css" />
+  </head>
+  <body>
+    <header class="common_header">
+      <div class="header_util">
+        <div id="headerUtilLogin"><a href="/login">로그인</a></div>
+        <div id="headerSignUp"><a href="/signup">회원가입</a></div>
+        <div><a href="/chat">고객센터</a></div>
+        <div><a href="/mypage/changeProfile">마이페이지</a></div>
+      </div>
+      <div class="header_inner">
+        <div class="logo"></div>
+        <h1>공연/전시</h1>
+      </div>
+      <div class="header_gnb">
+        <div class="gnb_home"><a href="/main">홈</a></div>
+        <div class="gnb_show">공연</div>
+      </div>
     </header>
     <div class="box">
-        <div class="container">
-            <div class="top-header">
-                <div class="login-header">Login</div>
-            </div>
-            <div class="idErr" style="font-size: 21px; color: #ef3e42; font-weight: 900;">비밀번호를 다시 확인해주세요.</div>
-            <form action="http://127.0.0.1:8080/login" method="post">
-                <div class="input-field">
-                    <input type="text" class="input" placeholder="Username" required name="user_id">
-                </div>
-                <div class="input-field">
-                    <input type="password" class="input" placeholder="Password" required name="user_pw">
-                </div>
-               <div class="contents-wrap">
-                <!-- <input type="button" id="btn_login" class="btn-red" alt="로그인" value="로그인" aria-label="로그인"> -->
-                <button id="btn_login" class="btn-red">로그인</button>
-               </div>
-            </form>
-
-           <div class="bottom">
-                <div class="left">
-                    <input type="checkbox" id="check">
-                    <label for="check">자동로그인</label>
-                </div>
-                <div class="left">
-                    <input type="checkbox" id="check">
-                    <label for="check">아이디 저장</label>
-                </div>
-           </div>
-
-           <p class="font-color">개인정보 보호를 위해 공용 pc에서 사용 후 SNS 계정의 로그아웃
-            상태를 반드시 확인해주세요.
-           </p>
-
-           <div class="border-bottom"></div>
-
-           <div class="pointer">아이디 찾기 | 비밀번호 찾기 | 회원가입</div>
-
-           <br>
-           <div class="pointer">휴대폰 번호로 로그인 (광고) ></div>
-           
-           <br>
-           <img src="https://openimage.interpark.com/.ui/openId/new/businessMemberShip.png" 
-           alt="회사, 단체 구매는 사업자회원으로 가입하여 이용해 보세요!" class="pointer">
-
+      <div class="container">
+        <div class="top-header">
+          <div class="login-header">Login</div>
         </div>
+        <div
+          class="idErr"
+          style="font-size: 21px; color: #ef3e42; font-weight: 900"
+        >
+          비밀번호를 다시 확인해주세요.
+        </div>
+        <form action="http://127.0.0.1:8080/login" method="post">
+          <div class="input-field">
+            <input
+              type="text"
+              class="input"
+              placeholder="Username"
+              required
+              name="user_id"
+            />
+          </div>
+          <div class="input-field">
+            <input
+              type="password"
+              class="input"
+              placeholder="Password"
+              required
+              name="user_pw"
+            />
+          </div>
+          <div class="contents-wrap">
+            <!-- <input type="button" id="btn_login" class="btn-red" alt="로그인" value="로그인" aria-label="로그인"> -->
+            <button id="btn_login" class="btn-red">로그인</button>
+          </div>
+        </form>
+
+        <div class="bottom">
+          <div class="left">
+            <input type="checkbox" id="check" />
+            <label for="check">자동로그인</label>
+          </div>
+          <div class="left">
+            <input type="checkbox" id="check" />
+            <label for="check">아이디 저장</label>
+          </div>
+        </div>
+
+        <p class="font-color">
+          개인정보 보호를 위해 공용 pc에서 사용 후 SNS 계정의 로그아웃 상태를
+          반드시 확인해주세요.
+        </p>
+
+        <div class="border-bottom"></div>
+
+        <div class="pointer">아이디 찾기 | 비밀번호 찾기 | 회원가입</div>
+
+        <br />
+        <div class="pointer">휴대폰 번호로 로그인 (광고) ></div>
+
+        <br />
+        <img
+          src="https://openimage.interpark.com/.ui/openId/new/businessMemberShip.png"
+          alt="회사, 단체 구매는 사업자회원으로 가입하여 이용해 보세요!"
+          class="pointer"
+        />
+      </div>
     </div>
     <footer class="common_footer">
-        <div class="footer_menu">
-            <div>회사소개</div>
-            <div>이용약관</div>
-            <div>개인정보처리방침</div>
-            <div>티켓판매안내</div>
-                <div>공지사항</div>
-                <div>고객센터</div>
-            </div>
-            <hr>
-            <div class="footer_inner">
-                <span style="font-weight: bold;">인터노드 주식회사</span> <br>
-                <span>주소: 13487 경기도 성남시 분당구 대왕판교로645번길 16 NHN 플레이뮤지엄</span>
-                <span class="|">|</span>
-                <span>대표이사 : 왕문주</span>
-                <span class="|">|</span>
-                <span>사업자 등록번호 :144-81-25090</span> <br>
-                <span>1588-9000</span>
-                <span class="|">|</span>
-                <span>membership@internode.com</span>
-                <span class="|">|</span>
-                <span>통신판매업 신고번호: 제 2015-경기성남-0661호</span>
-                <span class="|">|</span>
-                <span>개인정보보호 책임자 : 박민우</span> <br>
-                <span style="color: rgb(169, 169, 169);">Copyright © NHN LINK Corporation. All rights reserved.</span>
-    
-            </div>
-            <div>
-                <img src="" alt="">
-            </div>
-        </footer>
-</body>
+      <div class="footer_menu">
+        <div>회사소개</div>
+        <div>이용약관</div>
+        <div>개인정보처리방침</div>
+        <div>티켓판매안내</div>
+        <div>공지사항</div>
+        <div>고객센터</div>
+      </div>
+      <hr />
+      <div class="footer_inner">
+        <span style="font-weight: bold">인터노드 주식회사</span> <br />
+        <span
+          >주소: 13487 경기도 성남시 분당구 대왕판교로645번길 16 NHN
+          플레이뮤지엄</span
+        >
+        <span class="|">|</span>
+        <span>대표이사 : 왕문주</span>
+        <span class="|">|</span>
+        <span>사업자 등록번호 :144-81-25090</span> <br />
+        <span>1588-9000</span>
+        <span class="|">|</span>
+        <span>membership@internode.com</span>
+        <span class="|">|</span>
+        <span>통신판매업 신고번호: 제 2015-경기성남-0661호</span>
+        <span class="|">|</span>
+        <span>개인정보보호 책임자 : 박민우</span> <br />
+        <span style="color: rgb(169, 169, 169)"
+          >Copyright © NHN LINK Corporation. All rights reserved.</span
+        >
+      </div>
+      <div>
+        <img src="" alt="" />
+      </div>
+    </footer>
+  </body>
 </html>

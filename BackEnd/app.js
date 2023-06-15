@@ -10,7 +10,7 @@ const mainRouter = require("./routers/main");
 const chatRouter = require("./routers/chat");
 
 const loginRouter = require("./routers/login");
-const freeBoardsRouter = require('./routers/freeBoard');
+const freeBoardsRouter = require("./routers/freeBoard");
 
 const mypageRouter = require("./routers/mypage");
 const mailRouter = require("./routers/mail");
@@ -24,7 +24,11 @@ app.use(e.urlencoded({ extended: false }));
 
 app.use(
   cors({
-    origin: ["http://127.0.0.1:5500","http://127.0.0.1:8080","http://localhost:8080"],
+    origin: [
+      "http://127.0.0.1:5500",
+      "http://127.0.0.1:8080",
+      "http://localhost:8080",
+    ],
     credentials: true,
   })
 );
@@ -56,18 +60,17 @@ app.use(session({
 app.use('/socket.io', e.static(path.join(__dirname, '../node_modules/socket.io-client/dist')));
 
 // 로그인 라우터 경로 설정
-app.use('/login',loginRouter);
+app.use("/login", loginRouter);
 app.use(e.urlencoded({ extended: false }));
 
 app.use("/main", mainRouter);
 app.use("/signup", signUpRouter);
-app.use("/chat",chatRouter);
-
+app.use("/chat", chatRouter);
 
 app.use("/mail", mailRouter);
 app.use("/mypage", isLogin, mypageRouter);
 app.use("/adminPage", adminPageRouter);
-app.use("/freeboards",freeBoardsRouter);
+app.use("/freeboards", freeBoardsRouter);
 // app.use(e.static(path.join(__dirname, "js")));
 app.use(
   "/public",
@@ -91,7 +94,7 @@ app.use(
   })
 );
 
-const server = app.listen(8080, () => {
+app.listen(8080, () => {
   console.log("gogo");
 });
 

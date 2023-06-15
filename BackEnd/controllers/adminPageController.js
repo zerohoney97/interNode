@@ -1,4 +1,4 @@
-const { Show, ShowDateInfo } = require("../models");
+const { Show, ShowDateInfo, User, Report } = require("../models");
 
 // 공연 등록하기
 exports.enrollShow = async (req, res) => {
@@ -36,9 +36,7 @@ exports.enrollShow = async (req, res) => {
       show_id: show.dataValues.id,
     });
 
-    res.redirect(
-      "http://127.0.0.1:5500/FrontEnd/zerohoneyHTML/adminPage/showControll.html"
-    );
+    res.redirect("/adminPage");
   } catch (error) {
     console.log(error);
   }
@@ -86,14 +84,73 @@ exports.updateShow = async (req, res) => {
       { where: { id } }
     );
     console.log(showStartDate, "시작 날짜");
-    await ShowDateInfo.update({
-      startDate: showStartDate,
-      endDate: showEndDate,
-      startTime: showStartTime,
-    },{where:{id}});
-    res.redirect(
-      "http://127.0.0.1:5500/FrontEnd/zerohoneyHTML/adminPage/showControll.html"
+    await ShowDateInfo.update(
+      {
+        startDate: showStartDate,
+        endDate: showEndDate,
+        startTime: showStartTime,
+      },
+      { where: { id } }
     );
+    res.redirect("/adminPage");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 유저의 모든 리스트를 불러오는 함수
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    const data = await User.findAll();
+
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 신고된 유저를 가져오는 함수
+exports.getAllReportedUsers = async (req, res) => {
+  try {
+    let data = await User.findAll({ include: Report });
+    let newDataArray = [];
+    data.forEach((a) => {
+      if (a.dataValues.Reports.length != 0) {
+        newDataArray.push([
+          a.dataValues,
+          a.dataValues.Reports.map((ele) => {
+            console.log(ele.dataValues);
+            return ele.dataValues;
+          }),
+        ]);
+      }
+    });
+    console.log(newDataArray);
+    res.json(newDataArray);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 신고된 유저 제제
+exports.applySanction = async (req, res) => {
+  try {
+    const { id, report_stack } = req.body.user;
+    const reportedElementId = req.body.reportedElementId;
+    await User.update({ report_stack }, { where: { id } });
+    await Report.destroy({ where: { id: reportedElementId } });
+    res.send("제제성공");
+  } catch (error) {
+    console.log(error);
+  }
+};
+// 반려된 유저 제제
+exports.noptApplySanction = async (req, res) => {
+  try {
+    const reportedElementId = req.body.reportedElementId;
+    await Report.destroy({ where: { id: reportedElementId } });
+    res.send("반려성공");
   } catch (error) {
     console.log(error);
   }
