@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { viewPostAll, insertPost, selectPost, viewsUp, updatePost , deletePost} = require('../controllers/freeBoardsController');
+const { viewPostAll, insertPost, selectPost, viewsUp, updatePost , deletePost , myPost, myLikes} = require('../controllers/freeBoardsController');
 const { isLogin } = require('../middleware/islogin');
 
 //전체 게시글 조회
@@ -18,6 +18,12 @@ router.get('/viewsup/?' , viewsUp);
 router.post('/updatepost/?', updatePost);
 
 //게시글 삭제
-router.get('/deletepost', deletePost)
+router.get('/deletepost', deletePost);
+
+//내가 쓴 글 조회
+router.get('/mypost',isLogin,myPost);
+
+//내가 좋아요한 글 조회
+router.get('/mylikes',isLogin, myLikes);
 
 module.exports = router;

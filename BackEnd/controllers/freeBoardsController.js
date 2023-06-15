@@ -15,7 +15,6 @@ exports.viewPostAll = async (req,res)=>{
             ]
         });
         res.json(list);
-        console.log(list);
     } catch (error) {
         console.log(error);
     }
@@ -99,4 +98,69 @@ exports.deletePost = async (req,res)=>{
     } catch (error) {
         console.log(error);
     }
+}
+
+// 내가 쓴 글 조회
+exports.myPost = async (req,res)=>{
+    const { primaryKey } = req.acc_decoded;
+    try {
+        const list = await FreeBoard.findAll({
+            where : {user_id : primaryKey},
+            include :[
+                {
+                    model: User,
+                    attributes : ['nickname']
+                },
+                {
+                    model :FreeBoardLike,
+                }
+            ]
+        });
+        res.json(list);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// 내가 좋아요 한 글 조회
+exports.myLikes = async (req,res)=>{
+    const { primaryKey } = req.acc_decoded;
+    try {
+        const list = await FreeBoardLike.findAll({
+            where : {user_id : primaryKey},
+            include :[
+                {
+                    model : FreeBoard
+                },
+                {
+                    model : User,
+                    attributes : ['nickname']
+                }
+
+            ]
+        })
+
+        let idList = [];
+        for(let el of list){
+            idList.push(el.freeboard_id)
+        }
+
+        // console.log(list)
+
+        const fav = await FreeBoard.findAll({
+            where : {id : idList},
+            include : [
+                {
+                    model : FreeBoardLike
+                }
+            ]
+        })
+        
+        let data = [list,fav]
+        
+        res.json(data);
+    } catch (error) {
+        console.log(error);
+    }
+
 }

@@ -75,4 +75,9 @@ deleteBtn.onclick = ()=>{
 
 }
 
+// 좋아요 버튼 구현
+likeBtn.onclick = ()=>{
+  // axios.get('http://127.0.0.1:8080/freeboards/thumbsup')
+}
+
 
