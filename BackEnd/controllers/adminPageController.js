@@ -36,9 +36,7 @@ exports.enrollShow = async (req, res) => {
       show_id: show.dataValues.id,
     });
 
-    res.redirect(
-      "http://127.0.0.1:5500/FrontEnd/zerohoneyHTML/adminPage/showControll.html"
-    );
+    res.redirect("/adminPage");
   } catch (error) {
     console.log(error);
   }
@@ -94,9 +92,7 @@ exports.updateShow = async (req, res) => {
       },
       { where: { id } }
     );
-    res.redirect(
-      "http://127.0.0.1:5500/FrontEnd/zerohoneyHTML/adminPage/showControll.html"
-    );
+    res.redirect("/adminPage");
   } catch (error) {
     console.log(error);
   }
@@ -122,9 +118,9 @@ exports.getAllReportedUsers = async (req, res) => {
     data.forEach((a) => {
       if (a.dataValues.Reports.length != 0) {
         newDataArray.push([
-          a.dataValues.nickname,
+          a.dataValues,
           a.dataValues.Reports.map((ele) => {
-            console.log(ele.dataValues)
+            console.log(ele.dataValues);
             return ele.dataValues;
           }),
         ]);
@@ -132,6 +128,29 @@ exports.getAllReportedUsers = async (req, res) => {
     });
     console.log(newDataArray);
     res.json(newDataArray);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 신고된 유저 제제
+exports.applySanction = async (req, res) => {
+  try {
+    const { id, report_stack } = req.body.user;
+    const reportedElementId = req.body.reportedElementId;
+    await User.update({ report_stack }, { where: { id } });
+    await Report.destroy({ where: { id: reportedElementId } });
+    res.send("제제성공");
+  } catch (error) {
+    console.log(error);
+  }
+};
+// 반려된 유저 제제
+exports.noptApplySanction = async (req, res) => {
+  try {
+    const reportedElementId = req.body.reportedElementId;
+    await Report.destroy({ where: { id: reportedElementId } });
+    res.send("반려성공");
   } catch (error) {
     console.log(error);
   }

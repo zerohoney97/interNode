@@ -6,7 +6,9 @@ const {
   updateShow,
   getAllUsers,
   getAllReportedUsers,
-} = require("../controllers/showController");
+  applySanction,
+  noptApplySanction,
+} = require("../controllers/adminPageController");
 const upload = require("../middleware/multer");
 
 // 어드민페이지 메인
@@ -62,6 +64,10 @@ router.get("/userReport", (req, res) => {
 // 신고된 유저 가져오기
 router.get("/getReportedUser", getAllReportedUsers);
 
+// 신고된 유저 제제
+router.post("/updateUserReport", applySanction);
+// 신고된 유저 반려
+router.post("/notUpdateUserReport", noptApplySanction);
 // 공연등록
 router.post("/enroll", upload.single("showImg"), enrollShow);
 

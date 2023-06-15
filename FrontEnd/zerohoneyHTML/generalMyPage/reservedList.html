@@ -12,17 +12,17 @@
   <body>
     <header class="common_header">
       <div class="header_util">
-        <div>로그인</div>
-        <div>회원가입</div>
-        <div>고객센터</div>
-        <div>마이페이지</div>
+        <div id="headerUtilLogin"><a href="/login">로그인</a></div>
+        <div id="headerSignUp"><a href="/signup">회원가입</a></div>
+        <div><a href="/chat">고객센터</a></div>
+        <div><a href="/mypage/changeProfile">마이페이지</a></div>
       </div>
       <div class="header_inner">
         <div class="logo"></div>
         <h1>공연/전시</h1>
       </div>
       <div class="header_gnb">
-        <div class="gnb_home">홈</div>
+        <div class="gnb_home"><a href="/main">홈</a></div>
         <div class="gnb_show">공연</div>
       </div>
     </header>
@@ -51,7 +51,7 @@
           <div class="side-bar-reserved">
             <div>예매관리</div>
             <div style="cursor: pointer" id="confirmReserved">
-              <a href="./reservedList.html">예매확인/취소</a>
+              <a href="/mypage/reservedList">예매확인/취소</a>
             </div>
           </div>
           <div class="side-bar-board">
@@ -62,7 +62,7 @@
           <div class="side-bar-profile">
             <div>내 정보 변경</div>
             <div style="cursor: pointer" id="changeUserInfo">
-              <a href="./changeProfile.html"> 닉네임/프로필 변경</a>
+              <a href="/mypage/changeProfile"> 닉네임/프로필 변경</a>
             </div>
           </div>
         </div>
@@ -336,8 +336,6 @@
   </body>
 
   <script>
-
-
     // changeUserInfo.onclick = () => {
     //   document
     //     .querySelector(".generalMyPage-contents-detail-profile")

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { sendEmail, checkCode } = require("../controllers/mailController");
+const path = require("path");
 
 // 이메일 인증 메일 보내기
 router.post("/sendemail", sendEmail);

@@ -36,7 +36,7 @@ exports.login = async (req,res)=>{
 
             req.session.access_token = accessToken;
 
-            res.redirect('http://127.0.0.1:5500/FrontEnd/mainpage/mainpage.html');
+            res.redirect('/main');
         }else{
             return res.redirect('http://127.0.0.1:5500/FrontEnd/login/pwErr.html')
         }
