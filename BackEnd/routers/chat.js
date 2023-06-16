@@ -3,10 +3,10 @@ const {ChatLog, User} = require("../models")
 
 // /chat/create
 router.post("/create",async(req,res)=>{
-   const{user_id,message}=req.body.data 
+   const{user_id,message,isRead,receiver}=req.body.data 
     console.log(" 유저  ",user_id)
     console.log("채팅 내용",message)
-    await ChatLog.create({content:message,user_id});
+    await ChatLog.create({content:message,user_id,isRead,receiver});
     res.send("채팅 완료~")
 });
 

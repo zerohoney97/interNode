@@ -41,6 +41,7 @@ db.Sheet = Sheet;
 db.ShowDateInfo = ShowDateInfo;
 db.Show = Show;
 db.Theater = Theater;
+
 User.init(sequelize);
 
 ChatLog.init(sequelize);
