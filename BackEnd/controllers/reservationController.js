@@ -3,24 +3,25 @@ const { Sheet } = require("../models");
 
 // getSeatsInfo : showId로 현재 좌석 정보 반환
 // error : 오류
+// : 결제할 좌석
 
 let seatArr = [];
 
 const initReservationSocket = (server) => {
     const io = socketIO(server);
 
-    // const io = socketIO(server, { path: '/socket.io' });
-
-    io.on("connection", (socket) => {
+    io.on("connection", async (socket) => {
         console.log("새로운 클라이언트 접속");
-
+        // await Sheet.create({reservation_num : "0607", sheets_array: "[[0,0,0], [0,0,0]]", show_id : 1});
         try {
             // 좌석 정보 요청할때
-            socket.on("getSeatsInfo", (showId, reservation_num) => {
+            socket.on("getSeatsInfo", async (showId, reservation_num) => {
+                //  예매번호 room 생성 소켓 join
 
-                const seats = getSeatsInfo(showId, reservation_num);
+                const seats = await getSeatsInfo(showId, reservation_num);
                 // 좌석 정보 반환
                 socket.emit("getSeatsInfo", seats);
+
             });
 
         } catch (error) {
