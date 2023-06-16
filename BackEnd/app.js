@@ -31,6 +31,9 @@ app.use(
       "http://ec2-52-79-43-68.ap-northeast-2.compute.amazonaws.com:8080",
       "http://52.79.43.68:8080",
     ],
+    methods: ["GET", "POST", "PUT", "DELETE"], // include all the methods you want to allow
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
