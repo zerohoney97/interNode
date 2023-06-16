@@ -11,7 +11,7 @@ const chatRouter = require("./routers/chat");
 
 const loginRouter = require("./routers/login");
 const freeBoardsRouter = require("./routers/freeBoard");
-
+const reservationRouter = require("./routers/reservation");
 const mypageRouter = require("./routers/mypage");
 const mailRouter = require("./routers/mail");
 const { isLogin } = require("./middleware/islogin");
@@ -96,7 +96,7 @@ app.use(e.urlencoded({ extended: false }));
 app.use("/main", mainRouter);
 app.use("/signup", signUpRouter);
 app.use("/chat", chatRouter);
-
+app.use("/reservation", isLogin, reservationRouter);
 app.use("/mail", mailRouter);
 app.use("/mypage", isLogin, mypageRouter);
 app.use("/adminPage", adminPageRouter);

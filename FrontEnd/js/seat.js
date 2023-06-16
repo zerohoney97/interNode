@@ -5,22 +5,29 @@
 //     dropdownContent.classList.toggle('show');
 // });
 
+const reservation_num = "0607";
+const showId = 1;
 
 // socket 연결
 const socket = io();
 // 임의로 showid, reservation_num 작성
+socket.emit("joinReservation", { showId, reservation_num });
+
+
 // reservation_num => 공연아이디, 날짜 정보 포함
-socket.emit("getSeatsInfo", 1, "0607");
+socket.emit("getSeatsInfo", { reservation_num });
 socket.on("getSeatsInfo", (seats) => {
   console.log(seats);
 
   // 좌석 정보 받아와서 좌석 출력(요소 생성, 결제/미결제 좌석에 따라 다르게 출력)
+  // 함수 따로 작성해서 getSeatsInfo, joinReservation, getSeat 이벤트 발생했을때 작성해주기
 })
 
+// getSeat
 // 좌석 눌렀을때 이 좌석이 선점되었는지 확인하는 이벤트 전송(서버에서는 전역변수에서 확인. db건드리지 말고)
 // 만약 지금이랑 seats 정보가 다르면 다시 출력?
 
-// 좌석 결제 버튼 눌렀을때 결제하겠다는 이벤트 emit(서버에서 db에 수정해서 저장하고(전역변수에도 저장) 다시 room 내의 모든 클라이언트에게 showarr전역변수 전송)
+// 좌석 결제 버튼 눌렀을때 결제하겠다는 이벤트 emit(서버에서 db에 수정해서 저장하고(전역변수에도 저장) 다시 room 내의 모든 클라이언트에게 showarr전역변수 전송. getSeatsInfo 이벤트로 보내주면 되겠다)
 // 서버에 유저아이디도 전송
 //
 
