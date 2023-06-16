@@ -82,7 +82,7 @@ window.onload = async () => {
 
 // 오른쪽위 선택창 바꿔주는 함수
   axios
-    .get("http://127.0.0.1:8080/login/view", { withCredentials: true })
+    .get(" /login/view", { withCredentials: true })
     .then((res) => {
       console.log(res.data);
       if (res.data) {

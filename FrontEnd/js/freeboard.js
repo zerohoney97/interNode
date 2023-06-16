@@ -2,287 +2,285 @@ let list;
 let pagenum;
 let lastPageNum;
 
-
-
-window.onload = ()=>{
-    // 헤더 닉네임 가져오기
-    axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
-    .then((res)=>{
-        if(res.data){
-        headerUtilLogin.textContent = `${res.data}님`
-        headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
-        }
+window.onload = () => {
+  // 헤더 닉네임 가져오기
+  axios
+    .get(" /login/view", { withCredentials: true })
+    .then((res) => {
+      if (res.data) {
+        headerUtilLogin.textContent = `${res.data}님`;
+        headerUtilSignUp.innerHTML =
+          '<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>';
+      }
     })
-    .catch((error)=>{
-        console.log(error);
-    })
-    const UrlParams = new URLSearchParams(window.location.search);
-    const pageValue = UrlParams.get('page');
+    .catch((error) => {
+      console.log(error);
+    });
+  const UrlParams = new URLSearchParams(window.location.search);
+  const pageValue = UrlParams.get("page");
 
-    if(pageValue == 'my'){
-        console.log('내가쓴글')
-        axios.get("http://127.0.0.1:8080/freeboards/mypost",{withCredentials: true}) // 내가 쓴 글 전체 조회
-        .then((res)=>{
-            console.log("여기까지완료")
-            list = res.data;
-            console.log(list)
-            pagenate(pagenum);
-            addBtnsEvent();
-            //목록 클릭시 전체 게시글로 가는 문제
-            
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-        pagenum = 1;
-    }else if(pageValue == 'likes'){
-        console.log("내가 좋아요한 글")
-        axios.get("http://127.0.0.1:8080/freeboards/mylikes",{withCredentials : true}) // 내가 좋아요한 글 전체 조회
-        .then((res)=>{
-            list = res.data[0];
-            fav = res.data[1];
-            console.log(list);
-            console.log('여기는fav')
-            console.log(fav)
-            pagenateLike(pagenum);
-            addBtnsEvent();
-        })
-        .catch((err)=>{
-            console.log('????')
-            console.log(err);
-        })
-        pagenum = 1;
-    }else{
-        // 서버에서 자유게시판 리스트 받아오는 함수
-        // 서버에서 글 목록 가져오기
-        axios.get('http://127.0.0.1:8080/freeboards')
-        .then((res)=>{
-            list = res.data;
-            // 페이지네이션 함수
-            pagenate(pagenum);
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-    
-        // 임의로 리스트 정의
-        // list = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
-    
-        // 첫 페이지는 1번
-        pagenum = 1;
-    
-        // 이전/다음 버튼 이벤트 등록
+  if (pageValue == "my") {
+    console.log("내가쓴글");
+    axios
+      .get(" /freeboards/mypost", { withCredentials: true }) // 내가 쓴 글 전체 조회
+      .then((res) => {
+        console.log("여기까지완료");
+        list = res.data;
+        console.log(list);
+        pagenate(pagenum);
         addBtnsEvent();
+        //목록 클릭시 전체 게시글로 가는 문제
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    pagenum = 1;
+  } else if (pageValue == "likes") {
+    console.log("내가 좋아요한 글");
+    axios
+      .get(" /freeboards/mylikes", { withCredentials: true }) // 내가 좋아요한 글 전체 조회
+      .then((res) => {
+        list = res.data[0];
+        fav = res.data[1];
+        console.log(list);
+        console.log("여기는fav");
+        console.log(fav);
+        pagenateLike(pagenum);
+        addBtnsEvent();
+      })
+      .catch((err) => {
+        console.log("????");
+        console.log(err);
+      });
+    pagenum = 1;
+  } else {
+    // 서버에서 자유게시판 리스트 받아오는 함수
+    // 서버에서 글 목록 가져오기
+    axios
+      .get(" /freeboards")
+      .then((res) => {
+        list = res.data;
+        // 페이지네이션 함수
+        pagenate(pagenum);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-    }
-    
+    // 임의로 리스트 정의
+    // list = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 
-}
+    // 첫 페이지는 1번
+    pagenum = 1;
+
+    // 이전/다음 버튼 이벤트 등록
+    addBtnsEvent();
+  }
+};
 
 // list는 자유게시판 리스트
 // 페이지네이션
 const pagenate = (pagenum) => {
-    const pageCount = 10;
-    const length = list.length;
+  const pageCount = 10;
+  const length = list.length;
 
-    lastPageNum  = Math.ceil(length/pageCount);
-    const lastBoard = length%pageCount;
+  lastPageNum = Math.ceil(length / pageCount);
+  const lastBoard = length % pageCount;
 
-    let first = (pagenum-1) * pageCount; // 첫번째로 렌더될 배열 요소의 인덱스
-    let last = pagenum * pageCount; // 마지막로 렌더될 배열 요소의 인덱스 + 1
+  let first = (pagenum - 1) * pageCount; // 첫번째로 렌더될 배열 요소의 인덱스
+  let last = pagenum * pageCount; // 마지막로 렌더될 배열 요소의 인덱스 + 1
 
-    // 마지막 페이지일때
-    if(pagenum == lastPageNum && lastBoard != 0){
-        last = first + lastBoard;
-    }
-    freeboards.innerHTML = "";
+  // 마지막 페이지일때
+  if (pagenum == lastPageNum && lastBoard != 0) {
+    last = first + lastBoard;
+  }
+  freeboards.innerHTML = "";
 
-    for (let index = first; index < last; index++) {
-        // 이런식으로 list에서 인덱스값으로 board 뽑아와야함
-        const board = list[index];
+  for (let index = first; index < last; index++) {
+    // 이런식으로 list에서 인덱스값으로 board 뽑아와야함
+    const board = list[index];
 
-        // 임의로 값 정함. board.title 이런식으로 정의해야함
-        // const title = "제목1";
-        // const nickname = "닉네임";
-        // const likes = 15;
-        // const views = 100;
-        // const createdAt = "2023-06-07";
+    // 임의로 값 정함. board.title 이런식으로 정의해야함
+    // const title = "제목1";
+    // const nickname = "닉네임";
+    // const likes = 15;
+    // const views = 100;
+    // const createdAt = "2023-06-07";
 
-        
-        freeboards.innerHTML += 
-        `<tr>
-            <td class="no">${index+1}</td>
-            <td class="title"><a href="/freeboard/freeboardDetail?id=${board.id}">${board.title}</a></td>
+    freeboards.innerHTML += `<tr>
+            <td class="no">${index + 1}</td>
+            <td class="title"><a href="/freeboard/freeboardDetail?id=${
+              board.id
+            }">${board.title}</a></td>
             <td class="nickname">${board.User.nickname}</td>
             <td class="likes">${board.FreeBoardLikes.length}</td>
             <td class="views">${board.views}</td>
-            <td class="createdAt">${board.createdAt.slice(0,10)}</td>
+            <td class="createdAt">${board.createdAt.slice(0, 10)}</td>
         </tr>`;
+  }
+
+  pageNumBtns.innerHTML = "";
+
+  prevBtn.style.visibility = "visible";
+  nextBtn.style.visibility = "visible";
+
+  // 현재 첫번째 페이지면 이전버튼 안나타나게
+  if (pagenum == 1) {
+    prevBtn.style.visibility = "hidden";
+  }
+
+  // 현재 마지막 페이지면 다음버튼 안나타나게
+  if (pagenum == lastPageNum) {
+    nextBtn.style.visibility = "hidden";
+  }
+
+  for (let index = 1; index < lastPageNum + 1; index++) {
+    const pageBtn = document.createElement("div");
+    pageBtn.classList.add("pageBtn");
+    pageBtn.classList.add("btn");
+
+    // 현재 페이지 버튼이면
+    if (index == pagenum) {
+      pageBtn.classList.add("current");
     }
 
-    pageNumBtns.innerHTML = "";
+    pageBtn.innerText = index;
 
-    prevBtn.style.visibility = "visible";
-    nextBtn.style.visibility = "visible";
+    pageBtn.onclick = () => {
+      pagenate(index);
+    };
 
-    // 현재 첫번째 페이지면 이전버튼 안나타나게
-    if (pagenum == 1) {
-        prevBtn.style.visibility = "hidden";
-    }
-
-    // 현재 마지막 페이지면 다음버튼 안나타나게
-    if (pagenum == lastPageNum) {
-        nextBtn.style.visibility = "hidden";
-    }
-
-    for (let index = 1; index < lastPageNum+1; index++) {
-        const pageBtn = document.createElement("div");
-        pageBtn.classList.add("pageBtn");
-        pageBtn.classList.add("btn");
-
-        // 현재 페이지 버튼이면
-        if (index == pagenum) {
-            pageBtn.classList.add("current");
-        }
-
-        pageBtn.innerText = index;
-
-        pageBtn.onclick = () => {
-            pagenate(index);
-        };
-
-        pageNumBtns.append(pageBtn);
-    }
-}
+    pageNumBtns.append(pageBtn);
+  }
+};
 
 // 다음, 이전 버튼에 이벤트 추가
 const addBtnsEvent = () => {
-    prevBtn.onclick = () => {
-        goPrev();
-    };
-    nextBtn.onclick = () => {
-        goNext();
-    };
-}
+  prevBtn.onclick = () => {
+    goPrev();
+  };
+  nextBtn.onclick = () => {
+    goNext();
+  };
+};
 
 // 다음 페이지
 const goPrev = () => {
-    pagenum -= 1;
-    if (pagenum < 1) {
-        pagenum = 1;
-    }
-    pagenate(pagenum);
-}
+  pagenum -= 1;
+  if (pagenum < 1) {
+    pagenum = 1;
+  }
+  pagenate(pagenum);
+};
 
 // 이전 페이지
 const goNext = () => {
-    pagenum += 1;
-    if (pagenum > lastPageNum) {
-        pagenum = lastPageNum;
-    }
-    pagenate(pagenum);
-}
+  pagenum += 1;
+  if (pagenum > lastPageNum) {
+    pagenum = lastPageNum;
+  }
+  pagenate(pagenum);
+};
 
 // 등록 버튼 클릭시 등록 페이지로 이동
-const insertBtn = document.getElementById('insertBtn');
-insertBtn.onclick = function() {
-    console.log("hi")
-    window.location.href = "http://127.0.0.1:5500/FrontEnd/freeboard/freeboardInsert.html";
+const insertBtn = document.getElementById("insertBtn");
+insertBtn.onclick = function () {
+  console.log("hi");
+  window.location.href =
+    "http://127.0.0.1:5500/FrontEnd/freeboard/freeboardInsert.html";
 };
 
 //좋아요 한 글 조회 전용 페이지네이션
 const pagenateLike = (pagenum) => {
-    const pageCount = 10;
-    const length = list.length;
+  const pageCount = 10;
+  const length = list.length;
 
-    lastPageNum  = Math.ceil(length/pageCount);
-    const lastBoard = length%pageCount;
+  lastPageNum = Math.ceil(length / pageCount);
+  const lastBoard = length % pageCount;
 
-    let first = (pagenum-1) * pageCount; // 첫번째로 렌더될 배열 요소의 인덱스
-    let last = pagenum * pageCount; // 마지막로 렌더될 배열 요소의 인덱스 + 1
+  let first = (pagenum - 1) * pageCount; // 첫번째로 렌더될 배열 요소의 인덱스
+  let last = pagenum * pageCount; // 마지막로 렌더될 배열 요소의 인덱스 + 1
 
-    // 마지막 페이지일때
-    if(pagenum == lastPageNum && lastBoard != 0){
-        last = first + lastBoard;
-    }
-    freeboards.innerHTML = "";
+  // 마지막 페이지일때
+  if (pagenum == lastPageNum && lastBoard != 0) {
+    last = first + lastBoard;
+  }
+  freeboards.innerHTML = "";
 
-    for (let index = first; index < last; index++) {
-        // 이런식으로 list에서 인덱스값으로 board 뽑아와야함
-        const board = list[index];
-        const board1 = fav[index];
+  for (let index = first; index < last; index++) {
+    // 이런식으로 list에서 인덱스값으로 board 뽑아와야함
+    const board = list[index];
+    const board1 = fav[index];
 
-        // 임의로 값 정함. board.title 이런식으로 정의해야함
-        // const title = "제목1";
-        // const nickname = "닉네임";
-        // const likes = 15;
-        // const views = 100;
-        // const createdAt = "2023-06-07";
+    // 임의로 값 정함. board.title 이런식으로 정의해야함
+    // const title = "제목1";
+    // const nickname = "닉네임";
+    // const likes = 15;
+    // const views = 100;
+    // const createdAt = "2023-06-07";
 
-        
-
-        freeboards.innerHTML += 
-        `<tr>
-            <td class="no">${index+1}</td>
-            <td class="title"><a href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${board.FreeBoard.id}">${board.FreeBoard.title}</a></td>
+    freeboards.innerHTML += `<tr>
+            <td class="no">${index + 1}</td>
+            <td class="title"><a href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${
+              board.FreeBoard.id
+            }">${board.FreeBoard.title}</a></td>
             <td class="nickname">${board.User.nickname}</td>
             <td class="likes">${board1.FreeBoardLikes.length}</td>
             <td class="views">${board.FreeBoard.views}</td>
-            <td class="createdAt">${board.createdAt.slice(0,10)}</td>
+            <td class="createdAt">${board.createdAt.slice(0, 10)}</td>
         </tr>`;
+  }
+
+  pageNumBtns.innerHTML = "";
+
+  prevBtn.style.visibility = "visible";
+  nextBtn.style.visibility = "visible";
+
+  // 현재 첫번째 페이지면 이전버튼 안나타나게
+  if (pagenum == 1) {
+    prevBtn.style.visibility = "hidden";
+  }
+
+  // 현재 마지막 페이지면 다음버튼 안나타나게
+  if (pagenum == lastPageNum) {
+    nextBtn.style.visibility = "hidden";
+  }
+
+  for (let index = 1; index < lastPageNum + 1; index++) {
+    const pageBtn = document.createElement("div");
+    pageBtn.classList.add("pageBtn");
+    pageBtn.classList.add("btn");
+
+    // 현재 페이지 버튼이면
+    if (index == pagenum) {
+      pageBtn.classList.add("current");
     }
 
-    pageNumBtns.innerHTML = "";
+    pageBtn.innerText = index;
 
-    prevBtn.style.visibility = "visible";
-    nextBtn.style.visibility = "visible";
+    pageBtn.onclick = () => {
+      pagenate(index);
+    };
 
-    // 현재 첫번째 페이지면 이전버튼 안나타나게
-    if (pagenum == 1) {
-        prevBtn.style.visibility = "hidden";
-    }
-
-    // 현재 마지막 페이지면 다음버튼 안나타나게
-    if (pagenum == lastPageNum) {
-        nextBtn.style.visibility = "hidden";
-    }
-
-    for (let index = 1; index < lastPageNum+1; index++) {
-        const pageBtn = document.createElement("div");
-        pageBtn.classList.add("pageBtn");
-        pageBtn.classList.add("btn");
-
-        // 현재 페이지 버튼이면
-        if (index == pagenum) {
-            pageBtn.classList.add("current");
-        }
-
-        pageBtn.innerText = index;
-
-        pageBtn.onclick = () => {
-            pagenate(index);
-        };
-
-        pageNumBtns.append(pageBtn);
-    }
-}
+    pageNumBtns.append(pageBtn);
+  }
+};
 // 오른쪽위 선택창 바꿔주는 함수
 axios
-.get("/login/view", { withCredentials: true })
-.then((res) => {
-  console.log(res.data);
-  if (res.data) {
-    if (res.data == "다시 로그인 해주세요") {
-      headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
-    } else {
-      headerUtilLogin.innerHTML = ` ${res.data}`;
-      console.log(headerSignUp.innerHTML);
-      headerSignUp.innerHTML =
-        '<a href="/freeboards/main"> 자유 게시판 </a>';
-      console.log(headerSignUp.innerHTML);
+  .get("/login/view", { withCredentials: true })
+  .then((res) => {
+    console.log(res.data);
+    if (res.data) {
+      if (res.data == "다시 로그인 해주세요") {
+        headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
+      } else {
+        headerUtilLogin.innerHTML = ` ${res.data}`;
+        console.log(headerSignUp.innerHTML);
+        headerSignUp.innerHTML = '<a href="/freeboards/main"> 자유 게시판 </a>';
+        console.log(headerSignUp.innerHTML);
+      }
     }
-  }
-})
-.catch((error) => {
-  console.log(error);
-});
+  })
+  .catch((error) => {
+    console.log(error);
+  });

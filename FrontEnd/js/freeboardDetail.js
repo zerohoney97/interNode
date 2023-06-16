@@ -2,7 +2,7 @@
 window.onload = ()=>{
     const post_id = window.location.search
     // 게시글 상세조회
-    axios.get(`http://127.0.0.1:8080/freeboards/postdetail${post_id}`)
+    axios.get(`  /freeboards/postdetail${post_id}`)
     .then((res)=>{
         const data = res.data;
         title.textContent = res.data.title
@@ -17,14 +17,14 @@ window.onload = ()=>{
     })
 
     // 게시글 조회수 증가
-    axios.get(`http://127.0.0.1:8080/freeboards/viewsup${post_id}`)
+    axios.get(`  /freeboards/viewsup${post_id}`)
     .then((res)=>{
     })
     .catch((err)=>{
         console.log(err);
     })
     // 로그인시 헤더 변경
-    axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
+    axios.get('  /login/view',{withCredentials : true})
     .then((res)=>{
       if(res.data){
         headerUtilLogin.textContent = `${res.data}님`
@@ -36,7 +36,7 @@ window.onload = ()=>{
     })
   
     //댓글, 대댓글 조회
-  axios.get(`http://127.0.0.1:8080/freeboards/comment${post_id}`)
+  axios.get(`  /freeboards/comment${post_id}`)
   .then((res)=>{
     let list = res.data;
     console.log(list);
@@ -97,7 +97,7 @@ window.onload = ()=>{
   })
   
   // 댓글등록 주소설정
-  commentForm.action = `http://127.0.0.1:8080/freeboards/commentinsert${post_id}`
+  commentForm.action = `  /freeboards/commentinsert${post_id}`
   
 }
 
@@ -123,7 +123,7 @@ deleteBtn.onclick = ()=>{
   let userNick =headerUtilLogin.textContent.slice(0,-1);
   if(userNick === nickname.textContent){
     const post_id = window.location.search
-    axios.get(`http://127.0.0.1:8080/freeboards/deletepost${post_id}`)
+    axios.get(`  /freeboards/deletepost${post_id}`)
     .then((res)=>{
       window.location.href = 'http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html';
     })
@@ -137,7 +137,7 @@ deleteBtn.onclick = ()=>{
 // 좋아요 버튼 구현
 likeBtn.onclick = ()=>{
   let post_id = window.location.search;
-  axios.get(`http://127.0.0.1:8080/freeboards/thumbsup${post_id}`,{withCredentials : true })
+  axios.get(`  /freeboards/thumbsup${post_id}`,{withCredentials : true })
   .then((res)=>{
     // console.log(res.data);
     likeBtn.innerHTML = `<img src="./img/like_empty.png" alt="">${res.data.FreeBoardLikes.length}`
