@@ -28,6 +28,7 @@ app.use(
       "http://127.0.0.1:5500",
       "http://127.0.0.1:8080",
       "http://localhost:8080",
+      "http://ec2-52-79-43-68.ap-northeast-2.compute.amazonaws.com:8080",
     ],
     credentials: true,
   })
@@ -50,11 +51,13 @@ sequelize
   });
 
 // 세션 사용
-app.use(session({
-  secret : process.env.SESSION_KEY,
-  resave : false,
-  saveUninitialized : false
-}))
+app.use(
+  session({
+    secret: process.env.SESSION_KEY,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 app.use(
   "/public",
   e.static(path.join(__dirname, "..", "FrontEnd", "public"), {
@@ -98,7 +101,10 @@ app.use(
   })
 );
 // app.use('/socket.io', e.static(__dirname + '/node_modules/socket.io/client-dist'));
-app.use('/socket.io', e.static(path.join(__dirname, '../node_modules/socket.io-client/dist')));
+app.use(
+  "/socket.io",
+  e.static(path.join(__dirname, "../node_modules/socket.io-client/dist"))
+);
 
 // 로그인 라우터 경로 설정
 app.use("/login", loginRouter);
@@ -121,5 +127,3 @@ const server = app.listen(8080, () => {
 
 // 예매 관련
 initReservationSocket(server);
-
-
