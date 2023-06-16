@@ -7,17 +7,34 @@ const path = require("path");
 const app = e();
 const signUpRouter = require("./routers/signUp");
 const mainRouter = require("./routers/main");
+const chatRouter = require("./routers/chat");
+
 const loginRouter = require("./routers/login");
-const freeBoardsRouter = require('./routers/freeBoard');
+const freeBoardsRouter = require("./routers/freeBoard");
 
 const mypageRouter = require("./routers/mypage");
 const mailRouter = require("./routers/mail");
 const { isLogin } = require("./middleware/islogin");
 const adminPageRouter = require("./routers/adminMypage");
+
+const initReservationSocket = require("./controllers/reservationController");
+
 app.use(e.json());
 app.use(e.urlencoded({ extended: false }));
 
-
+app.use(
+  cors({
+    origin: [
+      "http://127.0.0.1:5500",
+      "http://127.0.0.1:8080",
+      "http://localhost:8080",
+      "http://ec2-52-79-43-68.ap-northeast-2.compute.amazonaws.com",
+      "http://52.79.43.68",
+      "http://zerohoney.com"
+    ],
+    credentials: true,
+  })
+);
 app.use(
   session({
     secret: process.env.SESSION_KEY,
@@ -28,7 +45,7 @@ app.use(
 
 sequelize
   .sync({ force: false })
-  .then((e) => {
+  .then(() => {
     console.log("연결 성공~");
   })
   .catch((err) => {
@@ -36,35 +53,15 @@ sequelize
   });
 
 // 세션 사용
-app.use(session({
-  secret : process.env.SESSION_KEY,
-  resave : false,
-  saveUninitialized : false
-}))
-
-app.use(cors({
-  // 도메인 허용 옵션
-  // 접근을 허용할 도메인
-  // 여러개의 도메인을 허용하고 싶다 배열의 형태로 넣어주면 된다
-  // origin : ["","",""]
-  origin : "http://127.0.0.1:5500",
-  // origin : "",
-  credentials : true,
-}))
-
-// 로그인 라우터 경로 설정
-app.use('/login',loginRouter);
-app.use(e.urlencoded({ extended: false }));
-
-app.use("/main", mainRouter);
-app.use("/signup", signUpRouter);
-app.use("/mail", mailRouter);
-app.use("/mypage", isLogin, mypageRouter);
-app.use("/adminPage", adminPageRouter);
-app.use("/freeboards",freeBoardsRouter);
-// app.use(e.static(path.join(__dirname, "js")));
 app.use(
-  "/public",
+  session({
+    secret: process.env.SESSION_KEY,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(
+  "*/public",
   e.static(path.join(__dirname, "..", "FrontEnd", "public"), {
     setHeaders: (res, filePath) => {
       if (path.extname(filePath) === ".css") {
@@ -75,7 +72,7 @@ app.use(
 );
 
 app.use(
-  "/js",
+  "*/js",
   e.static(path.join(__dirname, "..", "FrontEnd", "js"), {
     setHeaders: (res, filePath) => {
       if (path.extname(filePath) === ".js") {
@@ -85,6 +82,31 @@ app.use(
   })
 );
 
-app.listen(8080, () => {
+
+// app.use('/socket.io', e.static(__dirname + '/node_modules/socket.io/client-dist'));
+app.use(
+  "/socket.io",
+  e.static(path.join(__dirname, "../node_modules/socket.io-client/dist"))
+);
+
+// 로그인 라우터 경로 설정
+app.use("/login", loginRouter);
+app.use(e.urlencoded({ extended: false }));
+
+app.use("/main", mainRouter);
+app.use("/signup", signUpRouter);
+app.use("/chat", chatRouter);
+
+app.use("/mail", mailRouter);
+app.use("/mypage", isLogin, mypageRouter);
+app.use("/adminPage", adminPageRouter);
+app.use("/freeboards", freeBoardsRouter);
+// app.use(e.static(path.join(__dirname, "js")));
+
+app.use("/imgs", e.static(path.join(__dirname, "imgs")));
+const server = app.listen(8080, () => {
   console.log("gogo");
 });
+
+// 예매 관련
+initReservationSocket(server);

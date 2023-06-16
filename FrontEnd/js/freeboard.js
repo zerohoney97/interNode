@@ -112,7 +112,7 @@ const pagenate = (pagenum) => {
         freeboards.innerHTML += 
         `<tr>
             <td class="no">${index+1}</td>
-            <td class="title"><a href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${board.id}">${board.title}</a></td>
+            <td class="title"><a href="/freeboard/freeboardDetail?id=${board.id}">${board.title}</a></td>
             <td class="nickname">${board.User.nickname}</td>
             <td class="likes">${board.FreeBoardLikes.length}</td>
             <td class="views">${board.views}</td>
@@ -220,6 +220,7 @@ const pagenateLike = (pagenum) => {
         // const createdAt = "2023-06-07";
 
         
+
         freeboards.innerHTML += 
         `<tr>
             <td class="no">${index+1}</td>
@@ -265,3 +266,23 @@ const pagenateLike = (pagenum) => {
         pageNumBtns.append(pageBtn);
     }
 }
+// 오른쪽위 선택창 바꿔주는 함수
+axios
+.get("/login/view", { withCredentials: true })
+.then((res) => {
+  console.log(res.data);
+  if (res.data) {
+    if (res.data == "다시 로그인 해주세요") {
+      headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
+    } else {
+      headerUtilLogin.innerHTML = ` ${res.data}`;
+      console.log(headerSignUp.innerHTML);
+      headerSignUp.innerHTML =
+        '<a href="/freeboards/main"> 자유 게시판 </a>';
+      console.log(headerSignUp.innerHTML);
+    }
+  }
+})
+.catch((error) => {
+  console.log(error);
+});

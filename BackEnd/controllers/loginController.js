@@ -12,16 +12,19 @@ exports.login = async (req,res)=>{
             return res.redirect('http://127.0.0.1:5500/FrontEnd/login/idErr.html');
         }
         
-        // const same = bcrypt.compareSync(user_pw,user.password)
-        // if(same)
+        const same = bcrypt.compareSync(user_pw,user.password)
+        // if(same){
 
-        if(user.password === user_pw){
+
+        // }
+
+        if(same){
             //신고횟수가 3회 이상이면 로그인 거절
             if(user.report_stack >= 3){
                 return res.redirect('http://127.0.0.1:5500/FrontEnd/login/loginBlock.html')
             }
             if(user.email === 'admin@admin.com'){
-                res.redirect("http://127.0.0.1:5500/FrontEnd/zerohoneyHTML/adminPage/searchUserDetail.html")
+                res.redirect("/adminPage")
             }
             // access 토큰 발행
             const accessToken = jwt.sign({
@@ -33,7 +36,7 @@ exports.login = async (req,res)=>{
 
             req.session.access_token = accessToken;
 
-            res.redirect('http://127.0.0.1:5500/FrontEnd/mainpage/mainpage.html');
+            res.redirect('/main');
         }else{
             return res.redirect('http://127.0.0.1:5500/FrontEnd/login/pwErr.html')
         }

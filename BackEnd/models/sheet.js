@@ -8,7 +8,7 @@ class Sheet extends Sequelize.Model {
                 allowNull : false,
             },
             sheets_array : {
-                type : Sequelize.STRING(20),
+                type : Sequelize.STRING(200),
             }
         },{
             sequelize,

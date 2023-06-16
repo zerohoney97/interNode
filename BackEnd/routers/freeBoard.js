@@ -15,13 +15,13 @@ const { viewPostAll,
 const { isLogin } = require('../middleware/islogin');
 
 //전체 게시글 조회
-router.get('/', viewPostAll);
+router.get("/", viewPostAll);
 
 //게시글 등록
-router.post('/insert',isLogin,insertPost);
+router.post("/insert", isLogin, insertPost);
 
 //글 상세조회
-router.get('/postdetail/?',selectPost);
+router.get("/postdetail/?", selectPost);
 
 //조회수 증가
 router.get('/viewsup/?' , viewsUp);
@@ -50,4 +50,17 @@ router.post('/commentinsert/?', isLogin, commentInsert);
 // 대댓글 추가
 router.post('/recommentinsert/?', isLogin, recommentInsert);
 
+// 게시판 이동
+router.get("/main", (req, res) => {
+  res.sendFile(
+    path.join(
+      __dirname,
+      "..",
+      "..",
+      "FrontEnd",
+      "freeboard",
+      "freeboard.html"
+    )
+  );
+});
 module.exports = router;

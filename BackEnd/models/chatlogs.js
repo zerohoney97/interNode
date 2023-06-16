@@ -8,6 +8,15 @@ class ChatLog extends Sequelize.Model {
             type : Sequelize.TEXT,
             allowNull : false,
         },
+        receiver: {
+            type: Sequelize.INTEGER,
+            allowNull : true,
+        },
+        isRead: {
+            type: Sequelize.BOOLEAN,
+            allowNull: false,
+            defaultVAlue: false,
+        }
 
 
 
@@ -31,5 +40,8 @@ class ChatLog extends Sequelize.Model {
         db.ChatLog.belongsTo(db.User,{foreignKey : "user_id",targetKey : "id"});
     }
 }
+
+
+
 
 module.exports = ChatLog;

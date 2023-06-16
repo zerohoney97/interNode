@@ -4,9 +4,8 @@ class ShowDateInfo extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        year: { type: Sequelize.INTEGER, allowNull: false },
-        month: { type: Sequelize.INTEGER, allowNull: false },
-        day: { type: Sequelize.INTEGER, allowNull: false },
+        startDate: { type: Sequelize.STRING(20), allowNull: false },
+        endDate: { type: Sequelize.STRING(20), allowNull: false },
         startTime: { type: Sequelize.STRING(30), allowNull: false },
       },
       {

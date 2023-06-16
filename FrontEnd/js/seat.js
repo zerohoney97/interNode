@@ -1,9 +1,35 @@
-let dropdown = document.querySelector('.dropdown');
-let dropdownContent = document.querySelector('.dropdown-content');
+// let dropdown = document.querySelector('.dropdown');
+// let dropdownContent = document.querySelector('.dropdown-content');
 
-dropdown.addEventListener('click', function() {
-    dropdownContent.classList.toggle('show');
-});
+// dropdown.addEventListener('click', function() {
+//     dropdownContent.classList.toggle('show');
+// });
+
+
+// socket 연결
+const socket = io();
+// 임의로 showid, reservation_num 작성
+// reservation_num => 공연아이디, 날짜 정보 포함
+socket.emit("getSeatsInfo", 1, "0607");
+socket.on("getSeatsInfo", (seats) => {
+  console.log(seats);
+
+  // 좌석 정보 받아와서 좌석 출력(요소 생성, 결제/미결제 좌석에 따라 다르게 출력)
+})
+
+// 좌석 눌렀을때 이 좌석이 선점되었는지 확인하는 이벤트 전송(서버에서는 전역변수에서 확인. db건드리지 말고)
+// 만약 지금이랑 seats 정보가 다르면 다시 출력?
+
+// 좌석 결제 버튼 눌렀을때 결제하겠다는 이벤트 emit(서버에서 db에 수정해서 저장하고(전역변수에도 저장) 다시 room 내의 모든 클라이언트에게 showarr전역변수 전송)
+// 서버에 유저아이디도 전송
+//
+
+
+
+
+
+
+
 
 let movies = document.querySelectorAll('.dropdown-content div');
 
@@ -52,3 +78,23 @@ function updateTotalPrice() {
     }, 0);
     totalDisplay.textContent = totalPrice;
 }
+// 오른쪽위 선택창 바꿔주는 함수
+axios
+.get("/login/view", { withCredentials: true })
+.then((res) => {
+  console.log(res.data);
+  if (res.data) {
+    if (res.data == "다시 로그인 해주세요") {
+      headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
+    } else {
+      headerUtilLogin.innerHTML = ` ${res.data}`;
+      console.log(headerSignUp.innerHTML);
+      headerSignUp.innerHTML =
+        '<a href="/freeboards/main"> 자유 게시판 </a>';
+      console.log(headerSignUp.innerHTML);
+    }
+  }
+})
+.catch((error) => {
+  console.log(error);
+});

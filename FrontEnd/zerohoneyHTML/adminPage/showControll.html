@@ -11,17 +11,17 @@
   <body>
     <header class="common_header">
       <div class="header_util">
-        <div>로그인</div>
-        <div>회원가입</div>
-        <div>고객센터</div>
-        <div>마이페이지</div>
+        <div id="headerUtilLogin"><a href="/login">로그인</a></div>
+        <div id="headerSignUp"><a href="/signup">회원가입</a></div>
+        <div><a href="/chat">고객센터</a></div>
+        <div><a href="/mypage/changeProfile">마이페이지</a></div>
       </div>
       <div class="header_inner">
         <div class="logo"></div>
         <h1>공연/전시</h1>
       </div>
       <div class="header_gnb">
-        <div class="gnb_home">홈</div>
+        <div class="gnb_home"><a href="/main">홈</a></div>
         <div class="gnb_show">공연</div>
       </div>
     </header>
@@ -42,7 +42,7 @@
           <div class="side-bar-manage-show">
             <div>공연관리</div>
             <div style="cursor: pointer" id="showManage">
-              <a href="/FrontEnd/zerohoneyHTML/adminPage/showControll.html"
+              <a id="goToShowControl" href="/FrontEnd/zerohoneyHTML/adminPage/showControll.html"
                 >공연 등록/수정/삭제</a
               >
             </div>
@@ -50,12 +50,12 @@
           <div class="side-bar-manage-user">
             <div>유저 관리</div>
             <div style="cursor: pointer" id="searchUser">
-              <a href="/FrontEnd/zerohoneyHTML/adminPage/userSearch.html"
+              <a  id="goToUserSearch" href="/FrontEnd/zerohoneyHTML/adminPage/userSearch.html"
                 >유저 검색</a
               >
             </div>
             <div style="cursor: pointer" id="reportedUser">
-              <a href="/FrontEnd/zerohoneyHTML/adminPage/userReport.html"
+              <a  id="goToUserReport" href="/FrontEnd/zerohoneyHTML/adminPage/userReport.html"
                 >신고된 유저</a
               >
             </div>
@@ -85,7 +85,7 @@
           </div>
           <!-- 공연 등록을 눌렀을 때 -->
           <form
-            action="http://127.0.0.1:8080/adminpage/enroll"
+            action="/adminpage/enroll"
             method="post"
             class="enroll-show show"
             id="showtab1"
@@ -139,6 +139,11 @@
             <div class="enroll-show-time-container">
               <div>매일 <span></span>시에 시작 돼요</div>
               <input type="time" name="showStartTime" id="showStartTime" />
+              <div>공연장 선택하기</div>
+              <select name="theater" id="theater" style="margin-top: 5px">
+                <option value="1">강남 예술의 전당</option>
+                <option value="2">세종문화회관</option>
+              </select>
             </div>
             <div class="enroll-show-button-container">
               <button class="enroll-show-button">공연 등록</button>
@@ -148,7 +153,7 @@
           <!-- 공연 수정을 눌렀을 때 -->
           <div class="update-show show" id="showtab2">
             <ul class="performance-list">
-              <li class="performance-item">
+              <!-- <li class="performance-item">
                 <div class="show-info">
                   <img
                     src="../../../BackEnd/imgs/áá³áá³ááµá«áá£áº 2023-06-09 áá©áá¥á« 9.39.08_1686632100318.png"
@@ -170,9 +175,11 @@
                   <button>
                     <a href="./showUpdate.html" style="color: red">Edit</a>
                   </button>
-                  <button>Delete</button>
+                  <button>
+                    <a href="./showUpdate.html" style="color: red">Edit</a>
+                  </button>
                 </div>
-              </li>
+              </li> -->
               <!-- Add more performance items here -->
             </ul>
           </div>

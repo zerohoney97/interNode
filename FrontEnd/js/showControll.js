@@ -41,9 +41,89 @@ showImg.onchange = displayImage;
 axios
   .get(`${url}/adminPage/getShow`)
   .then((e) => {
-    console.log(e);
+    console.log(e.data, "데이터 가져옴 /adminPage/getShow");
+    const performanceList = document.querySelector(".performance-list");
 
+    const dataArray = e.data;
+    dataArray.forEach((a) => {
+      // 하나의 행을 차지하는 li태그
+      const performanceItem = document.createElement("li");
+      performanceItem.classList.add("performance-item");
+      // 쇼를 감싸고 있는 태그
+      const showInfo = document.createElement("div");
+      showInfo.classList.add("show-info");
+      // 쇼 이미지
+      const img = document.createElement("img");
+      img.src = `${imgPath}/${a.img}`;
+      img.alt = "show poster";
+      // 쇼의 이름
+      const showInfoDetail = document.createElement("show-info-detail");
+      showInfoDetail.classList.add("show-info-detail");
+      showInfoDetail.innerHTML = `<span>Show Name:</span> <span> ${a.title}</span>`;
+
+      // 버튼들
+      const buttons = document.createElement("div");
+      buttons.classList.add("buttons");
+      const updateButton = document.createElement("button");
+      updateButton.innerHTML = ` <a href="${url}/adminpage/update/${a.id}" style="color: red">Edit</a>`;
+      const deleteButton = document.createElement("button");
+      deleteButton.innerHTML = ` <a href="${url}/adminpage/delete/${a.id}" style="color: red">Delete</a>`;
+      buttons.appendChild(updateButton);
+      buttons.appendChild(deleteButton);
+      showInfo.appendChild(img);
+      showInfo.appendChild(showInfoDetail);
+      showInfo.appendChild(buttons);
+      performanceItem.appendChild(showInfo);
+      performanceList.appendChild(performanceItem);
+    });
   })
   .catch((err) => {
     console.log(err);
   });
+
+document.querySelector(".enroll-show-button").addEventListener("click", (e) => {
+  if (
+    showImg.value == "" ||
+    showName.value == "" ||
+    showDuration.value == "" ||
+    showGrade.value == "" ||
+    showPrice.value == "" ||
+    showContent.value == "" ||
+    showStartDate.value == "" ||
+    showEndDate.value == "" ||
+    showStartTime.value == "" ||
+    theater.value == ""
+  ) {
+    e.preventDefault();
+    alert("작성하지 않은 정보가 있습니다.");
+  }
+});
+
+// 하이퍼 링크 변경
+
+goToShowControl.href = `${url}/adminPage`;
+goToUserSearch.href = `${url}/adminPage/userSearch`;
+goToUserReport.href = `${url}/adminPage/userReport`;
+// 하이퍼 링크 변경
+
+
+// 오른쪽위 선택창 바꿔주는 함수
+axios
+.get("/login/view", { withCredentials: true })
+.then((res) => {
+  console.log(res.data);
+  if (res.data) {
+    if (res.data == "다시 로그인 해주세요") {
+      headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
+    } else {
+      headerUtilLogin.innerHTML = ` ${res.data}`;
+      console.log(headerSignUp.innerHTML);
+      headerSignUp.innerHTML =
+        '<a href="/freeboards/main"> 자유 게시판 </a>';
+      console.log(headerSignUp.innerHTML);
+    }
+  }
+})
+.catch((error) => {
+  console.log(error);
+});

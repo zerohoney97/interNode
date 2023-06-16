@@ -1,5 +1,6 @@
   .seats-body{
-    background-color: #242333;
+    /* background-color: #242333; */
+    background-color: gray;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,13 +21,13 @@
     pointer-events: none;
    display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
   }
 
   .screen h1 {
     margin: 0;
   }
-  
+
 
   .seats-container {
     display: flex;
@@ -58,8 +59,8 @@
         padding: 7px 14px;
         font-size: 15px;
       }
-      
-      
+
+
       .dropdown-content {
         display: none;
         position: absolute;
@@ -67,7 +68,7 @@
         z-index: 1;
         box-shadow: 5px 10px 16px 9px rgba(15, 135, 165, 0.2);
       }
-  
+
       .dropdown:hover .dropdown-content {
         display: block;
       }
@@ -77,13 +78,13 @@
          background-color: #ff9800; /* 원하는 색상으로 변경하세요 */
           color: #fff; /* 선택된 좌석의 텍스트 색상 */
         }
-        
+
         /* 선택되지 않은 좌석의 스타일 */
         .seat {
           background-color: #e0e0e0; /* 원하는 색상으로 변경하세요 */
           color: #000; /* 선택되지 않은 좌석의 텍스트 색상 */
         }
-        
+
         /* 버튼 클릭 시 드롭다운 내용 표시/숨김 스타일 */
         .dropdown-content.show {
           display: block;
@@ -97,7 +98,7 @@
             border: none;
             cursor: pointer;
           }
-          
+
           #payButton:hover {
             background-color: #45a049;
           }
