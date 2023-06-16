@@ -1,5 +1,17 @@
 const router = require('express').Router();
-const { viewPostAll, insertPost, selectPost, viewsUp, updatePost , deletePost , myPost, myLikes, thumbsUp} = require('../controllers/freeBoardsController');
+const { viewPostAll,
+        insertPost, 
+        selectPost, 
+        viewsUp, 
+        updatePost , 
+        deletePost , 
+        myPost, 
+        myLikes, 
+        thumbsUp,
+        comment,
+        commentInsert,
+        recommentInsert
+    } = require('../controllers/freeBoardsController');
 const { isLogin } = require('../middleware/islogin');
 
 //전체 게시글 조회
@@ -27,6 +39,15 @@ router.get('/mypost',isLogin,myPost);
 router.get('/mylikes',isLogin, myLikes);
 
 // 좋아요 버튼 클릭
-router.get('/thumbsup/?',isLogin, thumbsUp)
+router.get('/thumbsup/?',isLogin, thumbsUp);
+
+// 댓글, 대댓글 조회
+router.get('/comment/?', comment);
+
+// 댓글 추가
+router.post('/commentinsert/?', isLogin, commentInsert);
+
+// 대댓글 추가
+router.post('/recommentinsert/?', isLogin, recommentInsert);
 
 module.exports = router;

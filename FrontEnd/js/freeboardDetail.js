@@ -34,7 +34,71 @@ window.onload = ()=>{
     .catch((error)=>{
       console.log(error);
     })
-    
+  
+    //댓글, 대댓글 조회
+  axios.get(`http://127.0.0.1:8080/freeboards/comment${post_id}`)
+  .then((res)=>{
+    let list = res.data;
+    console.log(list);
+    //onload시 axios로 받아와서 뿌려준다 
+
+    for(let i = 0; i<list.length; i++){
+      let cmt = list[i];
+      commentList.innerHTML +=
+      `
+      <div class="comment">
+        <div class="commentContent">
+          ${cmt.content}
+        </div>
+        <a class="report" href=""> <img src="./img/siren.png" alt="">신고</a>
+        <div class="nick-date">
+          <span class="commentNickname">${cmt.User.nickname}</span>
+          <span class="commentCreatedAt">${cmt.createdAt.slice(0,10)}</span>
+        </div>
+        
+        <div class="recomment">
+          <img class="arrow" src="./img/arrow.png" alt="대댓글 화살표">
+          <div class="recommentContent">
+          ${
+            cmt.Recomments.map(
+              (recomment) => `
+                <div class="recomment">
+                  <div class="recommentContent">${recomment.content}</div>
+                  <a class="report" href=""><img src="./img/siren.png" alt="">신고</a>
+                  <div class="nick-date">
+                    <span class="recommentNickname">${recomment.User.nickname}</span>
+                    <span class="recommentCreatedAt">${recomment.createdAt.slice(0, 10)}</span>
+                  </div>
+                </div>
+              `
+            ).join('')
+          }
+          </div>
+              <div class="nick-date">
+              <span class="recommentNickname"></span>
+              <span class="recommentCreatedAt"></span>
+          </div>
+        </div>
+        <details>
+          <summary>대댓글 달기</summary>
+          
+          <form class="recommentForm" action="">
+              <textarea class="recommentContent" name="content" cols="30" rows="10"></textarea>
+              <button class="btn">대댓글등록</button>
+          </form>
+        </details>
+      </div>
+      <div class="line"></div>
+      `
+    }
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
+  
+  // 댓글등록 주소설정
+  commentForm.action = `http://127.0.0.1:8080/freeboards/commentinsert${post_id}`
+  
 }
 
 // 게시글 수정
@@ -82,5 +146,8 @@ likeBtn.onclick = ()=>{
     console.log(err);
   })
 }
+
+// 댓글, 대댓글
+
 
 

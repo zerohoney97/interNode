@@ -203,3 +203,70 @@ exports.thumbsUp = async (req,res)=>{
         console.log(error);
     }
 }
+
+// 댓글, 대댓글 조회
+exports.comment = async (req,res)=>{
+    const post_id = req.query.id
+    try {
+        let data = await Comment.findAll({
+            where : {freeboard_id : post_id},
+            include : [
+                {
+                    model : Recomment,
+                    include : [
+                        {
+                            model : User,
+                            attributes : ['nickname']
+                        }
+                        
+                    ]
+                },
+                {
+                    model: User,
+                    attributes : ['nickname']
+                }
+
+            ]
+        })
+        res.json(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// 댓글 추가
+exports.commentInsert = async (req,res)=>{
+    const post_id = req.query.id
+    const { content } = req.body;
+    const { primaryKey } = req.acc_decoded;
+
+    try {
+        Comment.create({
+            content,
+            user_id : primaryKey,
+            freeboard_id : post_id
+        })
+        res.redirect(`http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${post_id}`)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// 대댓글 추가
+exports.recommentInsert = async (req,res)=>{
+    const cmt_id = req.query.id
+    const { primaryKey } = req.acc_decoded;
+
+    try {
+        Recomment.create({
+            content,
+            user_id : primaryKey,
+            
+        })
+        // 댓글 번호로 게시글 주소 찾고 주소 리다이렉트 해준다.
+        res.redirect(`http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${post_id}`)
+
+    } catch (error) {
+        console.log(error);
+    }
+}
