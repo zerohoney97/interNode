@@ -1,4 +1,4 @@
-const { FreeBoard, FreeBoardLike, Comment , Recomment, User } = require('../models');
+const { FreeBoard, FreeBoardLike, Comment , Recomment, User ,Report } = require('../models');
 const path = require('path');
 const Sequelize = require('sequelize')
 //게시글 목록 전체조회
@@ -280,4 +280,66 @@ exports.recommentInsert = async (req,res)=>{
     } catch (error) {
         console.log(error);
     }
+}
+
+//신고
+exports.report = async (req,res)=>{
+    const {id,cmt,recmt} = req.query
+
+
+    if(cmt==0 && recmt==0){
+        //게시글에 신고
+        try {
+            const data = await FreeBoard.findOne({where :{ id }})
+            const db = await Report.findOne({where : {content : data.content, user_id : data.user_id}})
+            if(!db){
+                await Report.create({
+                    type : '자유 게시판',
+                    typeId : 1,
+                    title : data.title,
+                    content : data.content,
+                    user_id : data.user_id,
+                })
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }else if(cmt!=0){
+        //댓글에 신고
+        try {
+            const data = await Comment.findOne({where : {id : cmt}});
+            const db = await Report.findOne({where : {content : data.content, user_id : data.user_id}})
+            if(!db){
+
+                await Report.create({
+                    type : '자유 게시판',
+                    typeId : 1,
+                    title : null,
+                    content : data.content,
+                    user_id : data.user_id,
+                })
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }else{
+        //대댓글에 신고
+        try {
+            const data = await Recomment.findOne({where : {id : recmt}});
+            const db = await Report.findOne({where : {content : data.content, user_id : data.user_id}})
+            if(!db){
+                await Report.create({
+                    type : '자유 게시판',
+                    typeId : 1,
+                    title : null,
+                    content : data.content,
+                    user_id : data.user_id,
+                })
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    // // 해당 게시글로 가고싶다
+    res.redirect(`/freeboards/detailmain?id=${id}`);
 }

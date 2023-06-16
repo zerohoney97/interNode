@@ -11,7 +11,8 @@ const { viewPostAll,
         thumbsUp,
         comment,
         commentInsert,
-        recommentInsert
+        recommentInsert,
+        report
     } = require('../controllers/freeBoardsController');
 const { isLogin } = require('../middleware/islogin');
 
@@ -107,4 +108,6 @@ router.get('/insert',(req,res)=>{
   )
 })
 
+//신고
+router.get('/report', report);
 module.exports = router;

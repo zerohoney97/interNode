@@ -1,6 +1,7 @@
 
 window.onload = ()=>{
     const post_id = window.location.search
+    console.log("post_id : ",post_id)
     // 게시글 상세조회
     axios.get(`http://127.0.0.1:8080/freeboards/postdetail${post_id}`)
     .then((res)=>{
@@ -44,13 +45,14 @@ window.onload = ()=>{
 
     for(let i = 0; i<list.length; i++){
       let cmt = list[i];
+      console.log(cmt);
       commentList.innerHTML +=
       `
       <div class="comment">
         <div class="commentContent">
           ${cmt.content}
         </div>
-        <a class="report" href=""> <img src="./img/siren.png" alt="">신고</a>
+        <a class="report" href="/freeboards/report${post_id}&cmt=${cmt.id}&recmt=0"> <img src="./img/siren.png" alt="">신고</a>
         <div class="nick-date">
           <span class="commentNickname">${cmt.User.nickname}</span>
           <span class="commentCreatedAt">${cmt.createdAt.slice(0,10)}</span>
@@ -64,7 +66,7 @@ window.onload = ()=>{
               (recomment) => `
                 <div class="recomment">
                   <div class="recommentContent">${recomment.content}</div>
-                  <a class="report" href=""><img src="./img/siren.png" alt="">신고</a>
+                  <a class="report" href="/freeboards/report${post_id}&cmt=0&recmt=${recomment.id}"><img src="./img/siren.png" alt="">신고</a>
                   <div class="nick-date">
                     <span class="recommentNickname">${recomment.User.nickname}</span>
                     <span class="recommentCreatedAt">${recomment.createdAt.slice(0, 10)}</span>
@@ -100,7 +102,8 @@ window.onload = ()=>{
   // 댓글등록 주소설정
   commentForm.action = `http://127.0.0.1:8080/freeboards/commentinsert${post_id}`
 
-  
+  // 게시글 신고버튼 설정
+  postReport.href =`/freeboards/report${post_id}&cmt=0&recmt=0`
 }
 
 // 게시글 수정
@@ -118,7 +121,7 @@ updateBtn.onclick = ()=>{
     const post_id = window.location.search
     console.log(post_id);
     //window.location.href = `http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html${post_id}`;
-      window.location.href = `/freeboards/updatepost${post_id}`
+      window.location.href = `/freeboards/reports${post_id}`
     }
   }
 
