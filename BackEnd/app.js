@@ -29,6 +29,7 @@ app.use(
       "http://127.0.0.1:8080",
       "http://localhost:8080",
       "http://ec2-52-79-43-68.ap-northeast-2.compute.amazonaws.com:8080",
+      "http://52.79.43.68:8080",
     ],
     credentials: true,
   })
