@@ -24,22 +24,22 @@ window.onload = ()=>{
         console.log(err);
     })
     // 로그인시 헤더 변경
-    axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
-    .then((res)=>{
-      if(res.data){
-        headerUtilLogin.textContent = `${res.data}님`
-        headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
-      }
-    })
-    .catch((error)=>{
-      console.log(error);
-    })
+    // axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
+    // .then((res)=>{
+    //   if(res.data){
+    //     headerUtilLogin.textContent = `${res.data}님`
+    //     headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
+    //   }
+    // })
+    // .catch((error)=>{
+    //   console.log(error);
+    // })
   
     //댓글, 대댓글 조회
   axios.get(`http://127.0.0.1:8080/freeboards/comment${post_id}`)
   .then((res)=>{
     let list = res.data;
-    console.log(list);
+    // console.log(list);
     //onload시 axios로 받아와서 뿌려준다 
 
     for(let i = 0; i<list.length; i++){
@@ -110,24 +110,26 @@ updateBtn.onclick = ()=>{
     // 수정페이지로 이동
 
     // 수정 페이지에서는 form으로 데이터베이스 변경, 게시글 상세 페이지 redirect
-    let userNick =headerUtilLogin.textContent.slice(0,-1);
-
+    let userNick =headerUtilLogin.textContent;
+    console.log(userNick);
+    console.log(nickname.textContent);
+    console.log(userNick === nickname.textContent);
     if(userNick === nickname.textContent){
     const post_id = window.location.search
-
-    window.location.href = `http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html${post_id}`;
-
+    console.log(post_id);
+    //window.location.href = `http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html${post_id}`;
+      window.location.href = `/freeboards/updatepost${post_id}`
     }
-}
+  }
 
 // 게시글 삭제
 deleteBtn.onclick = ()=>{
-  let userNick =headerUtilLogin.textContent.slice(0,-1);
+  let userNick =headerUtilLogin.textContent;
   if(userNick === nickname.textContent){
     const post_id = window.location.search
     axios.get(`http://127.0.0.1:8080/freeboards/deletepost${post_id}`)
     .then((res)=>{
-      window.location.href = 'http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html';
+      window.location.href = '/freeboards/main';
     })
     .catch((err)=>{
       console.log(err);
@@ -159,12 +161,12 @@ likeBtn.onclick = ()=>{
 axios
 .get("/login/view", { withCredentials: true })
 .then((res) => {
-  console.log(res.data);
+  // console.log(res.data);
   if (res.data) {
     if (res.data == "다시 로그인 해주세요") {
       headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
     } else {
-      headerUtilLogin.innerHTML = ` ${res.data}`;
+      headerUtilLogin.innerHTML = `${res.data}`;
       console.log(headerSignUp.innerHTML);
       headerSignUp.innerHTML =
         '<a href="/freeboards/main"> 자유 게시판 </a>';

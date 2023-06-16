@@ -1,4 +1,5 @@
 const { FreeBoard, FreeBoardLike, Comment , Recomment, User } = require('../models');
+const path = require('path');
 const Sequelize = require('sequelize')
 //게시글 목록 전체조회
 exports.viewPostAll = async (req,res)=>{
@@ -31,7 +32,16 @@ exports.insertPost = async (req,res)=>{
             content,
             user_id : user.id
         })
-        res.redirect('http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html')
+        res.sendFile(
+            path.join(
+                __dirname,
+                "..",
+                "..",
+                "FrontEnd",
+                "freeboard",
+                "freeboard.html"
+              )
+        )
     } catch (error) {
         console.log(error);
     }
@@ -82,7 +92,7 @@ exports.updatePost = async (req,res)=>{
             {title, content},
             {where : {id: post_id}}
         )
-        res.redirect(`http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${post_id}`)
+        res.redirect(`/freeboards/detailmain?id=${post_id}`)
     } catch (error) {
         console.log(error);
     }
@@ -246,7 +256,7 @@ exports.commentInsert = async (req,res)=>{
             user_id : primaryKey,
             freeboard_id : post_id
         })
-        res.redirect(`http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${post_id}`)
+        res.redirect(`/freeboards/detailmain?id=${post_id}`)
     } catch (error) {
         console.log(error);
     }
@@ -265,7 +275,7 @@ exports.recommentInsert = async (req,res)=>{
             comment_id : commentId
         })
         // 댓글 번호로 게시글 주소 찾고 주소 리다이렉트 해준다.
-        res.redirect(`http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${post_id}`)
+        res.redirect(`/freeboards/detailmain?id=${post_id}`)
 
     } catch (error) {
         console.log(error);

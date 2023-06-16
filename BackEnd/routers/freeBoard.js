@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const path = require('path');
 const { viewPostAll,
         insertPost, 
         selectPost, 
@@ -63,4 +64,47 @@ router.get("/main", (req, res) => {
     )
   );
 });
+
+// 게시판 상세페이지 이동
+router.get("/detailmain",(req,res)=>{
+  res.sendFile(
+    path.join(
+      __dirname,
+      "..",
+      "..",
+      "FrontEnd",
+      "freeboard",
+      "freeboardDetail.html"
+    )
+  )
+})
+
+// 게시글 수정페이지 이동
+router.get("/updatepost",(req,res)=>{
+  res.sendFile(
+    path.join(
+      __dirname,
+      "..",
+      "..",
+      "FrontEnd",
+      "freeboard",
+      "freeboardUpdate.html"
+    )
+  )
+})
+
+// 게시글 등록페이지 이동
+router.get('/insert',(req,res)=>{
+  res.sendFile(
+    path.join(
+      __dirname,
+      "..",
+      "..",
+      "FrontEnd",
+      "freeboard",
+      "freeboardInsert.html"
+    )
+  )
+})
+
 module.exports = router;

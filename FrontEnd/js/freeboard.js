@@ -6,16 +6,16 @@ let lastPageNum;
 
 window.onload = ()=>{
     // 헤더 닉네임 가져오기
-    axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
-    .then((res)=>{
-        if(res.data){
-        headerUtilLogin.textContent = `${res.data}님`
-        headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
-        }
-    })
-    .catch((error)=>{
-        console.log(error);
-    })
+    // axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
+    // .then((res)=>{
+    //     if(res.data){
+    //     headerUtilLogin.textContent = `${res.data}님`
+    //     headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
+    //     }
+    // })
+    // .catch((error)=>{
+    //     console.log(error);
+    // })
     const UrlParams = new URLSearchParams(window.location.search);
     const pageValue = UrlParams.get('page');
 
@@ -112,7 +112,7 @@ const pagenate = (pagenum) => {
         freeboards.innerHTML += 
         `<tr>
             <td class="no">${index+1}</td>
-            <td class="title"><a href="/freeboard/freeboardDetail?id=${board.id}">${board.title}</a></td>
+            <td class="title"><a href="/freeboards/detailmain?id=${board.id}">${board.title}</a></td>
             <td class="nickname">${board.User.nickname}</td>
             <td class="likes">${board.FreeBoardLikes.length}</td>
             <td class="views">${board.views}</td>
@@ -187,7 +187,8 @@ const goNext = () => {
 const insertBtn = document.getElementById('insertBtn');
 insertBtn.onclick = function() {
     console.log("hi")
-    window.location.href = "http://127.0.0.1:5500/FrontEnd/freeboard/freeboardInsert.html";
+    // window.location.href = "http://127.0.0.1:5500/FrontEnd/freeboard/freeboardInsert.html";
+    window.location.href = "/freeboards/insert"
 };
 
 //좋아요 한 글 조회 전용 페이지네이션
@@ -224,7 +225,7 @@ const pagenateLike = (pagenum) => {
         freeboards.innerHTML += 
         `<tr>
             <td class="no">${index+1}</td>
-            <td class="title"><a href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${board.FreeBoard.id}">${board.FreeBoard.title}</a></td>
+            <td class="title"><a href="/freeboards/detailmain?id=${board.FreeBoard.id}">${board.FreeBoard.title}</a></td>
             <td class="nickname">${board.User.nickname}</td>
             <td class="likes">${board1.FreeBoardLikes.length}</td>
             <td class="views">${board.FreeBoard.views}</td>
