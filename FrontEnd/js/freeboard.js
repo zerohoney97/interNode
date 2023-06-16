@@ -75,7 +75,7 @@ const pagenate = (pagenum) => {
         freeboards.innerHTML += 
         `<tr>
             <td class="no">${index+1}</td>
-            <td class="title"><a href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${board.id}">${board.title}</a></td>
+            <td class="title"><a href="/freeboard/freeboardDetail?id=${board.id}">${board.title}</a></td>
             <td class="nickname">${board.User.nickname}</td>
             <td class="likes">${board.FreeBoardLikes.length}</td>
             <td class="views">${board.views}</td>

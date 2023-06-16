@@ -143,7 +143,7 @@ window.onload = async () => {
         if (data == "0") {
           alert("회원가입 완료");
           window.location.href =
-            "http://127.0.0.1:5500/FrontEnd/login/login.html";
+            "/login";
         } else {
           alert("다시 시도해주세요.");
         }
