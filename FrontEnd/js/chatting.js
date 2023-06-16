@@ -1,6 +1,6 @@
 const sendButton = document.querySelector('.chat-send-botton');
 // 로그인 정보 가져와서 isloginUserId
-const isloginUserId = 2;
+const isloginUserId = 1;
 sendButton.addEventListener('click', async () => {
   const chatInput = document.querySelector('#chatId');
   const message = chatInput.value;
@@ -8,6 +8,8 @@ sendButton.addEventListener('click', async () => {
   const isRead = 0;
 
   // 서버로 채팅 데이터 전송
+  console.log({ user_id : isloginUserId, message,receiver,isRead });
+    // 요청 보내면 body객체 안에 { data: { user_id : isloginUserId, message,receiver,isRead } } 이렇게 전달된다.
   await axios.post('http://127.0.0.1:8080/chat/create', { data: { user_id : isloginUserId, message,receiver,isRead } });
 // user_id는 1로 넣어놨지만 로그인한 유저의 아이디를 넣어주면 된다.
 
@@ -30,7 +32,7 @@ const getUsers = async () => {
     img.src =
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMDFfMjkx%2FMDAxNjM1NzcyNTAyMzM2.cJE1tVC6KDvRbLggbBVEvvTt44ThhLU0wXelkyRh_bgg.ogMtpmeg-v7VIqtsSBpxHCNzt--aP7oHwL3PVm2RgiQg.JPEG.yunalee1997%2F4cc82b04dee244c22d13aee91e4b5e58.jpg&type=sc960_832';
     p.onclick = () => {
-      chattingroom(e.id);
+      chattingroom(index + 1);
     };
     p.innerHTML = e.nickname;
     div2.className = 'border-bottom';

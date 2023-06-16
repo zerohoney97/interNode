@@ -54,6 +54,7 @@ function chattingroom(e){
     var chattingRoom = document.querySelector('.popup-content.chattingroom');
   chattingRoom.style.display = 'block';
   user_id = e;
+  console.log(user_id);
 }
 
 function chattingpage(){
