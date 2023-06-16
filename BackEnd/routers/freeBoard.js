@@ -13,6 +13,7 @@ const { viewPostAll,
         recommentInsert
     } = require('../controllers/freeBoardsController');
 const { isLogin } = require('../middleware/islogin');
+const path = require("path");
 
 //전체 게시글 조회
 router.get("/", viewPostAll);
