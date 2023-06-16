@@ -82,8 +82,9 @@ window.onload = ()=>{
         <details>
           <summary>대댓글 달기</summary>
           
-          <form class="recommentForm" action="">
+          <form class="recommentForm" action="http://127.0.0.1:8080/freeboards/recommentinsert${post_id}" method ="post">
               <textarea class="recommentContent" name="content" cols="30" rows="10"></textarea>
+              <input type ="hidden" name = "commentId" value=${cmt.id}>
               <button class="btn">대댓글등록</button>
           </form>
         </details>
@@ -98,6 +99,7 @@ window.onload = ()=>{
   
   // 댓글등록 주소설정
   commentForm.action = `http://127.0.0.1:8080/freeboards/commentinsert${post_id}`
+
   
 }
 
@@ -147,7 +149,7 @@ likeBtn.onclick = ()=>{
   })
 }
 
-// 댓글, 대댓글
+
 
 
 

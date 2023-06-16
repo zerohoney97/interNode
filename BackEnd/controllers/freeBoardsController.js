@@ -254,14 +254,15 @@ exports.commentInsert = async (req,res)=>{
 
 // 대댓글 추가
 exports.recommentInsert = async (req,res)=>{
-    const cmt_id = req.query.id
+    const { content,commentId } = req.body;
+    const post_id = req.query.id;
     const { primaryKey } = req.acc_decoded;
 
     try {
         Recomment.create({
             content,
             user_id : primaryKey,
-            
+            comment_id : commentId
         })
         // 댓글 번호로 게시글 주소 찾고 주소 리다이렉트 해준다.
         res.redirect(`http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${post_id}`)
