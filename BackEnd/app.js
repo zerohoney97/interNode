@@ -61,17 +61,7 @@ app.use(
   })
 );
 app.use(
-  "/public",
-  e.static(path.join(__dirname, "..", "FrontEnd", "public"), {
-    setHeaders: (res, filePath) => {
-      if (path.extname(filePath) === ".css") {
-        res.setHeader("Content-Type", "text/css");
-      }
-    },
-  })
-);
-app.use(
-  "/main/public",
+  "*/public",
   e.static(path.join(__dirname, "..", "FrontEnd", "public"), {
     setHeaders: (res, filePath) => {
       if (path.extname(filePath) === ".css") {
@@ -82,7 +72,7 @@ app.use(
 );
 
 app.use(
-  "/js",
+  "*/js",
   e.static(path.join(__dirname, "..", "FrontEnd", "js"), {
     setHeaders: (res, filePath) => {
       if (path.extname(filePath) === ".js") {
@@ -92,16 +82,7 @@ app.use(
   })
 );
 
-app.use(
-  "/main/js",
-  e.static(path.join(__dirname, "..", "FrontEnd", "js"), {
-    setHeaders: (res, filePath) => {
-      if (path.extname(filePath) === ".js") {
-        res.setHeader("Content-Type", "text/javascript");
-      }
-    },
-  })
-);
+
 // app.use('/socket.io', e.static(__dirname + '/node_modules/socket.io/client-dist'));
 app.use(
   "/socket.io",
