@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { login, viewUser } = require("../controllers/loginController");
+const { login, viewUser, logOut } = require("../controllers/loginController");
 const { isLogin } = require("../middleware/islogin");
 const path = require("path");
 
@@ -14,6 +14,7 @@ router.get("/", (req, res) => {
   );
 });
 
-//
+//로그아웃
+router.get("/logout", logOut);
 
 module.exports = router;

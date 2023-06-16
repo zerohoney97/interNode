@@ -102,23 +102,5 @@ goToUserSearch.href = `${url}/adminPage/userSearch`;
 goToUserReport.href = `${url}/adminPage/userReport`;
 // 하이퍼 링크 변경
 
-// 오른쪽위 선택창 바꿔주는 함수
-axios
-.get("/login/view", { withCredentials: true })
-.then((res) => {
-  console.log(res.data);
-  if (res.data) {
-    if (res.data == "다시 로그인 해주세요") {
-      headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
-    } else {
-      headerUtilLogin.innerHTML = ` ${res.data}`;
-      console.log(headerSignUp.innerHTML);
-      headerSignUp.innerHTML =
-        '<a href="/freeboards/main"> 자유 게시판 </a>';
-      console.log(headerSignUp.innerHTML);
-    }
-  }
-})
-.catch((error) => {
-  console.log(error);
-});
+changeHeaderUtil()
+  
