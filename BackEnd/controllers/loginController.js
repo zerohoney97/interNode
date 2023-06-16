@@ -24,7 +24,7 @@ exports.login = async (req,res)=>{
                 return res.redirect('http://127.0.0.1:5500/FrontEnd/login/loginBlock.html')
             }
             if(user.email === 'admin@admin.com'){
-                res.redirect("http://127.0.0.1:5500/FrontEnd/zerohoneyHTML/adminPage/searchUserDetail.html")
+                res.redirect("/adminPage")
             }
             // access 토큰 발행
             const accessToken = jwt.sign({
