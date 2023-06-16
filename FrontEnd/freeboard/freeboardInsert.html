@@ -77,5 +77,20 @@
             </div>
         </footer>
 </body>
-
+<script>
+    // 페이지 로드시  맨 위 헤더 변경
+    window.onload = function(){
+    axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
+    .then((res)=>{
+      console.log(res.data);
+      if(res.data){
+        headerUtilLogin.textContent = `${res.data}님`
+        headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
+      }
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+  }
+  </script>
 </html>

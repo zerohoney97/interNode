@@ -15,7 +15,6 @@ exports.viewPostAll = async (req,res)=>{
             ]
         });
         res.json(list);
-        console.log(list);
     } catch (error) {
         console.log(error);
     }
@@ -69,6 +68,204 @@ exports.viewsUp = async (req,res)=>{
             { views: Sequelize.literal('views + 1') },
             { where: { id: post_id } } 
         )
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//게시글 수정
+exports.updatePost = async (req,res)=>{
+    const post_id = req.query.id;
+    const { title, content } = req.body;
+    try {
+        await FreeBoard.update(
+            {title, content},
+            {where : {id: post_id}}
+        )
+        res.redirect(`http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${post_id}`)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//게시글 삭제
+exports.deletePost = async (req,res)=>{
+    const post_id = req.query.id
+    try {
+        await FreeBoard.destroy({where :{id : post_id}});
+        // res.redirect('http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html');
+        res.end();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// 내가 쓴 글 조회
+exports.myPost = async (req,res)=>{
+    const { primaryKey } = req.acc_decoded;
+    try {
+        const list = await FreeBoard.findAll({
+            where : {user_id : primaryKey},
+            include :[
+                {
+                    model: User,
+                    attributes : ['nickname']
+                },
+                {
+                    model :FreeBoardLike,
+                }
+            ]
+        });
+        res.json(list);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// 내가 좋아요 한 글 조회
+exports.myLikes = async (req,res)=>{
+    const { primaryKey } = req.acc_decoded;
+    try {
+        const list = await FreeBoardLike.findAll({
+            where : {user_id : primaryKey},
+            include :[
+                {
+                    model : FreeBoard
+                },
+                {
+                    model : User,
+                    attributes : ['nickname']
+                }
+
+            ]
+        })
+
+        let idList = [];
+        for(let el of list){
+            idList.push(el.freeboard_id)
+        }
+
+        // console.log(list)
+
+        const fav = await FreeBoard.findAll({
+            where : {id : idList},
+            include : [
+                {
+                    model : FreeBoardLike
+                }
+            ]
+        })
+        
+        let data = [list,fav]
+        
+        res.json(data);
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+// 좋아요 버튼 클릭
+
+exports.thumbsUp = async (req,res)=>{
+    const post_id = req.query.id
+    const { primaryKey } = req.acc_decoded 
+    try {
+        let result = await FreeBoardLike.findOne({
+            where: {user_id : primaryKey , freeboard_id : post_id}
+        })
+
+        if(result){
+            //삭제
+            await FreeBoardLike.destroy({where:{freeboard_id : post_id}})
+        }else{
+            //추가
+            await FreeBoardLike.create({
+                user_id : primaryKey,
+                freeboard_id : post_id
+            })
+        }
+        //현재 좋아요 수 리턴
+        const post = await FreeBoard.findOne({
+            where :{id : post_id},
+            include :[
+                {
+                    model: User,
+                    attributes : ['nickname']
+                },
+                {
+                    model :FreeBoardLike,
+                }
+            ]
+        });
+        res.json(post);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// 댓글, 대댓글 조회
+exports.comment = async (req,res)=>{
+    const post_id = req.query.id
+    try {
+        let data = await Comment.findAll({
+            where : {freeboard_id : post_id},
+            include : [
+                {
+                    model : Recomment,
+                    include : [
+                        {
+                            model : User,
+                            attributes : ['nickname']
+                        }
+                        
+                    ]
+                },
+                {
+                    model: User,
+                    attributes : ['nickname']
+                }
+
+            ]
+        })
+        res.json(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// 댓글 추가
+exports.commentInsert = async (req,res)=>{
+    const post_id = req.query.id
+    const { content } = req.body;
+    const { primaryKey } = req.acc_decoded;
+
+    try {
+        Comment.create({
+            content,
+            user_id : primaryKey,
+            freeboard_id : post_id
+        })
+        res.redirect(`http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${post_id}`)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// 대댓글 추가
+exports.recommentInsert = async (req,res)=>{
+    const cmt_id = req.query.id
+    const { primaryKey } = req.acc_decoded;
+
+    try {
+        Recomment.create({
+            content,
+            user_id : primaryKey,
+            
+        })
+        // 댓글 번호로 게시글 주소 찾고 주소 리다이렉트 해준다.
+        res.redirect(`http://127.0.0.1:5500/FrontEnd/freeboard/freeboardDetail.html?id=${post_id}`)
+
     } catch (error) {
         console.log(error);
     }
