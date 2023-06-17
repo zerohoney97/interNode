@@ -11,7 +11,7 @@ exports.login = async (req,res)=>{
         if(user == null){
             return res.redirect('http://127.0.0.1:5500/FrontEnd/login/idErr.html');
         }
-        
+
         const same = bcrypt.compareSync(user_pw,user.password)
         // if(same){
 
