@@ -110,13 +110,12 @@ exports.initReservationSocket = (server) => {
                 if (seatArr[reservation_num][x][y] == 0) {
                     seatArr[reservation_num][x][y] = 1;
                 } else {
-                    const pay = true;
+                    // const pay = true;
                     // 이미 결제된 좌석이라면
                     // socket.emit("getSeat", { pay, seats: seatArr[reservation_num], x, y });
                     socket.emit("payment", { result : false, message : "결제 실패", seats: seatArr[reservation_num]});
                     return;
                 }
-                // 임의로 seat_num 설정
                 const seat_num = JSON.stringify([x,y]);
                 await Sheet.update({ sheets_array: JSON.stringify(seatArr[reservation_num]) }, { where: { reservation_num } });
                 // 유저가 예매했다고 예매내역 추가
