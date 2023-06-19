@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const path = require('path');
+const { getUserId, checkReservedList } = require("../controllers/reservationController");
 
 router.get('/seats',(req,res)=>{
     res.sendFile(path.join(__dirname, '..', '..','FrontEnd','seat','seat.html'));
@@ -7,14 +8,9 @@ router.get('/seats',(req,res)=>{
 });
 
 // 유저 아이디 반환
-router.get('/user', (req, res) => {
-    try {
-        const { primaryKey } = req.acc_decoded;
-        return res.send({primaryKey});
-    } catch (error) {
-        console.log(error);
-    }
+router.get('/user', getUserId);
 
-});
+// 유저 예매 완료 되었는지 반환
+router.post('/check', checkReservedList);
 
 module.exports = router;

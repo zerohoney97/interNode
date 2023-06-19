@@ -17,7 +17,7 @@ const mailRouter = require("./routers/mail");
 const { isLogin } = require("./middleware/islogin");
 const adminPageRouter = require("./routers/adminMypage");
 
-const initReservationSocket = require("./controllers/reservationController");
+const {initReservationSocket} = require("./controllers/reservationController");
 
 app.use(e.json());
 app.use(e.urlencoded({ extended: false }));
