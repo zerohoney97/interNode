@@ -67,14 +67,14 @@ tabNotice.addEventListener('click', () => {
 
 
 // 현재 내 마우스 좌표
-document.addEventListener('mousemove', function(event) {
-    var mouseX = event.clientX; // 현재 마우스의 X 좌표
-    var mouseY = event.clientY; // 현재 마우스의 Y 좌표
+// document.addEventListener('mousemove', function(event) {
+//     var mouseX = event.clientX; // 현재 마우스의 X 좌표
+//     var mouseY = event.clientY; // 현재 마우스의 Y 좌표
     
-    // 마우스 좌표 출력 또는 다른 작업 수행
-    console.log('마우스 X 좌표:', mouseX);
-    console.log('마우스 Y 좌표:', mouseY);
-  });
+//     // 마우스 좌표 출력 또는 다른 작업 수행
+//     console.log('마우스 X 좌표:', mouseX);
+//     console.log('마우스 Y 좌표:', mouseY);
+//   });
 
 
 // 스크롤시 배너 내려오게
@@ -130,3 +130,8 @@ axios
 .catch((error) => {
   console.log(error);
 });
+
+// 상세 페이지 로드시 데이터 axios로 가져오기
+window.onload = ()=>{
+  axios.get(`/`)
+}
