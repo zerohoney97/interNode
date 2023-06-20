@@ -78,16 +78,15 @@ rate_ranking.addEventListener("click", () => {
   cmt_ranking.style.color = "#a7acb6";
 });
 
-changeHeaderUtil()
-
+changeHeaderUtil();
 
 // ---------------------------------
 // 공연 정보 받아와서 출력
 const getShowList = async () => {
   try {
     // 전체 공연
-    const {data} = await axios.get("/main/showList", {
-      withCredentials : true
+    const { data } = await axios.get("/main/showList", {
+      withCredentials: true,
     });
     console.log(data);
     renderTicketShowList(data);
@@ -96,20 +95,19 @@ const getShowList = async () => {
 
     // 평점순 공연
     const rateList = await axios.get("/main/rateShowList", {
-      withCredentials : true
+      withCredentials: true,
     });
 
     renderRateShow(rateList.data);
-
   } catch (error) {
     console.log(error);
   }
-}
-window.addEventListener('load', getShowList);
+};
+window.addEventListener("load", getShowList);
 // 서버에서 show 정보 받아와서 렌더
 const renderTicketShowList = (list) => {
   // 티켓오픈 바로 밑 5개의 공연 리스트
-  const showUl = document.querySelector('.showUl');
+  const showUl = document.querySelector(".showUl");
   showUl.innerHTML = "";
   // 5개만 출력
   for (let index = 0; index < 5; index++) {
@@ -121,25 +119,26 @@ const renderTicketShowList = (list) => {
     div.innerText = show.title;
     const span = document.createElement("span");
     if (show.ShowDateInfos.length != 0) {
-      span.innerText = show.ShowDateInfos[0].startDate + " ~ " + show.ShowDateInfos[0].endDate;
+      span.innerText =
+        show.ShowDateInfos[0].startDate + " ~ " + show.ShowDateInfos[0].endDate;
     } else {
       span.innerText = "티켓 시간 정보";
     }
     li.append(img, div, span);
 
     li.onclick = () => {
-      location.href = "/showdetail?id="+show.id;
+      location.href = "/showdetail?id=" + show.id;
     };
     showUl.append(li);
   }
-}
+};
 
 // 베스트 공연 출력
 const renderBestShow = (list) => {
   const bestUl = document.querySelector(".bestshow ul");
   bestUl.innerHTML = "";
 
-  list.forEach(show => {
+  list.forEach((show) => {
     const li = document.createElement("li");
     const imgDiv = document.createElement("div");
     imgDiv.classList.add("bestshow_img");
@@ -164,44 +163,43 @@ const renderBestShow = (list) => {
     const date = document.createElement("span");
     date.classList.add("bestshow_img_date");
     if (show.ShowDateInfos.length != 0) {
-      date.innerText = show.ShowDateInfos[0].startDate + " ~ " + show.ShowDateInfos[0].endDate;
+      date.innerText =
+        show.ShowDateInfos[0].startDate + " ~ " + show.ShowDateInfos[0].endDate;
     }
 
     textDiv.append(title, br1, br2, loc, br3, date);
     imgDiv.append(img);
     li.append(imgDiv, textDiv);
     li.onclick = () => {
-      location.href = "/showdetail?id="+show.id;
+      location.href = "/showdetail?id=" + show.id;
     };
 
     bestUl.append(li);
   });
-
-
-}
+};
 
 const renderRateShow = (list) => {
-  const rankingDiv = document.querySelector('.rankingdiv');
+  const rankingDiv = document.querySelector(".rankingdiv");
   rankingDiv.innerHTML = "";
 
-  const ul = document.createElement('ul');
+  const ul = document.createElement("ul");
 
   // 평점순 5개만 출력
   for (let index = 0; index < 5; index++) {
     const show = list[index];
 
-    const li = document.createElement('li');
-    const imgDiv = document.createElement('div');
+    const li = document.createElement("li");
+    const imgDiv = document.createElement("div");
     imgDiv.classList.add("rank_img_wrap");
-    const img = document.createElement('img');
+    const img = document.createElement("img");
     img.src = imgPath + "/" + show.img;
-    const num = document.createElement('span');
+    const num = document.createElement("span");
     num.classList.add("whitenum");
-    num.innerText = index+1;
+    num.innerText = index + 1;
 
     imgDiv.append(img, num);
 
-    const title = document.createElement('div');
+    const title = document.createElement("div");
     title.classList.add("rank_title");
     title.innerText = show.title;
 
@@ -209,26 +207,23 @@ const renderRateShow = (list) => {
     dateSpan.classList.add("rank_date");
 
     if (show.ShowDateInfos.length != 0) {
-      dateSpan.innerText = show.ShowDateInfos[0].startDate + " ~ " + show.ShowDateInfos[0].endDate;
+      dateSpan.innerText =
+        show.ShowDateInfos[0].startDate + " ~ " + show.ShowDateInfos[0].endDate;
     } else {
       dateSpan.innerText = "티켓 시간 정보";
     }
 
-    const rateSpan = document.createElement('span');
+    const rateSpan = document.createElement("span");
     if (!show.showRates) {
       show.showRates = 0;
     }
-    rateSpan.innerText = "평점 : "+ show.showRates;
+    rateSpan.innerText = "평점 : " + show.showRates;
 
-    const br = document.createElement('br');
+    const br = document.createElement("br");
 
     li.append(imgDiv, title, dateSpan, br, rateSpan);
     ul.append(li);
   }
 
-
-
-
   rankingDiv.append(ul);
-
-}
+};

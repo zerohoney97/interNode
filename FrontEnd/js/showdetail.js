@@ -1,19 +1,18 @@
 // 상세 페이지 로드시 데이터 axios로 가져오기
-window.onload = ()=>{
-  const show_id =window.location.search
-  axios.get(`/showdetail/detail${show_id}`)
-  .then((res)=>{
+window.onload = () => {
+  const show_id = window.location.search;
+  axios
+    .get(`/showdetail/detail${show_id}`)
+    .then((res) => {
+      const data = res.data;
+      console.log(data);
+      const detail = JSON.parse(data.detail);
+      const showImg = data.img;
 
-    const data = res.data;
-    console.log(data);
-    const detail = JSON.parse(data.detail);
-    const showImg = data.img
+      console.log(showImg[0]);
 
-    console.log(showImg[0]);
-
-    const mainElement = document.querySelector('main');
-    mainElement.innerHTML =
-    `
+      const mainElement = document.querySelector("main");
+      mainElement.innerHTML = `
     <div class="product_info" id="bookss">
     <div class="product_info_img">
       <img
@@ -44,7 +43,9 @@ window.onload = ()=>{
           </li>
           <li>
             <span>기간</span>
-            <div>${data.ShowDateInfos[0].startDate}~${data.ShowDateInfos[0].endDate}</div>
+            <div>${data.ShowDateInfos[0].startDate}~${
+        data.ShowDateInfos[0].endDate
+      }</div>
           </li>
           <li>
             <span>관람등급</span>
@@ -82,7 +83,11 @@ window.onload = ()=>{
     <div class="timesession">
       <h3>회차 선택</h3>
       <ul>
-        <li>${data.ShowDateInfos[0].startTime.toString().slice(0,2)}시 ${data.ShowDateInfos[0].startTime.toString().slice(2,4)} 분</li>
+        <li>${data.ShowDateInfos[0].startTime
+          .toString()
+          .slice(0, 2)}시 ${data.ShowDateInfos[0].startTime
+        .toString()
+        .slice(2, 4)} 분</li>
       </ul>
     </div>
 
@@ -314,76 +319,76 @@ window.onload = ()=>{
         </li>
         </ul>
         </div>
-    `
-    datepicker.min = data.ShowDateInfos[0].startDate;
-    datepicker.max = data.ShowDateInfos[0].endDate;
+    `;
+      datepicker.min = data.ShowDateInfos[0].startDate;
+      datepicker.max = data.ShowDateInfos[0].endDate;
 
-    // 탭메뉴 클릭시 함수
-  let detailPage = document.getElementsByClassName('detail_page')[0];
-  let reviewPage = document.getElementsByClassName('review_page')[0];
-  let locationPage = document.getElementsByClassName('location_page')[0];
-  let noticePage = document.getElementsByClassName('notice_page')[0];
+      // 탭메뉴 클릭시 함수
+      let detailPage = document.getElementsByClassName("detail_page")[0];
+      let reviewPage = document.getElementsByClassName("review_page")[0];
+      let locationPage = document.getElementsByClassName("location_page")[0];
+      let noticePage = document.getElementsByClassName("notice_page")[0];
 
-  // 페이지 display설정 함수
-  function showPage(page) {
-    detailPage.style.display = 'none';
-    reviewPage.style.display = 'none';
-    locationPage.style.display = 'none';
-    noticePage.style.display = 'none';
+      // 페이지 display설정 함수
+      function showPage(page) {
+        detailPage.style.display = "none";
+        reviewPage.style.display = "none";
+        locationPage.style.display = "none";
+        noticePage.style.display = "none";
 
-    page.style.display = 'block';
-  }
+        page.style.display = "block";
+      }
 
-  let tabDetail = document.getElementById('tab_detail');
-  let tabReview = document.getElementById('tab_review');
-  let tabLocation = document.getElementById('tab_location');
-  let tabNotice = document.getElementById('tab_notice');
+      let tabDetail = document.getElementById("tab_detail");
+      let tabReview = document.getElementById("tab_review");
+      let tabLocation = document.getElementById("tab_location");
+      let tabNotice = document.getElementById("tab_notice");
 
+      // 탭 border 디자인 설정 함수
+      let tab1 = document.getElementById("tab1");
+      let tab2 = document.getElementById("tab2");
+      let tab3 = document.getElementById("tab3");
+      let tab4 = document.getElementById("tab4");
 
-  // 탭 border 디자인 설정 함수
-  let tab1 = document.getElementById('tab1');
-  let tab2 = document.getElementById('tab2');
-  let tab3 = document.getElementById('tab3');
-  let tab4 = document.getElementById('tab4');
+      function tabBorderLine(tab) {
+        tab1.style.border = "none";
+        tab2.style.border = "none";
+        tab3.style.border = "none";
+        tab4.style.border = "none";
 
-  function tabBorderLine(tab){
-    tab1.style.border = 'none'
-    tab2.style.border = 'none'
-    tab3.style.border = 'none'
-    tab4.style.border = 'none'
+        tab1.style.borderBottom = "1px solid";
+        tab2.style.borderBottom = "1px solid";
+        tab3.style.borderBottom = "1px solid";
+        tab4.style.borderBottom = "1px solid";
 
-    tab1.style.borderBottom = '1px solid';
-    tab2.style.borderBottom = '1px solid';
-    tab3.style.borderBottom = '1px solid';
-    tab4.style.borderBottom = '1px solid';
+        tab.style.border = "1px solid";
+        tab.style.borderBottom = "none";
+      }
 
-    tab.style.border = '1px solid'
-    tab.style.borderBottom = 'none'
-  }
+      tabDetail.addEventListener("click", () => {
+        showPage(detailPage);
+        tabBorderLine(tab1);
+      });
 
+      tabReview.addEventListener("click", () => {
+        let reviewContainer =
+          document.getElementsByClassName("review-container")[0];
+        reviewContainer.innerHTML = "";
+        showPage(reviewPage);
+        tabBorderLine(tab2);
+        const likeBtn = document.getElementsByClassName("likeBtn");
+        // 관람후기 가져오기
+        axios
+          .get(`/showdetail/reviewboard${show_id}`)
+          .then((res) => {
+            // innerHTML 에 후기 넣는다
+            const data = res.data;
+            console.log(data);
+            for (let i = 0; i < data.length; i++) {
+              const cmt = data[i];
+              const div = document.createElement("div");
 
-  tabDetail.addEventListener('click', () => {
-    showPage(detailPage);
-    tabBorderLine(tab1);
-  });
-
-  tabReview.addEventListener('click', () => {
-    let reviewContainer = document.getElementsByClassName('review-container')[0];
-    reviewContainer.innerHTML = ''
-    showPage(reviewPage);
-    tabBorderLine(tab2);
-    const likeBtn = document.getElementsByClassName('likeBtn')
-    // 관람후기 가져오기
-    axios.get(`/showdetail/reviewboard${show_id}`)
-    .then((res)=>{
-      // innerHTML 에 후기 넣는다
-      const data = res.data;
-      console.log(data);
-      for (let i = 0; i < data.length; i++) {
-        const cmt = data[i];
-        const div = document.createElement('div');
-
-        div.innerHTML= `
+              div.innerHTML = `
           <div class="user-review">
             <img class="userimg" src="../zerohoneyPublic/resources/chat.png" style="width: 50px; height: 50px" alt="userProfile" />
             <div class="user-review-detail">
@@ -398,7 +403,9 @@ window.onload = ()=>{
 
           <div class="btns">
             <div class="likeBtn" id="likeBtn-${cmt.id}">
-                <img src="../freeboard/img/like_empty.png" alt="" />${cmt.ReviewBoardLikes.length}
+                <img src="../freeboard/img/like_empty.png" alt="" />${
+                  cmt.ReviewBoardLikes.length
+                }
             </div>
             <div class="reportDiv" id = "reportBtn-${cmt.id}">
 
@@ -413,93 +420,128 @@ window.onload = ()=>{
           <div class="line"></div>
         `;
 
-        reviewContainer.appendChild(div);
+              reviewContainer.appendChild(div);
 
-          // 좋아요 클릭 함수
-          const likeBtn = document.getElementById(`likeBtn-${cmt.id}`);
-          likeBtn.onclick = () => {
-            axios
-              .get(`/showdetail/thumbsup?id=${cmt.id}`, { withCredentials: true })
-              .then((res) => {
-                console.log(res.data);
-                likeBtn.innerHTML = `<img src="../freeboard/img/like_empty.png" alt="" />${res.data.length}`;
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          };
+              // 좋아요 클릭 함수
+              const likeBtn = document.getElementById(`likeBtn-${cmt.id}`);
+              likeBtn.onclick = () => {
+                axios
+                  .get(`/showdetail/thumbsup?id=${cmt.id}`, {
+                    withCredentials: true,
+                  })
+                  .then((res) => {
+                    console.log(res.data);
+                    likeBtn.innerHTML = `<img src="../freeboard/img/like_empty.png" alt="" />${res.data.length}`;
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              };
 
-          // 신고 클릭 함수
-          const reportBtn = document.getElementById(`reportBtn-${cmt.id}`);
-          reportBtn.onclick = ()=>{
-            axios
-            .get(`/showdetail/report?id=${cmt.id}`, { withCredentials: true })
-            .then((res) => {
-              console.log(res.data);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+              // 신고 클릭 함수
+              const reportBtn = document.getElementById(`reportBtn-${cmt.id}`);
+              reportBtn.onclick = () => {
+                axios
+                  .get(`/showdetail/report?id=${cmt.id}`, {
+                    withCredentials: true,
+                  })
+                  .then((res) => {
+                    console.log(res.data);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              };
+            }
+          })
+
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+
+      tabLocation.addEventListener("click", () => {
+        showPage(locationPage);
+        tabBorderLine(tab3);
+      });
+
+      tabNotice.addEventListener("click", () => {
+        showPage(noticePage);
+        tabBorderLine(tab4);
+      });
+
+      // 스크롤시 배너 내려오게
+      var banner = document.getElementById("banner");
+
+      window.addEventListener("scroll", function () {
+        var scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > 1200) {
+          // 스크롤 위치가 100px 이상일 때
+          banner.style.top = "0"; // 배너를 아래로 내림
+        } else {
+          banner.style.top = "-100px"; // 배너를 다시 위로 위치시킴
+        }
+      });
+
+      //스크롤시 맨위로 이동 버튼 생성
+      var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+      window.addEventListener("scroll", function () {
+        var scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > 300) {
+          scrollToTopBtn.classList.add("show");
+        } else {
+          scrollToTopBtn.classList.remove("show");
+        }
+      });
+
+      scrollToTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+          top: 1000,
+          behavior: "smooth",
+        });
+      });
+
+      // 오른쪽위 선택창 바꿔주는 함수
+      axios
+        .get("/login/view", { withCredentials: true })
+        .then((res) => {
+          console.log(res.data);
+          if (res.data) {
+            if (res.data == "다시 로그인 해주세요") {
+              headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
+            } else {
+              headerUtilLogin.innerHTML = ` ${res.data}`;
+              console.log(headerSignUp.innerHTML);
+              headerSignUp.innerHTML =
+                '<a href="/freeboards/main"> 자유 게시판 </a>';
+              console.log(headerSignUp.innerHTML);
+            }
           }
-
-
-      }
-
-
+          const RedBookBtn = document.getElementById("redbookbtn");
+          console.log(RedBookBtn);
+          RedBookBtn.onclick = () => {
+            const postNum = window.location.search.slice(-1);
+            console.log(postNum);
+            console.log(datepicker.value);
+            const dateresult = datepicker.value;
+            if (dateresult != "") {
+              let newdate = dateresult.slice(5).replace("-", "");
+              window.location.href = `/reservation/seats/?reservation_num=${postNum}_${newdate}`;
+            } else {
+              alert("날짜를 선택하고 예매버튼을 눌러주세요");
+            }
+          };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     })
-
-
-    .catch((err)=>{
+    .catch((err) => {
       console.log(err);
-    })
-  });
-
-  tabLocation.addEventListener('click', () => {
-    showPage(locationPage);
-    tabBorderLine(tab3);
-
-  });
-
-  tabNotice.addEventListener('click', () => {
-    showPage(noticePage);
-    tabBorderLine(tab4);
-  });
-
-
-
-
-
-  // 스크롤시 배너 내려오게
-  var banner = document.getElementById('banner');
-
-  window.addEventListener('scroll', function() {
-  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (scrollTop > 1200) { // 스크롤 위치가 100px 이상일 때
-    banner.style.top = '0'; // 배너를 아래로 내림
-  } else {
-    banner.style.top = '-100px'; // 배너를 다시 위로 위치시킴
-  }
-  });
-
-  //스크롤시 맨위로 이동 버튼 생성
-  var scrollToTopBtn = document.getElementById('scrollToTopBtn');
-
-  window.addEventListener('scroll', function() {
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > 300) {
-    scrollToTopBtn.classList.add('show');
-    } else {
-    scrollToTopBtn.classList.remove('show');
-  }
-  });
-
-  scrollToTopBtn.addEventListener('click', function() {
-    window.scrollTo({
-      top: 1000,
-      behavior: 'smooth'
     });
-  });
-
-changeHeaderUtil()
+};

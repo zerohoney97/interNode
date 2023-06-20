@@ -136,7 +136,6 @@ updateBtn.onclick = () => {
 deleteBtn.onclick = () => {
   let userNick = headerUtilLogin.textContent;
   if (userNick.trim() === nickname.textContent.trim()) {
-
     const post_id = window.location.search;
     axios
       .get(`  /freeboards/deletepost${post_id}`)
