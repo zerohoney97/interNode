@@ -5,78 +5,348 @@
 //     dropdownContent.classList.toggle('show');
 // });
 
-
-// socket 연결
-const socket = io();
-// 임의로 showid, reservation_num 작성
 // reservation_num => 공연아이디, 날짜 정보 포함
-socket.emit("getSeatsInfo", 1, "0607");
-socket.on("getSeatsInfo", (seats) => {
-  console.log(seats);
+
+
+
+window.onload = async () => {
+  // reservation_num 받아오기
+  const reservation_num = new URLSearchParams(window.location.search).get('reservation_num');
+  const show_id = parseInt(reservation_num.split("_"));
+
+  const { data } = await axios.get("/reservation/user", { withCredentials: true });
+  const user_id = data.primaryKey;
+
+  let ticketPrice;
+  // let seats = document.querySelectorAll('.seat');
+  let countDisplay = document.getElementById('count');
+  let totalDisplay = document.getElementById('total');
+  // let ticketPrice = 10000; // 한 좌석당 가격
+  let selectedSeats = []; // 선택된 좌석 배열
+  // let selectedSeats = null; // 선택된 좌석 배열
+
+  // socket 연결
+  const socket = io();
+
+  socket.emit("reservation");
+
+  socket.emit("joinReservation", { show_id, reservation_num });
+
+  socket.on("joinReservation", (data) => {
+    const { show, seats } = data;
+
+    ticketPrice = show.price;
+
+    // 좌석 출력
+    renderSeats(seats);
+
+    // 공연 정보 출력
+    renderShow(show);
+  });
+
+      selectedSeats[0] = selectedSeat;
+    }
+
+    seatsDiv.innerHTML = "";
+
+    seats.forEach((seatX, x) => {
+      const seatXContainer = document.createElement("div");
+      seatXContainer.classList.add("row");
+      seatX.forEach((seat, y) => {
+        const seatY = document.createElement("div");
+        seatY.classList.add("seat");
+        seatY.setAttribute("x", x);
+        seatY.setAttribute("y", y);
+
+        if (selectedX) {
+          // 사용자가 선택해놓은 좌석
+          if (x == selectedX && y == selectedY) {
+            seatY.classList.add("selected");
+          }
+        }
+
+        // 이미 결제된 좌석이면
+        if (seat == 1) {
+          seatY.classList.remove("selected");
+          seatY.classList.add("disabled");
+        }
 
   // 좌석 정보 받아와서 좌석 출력(요소 생성, 결제/미결제 좌석에 따라 다르게 출력)
-})
+  const renderSeats = (seats) => {
+    const seatsDiv = document.querySelector(".seats-div");
+    const selectedSeat = document.querySelector(".selected");
 
-// 좌석 눌렀을때 이 좌석이 선점되었는지 확인하는 이벤트 전송(서버에서는 전역변수에서 확인. db건드리지 말고)
-// 만약 지금이랑 seats 정보가 다르면 다시 출력?
+    let selectedX;
+    let selectedY;
+    selectedSeats[0] = null;
 
-// 좌석 결제 버튼 눌렀을때 결제하겠다는 이벤트 emit(서버에서 db에 수정해서 저장하고(전역변수에도 저장) 다시 room 내의 모든 클라이언트에게 showarr전역변수 전송)
-// 서버에 유저아이디도 전송
-//
+    if (selectedSeat) {
+      selectedX = selectedSeat.getAttribute("x");
+      selectedY = selectedSeat.getAttribute("y");
+
+      selectedSeats[0] = selectedSeat;
+    }
+
+    seatsDiv.innerHTML = "";
+
+    seats.forEach((seatX, x) => {
+      const seatXContainer = document.createElement("div");
+      seatXContainer.classList.add("row");
+      seatX.forEach((seat, y) => {
+        const seatY = document.createElement("div");
+        seatY.classList.add("seat");
+        seatY.setAttribute("x", x);
+        seatY.setAttribute("y", y);
+
+        if (selectedX) {
+          // 사용자가 선택해놓은 좌석
+          if (x == selectedX && y == selectedY) {
+            seatY.classList.add("selected");
+          }
+        }
+
+        // 이미 결제된 좌석이면
+        if (seat == 1) {
+          seatY.classList.remove("selected");
+          seatY.classList.add("disabled");
+        }
 
 
+        seatXContainer.append(seatY);
+      });
 
-
-
-
-
-
-let movies = document.querySelectorAll('.dropdown-content div');
-
-movies.forEach(function(movie) {
-    movie.addEventListener('click', function() {
-        let selectedMovie = this.textContent;
-        // 선택한 영화로 드롭다운 버튼 내용 변경
-        dropdown.firstElementChild.textContent = selectedMovie;
-        // 위 코드는 영화를 선택할 때마다 selectedMovie 변수의 값을 이용하여
-        // dropdown 요소의 첫 번째 자식 요소의 텍스트 내용을 변경하고 있다.
-        dropdownContent.classList.remove('show');
+      seatsDiv.append(seatXContainer);
     });
-});
 
-let seats = document.querySelectorAll('.seat');
-let countDisplay = document.getElementById('count');
-let totalDisplay = document.getElementById('total');
-let ticketPrice = 10000; // 한 좌석당 가격
-let selectedSeats = []; // 선택된 좌석 배열
+    // 클릭이벤트 추가
+    addSeatsEvent();
+  }
 
-seats.forEach(function(seat) {
-    seat.addEventListener('click', function() {
+  // 공연 정보 출력하는 부분
+  const renderShow = (show) => {
+    showTitle.innerText = show.title;
+    showMonth.innerText = reservation_num.substring(2, 4); // 월
+    showDate.innerText = reservation_num.substring(4, 6); // 일
+
+  };
+
+  function updateSelectedSeatsCount() {
+    // let selectedSeatsCount = selectedSeats.length;
+    let selectedSeatsCount;
+    if (selectedSeats[0]) {
+      selectedSeatsCount = 1;
+    } else {
+      selectedSeatsCount = 0;
+    }
+    countDisplay.textContent = selectedSeatsCount;
+  }
+
+  function updateTotalPrice() {
+    let totalPrice = selectedSeats.reduce(function (total, seat) {
+      return total + ticketPrice;
+    }, 0);
+    totalDisplay.textContent = totalPrice;
+  }
+
+  // 좌석 클릭 이벤트 추가하는 함수
+  const addSeatsEvent = () => {
+
+    let seatsArr = document.querySelectorAll('.seat');
+    seatsArr.forEach((seats) => {
+      // 좌석 클릭 이벤트 추가
+      seats.addEventListener('click', function () {
+        if (this.classList.contains('disabled')) {
+          alert("선택할 수 없는 좌석임");
+          return;
+        }
+
         if (this.classList.contains('selected')) {
-            // 이미 선택된 좌석인 경우, 선택 취소
-            this.classList.remove('selected');
-            selectedSeats.splice(selectedSeats.indexOf(this), 1);
-        } else if (selectedSeats.length < 2) {
-            // 선택되지 않은 좌석이고 최대 선택 가능한 개수보다 작을 경우, 선택
-            this.classList.add('selected');
-            selectedSeats.push(this);
+          // 이미 선택된 좌석인 경우, 선택 취소
+          this.classList.remove('selected');
+          selectedSeats.splice(selectedSeats.indexOf(this), 1);
+          // } else if (selectedSeats.length < 2) {
+        } else if (!selectedSeats[0]) {
+          const x = this.getAttribute("x");
+          const y = this.getAttribute("y");
+          console.log(x, y);
+          this.classList.add('selected');
+          selectedSeats[0] = this;
+          socket.emit("getSeat", { x, y, reservation_num });
+        } else {
+          alert("좌석 하나만 예매 가능");
         }
 
         updateSelectedSeatsCount();
         updateTotalPrice();
+      });
+
     });
-});
+  }
 
-function updateSelectedSeatsCount() {
-    let selectedSeatsCount = selectedSeats.length;
-    countDisplay.textContent = selectedSeatsCount;
+
+
+  socket.on("getSeatsInfo", (data) => {
+    const { seats } = data;
+    console.log("getSeatsinfo", seats);
+    renderSeats(seats);
+  });
+
+
+
+
+
+  socket.on("getSeat", (data) => {
+    console.log(data);
+    const { pay, seats, x, y } = data;
+    // 이미 결제된 좌석이라면
+    if (pay) {
+      alert("이미 다른 고객님이 결제한 좌석입니다.");
+      renderSeats(seats);
+    } else {
+      const seat = document.querySelector(`.seat[x="${x}"][y="${y}"]`);
+      // selectedSeats.push(seat);
+      selectedSeats[0] = seat;
+      // selectedSeats = seat;
+      // 선택되지 않은 좌석이고 최대 선택 가능한 개수보다 작을 경우, 선택
+      seat.classList.add('selected');
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+  // 결제하기 버튼 클릭
+  payButton.onclick = async () => {
+    // const x = selectedSeats.getAttribute("x");
+    // const y = selectedSeats.getAttribute("y");
+    const x = selectedSeats[0].getAttribute("x");
+    const y = selectedSeats[0].getAttribute("y");
+
+    socket.emit("payment", { x, y, reservation_num, show_id, user_id });
+
+    try {
+
+      // 추가할 부분. 확인하세요
+      // 결제창 출력
+      // 결제
+
+
+      setTimeout(async () => {
+
+
+
+
+        // 결제 완료되면 실행될 코드
+        // 지금은 결제 부분 구현되지 않아서 settimeout으로 처리함
+        selectedSeats[0] = null;
+        const {data} = await axios.post("/reservation/check", {
+          x, y, reservation_num, show_id, user_id
+        }, {
+          withCredentials: true
+        });
+
+        if (data.result) {
+          alert("결제 완료");
+
+          // 마이페이지로 이동하거나 결제 완료되고 처리할 코드 작성
+          // 아니면 새로고침
+        } else {
+          alert("다시 시도하거나 관리자에게 문의하세요");
+        }
+
+
+
+
+
+
+
+      }, 1000);
+
+
+
+
+    } catch (error) {
+      // 결제 취소하거나 에러나면
+      socket.emit("paymentReset", { x, y, reservation_num, show_id, user_id });
+    }
+  }
+
+
+  socket.on("payment", (data) => {
+    console.log(data.message);
+    if (!data.result) { // 결제 요청 보낸 좌석이 이미 결제된 좌석이라면
+      alert("이미 결제된 좌석입니다.");
+      renderSeats(data.seats);
+      // 수정할 부분 확인하세요.
+      // 결제창을 생성했는데 result == false => 새로고침할것인지
+    }
+  });
+
+
+  // 결제 취소
+  socket.on("paymentReset", (data) => {
+    console.log(data.message);
+    if (data.result) {
+      alert("결제 취소 완료");
+    } else {
+      alert("오류. 관리자에게 문의 바랍니다.");
+    }
+  });
+
+
+  // 에러나면
+  socket.on("error", (data) => {
+    alert(data.error);
+  });
+
+
 }
 
-function updateTotalPrice() {
-    let totalPrice = selectedSeats.reduce(function(total, seat) {
-        return total + ticketPrice;
-    }, 0);
-    totalDisplay.textContent = totalPrice;
-}
-  
-changeHeaderUtil()
+
+
+
+
+
+
+// let movies = document.querySelectorAll('.dropdown-content div');
+
+// movies.forEach(function(movie) {
+//     movie.addEventListener('click', function() {
+//         let selectedMovie = this.textContent;
+//         // 선택한 영화로 드롭다운 버튼 내용 변경
+//         dropdown.firstElementChild.textContent = selectedMovie;
+//         // 위 코드는 영화를 선택할 때마다 selectedMovie 변수의 값을 이용하여
+//         // dropdown 요소의 첫 번째 자식 요소의 텍스트 내용을 변경하고 있다.
+//         dropdownContent.classList.remove('show');
+//     });
+// });
+
+
+
+// 오른쪽위 선택창 바꿔주는 함수
+axios
+  .get("/login/view", { withCredentials: true })
+  .then((res) => {
+    console.log(res.data);
+    if (res.data) {
+      if (res.data == "다시 로그인 해주세요") {
+        headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
+      } else {
+        headerUtilLogin.innerHTML = ` ${res.data}`;
+        console.log(headerSignUp.innerHTML);
+        headerSignUp.innerHTML =
+          '<a href="/freeboards/main"> 자유 게시판 </a>';
+        console.log(headerSignUp.innerHTML);
+      }
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });

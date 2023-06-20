@@ -13,13 +13,13 @@ const showDetailRouter = require("./routers/showdetail");
 
 const loginRouter = require("./routers/login");
 const freeBoardsRouter = require("./routers/freeBoard");
-
+const reservationRouter = require("./routers/reservation");
 const mypageRouter = require("./routers/mypage");
 const mailRouter = require("./routers/mail");
 const { isLogin } = require("./middleware/islogin");
 const adminPageRouter = require("./routers/adminMypage");
 const socketIO = require("socket.io");
-const initReservationSocket = require("./controllers/reservationController");
+const {initReservationSocket} = require("./controllers/reservationController");
 const { chattingSocket } = require("./controllers/chatControlloer");
 
 app.use(e.json());
@@ -109,7 +109,7 @@ app.use(e.urlencoded({ extended: false }));
 app.use("/main", mainRouter);
 app.use("/signup", signUpRouter);
 app.use("/chat", chatRouter);
-
+app.use("/reservation", isLogin, reservationRouter);
 app.use("/mail", mailRouter);
 app.use("/mypage", isLogin, mypageRouter);
 app.use("/adminPage", adminPageRouter);
@@ -126,6 +126,23 @@ const io = socketIO(server);
 io.on("connection", (socket) => {
   chattingSocket(socket, io);
 });
+
+
+// 김아현 작성
+const io = require('socket.io')(server);
+io.on('connection', (socket) => {
+  socket.on('reservation', () => {
+    initReservationSocket(socket, io);
+  });
+});
+
+
+
+
+
+
+//----------------
+
 
 // 예매 관련
 // initReservationSocket(server);

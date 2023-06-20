@@ -9,6 +9,16 @@ const passwordRegex =
   /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()\-=_+[\]{}|\\;:'",.<>/?]{8,20}$/;
 
 window.onload = async () => {
+
+
+
+
+
+
+
+
+
+
   // 이메일 중복확인 버튼 클릭
   duplicatedBtn.onclick = async () => {
     if (!emailPass) {

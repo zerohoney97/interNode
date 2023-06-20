@@ -1,5 +1,4 @@
-const { User, ReservedList, Show, ReviewBoard, sequelize } = require("../models");
-const { Theater, ReviewBoardLike } = require("../models");
+const { User, ReservedList, Show, ReviewBoard, sequelize, ReviewBoardLike } = require("../models");
 const bcrypt = require("bcrypt");
 
 // 유저 정보 반환

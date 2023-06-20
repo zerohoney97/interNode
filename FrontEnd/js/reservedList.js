@@ -37,10 +37,16 @@ window.onload = async () => {
             const span1 = document.createElement("span");
             span1.innerText = "예매번호 : " + el.reservedList.reservation_num;
 
+            const seatSpan = document.createElement("span");
+            // el.reservedList.seat_num
+            const seatArr = JSON.parse(el.reservedList.seat_num);
+            seatSpan.innerText = seatArr[0]+"열 "+ seatArr[1]+"번 좌석";
+            // seatSpan.innerText = el.reservedList.x + "열" + el.reservedList.y;
+
             const priceSpan = document.createElement("span");
             priceSpan.innerText = el.reservedList.Show.price;
 
-            showDetail.append(titleSpan, detailSpan, span1, priceSpan);
+            showDetail.append(titleSpan, detailSpan, span1, seatSpan, priceSpan);
             showContainter.append(showImg, showDetail);
 
             let container;

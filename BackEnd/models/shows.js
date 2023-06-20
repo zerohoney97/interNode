@@ -3,7 +3,7 @@ class Show extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             title : {
-                type : Sequelize.STRING(20),
+                type : Sequelize.STRING(200),
                 allowNull : false,
             },
             // 공연정보,몇분
