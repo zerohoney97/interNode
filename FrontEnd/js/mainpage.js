@@ -223,6 +223,11 @@ const renderRateShow = (list) => {
     const br = document.createElement('br');
 
     li.append(imgDiv, title, dateSpan, br, rateSpan);
+
+    li.onclick = () => {
+      location.href = "/showdetail?id="+show.id;
+    };
+
     ul.append(li);
   }
 
