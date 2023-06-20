@@ -8,11 +8,11 @@ window.onload = ()=>{
     console.log(data);
     const detail = JSON.parse(data.detail);
     const showImg = data.img
-    
-    console.log(showImg[0]);    
+
+    console.log(showImg[0]);
 
     const mainElement = document.querySelector('main');
-    mainElement.innerHTML = 
+    mainElement.innerHTML =
     `
     <div class="product_info" id="bookss">
     <div class="product_info_img">
@@ -56,13 +56,13 @@ window.onload = ()=>{
             <span>가격</span>
             <div>
               <div class="price">${data.price} 원</div>
-              
+
             </div>
           </li>
           <li>
             <span>할인</span>
             <div>
-                
+
             </div>
           </li>
         </ul>
@@ -89,9 +89,9 @@ window.onload = ()=>{
   </div>
   <span class="step1" style="color: #fa2828; font-size: 22px;top: 885px;">STEP1</span>
   <span class="step2">STEP2</span>
-  <div class="bookbtn" id="bookbtn">
-    
-    <a href="http://127.0.0.1:5500/FrontEnd/movieseat/index.html"><div>예매하기</div></a>
+  <div class="bookbtn" >
+
+  <div id="redbookbtn">예매하기</div>
   </div>
   <div class="banner" id="banner">
     <div class="banner_img">
@@ -159,48 +159,12 @@ window.onload = ()=>{
   <div class="review_page">
     <div class="reviewBoardContainer">
       <div class="reserved-container">
-          
 
-        
+
+
 
         <div class="review-container">
-          <div class="user-review">
-            <img
-              class="userimg"
-              src="../zerohoneyPublic/resources/chat.png"
-              style="width: 50px; height: 50px"
-              alt="userProfile"
-            />
-            <div class="user-review-detail">
-              <div>
-                <span class="nickname">작성자닉네임</span>
-              </div>
-              <div>
-                <span class="createdAt">2023.06.12</span>
-              </div>
-            </div>
-          </div>
 
-          <div class="btns">
-            <div class="likeBtn">
-              <a href=""
-                ><img src="../freeboard/img/like_empty.png" alt="" />10</a
-              >
-            </div>
-            <div class="reportDiv">
-              <a class="report" href="">
-                <img src="../freeboard/img/siren.png" alt="" />신고</a
-              >
-            </div>
-          </div>
-
-          <div class="content">
-            후기내용 후기내용 후기내용 후기내용 후기내용 후기내용 후기내용
-            후기내용 후기내용 후기내용후기내용 후기내용 후기내용 후기내용
-            후기내용 후기내용 후기내용 후기내용
-          </div>
-
-          <div class="line"></div>
         </div>
       </div>
     </div>
@@ -366,7 +330,7 @@ window.onload = ()=>{
     reviewPage.style.display = 'none';
     locationPage.style.display = 'none';
     noticePage.style.display = 'none';
-  
+
     page.style.display = 'block';
   }
 
@@ -396,32 +360,106 @@ window.onload = ()=>{
     tab.style.border = '1px solid'
     tab.style.borderBottom = 'none'
   }
-  
-  
+
+
   tabDetail.addEventListener('click', () => {
     showPage(detailPage);
     tabBorderLine(tab1);
   });
-  
+
   tabReview.addEventListener('click', () => {
+    let reviewContainer = document.getElementsByClassName('review-container')[0];
+    reviewContainer.innerHTML = ''
     showPage(reviewPage);
     tabBorderLine(tab2);
+    const likeBtn = document.getElementsByClassName('likeBtn')
     // 관람후기 가져오기
-    axios.get('/')
+    axios.get(`/showdetail/reviewboard${show_id}`)
     .then((res)=>{
       // innerHTML 에 후기 넣는다
+      const data = res.data;
+      console.log(data);
+      for (let i = 0; i < data.length; i++) {
+        const cmt = data[i];
+        const div = document.createElement('div');
+
+        div.innerHTML= `
+          <div class="user-review">
+            <img class="userimg" src="../zerohoneyPublic/resources/chat.png" style="width: 50px; height: 50px" alt="userProfile" />
+            <div class="user-review-detail">
+              <div>
+                <span class="nickname">${cmt.User.nickname}</span>
+              </div>
+              <div>
+                <span class="createdAt">${cmt.createdAt.slice(0, 10)}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="btns">
+            <div class="likeBtn" id="likeBtn-${cmt.id}">
+                <img src="../freeboard/img/like_empty.png" alt="" />${cmt.ReviewBoardLikes.length}
+            </div>
+            <div class="reportDiv" id = "reportBtn-${cmt.id}">
+
+                <img src="../freeboard/img/siren.png" alt="" />신고
+            </div>
+          </div>
+
+          <div class="content">
+            ${cmt.content}
+          </div>
+
+          <div class="line"></div>
+        `;
+
+        reviewContainer.appendChild(div);
+
+          // 좋아요 클릭 함수
+          const likeBtn = document.getElementById(`likeBtn-${cmt.id}`);
+          likeBtn.onclick = () => {
+            axios
+              .get(`/showdetail/thumbsup?id=${cmt.id}`, { withCredentials: true })
+              .then((res) => {
+                console.log(res.data);
+                likeBtn.innerHTML = `<img src="../freeboard/img/like_empty.png" alt="" />${res.data.length}`;
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          };
+
+          // 신고 클릭 함수
+          const reportBtn = document.getElementById(`reportBtn-${cmt.id}`);
+          reportBtn.onclick = ()=>{
+            axios
+            .get(`/showdetail/report?id=${cmt.id}`, { withCredentials: true })
+            .then((res) => {
+              console.log(res.data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          }
+
+
+      }
+
+
     })
+
+
     .catch((err)=>{
       console.log(err);
     })
   });
-  
+
   tabLocation.addEventListener('click', () => {
     showPage(locationPage);
     tabBorderLine(tab3);
 
   });
-  
+
   tabNotice.addEventListener('click', () => {
     showPage(noticePage);
     tabBorderLine(tab4);
@@ -436,7 +474,7 @@ window.onload = ()=>{
 
   window.addEventListener('scroll', function() {
   var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  
+
   if (scrollTop > 1200) { // 스크롤 위치가 100px 이상일 때
     banner.style.top = '0'; // 배너를 아래로 내림
   } else {
@@ -480,6 +518,20 @@ window.onload = ()=>{
         console.log(headerSignUp.innerHTML);
       }
     }
+    const RedBookBtn =document.getElementById('redbookbtn');
+    console.log(RedBookBtn)
+    RedBookBtn.onclick = ()=>{
+      const postNum = window.location.search.slice(-1);
+      console.log(postNum);
+      console.log(datepicker.value)
+      const dateresult = datepicker.value
+      if(dateresult != ""){
+        let newdate =dateresult.slice(5).replace("-","")
+        window.location.href = `/reservation/seats/?reservation_num=${postNum}_${newdate}`
+      }else{
+        alert("날짜를 선택하고 예매버튼을 눌러주세요")
+      }
+    }
   })
   .catch((error) => {
     console.log(error);
@@ -496,6 +548,5 @@ window.onload = ()=>{
 
 
 
+
 }
-
-
