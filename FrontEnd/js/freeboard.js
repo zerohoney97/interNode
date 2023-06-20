@@ -58,6 +58,7 @@ window.onload = ()=>{
         axios.get('http://127.0.0.1:8080/freeboards')
         .then((res)=>{
             list = res.data;
+            console.log(list);
             // 페이지네이션 함수
             pagenate(pagenum);
         })
@@ -186,7 +187,6 @@ const goNext = () => {
 // 등록 버튼 클릭시 등록 페이지로 이동
 const insertBtn = document.getElementById('insertBtn');
 insertBtn.onclick = function() {
-    console.log("hi")
     // window.location.href = "http://127.0.0.1:5500/FrontEnd/freeboard/freeboardInsert.html";
     window.location.href = "/freeboards/insert"
 };
@@ -287,3 +287,52 @@ axios
 .catch((error) => {
   console.log(error);
 });
+
+//최신순 클릭
+let sortnew = document.getElementById('newest');
+sortnew.onclick = ()=>{
+    console.log('최신순 클릭')
+    axios.get('http://127.0.0.1:8080/freeboards')
+        .then((res)=>{
+            list = res.data;
+            list.reverse();
+            // 페이지네이션 함수
+            pagenate(pagenum);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+}
+
+
+
+//좋아요 많은 순 클릭
+let sortlike = document.getElementById('like');
+sortlike.onclick = ()=>{
+    console.log('좋아요 많은 순 클릭')
+    axios.get('http://127.0.0.1:8080/freeboards')
+    .then((res)=>{
+        list = res.data;
+        list.sort((a,b)=>b.FreeBoardLikes.length-a.FreeBoardLikes.length);
+        // 페이지네이션 함수
+        pagenate(pagenum);
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}
+//조회수 많은 순 클릭
+let sortview = document.getElementById('view');
+sortview.onclick = ()=>{
+    console.log('조회수 많은 순 클릭')
+    axios.get('http://127.0.0.1:8080/freeboards')
+    .then((res)=>{
+        list = res.data;
+        list.sort((a,b)=>b.views-a.views);
+        // 페이지네이션 함수
+        pagenate(pagenum);
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}
