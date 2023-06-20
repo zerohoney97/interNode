@@ -2,12 +2,12 @@ const Sequelize = require("sequelize");
 class Theater extends Sequelize.Model {
     static init(sequelize){
         return super.init({
-            
-            
+
+
        name : {
         type : Sequelize.STRING(20),
         allowNull : false
-       },     
+       },
 
        location : {
         type : Sequelize.STRING(30),
@@ -20,7 +20,7 @@ class Theater extends Sequelize.Model {
 
         },{
             // 테이블의 내용
-            sequelize, 
+            sequelize,
             timestamps : true, // 생성 시간, 업데이트 시간 자동으로 생성
             underscored : false, // 카멜 케이스 설정 유무
             modelName : "Theater", //모델 이름
@@ -31,9 +31,9 @@ class Theater extends Sequelize.Model {
         })
     }
 
-   
+
     static associate(db){
-       
+
         db.Theater.hasMany(db.Show,{foreignKey : "theaters_id",targetKey : "id"});
     }
 }
