@@ -8,6 +8,8 @@ const app = e();
 const signUpRouter = require("./routers/signUp");
 const mainRouter = require("./routers/main");
 const chatRouter = require("./routers/chat");
+const showDetailRouter = require("./routers/showdetail");
+
 
 const loginRouter = require("./routers/login");
 const freeBoardsRouter = require("./routers/freeBoard");
@@ -113,6 +115,7 @@ app.use("/mypage", isLogin, mypageRouter);
 app.use("/adminPage", adminPageRouter);
 app.use("/freeboards", freeBoardsRouter);
 // app.use(e.static(path.join(__dirname, "js")));
+app.use("/showdetail", showDetailRouter);
 
 app.use("/imgs", e.static(path.join(__dirname, "imgs")));
 

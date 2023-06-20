@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../public/showdetail.css" />
     <link rel="stylesheet" href="../public/reviewboard.css" />
     <link rel="stylesheet" href="../public/generalMyPage.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <header class="common_header">
@@ -90,7 +91,7 @@
           <div>
             <h3>날짜 선택</h3>
           </div>
-          <div class="dateinput">
+          <div class="dateinput" id="datepicker">
             <input type="date" />
           </div>
         </div>
@@ -116,7 +117,7 @@
       <span class="step2">STEP2</span>
       <div class="bookbtn" id="bookbtn">
         
-        <a href="http://127.0.0.1:5500/FrontEnd/movieseat/index.html"><div>예매하기</div></a>
+        <a href="http://127.0.0.1:5500/FrontEnd/movieseat/index.html"><div >예매하기</div></a>
       </div>
       <div class="banner" id="banner">
         <div class="banner_img">
