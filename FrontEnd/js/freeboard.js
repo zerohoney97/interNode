@@ -3,7 +3,7 @@ let pagenum;
 let lastPageNum;
 
 
-
+// 이건 삭제해도 되는 주석입니다
 window.onload = ()=>{
     // 헤더 닉네임 가져오기
     // axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
