@@ -2,22 +2,21 @@ let list;
 let pagenum;
 let lastPageNum;
 
-
 // 이건 삭제해도 되는 주석입니다
-window.onload = ()=>{
-    // 헤더 닉네임 가져오기
-    // axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
-    // .then((res)=>{
-    //     if(res.data){
-    //     headerUtilLogin.textContent = `${res.data}님`
-    //     headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
-    //     }
-    // })
-    // .catch((error)=>{
-    //     console.log(error);
-    // })
-    const UrlParams = new URLSearchParams(window.location.search);
-    const pageValue = UrlParams.get('page');
+window.onload = () => {
+  // 헤더 닉네임 가져오기
+  // axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
+  // .then((res)=>{
+  //     if(res.data){
+  //     headerUtilLogin.textContent = `${res.data}님`
+  //     headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
+  //     }
+  // })
+  // .catch((error)=>{
+  //     console.log(error);
+  // })
+  const UrlParams = new URLSearchParams(window.location.search);
+  const pageValue = UrlParams.get("page");
 
   if (pageValue == "my") {
     console.log("내가쓴글");
@@ -107,11 +106,11 @@ const pagenate = (pagenum) => {
     // const views = 100;
     // const createdAt = "2023-06-07";
 
-        
-        freeboards.innerHTML += 
-        `<tr>
-            <td class="no">${index+1}</td>
-            <td class="title"><a href="/freeboards/detailmain?id=${board.id}">${board.title}</a></td>
+    freeboards.innerHTML += `<tr>
+            <td class="no">${index + 1}</td>
+            <td class="title"><a href="/freeboards/detailmain?id=${board.id}">${
+      board.title
+    }</a></td>
             <td class="nickname">${board.User.nickname}</td>
             <td class="likes">${board.FreeBoardLikes.length}</td>
             <td class="views">${board.views}</td>
@@ -183,10 +182,10 @@ const goNext = () => {
 };
 
 // 등록 버튼 클릭시 등록 페이지로 이동
-const insertBtn = document.getElementById('insertBtn');
-insertBtn.onclick = function() {
-    // window.location.href = "http://127.0.0.1:5500/FrontEnd/freeboard/freeboardInsert.html";
-    window.location.href = "/freeboards/insert"
+const insertBtn = document.getElementById("insertBtn");
+insertBtn.onclick = function () {
+  // window.location.href = "http://127.0.0.1:5500/FrontEnd/freeboard/freeboardInsert.html";
+  window.location.href = "/freeboards/insert";
 };
 
 //좋아요 한 글 조회 전용 페이지네이션
@@ -218,12 +217,11 @@ const pagenateLike = (pagenum) => {
     // const views = 100;
     // const createdAt = "2023-06-07";
 
-        
-
-        freeboards.innerHTML += 
-        `<tr>
-            <td class="no">${index+1}</td>
-            <td class="title"><a href="/freeboards/detailmain?id=${board.FreeBoard.id}">${board.FreeBoard.title}</a></td>
+    freeboards.innerHTML += `<tr>
+            <td class="no">${index + 1}</td>
+            <td class="title"><a href="/freeboards/detailmain?id=${
+              board.FreeBoard.id
+            }">${board.FreeBoard.title}</a></td>
             <td class="nickname">${board.User.nickname}</td>
             <td class="likes">${board1.FreeBoardLikes.length}</td>
             <td class="views">${board.FreeBoard.views}</td>
@@ -265,5 +263,38 @@ const pagenateLike = (pagenum) => {
     pageNumBtns.append(pageBtn);
   }
 };
-  
-changeHeaderUtil()
+
+changeHeaderUtil();
+
+//좋아요 많은 순 클릭
+let sortlike = document.getElementById("like");
+sortlike.onclick = () => {
+  console.log("좋아요 많은 순 클릭");
+  axios
+    .get("http://127.0.0.1:8080/freeboards")
+    .then((res) => {
+      list = res.data;
+      list.sort((a, b) => b.FreeBoardLikes.length - a.FreeBoardLikes.length);
+      // 페이지네이션 함수
+      pagenate(pagenum);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+//조회수 많은 순 클릭
+let sortview = document.getElementById("view");
+sortview.onclick = () => {
+  console.log("조회수 많은 순 클릭");
+  axios
+    .get("http://127.0.0.1:8080/freeboards")
+    .then((res) => {
+      list = res.data;
+      list.sort((a, b) => b.views - a.views);
+      // 페이지네이션 함수
+      pagenate(pagenum);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
