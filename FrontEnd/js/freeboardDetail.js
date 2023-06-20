@@ -121,7 +121,7 @@ updateBtn.onclick = ()=>{
     const post_id = window.location.search
     console.log(post_id);
     //window.location.href = `http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html${post_id}`;
-      window.location.href = `/freeboards/reports${post_id}`
+      window.location.href = `/freeboards/updatepost${post_id}`
     }
   }
 

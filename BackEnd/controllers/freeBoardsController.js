@@ -301,7 +301,6 @@ exports.report = async (req,res)=>{
                     user_id : data.user_id,
                 })
             }
-            res.end();
         } catch (error) {
             console.log(error);
         }
@@ -320,7 +319,6 @@ exports.report = async (req,res)=>{
                     user_id : data.user_id,
                 })
             }
-            res.end();
         } catch (error) {
             console.log(error);
         }
@@ -338,7 +336,6 @@ exports.report = async (req,res)=>{
                     user_id : data.user_id,
                 })
             }
-            res.end();
         } catch (error) {
             console.log(error);
         }
