@@ -28,6 +28,8 @@ window.onload = async () => {
   // socket 연결
   const socket = io();
 
+  socket.emit("reservation");
+
   socket.emit("joinReservation", { show_id, reservation_num });
 
   socket.on("joinReservation", (data) => {

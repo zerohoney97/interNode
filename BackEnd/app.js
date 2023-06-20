@@ -84,10 +84,14 @@ app.use(
 
 
 // app.use('/socket.io', e.static(__dirname + '/node_modules/socket.io/client-dist'));
-app.use(
-  "/socket.io",
-  e.static(path.join(__dirname, "../node_modules/socket.io-client/dist"))
-);
+// app.use(
+//   "/socket.io",
+//   e.static(path.join(__dirname, "../node_modules/socket.io-client/dist"))
+// );
+// app.use(
+//   "/socket.io",
+//   e.static(path.join(__dirname, "/node_modules/socket.io-client/dist"))
+// );
 
 // 로그인 라우터 경로 설정
 app.use("/login", loginRouter);
@@ -107,6 +111,23 @@ app.use("/imgs", e.static(path.join(__dirname, "imgs")));
 const server = app.listen(8080, () => {
   console.log("gogo");
 });
+
+
+// 김아현 작성
+const io = require('socket.io')(server);
+io.on('connection', (socket) => {
+  socket.on('reservation', () => {
+    initReservationSocket(socket, io);
+  });
+});
+
+
+
+
+
+
+//----------------
+
 
 // 예매 관련
 initReservationSocket(server);

@@ -36,10 +36,10 @@ exports.checkReservedList = async (req, res) => {
 
 let seatArr = {};
 
-exports.initReservationSocket = (server) => {
-    const io = socketIO(server);
+exports.initReservationSocket = (socket, io) => {
+    // const io = socketIO(server);
 
-    io.on("connection", async (socket) => {
+    // io.on("connection", async (socket) => {
         console.log("새로운 클라이언트 접속");
 
         //  예매번호 room 생성 소켓 join
@@ -158,6 +158,6 @@ exports.initReservationSocket = (server) => {
                 socket.emit("error", { message: "paymentReset 에러 발생", error });
             }
         });
-    });
+    // });
 }
 
