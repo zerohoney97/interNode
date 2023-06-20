@@ -6,6 +6,7 @@ const {
   getChatLogClient,
   getChatLogAdmin,
   saveChatDataAdmin,
+  getAllChats,
 } = require("../controllers/chatControlloer");
 // /chat/create
 router.post("/create", isLoginMiddle, async (req, res) => {
@@ -25,7 +26,7 @@ router.post("/create", isLoginMiddle, async (req, res) => {
     isRead: false,
     receiver: primaryKey,
   });
-  res.send('primaryKey');
+  res.send("primaryKey");
 });
 
 router.get("/Users", isLoginMiddle, async (req, res) => {
@@ -45,5 +46,7 @@ router.get("/getChatLogClient", isLoginMiddle, getChatLogClient);
 router.get("/getChatLogAdmin", isLoginMiddle, getChatLogAdmin);
 // 어드민 페이지에서 채팅기록 보내기
 router.post("/createAdminChat", isLoginMiddle, saveChatDataAdmin);
+// 모든채팅 기록 가져오기
+router.get("/getAllChats", isLoginMiddle, getAllChats);
 
 module.exports = router;

@@ -12,6 +12,7 @@ exports.getChatLogClient = async (req, res) => {
     console.log(userId, "adads");
     const chatDataArray = await ChatLog.findAll({
       where: { receiver: primaryKey },
+      order: [["createdAt", "ASC"]],
     });
     res.send(chatDataArray);
   } catch (error) {
@@ -27,7 +28,14 @@ exports.getChatLogAdmin = async (req, res) => {
     nowLoginUserId = primaryKey;
     const chatDataArray = await ChatLog.findAll({
       where: { receiver: id },
+      order: [["createdAt", "ASC"]],
     });
+    await ChatLog.update(
+      {
+        isRead: true,
+      },
+      { where: { receiver: id } }
+    );
     console.log(id);
     res.send(chatDataArray);
   } catch (error) {
@@ -81,6 +89,16 @@ exports.chattingSocket = (socket, io) => {
       io.to(parseInt(userId)).emit("chat", content, userId);
       // Handle the joinRoom event logic here
     });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 모든 채팅 기록을 가져옴
+exports.getAllChats = async (req, res) => {
+  try {
+    const data = await ChatLog.findAll();
+    res.json(data);
   } catch (error) {
     console.log(error);
   }

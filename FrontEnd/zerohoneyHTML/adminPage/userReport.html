@@ -11,11 +11,36 @@
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
-    <!-- admin 채팅 -->
+   <!-- admin 채팅 -->
     <div class="popup-wrap">
-      <div class="popup-content chattingroom2">
-        <span class="close-btn" onclick="chattingpage2();"></span>
+      <div class="popup-content chattingRoomBefore">
+        <span class="close-btn"></span>
+        <div class="content-wrapper">
+          <img
+            src="https://blog.kakaocdn.net/dn/csnaXD/btqxB6Hdt3R/0gnbFKpuvtMkd57m4dKFf0/img.jpg"
+            alt="이미지 설명"
+          />
+          <div class="offset">
+            <img
+              src="https://play-lh.googleusercontent.com/4ExClCk0jBhi_0PjUgWzvvAaoPBv1kcbhDchdTMKmARqtwj3RNX1-whKqYznY3IWtI8"
+              alt=""
+            />
 
+            <p>인터파크입니다😀</p>
+            <p>
+              안녕하세요? 국내외 항공권 숙소 여행 최저가 예약부터 뮤지컬 콘서트
+              연극 티켓까지 모두 한번에 예약하세요😁
+            </p>
+            <div class="inquire">
+              <h3 class="content-wrapper2">새 문의하기</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="chatting">채팅💬</div>
+      </div>
+      <div class="popup-content chattingroom2">
+        <span class="close-btn2"></span>
         <div class="content-wrapper">
           <img
             src="https://blog.kakaocdn.net/dn/csnaXD/btqxB6Hdt3R/0gnbFKpuvtMkd57m4dKFf0/img.jpg"
@@ -28,14 +53,13 @@
         <div class="messages" id="messages">
 
           <div id="clientMessages"></div>
-          <div id="adminMessages"></div>
+        <div id="adminMessages"></div>
         </div>
-        <!-- <!—필요하다면 form으로 변경 —> -->
         <div class="chat-input-container">
           <input
             type="text"
             name="chat"
-            id="chatId2"
+            id="chatId1"
             class="chat-input"
             placeholder="채팅을 입력해주세요"
           />
@@ -60,7 +84,8 @@
         <div class="gnb_show">공연</div>
       </div>
     </header>
-    <div class="chat-icon"></div>
+    <div class="chat-icon"><span class="not-read-count">4</span></div>
+
     <div class="adminMyPage-container">
       <div class="adminMyPage-header">
         <div class="adminMyPage-header-left">마이 페이지</div>
