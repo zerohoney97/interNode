@@ -17,6 +17,9 @@ window.onload = async () => {
         예매 내역
         </h1>`;
 
+        // 나의 예매내역 개수 출력
+        myReservationLength.innerText = data.length;
+
         // 화면 출력 만약 후기 없으면 등록하는 부분 보여주게
         data.forEach(el => {
             const reservedContainer = document.createElement("div");
@@ -30,15 +33,16 @@ window.onload = async () => {
             showDetail.classList.add("show-detail");
             const titleSpan = document.createElement("span");
             titleSpan.innerText = el.reservedList.Show.title;
-            const detailSpan = document.createElement("span");
-            detailSpan.innerText = el.reservedList.Show.detail;
+            // const detailSpan = document.createElement("span");
+            // detailSpan.innerText = el.reservedList.Show.detail;
 
-            // span1 시간정보??
             const span1 = document.createElement("span");
-            span1.innerText = "예매번호 : " + el.reservedList.reservation_num;
+            const showDateArr = el.reservedList.reservation_num.split("_")
+            const month = showDateArr[1].substring(0, 2);
+            const date = showDateArr[1].substring(2, 4);
+            span1.innerText = "2023년 "+ month + "월 " + date + "일";
 
             const seatSpan = document.createElement("span");
-            // el.reservedList.seat_num
             const seatArr = JSON.parse(el.reservedList.seat_num);
             seatSpan.innerText = seatArr[0]+"열 "+ seatArr[1]+"번 좌석";
             // seatSpan.innerText = el.reservedList.x + "열" + el.reservedList.y;
@@ -46,7 +50,8 @@ window.onload = async () => {
             const priceSpan = document.createElement("span");
             priceSpan.innerText = el.reservedList.Show.price;
 
-            showDetail.append(titleSpan, detailSpan, span1, seatSpan, priceSpan);
+            // showDetail.append(titleSpan, detailSpan, span1, seatSpan, priceSpan);
+            showDetail.append(titleSpan, span1, seatSpan, priceSpan);
             showContainter.append(showImg, showDetail);
 
             let container;
@@ -365,5 +370,5 @@ const deleteReview = async (e) => {
     }
 }
 
-  
+
 changeHeaderUtil()

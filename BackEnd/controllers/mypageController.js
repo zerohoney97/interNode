@@ -6,8 +6,9 @@ exports.getUserInfo = async (req, res) => {
     try {
         const { primaryKey } = req.acc_decoded;
         const user = await User.findOne({ where: { id: primaryKey } });
-
-        return res.json({ email: user.dataValues.email, nickname: user.dataValues.nickname, img: user.dataValues.img });
+        // 예매내역 개수 반환
+        const reservedLength = await ReservedList.count({where:{user_id:primaryKey}});
+        return res.json({ email: user.dataValues.email, nickname: user.dataValues.nickname, img: user.dataValues.img, reservedLength });
     } catch (error) {
         console.log(error);
         return res.send("1");
