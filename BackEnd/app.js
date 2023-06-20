@@ -125,16 +125,17 @@ const server = app.listen(8080, () => {
 const io = socketIO(server);
 io.on("connection", (socket) => {
   chattingSocket(socket, io);
-});
-
-
-// 김아현 작성
-const io = require('socket.io')(server);
-io.on('connection', (socket) => {
   socket.on('reservation', () => {
     initReservationSocket(socket, io);
   });
 });
+
+
+// // 김아현 작성
+// const io = require('socket.io')(server);
+// io.on('connection', (socket) => {
+ 
+// });
 
 
 
