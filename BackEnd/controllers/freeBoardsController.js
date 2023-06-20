@@ -180,7 +180,7 @@ exports.thumbsUp = async (req, res) => {
 
     if (result) {
       //삭제
-      await FreeBoardLike.destroy({ where: { freeboard_id: post_id } });
+      await FreeBoardLike.destroy({ where: { freeboard_id: post_id, user_id :primaryKey } });
     } else {
       //추가
       await FreeBoardLike.create({
