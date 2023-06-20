@@ -205,12 +205,12 @@ window.onload = async () => {
 
     // 내가 쓴 글 버튼 클릭
     myFreeBoard.onclick = () => {
-        window.location.href = "../../freeboard/freeboard.html?page=my";
+        window.location.href = "/freeboards/main?page=my";
     }
 
     // 좋아요한 글 클릭
     likeFreeBoard.onclick = () => {
-        window.location.href = "../../freeboard/freeboard.html?page=likes";
+        window.location.href = "/freeboards/main?page=likes";
     }
 
     // 파일 선택하면 화면에 이미지 보여주게 함
