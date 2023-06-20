@@ -7,8 +7,72 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../public/adminMyPage.css" />
     <link rel="stylesheet" href="../../public/header.css" />
+    <link rel="stylesheet" href="../../public/style.css" />
+    <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
+    <!-- admin 채팅 -->
+    <div class="popup-wrap">
+      <div class="popup-content chattingroom2">
+        <span class="close-btn" onclick="chattingpage2();"></span>
+
+        <div class="content-wrapper">
+          <img
+            src="https://blog.kakaocdn.net/dn/csnaXD/btqxB6Hdt3R/0gnbFKpuvtMkd57m4dKFf0/img.jpg"
+            alt="이미지 설명"
+          />
+          <h3>xxx 고객님과의 대화</h3>
+          <h5>⨳ 보통 수십 분 내 답변</h5>
+        </div>
+        <div class="messages" id="messages">
+
+          <div id="clientMessages"></div>
+          <div id="adminMessages"></div>
+        </div>
+        <!-- <!—필요하다면 form으로 변경 —> -->
+        <div class="chat-input-container">
+          <input
+            type="text"
+            name="chat"
+            id="chatId2"
+            class="chat-input"
+            placeholder="채팅을 입력해주세요"
+          />
+          <button class="chat-send-botton">전송</button>
+        </div>
+      </div>
+    </div>
+    <!-- admin 채팅 -->
+    <div class="popup-content2 chattingroom2">
+      <span class="close-btn" onclick="chattingpage2();"></span>
+
+      <div class="content-wrapper">
+        <img
+          src="https://blog.kakaocdn.net/dn/csnaXD/btqxB6Hdt3R/0gnbFKpuvtMkd57m4dKFf0/img.jpg"
+          alt="이미지 설명"
+        />
+        <h3>xxx 고객님과의 대화</h3>
+        <h5>⨳ 보통 수십 분 내 답변</h5>
+      </div>
+
+      <div id="chatMessages"></div>
+
+      <!-- <!—필요하다면 form으로 변경 —> -->
+      <div class="chat-input-container">
+        <input
+          type="text"
+          name="chat"
+          id="chatId2"
+          class="chat-input"
+          placeholder="채팅을 입력해주세요"
+        />
+        <button class="chat-send-botton">전송</button>
+      </div>
+    </div>
+
+    <!-- admin 채팅 방 -->
+    <!-- admin 채팅 -->
+
     <header class="common_header">
       <div class="header_util">
         <div id="headerUtilLogin"><a href="/login">로그인</a></div>
@@ -123,6 +187,7 @@
         <!-- 유저 검색 화면 -->
       </div>
     </div>
+
     <footer class="common_footer">
       <div class="footer_menu">
         <div>회사소개</div>
@@ -162,4 +227,5 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="../../js/static.js"></script>
   <script src="../../js/userSearch.js"></script>
+  <script src="../../js/chatting.js"></script>
 </html>

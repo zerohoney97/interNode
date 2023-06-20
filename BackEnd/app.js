@@ -16,8 +16,9 @@ const mypageRouter = require("./routers/mypage");
 const mailRouter = require("./routers/mail");
 const { isLogin } = require("./middleware/islogin");
 const adminPageRouter = require("./routers/adminMypage");
-
+const socketIO = require("socket.io");
 const initReservationSocket = require("./controllers/reservationController");
+const { chattingSocket } = require("./controllers/chatControlloer");
 
 app.use(e.json());
 app.use(e.urlencoded({ extended: false }));
@@ -30,7 +31,7 @@ app.use(
       "http://localhost:8080",
       "http://ec2-52-79-43-68.ap-northeast-2.compute.amazonaws.com",
       "http://52.79.43.68",
-      "http://zerohoney.com"
+      "http://zerohoney.com",
     ],
     credentials: true,
   })
@@ -82,12 +83,22 @@ app.use(
   })
 );
 
+app.use(
+  "/FrontEnd/zerohoneyPublic/resources",
+  e.static(
+    path.join(__dirname, "..", "FrontEnd", "zerohoneyPublic", "resources")
+  )
+);
 
 // app.use('/socket.io', e.static(__dirname + '/node_modules/socket.io/client-dist'));
-app.use(
-  "/socket.io",
-  e.static(path.join(__dirname, "../node_modules/socket.io-client/dist"))
-);
+// app.use(
+//   "/socket.io",
+//   e.static(path.join(__dirname, "../node_modules/socket.io-client/dist"))
+// );
+// app.use(
+//   "/socket.io",
+//   e.static(path.join(__dirname, "node_modules", "socket.io", "client-dist"))
+// );
 
 // 로그인 라우터 경로 설정
 app.use("/login", loginRouter);
@@ -108,6 +119,11 @@ app.use("/imgs", e.static(path.join(__dirname, "imgs")));
 const server = app.listen(8080, () => {
   console.log("gogo");
 });
+const io = socketIO(server);
+io.on("connection", (socket) => {
+  chattingSocket(socket, io);
+});
 
 // 예매 관련
-initReservationSocket(server);
+// initReservationSocket(server);
+// 소켓 받는곳, 미들웨어로 다른 곳에서 처리할거임

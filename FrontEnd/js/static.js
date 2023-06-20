@@ -9,13 +9,15 @@ const changeHeaderUtil = () => {
   axios
     .get("/login/view", { withCredentials: true })
     .then((res) => {
-      console.log(res.data);
+      console.log(res.data,'로그인이 됐나요?');
       if (res.data) {
         if (res.data == "다시 로그인 해주세요") {
           headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
+           const logOut = document.createElement("div");
+          logOut.innerHTML = '<a href="/login/logout"> 로그아웃 </a>';
+          document.querySelector(".header_util").appendChild(logOut);
         } else {
           headerUtilLogin.innerHTML = ` ${res.data}`;
-          console.log(headerSignUp.innerHTML);
           headerSignUp.innerHTML =
             '<a href="/freeboards/main"> 자유 게시판 </a>';
           const logOut = document.createElement("div");

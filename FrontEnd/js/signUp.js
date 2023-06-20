@@ -197,6 +197,5 @@ window.onload = async () => {
       emailResultDiv.style.color = "red";
     }
   };
-
 };
 changeHeaderUtil()

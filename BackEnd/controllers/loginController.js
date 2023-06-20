@@ -24,7 +24,20 @@ exports.login = async (req, res) => {
         );
       }
       if (user.email === "admin@admin.com") {
-        res.redirect("/adminPage");
+        // access 토큰 발행
+        const accessToken = jwt.sign(
+          {
+            email: user.email,
+            primaryKey: user.id,
+          },
+          process.env.ACCESS_TOKEN_KEY,
+          {
+            expiresIn: "30m",
+          }
+        );
+        req.session.access_token = accessToken;
+        // header중복으로 인한 버그 return붙여서 고침
+        return res.redirect("/adminPage");
       }
       // access 토큰 발행
       const accessToken = jwt.sign(
@@ -37,8 +50,9 @@ exports.login = async (req, res) => {
           expiresIn: "30m",
         }
       );
-
+      console.log(accessToken, "로그인 엑세스토큰");
       req.session.access_token = accessToken;
+      console.log(req.session.access_token, "할당된 토큰");
 
       res.redirect("/main");
     } else {

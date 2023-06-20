@@ -7,8 +7,67 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../public/adminMyPage.css" />
     <link rel="stylesheet" href="../../public/header.css" />
+    <link rel="stylesheet" href="../../public/style.css" />
+    <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
+    <!-- admin 채팅 -->
+    <div class="popup-wrap">
+      <div class="popup-content chattingRoomBefore">
+        <span class="close-btn"></span>
+        <div class="content-wrapper">
+          <img
+            src="https://blog.kakaocdn.net/dn/csnaXD/btqxB6Hdt3R/0gnbFKpuvtMkd57m4dKFf0/img.jpg"
+            alt="이미지 설명"
+          />
+          <div class="offset">
+            <img
+              src="https://play-lh.googleusercontent.com/4ExClCk0jBhi_0PjUgWzvvAaoPBv1kcbhDchdTMKmARqtwj3RNX1-whKqYznY3IWtI8"
+              alt=""
+            />
+
+            <p>인터파크입니다😀</p>
+            <p>
+              안녕하세요? 국내외 항공권 숙소 여행 최저가 예약부터 뮤지컬 콘서트
+              연극 티켓까지 모두 한번에 예약하세요😁
+            </p>
+            <div class="inquire">
+              <h3 class="content-wrapper2">새 문의하기</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="chatting">채팅💬</div>
+      </div>
+      <div class="popup-content chattingroom2">
+        <span class="close-btn2"></span>
+        <div class="content-wrapper">
+          <img
+            src="https://blog.kakaocdn.net/dn/csnaXD/btqxB6Hdt3R/0gnbFKpuvtMkd57m4dKFf0/img.jpg"
+            alt="이미지 설명"
+          />
+          <h3>xxx 고객님과의 대화</h3>
+          <h5>⨳ 보통 수십 분 내 답변</h5>
+        </div>
+
+        <div class="messages" id="messages">
+
+          <div id="clientMessages"></div>
+        <div id="adminMessages"></div>
+        </div>
+        <div class="chat-input-container">
+          <input
+            type="text"
+            name="chat"
+            id="chatId1"
+            class="chat-input"
+            placeholder="채팅을 입력해주세요"
+          />
+          <button class="chat-send-botton">전송</button>
+        </div>
+      </div>
+    </div>
+    <!-- admin 채팅 -->
     <header class="common_header">
       <div class="header_util">
         <div id="headerUtilLogin"><a href="/login">로그인</a></div>
@@ -42,7 +101,9 @@
           <div class="side-bar-manage-show">
             <div>공연관리</div>
             <div style="cursor: pointer" id="showManage">
-              <a id="goToShowControl" href="/FrontEnd/zerohoneyHTML/adminPage/showControll.html"
+              <a
+                id="goToShowControl"
+                href="/FrontEnd/zerohoneyHTML/adminPage/showControll.html"
                 >공연 등록/수정/삭제</a
               >
             </div>
@@ -50,12 +111,16 @@
           <div class="side-bar-manage-user">
             <div>유저 관리</div>
             <div style="cursor: pointer" id="searchUser">
-              <a  id="goToUserSearch" href="/FrontEnd/zerohoneyHTML/adminPage/userSearch.html"
+              <a
+                id="goToUserSearch"
+                href="/FrontEnd/zerohoneyHTML/adminPage/userSearch.html"
                 >유저 검색</a
               >
             </div>
             <div style="cursor: pointer" id="reportedUser">
-              <a  id="goToUserReport" href="/FrontEnd/zerohoneyHTML/adminPage/userReport.html"
+              <a
+                id="goToUserReport"
+                href="/FrontEnd/zerohoneyHTML/adminPage/userReport.html"
                 >신고된 유저</a
               >
             </div>
@@ -188,6 +253,7 @@
         </div>
       </div>
     </div>
+
     <footer class="common_footer">
       <div class="footer_menu">
         <div>회사소개</div>
@@ -229,4 +295,5 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="../../js/static.js"></script>
   <script src="../../js/showControll.js"></script>
+  <script src="../../js/chatting.js"></script>
 </html>
