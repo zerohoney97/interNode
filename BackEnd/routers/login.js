@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const { login, viewUser, logOut } = require("../controllers/loginController");
-const { isLogin } = require("../middleware/islogin");
+const { isLoginMiddle } = require("../middleware/isLoginMiddle");
 const path = require("path");
 
 router.post("/", login);
 
-router.get("/view", isLogin, viewUser);
+router.get("/view", isLoginMiddle, viewUser);
 
 // 로그인 페이지
 router.get("/", (req, res) => {

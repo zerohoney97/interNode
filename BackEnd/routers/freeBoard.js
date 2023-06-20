@@ -12,14 +12,14 @@ const { viewPostAll,
         commentInsert,
         recommentInsert
     } = require('../controllers/freeBoardsController');
-const { isLogin } = require('../middleware/islogin');
+const { isLoginMiddle } = require('../middleware/isLoginMiddle');
 const path = require("path");
 
 //전체 게시글 조회
 router.get("/", viewPostAll);
 
 //게시글 등록
-router.post("/insert", isLogin, insertPost);
+router.post("/insert", isLoginMiddle, insertPost);
 
 //글 상세조회
 router.get("/postdetail/?", selectPost);
@@ -34,22 +34,22 @@ router.post('/updatepost/?', updatePost);
 router.get('/deletepost', deletePost);
 
 //내가 쓴 글 조회
-router.get('/mypost',isLogin,myPost);
+router.get('/mypost',isLoginMiddle,myPost);
 
 //내가 좋아요한 글 조회
-router.get('/mylikes',isLogin, myLikes);
+router.get('/mylikes',isLoginMiddle, myLikes);
 
 // 좋아요 버튼 클릭
-router.get('/thumbsup/?',isLogin, thumbsUp);
+router.get('/thumbsup/?',isLoginMiddle, thumbsUp);
 
 // 댓글, 대댓글 조회
 router.get('/comment/?', comment);
 
 // 댓글 추가
-router.post('/commentinsert/?', isLogin, commentInsert);
+router.post('/commentinsert/?', isLoginMiddle, commentInsert);
 
 // 대댓글 추가
-router.post('/recommentinsert/?', isLogin, recommentInsert);
+router.post('/recommentinsert/?', isLoginMiddle, recommentInsert);
 
 // 게시판 이동
 router.get("/main", (req, res) => {

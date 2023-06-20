@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const path = require("path");
-const { isLogin } = require("../middleware/islogin");
+const { isLoginMiddle } = require("../middleware/isLoginMiddle");
 
-router.get("/", isLogin, (req, res) => {
+router.get("/", isLoginMiddle, (req, res) => {
   res.sendFile(
     path.join(__dirname, "..", "..", "FrontEnd", "mainpage", "mainpage.html")
   );

@@ -1,17 +1,17 @@
 const router = require("express").Router();
 const { ChatLog, User } = require("../models");
 const path = require("path");
-const { isLogin } = require("../middleware/islogin");
+const { isLoginMiddle } = require("../middleware/isLoginMiddle");
 const {
   getChatLogClient,
   getChatLogAdmin,
   saveChatDataAdmin,
 } = require("../controllers/chatControlloer");
 // /chat/create
-router.post("/create", isLogin, async (req, res) => {
+router.post("/create", isLoginMiddle, async (req, res) => {
   const { chat } = req.body;
   const { primaryKey } = req.acc_decoded;
-  // { data: { user_id : isloginUserId, message,receiver,isRead } }
+  // { data: { user_id : isLoginMiddleUserId, message,receiver,isRead } }
   //    const user_id = req.body.data.user_id;
   //    const message = req.body.data.message;
   //    const isRead = req.body.data.isRead;
@@ -28,22 +28,22 @@ router.post("/create", isLogin, async (req, res) => {
   res.send('primaryKey');
 });
 
-router.get("/Users", isLogin, async (req, res) => {
+router.get("/Users", isLoginMiddle, async (req, res) => {
   const user = await User.findAll({});
   res.json(user);
 });
 
 // 고객센터 들어가기
-router.get("/", isLogin, (req, res) => {
+router.get("/", isLoginMiddle, (req, res) => {
   res.sendFile(
     path.join(__dirname, "..", "..", "FrontEnd", "popup", "index.html")
   );
 });
 // 마이페이지에서 채팅 기록 가져오기
-router.get("/getChatLogClient", isLogin, getChatLogClient);
+router.get("/getChatLogClient", isLoginMiddle, getChatLogClient);
 // 어드민페이지에서 채팅기록 가져오기
-router.get("/getChatLogAdmin", isLogin, getChatLogAdmin);
+router.get("/getChatLogAdmin", isLoginMiddle, getChatLogAdmin);
 // 어드민 페이지에서 채팅기록 보내기
-router.post("/createAdminChat", isLogin, saveChatDataAdmin);
+router.post("/createAdminChat", isLoginMiddle, saveChatDataAdmin);
 
 module.exports = router;
