@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const {showDetail , reviewBoard , reviewThumbsUp, reviewReport} = require('../controllers/showDetailController');
 const path = require('path');
-const { isLogin } = require('../middleware/islogin');
+const { isLoginMiddle } = require('../middleware/isLoginMiddle');
 
 
 
@@ -26,7 +26,7 @@ router.get('/detail/?',showDetail);
 router.get('/reviewboard/?',reviewBoard);
 
 // 관람후기 좋아요
-router.get('/thumbsup/?',isLogin, reviewThumbsUp);
+router.get('/thumbsup/?',isLoginMiddle, reviewThumbsUp);
 
 // 관람후기 신고
 router.get("/report/?", reviewReport);

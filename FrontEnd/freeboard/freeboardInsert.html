@@ -31,7 +31,7 @@
     <div class="container">
         <h1>게시글 추가</h1>
 
-        <form id="boardForm" action="/freeboards/insert" method="post">
+        <form id="boardForm" action="/freeboards/insertTo" method="post">
             <label for="">제목</label><br>
             <input id="titleInput" name="title" type="text" placeholder="제목을 입력하세요." required><br>
 
@@ -78,20 +78,5 @@
         </footer>
 </body>
   <script src="../js/static.js"></script>
-  <script>
-    // 페이지 로드시  맨 위 헤더 변경
-    window.onload = function(){
-    axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
-    .then((res)=>{
-      console.log(res.data);
-      if(res.data){
-        headerUtilLogin.textContent = `${res.data}님`
-        headerUtilSignUp.innerHTML ='<a  href="http://127.0.0.1:5500/FrontEnd/freeboard/freeboard.html" style="text-decoration: none; color: inherit;">게시판</a>'
-      }
-    })
-    .catch((error)=>{
-      console.log(error);
-    })
-  }
-  </script>
+  <script>changeHeaderUtil()</script>
 </html>

@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-exports.isLogin = (req, res, next) => {
+exports.isLoginMiddle = (req, res, next) => {
   const { access_token } = req.session;
   console.log(access_token, "로그인 미들웨어 거침");
 

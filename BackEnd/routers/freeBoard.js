@@ -15,13 +15,12 @@ const { viewPostAll,
         report
     } = require('../controllers/freeBoardsController');
 const { isLoginMiddle } = require('../middleware/isLoginMiddle');
-const path = require("path");
 
 //전체 게시글 조회
 router.get("/", viewPostAll);
 
 //게시글 등록
-router.post("/insert", isLoginMiddle, insertPost);
+router.post("/insertTo", isLoginMiddle, insertPost);
 
 //글 상세조회
 router.get("/postdetail/?", selectPost);
