@@ -129,6 +129,8 @@ updateBtn.onclick = () => {
     console.log(post_id);
     //window.location.href = `http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html${post_id}`;
     window.location.href = `/freeboards/updatepost${post_id}`;
+  }else{
+    alert("게시글 작성자만 수정 가능합니다");
   }
 };
 
@@ -145,6 +147,8 @@ deleteBtn.onclick = () => {
       .catch((err) => {
         console.log(err);
       });
+  }else{
+    alert("게시글 작성자만 삭제 가능합니다");
   }
 };
 
