@@ -120,15 +120,21 @@ updateBtn.onclick = () => {
   // 수정페이지로 이동
 
   // 수정 페이지에서는 form으로 데이터베이스 변경, 게시글 상세 페이지 redirect
+
+
   let userNick = headerUtilLogin.textContent;
   console.log(userNick);
   console.log(nickname.textContent);
   console.log(userNick.trim() === nickname.textContent.trim());
   if (userNick.trim() === nickname.textContent.trim()) {
-    const post_id = window.location.search;
-    console.log(post_id);
-    //window.location.href = `http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html${post_id}`;
-    window.location.href = `/freeboards/updatepost${post_id}`;
+    let result = confirm("게시글 수정페이지로 이동합니다")
+    if(result){
+      const post_id = window.location.search;
+      console.log(post_id);
+      //window.location.href = `http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html${post_id}`;
+      window.location.href = `/freeboards/updatepost${post_id}`;
+
+    }
   }else{
     alert("게시글 작성자만 수정 가능합니다");
   }
@@ -138,15 +144,18 @@ updateBtn.onclick = () => {
 deleteBtn.onclick = () => {
   let userNick = headerUtilLogin.textContent;
   if (userNick.trim() === nickname.textContent.trim()) {
-    const post_id = window.location.search;
-    axios
-      .get(`  /freeboards/deletepost${post_id}`)
-      .then((res) => {
-        window.location.href = "/freeboards/main";
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    let result =confirm("정말 삭제할까요?")
+    if(result){
+      const post_id = window.location.search;
+      axios
+        .get(`  /freeboards/deletepost${post_id}`)
+        .then((res) => {
+          window.location.href = "/freeboards/main";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }else{
     alert("게시글 작성자만 삭제 가능합니다");
   }
