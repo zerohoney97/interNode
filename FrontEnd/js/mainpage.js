@@ -243,9 +243,14 @@ const renderCmtShow = (list)=>{
 const renderSwiper = (list)=>{
   const swiperSlide = document.querySelectorAll('swiper-slide');
   
+  //스와이퍼 
   for (let i = 0; i < 7; i++) {
     const show = list[i];
     const anchorElement = swiperSlide[i].querySelector('a');
     anchorElement.setAttribute('href', "/showdetail?id=" + show.id);
   }
+
+  // 오늘의 추천
+  const today = document.getElementById('recLink7');
+  today.href = "/showdetail?id=" + list[7].id;
 }
