@@ -92,6 +92,23 @@ app.use(
   )
 );
 
+// bj
+// app.use("/user_img",express.static(path.join(__dirname,"user_img"),{
+//   setHeaders : (res,filePath) => {
+//       if (path.extname(filePath) === ".png" ||
+//           path.extname(filePath) === ".webp" ||
+//           path.extname(filePath) === ".jpg" ||
+//           path.extname(filePath) === ".jpeg" ||
+//           path.extname(filePath) === ".gif" ||
+//           path.extname(filePath) === ".jfif"){
+//           res.setHeader("Content-Type","image/jpeg");
+//       }
+//   }
+// }));
+
+
+
+
 // app.use('/socket.io', e.static(__dirname + '/node_modules/socket.io/client-dist'));
 // app.use(
 //   "/socket.io",

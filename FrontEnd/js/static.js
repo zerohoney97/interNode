@@ -16,6 +16,8 @@ const changeHeaderUtil = () => {
            const logOut = document.createElement("div");
           logOut.innerHTML = '<a href="/login/logout"> 로그아웃 </a>';
           document.querySelector(".header_util").appendChild(logOut);
+        } else if (res.data.startsWith("<!DOCTYPE html>")) { // res.redirect 반환받았을때
+          headerUtilLogin.innerHTML = ` <a href="/login">다시 로그인 해주세요</a>`;
         } else {
           headerUtilLogin.innerHTML = ` ${res.data}`;
           headerSignUp.innerHTML =
