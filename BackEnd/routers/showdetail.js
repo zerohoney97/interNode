@@ -6,7 +6,7 @@ const { isLoginMiddle } = require('../middleware/isLoginMiddle');
 
 
 //디테일 페이지 이동
-router.get('/?',(req,res)=>{
+router.get('/?',isLoginMiddle,(req,res)=>{
     res.sendFile(
         path.join(
             __dirname,
@@ -19,7 +19,7 @@ router.get('/?',(req,res)=>{
     )
 })
 
-//디테일 페이지 onload 
+//디테일 페이지 onload
 router.get('/detail/?',showDetail);
 
 //관람후기 데이터 보내주기

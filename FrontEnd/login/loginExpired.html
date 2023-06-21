@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 만료</title>
+    <link rel="stylesheet" href="../public/login.css" />
+    <link rel="stylesheet" href="../public/header.css" />
+</head>
+
+<body>
+    <header class="common_header">
+        <div class="header_util">
+          <div id="headerUtilLogin"><a href="/login">로그인</a></div>
+          <div id="headerSignUp"><a href="/signup">회원가입</a></div>
+          <div><a href="/chat">고객센터</a></div>
+          <div><a href="/mypage/changeProfile">마이페이지</a></div>
+        </div>
+        <div class="header_inner">
+          <div class="logo"></div>
+          <h1>공연/전시</h1>
+        </div>
+        <div class="header_gnb">
+          <div class="gnb_home"><a href="/main">홈</a></div>
+          <div class="gnb_show">공연</div>
+        </div>
+      </header>
+    <div class="expired-box">
+        <div class="box">
+            <div class="container expired">
+                <img class="error-img" alt="">
+                <h2>로그인 만료</h2>
+                <div>다시 로그인하세요.</div>
+                <a href="/login" class="btn-red">확인</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/static.js"></script>
+<script>
+    document.querySelector(".error-img").src = imgPath + "/" + "front_error.png";
+</script>
+</html>
