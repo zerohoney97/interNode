@@ -123,59 +123,19 @@ const createReport = async () => {
 // 공연 12개 생성
 const createShow = async () => {
   await Show.create({
-    title: "JUMF 2023 전주얼티밋뮤직페스티벌 블라인드티켓",
+    title: "BENEE (베니) 첫 내한 공연",
     detail:
-      '["특별한 뮤직 페스티벌. JUMF2023 티켓 오픈을 시작합니다!", "600", "7"]',
-    img: "show_JUMF.jpg",
+      '["강렬한 에너지와 매력 넘치는 목소리 현재 세계 팝 시장이 주목하는 가장 흥미롭고 카리스마 넘치는 뉴질랜드 싱어송라이터", "70", "12"]',
+    img: "show_benee.jpg",
     price: 60000,
     theaters_id: 1,
   });
   await Show.create({
-    title: "10-FEET “COLLINS” TOUR",
-    detail: '["10-FEET 내한공연", "120", "7"]',
-    img: "show_10FEET.jpg",
+    title: "2023 박창근 콘서트 [우리들 꿈에 관한 이야기]",
+    detail: '["쉼없이 달려왔던 지난날들, 별것 아닌것 같았던 하루도 우리에겐 충분히 가치가 있습니다 우리는 언제나 꿈을 향해 달려가고 있을테니까요", "120", "7"]',
+    img: "show_parkchangguen.jpg",
     price: 70000,
     theaters_id: 2,
-  });
-  await Show.create({
-    title: "연극 〈폭풍의 언덕〉",
-    detail:
-      '["빛나는 감수성, 서정적이며 강렬한 필치 영문학을 대표하는 세기의 명작 <폭풍의 언덕>. 탄탄한 고전 작품을 새롭게 재해석하며 오늘을 살고 있는 모두에게 묵직할 울림을 던질 클래식 레퍼토리! 연극 <폭풍의 언덕>으로 새롭게 찾아온다.", "125", "12"]',
-    img: "show_Wuthering_Heights.jpg",
-    price: 60000,
-    theaters_id: 1,
-  });
-  await Show.create({
-    title: "[빛의시어터] 달리 얼리버드 1차",
-    detail:
-      '["최고의 기술, 압도적 스케일. 몰입형 예술 전시 빛의 시어터. 글로벌 몰입형 예술 전시 서울 상륙! 거장들의 예술 작품부터 컨템포러리 미디어 아트까지!", "50", "0"]',
-    img: "show_DALI.jpg",
-    price: 23000,
-    theaters_id: 2,
-  });
-  await Show.create({
-    title: "2023 펭수 펭미팅 <20세기 펭수 – 우리의 네 번째 여름>",
-    detail:
-      '["모든 것이 눈 깜짝할 사이에 변화하던 격동의 세기. 무엇이든 상상할 수 있었던 낭만의 시절. 새로운 밀레니엄에 대한 기대로 두근대던 그 때, 함께하는 네 번째 여름 위에 기록하는 우리의 이야기. 그 시절의 너와 나는 어떤 모습이었을까? 20세기에서 기다리고 있을게!", "90", "7"]',
-    img: "show_peng.jpg",
-    price: 88000,
-    theaters_id: 1,
-  });
-  await Show.create({
-    title: "2023 김영민 FANMEETING: THE NEXT",
-    detail:
-      '["함께 하기에 모든 순간이 빛날 김영민의 다음, 그의 다음을 함께할 여러분을 초대합니다.", "80", "8"]',
-    img: "show_Kim.jpg",
-    price: 88000,
-    theaters_id: 2,
-  });
-  await Show.create({
-    title: "뮤지컬 <시카고> 25주년 기념 오리지널 내한 - 부산",
-    detail:
-      '["뮤지컬 시카고 25주년 기념 오리지널 내한. 25년간 브로드웨이를 점령한 브로드웨이 뮤지컬 역사상 최장 공연 기록에 빛나는 미국 뮤지컬 시카고! 미 전역 투어 이후 마침내 한국에 상륙하다!", "150", "14"]',
-    img: "show_chicago.jpg",
-    price: 110000,
-    theaters_id: 1,
   });
   await Show.create({
     title: "2023 포레스텔라 전국투어 콘서트 - The Light in Seoul",
@@ -184,6 +144,48 @@ const createShow = async () => {
     price: 132000,
     theaters_id: 2,
   });
+  await Show.create({
+    title: "뮤지컬 〈비스티〉",
+    detail:
+      '["시끄러운 도시의 소음, 서울의 밤거리 클랙슨 소리가 사방에 퍼진 적들처럼 쏟아지면, 개츠비의 간판이 켜진다", "130", "14"]',
+    img: "show_beasty.jpg",
+    price: 60000,
+    theaters_id: 1,
+  });
+  await Show.create({
+    title: "Soundberry Festa'23",
+    detail:
+      '["달콤한 너와 시원한 내가 만나는 우리들의 여름 이야기 뜨거운 열기 가득한 한 여름날, 음악의 파도를 타고 새롭게 써내려갈 우리들의 이야기가 시작됩니다", "540", "7"]',
+    img: "show_soundberry.jpg",
+    price: 23000,
+    theaters_id: 2,
+  });
+  await Show.create({
+    title: "KB국민카드 스타샵 X 2023 인천펜타포트락페스티벌",
+    detail:
+      '["펜타포트 공식 셔틀버스 "꽃가마"와 대중교통으로 찾아오실 수 있습니다", "228", "0"]',
+    img: "show_incheonrock.jpg",
+    price: 88000,
+    theaters_id: 1,
+  });
+  await Show.create({
+    title: "2023 이승철 전국투어 콘서트: RETRO Night ",
+    detail:
+      '["새로운 입체 음향 사운드를 통해 탁월한 현장감과 공간감을 느낄 수 있습니다. 이승철 레코딩 스튜디오의 운영 노하우를 통해 얻어낸 기술로 이승철 콘서트 팀만이 제공합니다.", "80", "8"]',
+    img: "show_leeSC.jpg",
+    price: 88000,
+    theaters_id: 2,
+  });
+  // 이승철 콘서트까지 포함 위에  7개 공연은 swipe에 들어가는 공연들입니다.↑↑↑↑
+  await Show.create({
+    title: "메가필드뮤직페스티벌 2023",
+    detail:
+      '보라미유,홍이삭,이솔로몬,하현상,하동균,박원,로이킴,볼빨간사춘기,HoooW,제이유나,이병찬,솔루션스,아일,이무진,존박,김필,적재,NELL", "150", "14"]',
+    img: "show_megafield.jpg",
+    price: 110000,
+    theaters_id: 1,
+  });
+  // 메가필드뮤직페스티벌 2023 은 main페이지 오늘의 추천에 필요한 공연입니다 ↑↑↑↑
   await Show.create({
     title: "뮤지컬 <백작>",
     detail:
@@ -306,7 +308,7 @@ const createShowDate = async () => {
 // **3**
 // createShow();
 // **4**
-// createShowDate()
+// createShowDate();
 
 // 회원가입 후에 진행
 // createReport();
