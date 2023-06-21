@@ -122,7 +122,7 @@ const createReport = async () => {
 
 // 공연 12개 생성
 const createShow = async () => {
-  await Show.create({title:"JUMF 2023 전주얼티밋뮤직페스티벌 블라인드티켓", detail:'["특별한 뮤직 페스티벌. JUMF2023 티켓 오픈을 시작합니다!", "600", "7"]', img:"show_JUMF.jpg", price: 60000, theaters_id : 1});
+  await Show.create({title:"BENEE (베니) 첫 내한 공연", detail:'["강렬한 에너지와 매력 넘치는 목소리 현재 세계 팝 시장이 주목하는 가장 흥미롭고 카리스마 넘치는 뉴질랜드 싱어송라이터", "70", "15"]', img:"show_benee.jpg", price: 60000, theaters_id : 1});
   await Show.create({title:"10-FEET “COLLINS” TOUR", detail:'["10-FEET 내한공연", "120", "7"]', img:"show_10FEET.jpg", price: 70000, theaters_id : 2});
   await Show.create({title:"연극 〈폭풍의 언덕〉", detail:'["빛나는 감수성, 서정적이며 강렬한 필치 영문학을 대표하는 세기의 명작 <폭풍의 언덕>. 탄탄한 고전 작품을 새롭게 재해석하며 오늘을 살고 있는 모두에게 묵직할 울림을 던질 클래식 레퍼토리! 연극 <폭풍의 언덕>으로 새롭게 찾아온다.", "125", "12"]', img:"show_Wuthering_Heights.jpg", price: 60000, theaters_id : 1});
   await Show.create({title:"[빛의시어터] 달리 얼리버드 1차", detail:'["최고의 기술, 압도적 스케일. 몰입형 예술 전시 빛의 시어터. 글로벌 몰입형 예술 전시 서울 상륙! 거장들의 예술 작품부터 컨템포러리 미디어 아트까지!", "50", "0"]', img:"show_DALI.jpg", price: 23000, theaters_id : 2});
