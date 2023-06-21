@@ -403,13 +403,13 @@ window.onload = () => {
 
           <div class="btns">
             <div class="likeBtn" id="likeBtn-${cmt.id}">
-                <img src="../freeboard/img/like_empty.png" alt="" />${
+                <img src="${imgPath}/like_empty.png" alt="" />${
                   cmt.ReviewBoardLikes.length
                 }
             </div>
             <div class="reportDiv" id = "reportBtn-${cmt.id}">
 
-                <img src="../freeboard/img/siren.png" alt="" />신고
+                <img src="${imgPath}/siren.png" alt="" style="width : 20px ; height : 20px;" />신고
             </div>
           </div>
 
@@ -431,7 +431,7 @@ window.onload = () => {
                   })
                   .then((res) => {
                     console.log(res.data);
-                    likeBtn.innerHTML = `<img src="../freeboard/img/like_empty.png" alt="" />${res.data.length}`;
+                    likeBtn.innerHTML = `<img src="${imgPath}/like.png" alt="" />${res.data.length}`;
                   })
                   .catch((err) => {
                     console.log(err);

@@ -11,7 +11,7 @@ window.onload = () => {
       createdAt.textContent = res.data.createdAt.slice(0, 10);
       views.textContent = res.data.views;
       content.textContent = res.data.content;
-      likeBtn.innerHTML = `<img src="./img/like_empty.png" alt="">${res.data.FreeBoardLikes.length}`;
+      likeBtn.innerHTML = `<img src="${imgPath}/like_empty.png" alt="">${res.data.FreeBoardLikes.length}`;
     })
     .catch((err) => {
       console.log(err);
@@ -54,14 +54,14 @@ window.onload = () => {
         </div>
         <a class="report" href="/freeboards/report${post_id}&cmt=${
           cmt.id
-        }&recmt=0" onclick="return reportAlert()"> <img src="./img/siren.png" alt="">신고</a>
+        }&recmt=0" onclick="return reportAlert()"> <img src="${imgPath}/siren.png" alt="">신고</a>
         <div class="nick-date">
           <span class="commentNickname">${cmt.User.nickname}</span>
           <span class="commentCreatedAt">${cmt.createdAt.slice(0, 10)}</span>
         </div>
         
         <div class="recomment">
-          <img class="arrow" src="./img/arrow.png" alt="대댓글 화살표">
+          <img class="arrow" src="${imgPath}/arrow.png" alt="대댓글 화살표">
           <div class="recommentContent">
           ${cmt.Recomments.map(
             (recomment) => `
@@ -69,7 +69,7 @@ window.onload = () => {
                   <div class="recommentContent">${recomment.content}</div>
                   <a class="report" href="/freeboards/report${post_id}&cmt=0&recmt=${
               recomment.id
-            } " onclick="return reportAlert()"><img src="./img/siren.png" alt="">신고</a>
+            } " onclick="return reportAlert()"><img src="${imgPath}/siren.png" alt="">신고</a>
                   <div class="nick-date">
                     <span class="recommentNickname">${
                       recomment.User.nickname
@@ -167,8 +167,13 @@ likeBtn.onclick = () => {
   axios
     .get(`  /freeboards/thumbsup${post_id}`, { withCredentials: true })
     .then((res) => {
-      // console.log(res.data);
-      likeBtn.innerHTML = `<img src="./img/like_empty.png" alt="">${res.data.FreeBoardLikes.length}`;
+      console.log(res.data);
+      if(res.data[1]){
+        likeBtn.innerHTML = `<img src="${imgPath}/like.png" alt="">${res.data[0].FreeBoardLikes.length}`;
+      }else{
+        likeBtn.innerHTML = `<img src="${imgPath}/like_empty.png" alt="">${res.data[0].FreeBoardLikes.length}`;
+
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -190,3 +195,5 @@ function reportAlert(){
   }
 }
 
+// 게시글에 신고 이미지 넣어주기
+sirenImg.src = `${imgPath}/siren.png`
