@@ -430,8 +430,14 @@ window.onload = () => {
                     withCredentials: true,
                   })
                   .then((res) => {
-                    console.log(res.data);
-                    likeBtn.innerHTML = `<img src="${imgPath}/like.png" alt="" />${res.data.length}`;
+                    // console.log(res.data);
+                    if(res.data[1]){
+
+                      likeBtn.innerHTML = `<img src="${imgPath}/like.png" alt="" />${res.data[0].length}`;
+                    }else{
+                      likeBtn.innerHTML = `<img src="${imgPath}/like_empty.png" alt="" />${res.data[0].length}`;
+
+                    }
                   })
                   .catch((err) => {
                     console.log(err);
