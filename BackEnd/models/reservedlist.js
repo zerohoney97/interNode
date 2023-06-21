@@ -5,18 +5,21 @@ class ReservedList extends Sequelize.Model {
             // 컬럼의 내용
            reservation_num : {type
         :Sequelize.STRING(20),allowNull:false},
-            
+
         seat_num : {
             type : Sequelize.STRING(150),
             allowNull : false,
         },
 
-
-
+        pay : {
+            type : Sequelize.BOOLEAN,
+            allowNull: false,
+            defaultValue : false
+        }
 
         },{
             // 테이블의 내용
-            sequelize, 
+            sequelize,
             timestamps : true, // 생성 시간, 업데이트 시간 자동으로 생성
             underscored : false, // 카멜 케이스 설정 유무
             modelName : "ReservedList", //모델 이름
@@ -31,7 +34,7 @@ class ReservedList extends Sequelize.Model {
         db.ReservedList.belongsTo(db.Show, {foreignKey : "show_id", targetKey : "id"});
         db.ReservedList.belongsTo(db.User,{foreignKey : "user_id",targetKey : "id"});
     }
-   
+
 }
 
 module.exports = ReservedList;
