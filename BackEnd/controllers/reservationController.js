@@ -48,7 +48,10 @@ exports.initReservationSocket = (socket, io) => {
                 const { show_id, reservation_num } = data;
                 socket.join(reservation_num);
 
+                console.log(show_id, reservation_num);
+
                 let seats = await Sheet.findOne({ where: { reservation_num } });
+                console.log(seats)
                 // 문자열을 배열로 변환.
                 seatArr[reservation_num] = JSON.parse(seats.dataValues.sheets_array);
 

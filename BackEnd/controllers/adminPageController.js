@@ -1,4 +1,6 @@
 const { Show, ShowDateInfo, User, Report, Sheet } = require("../models");
+
+// 시작날짜,끝날짜 계산해서 삽입
 function calculateMonthsAndDays(startDate, endDate, dateArr) {
   var date1 = new Date(startDate);
   var date2 = new Date(endDate);

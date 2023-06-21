@@ -121,7 +121,7 @@ a {
 /* footer 부분 끝 */
 main {
   width: 100%;
-  height: 4500.005px;
+  height: auto;
   position: relative;
 }
 
@@ -519,7 +519,7 @@ li {
 
 .bestshow {
   width: 70%;
-  height: 2099.999px;
+  height: auto;
   margin: auto;
   margin-top: 100.003px;
 }

@@ -227,8 +227,8 @@ const createShowDate = async () => {
     show_id: 1,
   });
   await ShowDateInfo.create({
-    startDate: "2023-03-212",
-    endDate: "2023-04-25",
+    startDate: "2023-03-12",
+    endDate: "2023-04-01",
     startTime: "15:00",
     show_id: 2,
   });
@@ -246,7 +246,7 @@ const createShowDate = async () => {
   });
   await ShowDateInfo.create({
     startDate: "2023-03-20",
-    endDate: "2023-06-12",
+    endDate: "2023-04-10",
     startTime: "14:00",
     show_id: 5,
   });
@@ -258,7 +258,7 @@ const createShowDate = async () => {
   });
   await ShowDateInfo.create({
     startDate: "2023-11-02",
-    endDate: "2023-12-20",
+    endDate: "2023-12-02",
     startTime: "19:00",
     show_id: 7,
   });
@@ -276,13 +276,13 @@ const createShowDate = async () => {
   });
   await ShowDateInfo.create({
     startDate: "2023-04-03",
-    endDate: "2023-06-02",
+    endDate: "2023-05-05",
     startTime: "20:00",
     show_id: 10,
   });
   await ShowDateInfo.create({
     startDate: "2023-09-08",
-    endDate: "2023-12-25",
+    endDate: "2023-09-20",
     startTime: "21:00",
     show_id: 11,
   });
@@ -294,10 +294,159 @@ const createShowDate = async () => {
   });
 };
 
+// 공연에 대한 자리 삽입
 
+// 좌석 배열 정보
+let gangnam = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+];
 
+let sejong = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+];
+// 시작날짜,끝날짜 계산해서 삽입
+function calculateMonthsAndDays(startDate, endDate ) {
+  let dateArr = [];
 
+  var date1 = new Date(startDate);
+  var date2 = new Date(endDate);
 
+  while (date1 <= date2) {
+    var month = date1.getMonth() + 1; // Adding 1 because months are zero-based
+    var day = date1.getDate();
+    dateArr.push(month + "-" + day);
+    date1.setDate(date1.getDate() + 1); // Move to the next day
+  }
+  console.log(dateArr, "또 반복");
+  let resultArr = dateArr.map((a) => {
+    let monthArr = a.split("-");
+    if (monthArr[0].length < 2) {
+      monthArr[0] = `0${monthArr[0]}`;
+    }
+    if (monthArr[1].length < 2) {
+      monthArr[1] = `0${monthArr[1]}`;
+    }
+    return monthArr[0] + monthArr[1];
+  });
+  return resultArr;
+}
+
+const createSheets = async () => {
+  let show1 = calculateMonthsAndDays("2023-06-21", "2023-07-21",);
+  let show2 = calculateMonthsAndDays("2023-03-12", "2023-04-01" );
+  let show3 = calculateMonthsAndDays("2023-07-12", "2023-08-01" );
+  let show4 = calculateMonthsAndDays("2023-04-23", "2023-05-05" );
+  let show5 = calculateMonthsAndDays("2023-03-20", "2023-04-10" );
+  let show6 = calculateMonthsAndDays("2023-09-01", "2023-10-01" );
+  let show7 = calculateMonthsAndDays("2023-11-02", "2023-12-02" );
+  let show8 = calculateMonthsAndDays("2023-07-11", "2023-07-18" );
+  let show9 = calculateMonthsAndDays("2023-01-01", "2023-02-04" );
+  let show10 = calculateMonthsAndDays("2023-04-03", "2023-05-05" );
+  let show11 = calculateMonthsAndDays("2023-09-08", "2023-09-20" );
+  let show12 = calculateMonthsAndDays("2023-02-21", "2023-03-04" );
+  // console.log(show9)
+  show1.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `1_${a}`,
+      sheets_array: JSON.stringify(gangnam),
+      show_id: 1,
+    });
+  });
+  show2.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `2_${a}`,
+      sheets_array: JSON.stringify(sejong),
+      show_id: 2,
+    });
+  });
+  show3.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `3_${a}`,
+      sheets_array: JSON.stringify(gangnam),
+      show_id: 3,
+    });
+  });
+  show4.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `4_${a}`,
+      sheets_array: JSON.stringify(sejong),
+      show_id: 4,
+    });
+  });
+  show5.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `5_${a}`,
+      sheets_array: JSON.stringify(gangnam),
+      show_id: 5,
+    });
+  });
+  show6.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `6_${a}`,
+      sheets_array: JSON.stringify(sejong),
+      show_id: 6,
+    });
+  });
+  show7.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `7_${a}`,
+      sheets_array: JSON.stringify(gangnam),
+      show_id: 7,
+    });
+  });
+  show8.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `8_${a}`,
+      sheets_array: JSON.stringify(sejong),
+      show_id: 8,
+    });
+  });
+  show9.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `9_${a}`,
+      sheets_array: JSON.stringify(gangnam),
+      show_id: 9,
+    });
+  });
+  show10.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `10_${a}`,
+      sheets_array: JSON.stringify(sejong),
+      show_id: 10,
+    });
+  });
+  show11.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `11_${a}`,
+      sheets_array: JSON.stringify(gangnam),
+      show_id: 11,
+    });
+  });
+  show12.forEach(async (a) => {
+    await Sheet.create({
+      reservation_num: `12_${a}`,
+      sheets_array: JSON.stringify(sejong),
+      show_id: 12,
+    });
+  });
+};
 // 주의~~!! 본 정적 데이터는 외래키로 인하여 순서대로 실행 하여함. 만약 순서대로 실행을 안 한다면 테이블을 지우고 다시 하기 바람.
 // **1**
 // createAdmin();
@@ -308,6 +457,10 @@ const createShowDate = async () => {
 // **4**
 // createShowDate()
 
+// **5**
 // 회원가입 후에 진행
 // createReport();
+
+// **6**
+// createSheets(); 
 module.exports = db;
