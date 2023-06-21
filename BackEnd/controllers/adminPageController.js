@@ -1,4 +1,43 @@
-const { Show, ShowDateInfo, User, Report } = require("../models");
+const { Show, ShowDateInfo, User, Report, Sheet } = require("../models");
+function calculateMonthsAndDays(startDate, endDate, dateArr) {
+  var date1 = new Date(startDate);
+  var date2 = new Date(endDate);
+
+  while (date1 <= date2) {
+    var month = date1.getMonth() + 1; // Adding 1 because months are zero-based
+    var day = date1.getDate();
+    console.log(month + "-" + day);
+    dateArr.push(month + "-" + day);
+    date1.setDate(date1.getDate() + 1); // Move to the next day
+  }
+  return dateArr;
+}
+
+// 좌석 배열 정보
+let gangnam = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+];
+
+let sejong = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+];
 
 // 공연 등록하기
 exports.enrollShow = async (req, res) => {
@@ -35,7 +74,34 @@ exports.enrollShow = async (req, res) => {
       startTime: showStartTime,
       show_id: show.dataValues.id,
     });
-
+    let dateArr = [];
+    let newDateArr = calculateMonthsAndDays(
+      showStartDate,
+      showEndDate,
+      dateArr
+    );
+    newDateArr.forEach(async (a) => {
+      let monthArr = a.split("-");
+      if (monthArr[0].length < 2) {
+        monthArr[0] = `0${monthArr[0]}`;
+      }
+      if (monthArr[1].length < 2) {
+        monthArr[1] = `0${monthArr[1]}`;
+      }
+      if (theater == 1) {
+        await Sheet.create({
+          reservation_num: `${show.dataValues.id}_${monthArr[0] + monthArr[1]}`,
+          sheets_array: JSON.stringify(gangnam),
+          show_id: show.dataValues.id,
+        });
+      } else {
+        await Sheet.create({
+          reservation_num: `${show.dataValues.id}_${monthArr[0] + monthArr[1]}`,
+          sheets_array: JSON.stringify(sejong),
+          show_id: show.dataValues.id,
+        });
+      }
+    });
     res.redirect("/adminPage");
   } catch (error) {
     console.log(error);

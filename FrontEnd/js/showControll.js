@@ -108,3 +108,21 @@ goToUserReport.href = `${url}/adminPage/userReport`;
 
   
 changeHeaderUtil()
+
+function printMonthsAndDays(startDate, endDate) {
+  var date1 = new Date(startDate);
+  var date2 = new Date(endDate);
+
+  while (date1 <= date2) {
+    var month = date1.getMonth() + 1; // Adding 1 because months are zero-based
+    var day = date1.getDate();
+    console.log(month + '-' + day);
+    
+    date1.setDate(date1.getDate() + 1); // Move to the next day
+  }
+}
+
+// Example usage:
+var startDate = "06-23";
+var endDate = "07-23";
+printMonthsAndDays(startDate, endDate);
