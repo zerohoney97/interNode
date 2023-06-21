@@ -54,7 +54,7 @@ window.onload = () => {
         </div>
         <a class="report" href="/freeboards/report${post_id}&cmt=${
           cmt.id
-        }&recmt=0"> <img src="./img/siren.png" alt="">신고</a>
+        }&recmt=0" onclick="return reportAlert()"> <img src="./img/siren.png" alt="">신고</a>
         <div class="nick-date">
           <span class="commentNickname">${cmt.User.nickname}</span>
           <span class="commentCreatedAt">${cmt.createdAt.slice(0, 10)}</span>
@@ -69,7 +69,7 @@ window.onload = () => {
                   <div class="recommentContent">${recomment.content}</div>
                   <a class="report" href="/freeboards/report${post_id}&cmt=0&recmt=${
               recomment.id
-            }"><img src="./img/siren.png" alt="">신고</a>
+            } " onclick="return reportAlert()"><img src="./img/siren.png" alt="">신고</a>
                   <div class="nick-date">
                     <span class="recommentNickname">${
                       recomment.User.nickname
@@ -120,15 +120,23 @@ updateBtn.onclick = () => {
   // 수정페이지로 이동
 
   // 수정 페이지에서는 form으로 데이터베이스 변경, 게시글 상세 페이지 redirect
+
+
   let userNick = headerUtilLogin.textContent;
   console.log(userNick);
   console.log(nickname.textContent);
   console.log(userNick.trim() === nickname.textContent.trim());
   if (userNick.trim() === nickname.textContent.trim()) {
-    const post_id = window.location.search;
-    console.log(post_id);
-    //window.location.href = `http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html${post_id}`;
-    window.location.href = `/freeboards/updatepost${post_id}`;
+    let result = confirm("게시글 수정페이지로 이동합니다")
+    if(result){
+      const post_id = window.location.search;
+      console.log(post_id);
+      //window.location.href = `http://127.0.0.1:5500/FrontEnd/freeboard/freeboardUpdate.html${post_id}`;
+      window.location.href = `/freeboards/updatepost${post_id}`;
+
+    }
+  }else{
+    alert("게시글 작성자만 수정 가능합니다");
   }
 };
 
@@ -136,15 +144,20 @@ updateBtn.onclick = () => {
 deleteBtn.onclick = () => {
   let userNick = headerUtilLogin.textContent;
   if (userNick.trim() === nickname.textContent.trim()) {
-    const post_id = window.location.search;
-    axios
-      .get(`  /freeboards/deletepost${post_id}`)
-      .then((res) => {
-        window.location.href = "/freeboards/main";
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    let result =confirm("정말 삭제할까요?")
+    if(result){
+      const post_id = window.location.search;
+      axios
+        .get(`  /freeboards/deletepost${post_id}`)
+        .then((res) => {
+          window.location.href = "/freeboards/main";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }else{
+    alert("게시글 작성자만 삭제 가능합니다");
   }
 };
 
@@ -165,3 +178,14 @@ likeBtn.onclick = () => {
 // 댓글, 대댓글
 
 changeHeaderUtil();
+
+// 게시글 신고 alert
+function reportAlert(){
+  let result = confirm("게시글을 신고할까요?");
+
+  if(result){
+    return true;
+  }else{
+    return false;
+  }
+}

@@ -232,3 +232,7 @@ const renderRateShow = (list) => {
 
   rankingDiv.append(ul);
 };
+
+const renderCmtShow = (list)=>{
+  
+}

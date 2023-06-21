@@ -87,7 +87,7 @@ window.onload = () => {
           .toString()
           .slice(0, 2)}시 ${data.ShowDateInfos[0].startTime
         .toString()
-        .slice(2, 4)} 분</li>
+        .slice(3, 5)} 분</li>
       </ul>
     </div>
 

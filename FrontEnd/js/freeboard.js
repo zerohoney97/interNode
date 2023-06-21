@@ -266,12 +266,28 @@ const pagenateLike = (pagenum) => {
 
 changeHeaderUtil();
 
+//최신순 클릭
+let sortnew = document.getElementById('newest');
+sortnew.onclick = ()=>{
+    console.log('최신순 클릭')
+    axios.get('/freeboards')
+        .then((res)=>{
+            list = res.data;
+            list.reverse();
+            // 페이지네이션 함수
+            pagenate(pagenum);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+}
+
 //좋아요 많은 순 클릭
 let sortlike = document.getElementById("like");
 sortlike.onclick = () => {
   console.log("좋아요 많은 순 클릭");
   axios
-    .get("http://127.0.0.1:8080/freeboards")
+    .get("/freeboards")
     .then((res) => {
       list = res.data;
       list.sort((a, b) => b.FreeBoardLikes.length - a.FreeBoardLikes.length);
@@ -287,7 +303,7 @@ let sortview = document.getElementById("view");
 sortview.onclick = () => {
   console.log("조회수 많은 순 클릭");
   axios
-    .get("http://127.0.0.1:8080/freeboards")
+    .get("/freeboards")
     .then((res) => {
       list = res.data;
       list.sort((a, b) => b.views - a.views);
