@@ -32,9 +32,35 @@ exports.rateShowList = async (req, res) => {
 
 // 댓글 순 공연 정보 반환
 exports.cmtShowList = async (req,res)=> {
-    try {
+    
         
-    } catch (error) {
-        console.log(error);
-    }
+            try {
+                const show = await Show.findAll({
+                    include: [
+                        { model: ShowDateInfo },
+                        { model: Theater },
+                        { model: ReviewBoard }
+                    ],
+                    attributes: {
+                        include: [
+                            [
+                                sequelize.literal('(SELECT COUNT(*) FROM reviewBoards WHERE reviewBoards.show_id = Show.id)'),
+                                'reviewCount'
+                            ]
+                        ],
+                    },
+                    order: [
+                        [sequelize.literal('reviewCount'), 'DESC']
+                    ]
+                });
+        
+                return res.json(show);
+            } catch (error) {
+                console.log(error);
+            }
+        
+        
+    
+       
+    
 }
