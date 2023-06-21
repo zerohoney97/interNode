@@ -3,7 +3,7 @@ const path = require("path");
 const { isLoginMiddle } = require("../middleware/isLoginMiddle");
 const { showList, rateShowList, cmtShowList } = require("../controllers/mainController");
 
-router.get("/", isLoginMiddle, (req, res) => {
+router.get("/", (req, res) => {
   res.sendFile(
     path.join(__dirname, "..", "..", "FrontEnd", "mainpage", "mainpage.html")
   );

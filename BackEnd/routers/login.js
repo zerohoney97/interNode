@@ -35,6 +35,14 @@ router.get("/loginBlock", (req, res) => {
   );
 });
 
+// 액세스 토큰 만료 페이지
+router.get("/expired", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "..", "..", "FrontEnd", "login", "loginExpired.html")
+  );
+});
+
+
 //로그아웃
 router.get("/logout", logOut);
 
