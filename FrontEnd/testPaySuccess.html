@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    test페이지
+  </body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    // dGVzdF9za19NR2pMSm9RMWFWWmQwV2JaSlB3OHc2S1llMlJO
+    const text = "test_sk_zXLkKEypNArWmo50nX3lmeaxYG5R:";
+    const encodedText = btoa(text);
+    console.log(encodedText);
+    const urlString = window.location.href;
+
+    const url = new URL(urlString);
+    const searchParams = new URLSearchParams(url.search);
+
+    const orderId = searchParams.get("orderId");
+    const paymentKey = searchParams.get("paymentKey");
+    const amount = searchParams.get("amount");
+
+    console.log(orderId, paymentKey, amount);
+
+    var options = {
+      method: "POST",
+      url: "https://api.tosspayments.com/v1/payments/confirm",
+      headers: {
+        Authorization: `Basic dGVzdF9za19NR2pMSm9RMWFWWmQwV2JaSlB3OHc2S1llMlJOOg==`,
+        "Content-Type": "application/json",
+      },
+      data: {
+        paymentKey: paymentKey,
+        amount: 15000,
+        orderId: localStorage.getItem('orderId'),
+      },
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  </script>
+</html>

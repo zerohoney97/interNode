@@ -1,5 +1,5 @@
 const e = require("express");
-const { sequelize } = require("./models");
+const { sequelize, ReservedList } = require("./models");
 const dot = require("dotenv").config();
 const cors = require("cors");
 const session = require("express-session");
@@ -10,7 +10,6 @@ const mainRouter = require("./routers/main");
 const chatRouter = require("./routers/chat");
 const showDetailRouter = require("./routers/showdetail");
 
-
 const loginRouter = require("./routers/login");
 const freeBoardsRouter = require("./routers/freeBoard");
 const reservationRouter = require("./routers/reservation");
@@ -19,7 +18,9 @@ const mailRouter = require("./routers/mail");
 const { isLoginMiddle } = require("./middleware/isLoginMiddle");
 const adminPageRouter = require("./routers/adminMypage");
 const socketIO = require("socket.io");
-const {initReservationSocket} = require("./controllers/reservationController");
+const {
+  initReservationSocket,
+} = require("./controllers/reservationController");
 const { chattingSocket } = require("./controllers/chatControlloer");
 
 app.use(e.json());
@@ -119,23 +120,29 @@ app.use("/showdetail", showDetailRouter);
 
 app.use("/imgs", e.static(path.join(__dirname, "imgs")));
 
+app.post("/getPayInfo", async (req, res) => {
+  console.log(req.body.status, "여기서 바디");
+  if (req.body.status == "DONE") {
+    const data = await ReservedList.findAll();
+    console.log("불러온 예매 리스트", data);
+  }else{
+    
+  }
+  res.end();
+});
+
 const server = app.listen(8080, () => {
   console.log("gogo");
 });
 const io = socketIO(server);
 io.on("connection", (socket) => {
   chattingSocket(socket, io);
-  socket.on('reservation', () => {
+  socket.on("reservation", () => {
     initReservationSocket(socket, io);
   });
 });
 
-
-
-
-
 //----------------
-
 
 // 예매 관련
 // initReservationSocket(server);
