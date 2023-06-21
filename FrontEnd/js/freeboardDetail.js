@@ -18,12 +18,12 @@ window.onload = () => {
     });
 
   // 게시글 조회수 증가
-  axios
-    .get(`  /freeboards/viewsup${post_id}`)
-    .then((res) => {})
-    .catch((err) => {
-      console.log(err);
-    });
+  // axios
+  //   .get(`/freeboards/viewsup${post_id}`)
+  //   .then((res) => {})
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
   // 로그인시 헤더 변경
   // axios.get('http://127.0.0.1:8080/login/view',{withCredentials : true})
   // .then((res)=>{
@@ -189,3 +189,4 @@ function reportAlert(){
     return false;
   }
 }
+
