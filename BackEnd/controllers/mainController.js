@@ -29,3 +29,12 @@ exports.rateShowList = async (req, res) => {
         console.log(error);
     }
 }
+
+// 댓글 순 공연 정보 반환
+exports.cmtShowList = async (req,res)=> {
+    try {
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
