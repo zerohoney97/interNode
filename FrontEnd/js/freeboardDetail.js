@@ -54,7 +54,7 @@ window.onload = () => {
         </div>
         <a class="report" href="/freeboards/report${post_id}&cmt=${
           cmt.id
-        }&recmt=0"> <img src="./img/siren.png" alt="">신고</a>
+        }&recmt=0" onclick="return reportAlert()"> <img src="./img/siren.png" alt="">신고</a>
         <div class="nick-date">
           <span class="commentNickname">${cmt.User.nickname}</span>
           <span class="commentCreatedAt">${cmt.createdAt.slice(0, 10)}</span>
@@ -69,7 +69,7 @@ window.onload = () => {
                   <div class="recommentContent">${recomment.content}</div>
                   <a class="report" href="/freeboards/report${post_id}&cmt=0&recmt=${
               recomment.id
-            }"><img src="./img/siren.png" alt="">신고</a>
+            } " onclick="return reportAlert()"><img src="./img/siren.png" alt="">신고</a>
                   <div class="nick-date">
                     <span class="recommentNickname">${
                       recomment.User.nickname
@@ -169,3 +169,14 @@ likeBtn.onclick = () => {
 // 댓글, 대댓글
 
 changeHeaderUtil();
+
+// 게시글 신고 alert
+function reportAlert(){
+  let result = confirm("게시글을 신고할까요?");
+
+  if(result){
+    return true;
+  }else{
+    return false;
+  }
+}
