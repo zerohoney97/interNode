@@ -17,37 +17,42 @@ window.onload = async () => {
         예매 내역
         </h1>`;
 
-    // 화면 출력 만약 후기 없으면 등록하는 부분 보여주게
-    data.forEach((el) => {
-      const reservedContainer = document.createElement("div");
-      reservedContainer.classList.add("reserved-container");
-      reservedContainer.id = `reserved_container_${el.reservedList.id}`;
-      const showContainter = document.createElement("div");
-      showContainter.classList.add("show-container");
-      const showImg = document.createElement("img");
-      showImg.src = imgPath + "/" + el.reservedList.Show.img;
-      const showDetail = document.createElement("div");
-      showDetail.classList.add("show-detail");
-      const titleSpan = document.createElement("span");
-      titleSpan.innerText = el.reservedList.Show.title;
-      const detailSpan = document.createElement("span");
-      detailSpan.innerText = el.reservedList.Show.detail;
+        // 나의 예매내역 개수 출력
+        myReservationLength.innerText = data.length;
 
-      // span1 시간정보??
-      const span1 = document.createElement("span");
-      span1.innerText = "예매번호 : " + el.reservedList.reservation_num;
+        // 화면 출력 만약 후기 없으면 등록하는 부분 보여주게
+        data.forEach(el => {
+            const reservedContainer = document.createElement("div");
+            reservedContainer.classList.add("reserved-container");
+            reservedContainer.id = `reserved_container_${el.reservedList.id}`;
+            const showContainter = document.createElement("div");
+            showContainter.classList.add("show-container");
+            const showImg = document.createElement("img");
+            showImg.src = imgPath + "/" + el.reservedList.Show.img;
+            const showDetail = document.createElement("div");
+            showDetail.classList.add("show-detail");
+            const titleSpan = document.createElement("span");
+            titleSpan.innerText = el.reservedList.Show.title;
+            // const detailSpan = document.createElement("span");
+            // detailSpan.innerText = el.reservedList.Show.detail;
 
-      const seatSpan = document.createElement("span");
-      // el.reservedList.seat_num
-      const seatArr = JSON.parse(el.reservedList.seat_num);
-      seatSpan.innerText = seatArr[0] + "열 " + seatArr[1] + "번 좌석";
-      // seatSpan.innerText = el.reservedList.x + "열" + el.reservedList.y;
+            const span1 = document.createElement("span");
+            const showDateArr = el.reservedList.reservation_num.split("_")
+            const month = showDateArr[1].substring(0, 2);
+            const date = showDateArr[1].substring(2, 4);
+            span1.innerText = "2023년 "+ month + "월 " + date + "일";
+
+            const seatSpan = document.createElement("span");
+            const seatArr = JSON.parse(el.reservedList.seat_num);
+            seatSpan.innerText = seatArr[0]+"열 "+ seatArr[1]+"번 좌석";
+            // seatSpan.innerText = el.reservedList.x + "열" + el.reservedList.y;
 
       const priceSpan = document.createElement("span");
       priceSpan.innerText = el.reservedList.Show.price;
 
-      showDetail.append(titleSpan, detailSpan, span1, seatSpan, priceSpan);
-      showContainter.append(showImg, showDetail);
+            // showDetail.append(titleSpan, detailSpan, span1, seatSpan, priceSpan);
+            showDetail.append(titleSpan, span1, seatSpan, priceSpan);
+            showContainter.append(showImg, showDetail);
 
       let container;
       if (el.reviewBoard) {
@@ -358,20 +363,18 @@ const deleteReview = async (e) => {
   // 삭제할 리뷰 아이디
   const reviewBoardId = e.target.id.split("_")[1];
 
-  const { data } = await axios.get(
-    url + "/mypage/deleteReviewBoard/" + reviewBoardId,
-    {
-      withCredentials: true,
+    const { data } = await axios.get(url + "/mypage/deleteReviewBoard/" + reviewBoardId, {
+        withCredentials: true
+    });
+    if (data == "0") {
+        // 삭제 성공
+        alert("삭제되었습니다.");
+        // 새로고침
+        window.location.reload();
+    } else {
+        alert("오류");
     }
-  );
-  if (data == "0") {
-    // 삭제 성공
-    alert("삭제되었습니다.");
-    // 새로고침
-    window.location.reload();
-  } else {
-    alert("오류");
-  }
-};
+}
 
-changeHeaderUtil();
+
+changeHeaderUtil()
