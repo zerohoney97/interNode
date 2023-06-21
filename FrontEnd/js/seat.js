@@ -99,8 +99,8 @@ window.onload = async () => {
   // 공연 정보 출력하는 부분
   const renderShow = (show) => {
     showTitle.innerText = show.title;
-    showMonth.innerText = reservation_num.substring(2, 4); // 월
-    showDate.innerText = reservation_num.substring(4, 6); // 일
+    showMonth.innerText = reservation_num.split("_")[1].substring(0,2);
+    showDate.innerText = reservation_num.split("_")[1].substring(2,4);
   };
 
   function updateSelectedSeatsCount() {

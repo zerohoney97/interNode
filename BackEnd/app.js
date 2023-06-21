@@ -131,14 +131,6 @@ io.on("connection", (socket) => {
 });
 
 
-// // 김아현 작성
-// const io = require('socket.io')(server);
-// io.on('connection', (socket) => {
- 
-// });
-
-
-
 
 
 

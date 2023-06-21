@@ -525,23 +525,23 @@ hr {
   }
 
   .rate1::before {
-    width: 16%;
+    width: 20px;
   }
 
   .rate2::before {
-    width: 32%;
+    width: 40px;
   }
 
   .rate3::before{
-    width: 50%;
+    width: 60px;
   }
 
   .rate4::before{
-    width: 66%;
+    width: 80px;
   }
 
   .rate5::before{
-    width: 82%;
+    width: 98px;
   }
 
 

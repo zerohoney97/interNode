@@ -21,6 +21,9 @@ window.onload = async () => {
         // imgpath 불러오기
         userImg.src = imgPath +"/"+ data.img;
 
+        // 나의 예매내역 개수 출력
+        myReservationLength.innerText = data.reservedLength;
+
     } catch (error) {
         console.log(error);
     }
@@ -234,6 +237,6 @@ function displayImage() {
     }
   }
 
-  
+
 
   changeHeaderUtil()

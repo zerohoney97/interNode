@@ -20,11 +20,10 @@ exports.rateShowList = async (req, res) => {
             {model:ReviewBoard}
         ],
         attributes: {
-            include: [[sequelize.literal('(SELECT CAST(SUM(rates)/COUNT(rates) AS SIGNED) FROM reviewBoards WHERE reviewBoards.show_id = Show.id)'), 'showRates']],
+            include: [[sequelize.literal('(SELECT CAST(SUM(rates)/COUNT(rates) AS DECIMAL(10, 2)) FROM reviewBoards WHERE reviewBoards.show_id = Show.id)'), 'showRates']],
         },
         order: [[sequelize.literal('showRates'), 'DESC']]});
 
-        console.log(show);
         return res.json(show);
     } catch (error) {
         console.log(error);
