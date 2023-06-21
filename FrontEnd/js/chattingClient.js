@@ -112,37 +112,71 @@ axios
   .then((e) => {
     console.log(e);
     const chatLogs = e.data;
-    sortChatAdminAndClient(chatLogs);
-    console.log(userChatArray);
-    console.log(adminChatArray);
-    let i = 0;
-    let j = 0;
+    // sortChatAdminAndClient(chatLogs);
+    // console.log(userChatArray);
+    // console.log(adminChatArray);
+    // let i = 0;
+    // let j = 0;
 
-    while (i <= userChatArray.length - 1 || j <= adminChatArray.length - 1) {
-      if (userChatArray[i]) {
-        console.log(userChatArray[i]);
+      console.log(chatLogs)
+      chatLogs.forEach((a) => {
+      console.log(a)
+      if (a.user_id != 1) {
         const clientMessagesSpan = document.createElement("div");
         const clientChatSpan = document.createElement("div");
         clientChatSpan.style.display = "flex";
         clientChatSpan.style.justifyContent = "flex-start";
-        clientChatSpan.innerText = userChatArray[i];
+        clientChatSpan.innerText = a.content;
         clientMessagesSpan.appendChild(clientChatSpan);
         messages.appendChild(clientMessagesSpan);
-        i++;
-      }
-
-      if (adminChatArray[j]) {
-        console.log(adminChatArray[j]);
+      } else {
         const adminMessagesSpan = document.createElement("div");
         const adminChatSpan = document.createElement("div");
-        adminChatSpan.innerText = adminChatArray[j];
+        adminChatSpan.innerText = a.content;
         adminChatSpan.style.display = "flex";
         adminChatSpan.style.justifyContent = "flex-end";
         adminMessagesSpan.appendChild(adminChatSpan);
         messages.appendChild(adminMessagesSpan);
-        j++;
       }
-    }
+
+      // if (adminChatArray[j]) {
+      //   console.log(adminChatArray[j]);
+      //   const adminMessagesSpan = document.createElement("div");
+      //   const adminChatSpan = document.createElement("div");
+      //   adminChatSpan.innerText = adminChatArray[j];
+      //   adminChatSpan.style.display = "flex";
+      //   adminChatSpan.style.justifyContent = "flex-end";
+      //   adminMessagesSpan.appendChild(adminChatSpan);
+      //   messages.appendChild(adminMessagesSpan);
+      //   j++;
+      // }
+    });
+
+    // while (i <= userChatArray.length - 1 || j <= adminChatArray.length - 1) {
+    //   if (userChatArray[i]) {
+    //     console.log(userChatArray[i]);
+    //     const clientMessagesSpan = document.createElement("div");
+    //     const clientChatSpan = document.createElement("div");
+    //     clientChatSpan.style.display = "flex";
+    //     clientChatSpan.style.justifyContent = "flex-start";
+    //     clientChatSpan.innerText = userChatArray[i];
+    //     clientMessagesSpan.appendChild(clientChatSpan);
+    //     messages.appendChild(clientMessagesSpan);
+    //     i++;
+    //   }
+
+    //   if (adminChatArray[j]) {
+    //     console.log(adminChatArray[j]);
+    //     const adminMessagesSpan = document.createElement("div");
+    //     const adminChatSpan = document.createElement("div");
+    //     adminChatSpan.innerText = adminChatArray[j];
+    //     adminChatSpan.style.display = "flex";
+    //     adminChatSpan.style.justifyContent = "flex-end";
+    //     adminMessagesSpan.appendChild(adminChatSpan);
+    //     messages.appendChild(adminMessagesSpan);
+    //     j++;
+    //   }
+    // }
   })
   .catch((err) => {
     console.log(err);

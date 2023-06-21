@@ -25,6 +25,25 @@ let selectUser;
 //   chatInput.value = "";
 // });
 
+// 처음 들어왔을 때 전체 채팅기록을 불러와서 보지 않은 채팅수를 통해 html조작
+const changeMessageCount = () => {
+  axios
+    .get("/chat/getAllChats")
+    .then((e) => {
+      let count = 0;
+      console.log(e);
+      e.data.forEach((a) => {
+        if (!a.isRead) {
+          count++;
+        }
+      });
+      document.querySelector(".not-read-count").innerText = count;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 const getUsers = async () => {
   const { data } = await axios.get("/chat/Users");
   const popupContent = document.querySelector(".popup-content");
@@ -89,34 +108,53 @@ const getUserChatLog = async (id) => {
     console.log(userId, "어드민 등장");
   });
 
-  let i = 0;
-  let j = 0;
-  sortChatAdminAndClient(chatArray.data);
-  while (i <= userChatArray.length - 1 || j <= adminChatArray.length - 1) {
-    if (userChatArray[i]) {
-      console.log(userChatArray[i]);
+  // let i = 0;
+  // let j = 0;
+  // sortChatAdminAndClient(chatArray.data);
+  chatArray.data.forEach((a) => {
+    if (a.user_id != 1) {
       const clientMessagesSpan = document.createElement("div");
       const clientChatSpan = document.createElement("div");
       clientChatSpan.style.display = "flex";
       clientChatSpan.style.justifyContent = "flex-start";
-      clientChatSpan.innerText = userChatArray[i];
+      clientChatSpan.innerText = a.content;
       clientMessagesSpan.appendChild(clientChatSpan);
       messages.appendChild(clientMessagesSpan);
-      i++;
-    }
-
-    if (adminChatArray[j]) {
-      console.log(adminChatArray[j]);
+    } else {
       const adminMessagesSpan = document.createElement("div");
       const adminChatSpan = document.createElement("div");
-      adminChatSpan.innerText = adminChatArray[j];
+      adminChatSpan.innerText = a.content;
       adminChatSpan.style.display = "flex";
       adminChatSpan.style.justifyContent = "flex-end";
       adminMessagesSpan.appendChild(adminChatSpan);
       messages.appendChild(adminMessagesSpan);
-      j++;
     }
-  }
+  });
+  // while (i <= userChatArray.length - 1 || j <= adminChatArray.length - 1) {
+  //   if (userChatArray[i]) {
+  //     console.log(userChatArray[i]);
+  //     const clientMessagesSpan = document.createElement("div");
+  //     const clientChatSpan = document.createElement("div");
+  //     clientChatSpan.style.display = "flex";
+  //     clientChatSpan.style.justifyContent = "flex-start";
+  //     clientChatSpan.innerText = userChatArray[i];
+  //     clientMessagesSpan.appendChild(clientChatSpan);
+  //     messages.appendChild(clientMessagesSpan);
+  //     i++;
+  //   }
+
+  //   if (adminChatArray[j]) {
+  //     console.log(adminChatArray[j]);
+  //     const adminMessagesSpan = document.createElement("div");
+  //     const adminChatSpan = document.createElement("div");
+  //     adminChatSpan.innerText = adminChatArray[j];
+  //     adminChatSpan.style.display = "flex";
+  //     adminChatSpan.style.justifyContent = "flex-end";
+  //     adminMessagesSpan.appendChild(adminChatSpan);
+  //     messages.appendChild(adminMessagesSpan);
+  //     j++;
+  //   }
+  // }
 };
 
 // // 유저
@@ -222,6 +260,7 @@ const closeChattingRoom2 = () => {
     console.log(chattingRoom.style.display);
     chattingRoom.style.display = "none";
     chattingRoom.style.backgroundColor = "";
+    changeMessageCount();
   });
 };
 closeChattingRoom();
@@ -248,3 +287,5 @@ socket.on("chat", (content, userId) => {
     messages.appendChild(clientMessagesSpan);
   }
 });
+
+changeMessageCount();
