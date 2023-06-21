@@ -7,16 +7,27 @@
 <body>
   <script>
     function generateRandomString() {
+      const urlString = window.location.href;
+
+      const url = new URL(urlString);
+      const searchParams = new URLSearchParams(url.search);
+
+      const x = searchParams.get("x");
+      const y = searchParams.get("y");
+      const reservationNum = searchParams.get("reservation_num");
+      const showId = searchParams.get("show_id");
+      const userId = searchParams.get("user_id");
       const characters =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
-      const length = Math.floor(Math.random() * 59) + 6; // Random length between 6 and 64
+      const length = Math.floor(Math.random() * 35) + 6; // Random length between 6 and 64
 
       let result = "";
       for (let i = 0; i < length; i++) {
         const randomIndex = Math.floor(Math.random() * characters.length);
         result += characters.charAt(randomIndex);
       }
-
+      result +=
+        "-"+x + "-" + y + "-" + reservationNum + "-" + showId + "-" + userId ;
       return result;
     }
 

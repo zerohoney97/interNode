@@ -127,7 +127,7 @@ app.use(e.urlencoded({ extended: false }));
 app.use("/main", mainRouter);
 app.use("/signup", signUpRouter);
 app.use("/chat", chatRouter);
-app.use("/reservation", isLoginMiddle, reservationRouter);
+app.use("/reservation", reservationRouter);
 app.use("/mail", mailRouter);
 app.use("/mypage", isLoginMiddle, mypageRouter);
 app.use("/adminPage", isLoginMiddle, adminPageRouter);
@@ -137,16 +137,7 @@ app.use("/showdetail", showDetailRouter);
 
 app.use("/imgs", e.static(path.join(__dirname, "imgs")));
 
-app.post("/getPayInfo", async (req, res) => {
-  console.log(req.body.status, "여기서 바디");
-  if (req.body.status == "DONE") {
-    const data = await ReservedList.findAll();
-    console.log("불러온 예매 리스트", data);
-  }else{
-    
-  }
-  res.end();
-});
+
 
 const server = app.listen(8080, () => {
   console.log("gogo");
