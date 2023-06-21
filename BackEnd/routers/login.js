@@ -14,6 +14,27 @@ router.get("/", (req, res) => {
   );
 });
 
+// 로그인 실패 페이지(아이디 없음)
+router.get("/idErr", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "..", "..", "FrontEnd", "login", "idErr.html")
+  );
+});
+
+// 로그인 실패 페이지(비밀번호 틀림)
+router.get("/pwErr", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "..", "..", "FrontEnd", "login", "pwErr.html")
+  );
+});
+
+// 로그인 실패 페이지(이용 제한 유저)
+router.get("/loginBlock", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "..", "..", "FrontEnd", "login", "loginBlock.html")
+  );
+});
+
 //로그아웃
 router.get("/logout", logOut);
 

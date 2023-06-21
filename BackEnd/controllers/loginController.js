@@ -8,7 +8,7 @@ exports.login = async (req, res) => {
   try {
     const user = await User.findOne({ where: { email: user_id } });
     if (user == null) {
-      return res.redirect("http://127.0.0.1:5500/FrontEnd/login/idErr.html");
+      return res.redirect("/login/idErr");
     }
 
     const same = bcrypt.compareSync(user_pw, user.password);
@@ -20,7 +20,7 @@ exports.login = async (req, res) => {
       //신고횟수가 3회 이상이면 로그인 거절
       if (user.report_stack >= 3) {
         return res.redirect(
-          "http://127.0.0.1:5500/FrontEnd/login/loginBlock.html"
+          "/login/loginBlock"
         );
       }
       if (user.email === "admin@admin.com") {
@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
 
       res.redirect("/main");
     } else {
-      return res.redirect("http://127.0.0.1:5500/FrontEnd/login/pwErr.html");
+      return res.redirect("/login/pwErr");
     }
   } catch (error) {
     console.log(error);

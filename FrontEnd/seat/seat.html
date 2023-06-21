@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../public/header.css" />
-    <link rel="stylesheet" href="../public/seat.css" />
-    <script src="../js/static.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  </head>
-  <body>
-    <header class="common_header">
-      <div class="header_util">
-        <div id="headerUtilLogin"><a href="/login">로그인</a></div>
-        <div id="headerSignUp"><a href="/signup">회원가입</a></div>
-        <div><a href="/chat">고객센터</a></div>
-        <div><a href="/mypage/changeProfile">마이페이지</a></div>
-      </div>
-      <div class="header_inner">
-        <div class="logo"></div>
-        <h1>공연/전시</h1>
-      </div>
-      <div class="header_gnb">
-        <div class="gnb_home"><a href="/main">홈</a></div>
-        <div class="gnb_show">공연</div>
-      </div>
-    </header>
-    <div">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="../public/header.css" />
+  <link rel="stylesheet" href="../public/seat.css" />
+  <script src="../js/static.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <header class="common_header">
+    <div class="header_util">
+      <div id="headerUtilLogin"><a href="/login">로그인</a></div>
+      <div id="headerSignUp"><a href="/signup">회원가입</a></div>
+      <div><a href="/chat">고객센터</a></div>
+      <div><a href="/mypage/changeProfile">마이페이지</a></div>
+    </div>
+    <div class="header_inner">
+      <div class="logo"></div>
+      <h1>공연/전시</h1>
+    </div>
+    <div class="header_gnb">
+      <div class="gnb_home"><a href="/main">홈</a></div>
+      <div class="gnb_show">공연</div>
+    </div>
+  </header>
+  <!-- <div>
       <div id="showTitle"  style="justify-content: center;"></div>
       <div>
         <span id="showMonth"></span>월
         <span id="showDate"></span>일
       </div>
-    </div>
-    <div class="seats-body">
-      <!-- <div class="dropdown">
+    </div> -->
+  <div class="seats-body">
+    <!-- <div class="dropdown">
         <button class="dropbtn">영화 목록</button>
         <div class="dropdown-content">
           <div>영화1</div>
@@ -44,128 +46,134 @@
           <div>영화3</div>
         </div>
       </div> -->
-      <div class="container">
+    <div class="container">
+      <div class="showInfo">
+        <div id="showTitle"></div>
+        <div class="showDateInfo">
+          <span id="showMonth"></span>월
+          <span id="showDate"></span>일
+        </div>
+      </div>
+      <div class="screen-container">
         <div class="screen">
           <h1>무대</h1>
         </div>
-        <div class="seats-container">
-          <!-- 좌석 그리드를 추가합니다 -->
-          <!-- 6x8 좌석 그리드 -->
-          <div class="seats-div">
-            <div class="row">
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-            </div>
-            <div class="row">
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-            </div>
-            <div class="row">
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-            </div>
-            <div class="row">
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-            </div>
-            <div class="row">
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-            </div>
-            <div class="row">
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-            </div>
-            <div class="row">
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-            </div>
-            <div class="row">
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-              <div class="seat"></div>
-            </div>
+      </div>
+      <div class="seats-container">
+        <!-- 좌석 그리드를 추가합니다 -->
+        <!-- 6x8 좌석 그리드 -->
+        <div class="seats-div">
+          <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
           </div>
-
-          <div>
-            <span>선택한 좌석 수:</span>
-            <span id="count">0</span>
+          <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
           </div>
-          <div>
-            <span>총 금액:</span>
-            <span id="total">0</span>
+          <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
           </div>
-          <button id="payButton">결제하기</button>
+          <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+          </div>
+          <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+          </div>
+          <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+          </div>
+          <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+          </div>
+          <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+          </div>
         </div>
+
+        <div>
+          <span>선택한 좌석 수:</span>
+          <span id="count">0</span>
+        </div>
+        <div>
+          <span>총 금액:</span>
+          <span id="total">0</span>
+        </div>
+        <button id="payButton">결제하기</button>
       </div>
     </div>
-    <footer class="common_footer">
-      <div class="footer_menu">
-        <div>회사소개</div>
-        <div>이용약관</div>
-        <div>개인정보처리방침</div>
-        <div>티켓판매안내</div>
-        <div>공지사항</div>
-        <div>고객센터</div>
-      </div>
-      <hr />
-      <div class="footer_inner">
-        <span style="font-weight: bold">인터노드 주식회사</span> <br />
-        <span
-          >주소: 13487 경기도 성남시 분당구 대왕판교로645번길 16 NHN
-          플레이뮤지엄</span
-        >
-        <span class="|">|</span>
-        <span>대표이사 : 왕문주</span>
-        <span class="|">|</span>
-        <span>사업자 등록번호 :144-81-25090</span> <br />
-        <span>1588-9000</span>
-        <span class="|">|</span>
-        <span>membership@internode.com</span>
-        <span class="|">|</span>
-        <span>통신판매업 신고번호: 제 2015-경기성남-0661호</span>
-        <span class="|">|</span>
-        <span>개인정보보호 책임자 : 박민우</span> <br />
-        <span style="color: rgb(169, 169, 169)"
-          >Copyright © NHN LINK Corporation. All rights reserved.</span
-        >
-      </div>
-      <div>
-        <img src="" alt="" />
-      </div>
-    </footer>
-  </body>
-  <script src="../js/static.js"></script>
-  <script src="../js/seat.js"></script>
+  </div>
+  <footer class="common_footer">
+    <div class="footer_menu">
+      <div>회사소개</div>
+      <div>이용약관</div>
+      <div>개인정보처리방침</div>
+      <div>티켓판매안내</div>
+      <div>공지사항</div>
+      <div>고객센터</div>
+    </div>
+    <hr />
+    <div class="footer_inner">
+      <span style="font-weight: bold">인터노드 주식회사</span> <br />
+      <span>주소: 13487 경기도 성남시 분당구 대왕판교로645번길 16 NHN
+        플레이뮤지엄</span>
+      <span class="|">|</span>
+      <span>대표이사 : 왕문주</span>
+      <span class="|">|</span>
+      <span>사업자 등록번호 :144-81-25090</span> <br />
+      <span>1588-9000</span>
+      <span class="|">|</span>
+      <span>membership@internode.com</span>
+      <span class="|">|</span>
+      <span>통신판매업 신고번호: 제 2015-경기성남-0661호</span>
+      <span class="|">|</span>
+      <span>개인정보보호 책임자 : 박민우</span> <br />
+      <span style="color: rgb(169, 169, 169)">Copyright © NHN LINK Corporation. All rights reserved.</span>
+    </div>
+    <div>
+      <img src="" alt="" />
+    </div>
+  </footer>
+</body>
+<script src="../js/static.js"></script>
+<script src="../js/seat.js"></script>
+
 </html>
