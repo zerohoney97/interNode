@@ -8,7 +8,7 @@ exports.isLoginMiddle = (req, res, next) => {
     if (err) {
       console.log(err);
 
-      res.send("다시 로그인 해주세요");
+      return res.redirect("/login/expired");
     } else {
       req.acc_decoded = acc_decoded;
       // 다음 미들웨어 실행

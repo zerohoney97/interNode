@@ -19,7 +19,7 @@
   justify-content: center;
   padding: 10px 0 10px 0;
 }
-.contents-wrap .btn-red {
+.contents-wrap .btn-red, .expired .btn-red {
   display: block;
   background-color: #ef3e42;
   width: 100%;
@@ -58,4 +58,33 @@
 
 .pointer {
   cursor: pointer;
+}
+
+.border-black {
+  border: 1px solid black;
+}
+
+/* .expired-box .box {
+  align-items: baseline;
+} */
+
+.expired-box .expired {
+  border-radius: 20px;
+  padding: 20px;
+  align-items: center;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.expired-box h2 {
+  color: #ef3e42;
+}
+
+.expired-box .btn-red {
+  margin-top: 30px;
+  text-decoration: none;
+}
+
+.expired-box .error-img {
+  justify-content: center;
+  width: 100px;
 }

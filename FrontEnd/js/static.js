@@ -30,5 +30,3 @@ const changeHeaderUtil = () => {
       console.log(error);
     });
 };
-
-

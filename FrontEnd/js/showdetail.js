@@ -514,6 +514,8 @@ window.onload = () => {
           if (res.data) {
             if (res.data == "다시 로그인 해주세요") {
               headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
+            } else if (res.data.startsWith("<!DOCTYPE html>")) { // res.redirect 반환받았을때
+              headerUtilLogin.innerHTML = ` <a href="/login">다시 로그인 해주세요</a>`;
             } else {
               headerUtilLogin.innerHTML = ` ${res.data}`;
               console.log(headerSignUp.innerHTML);

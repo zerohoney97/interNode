@@ -112,7 +112,7 @@ app.use("/chat", chatRouter);
 app.use("/reservation", isLoginMiddle, reservationRouter);
 app.use("/mail", mailRouter);
 app.use("/mypage", isLoginMiddle, mypageRouter);
-app.use("/adminPage", adminPageRouter);
+app.use("/adminPage", isLoginMiddle, adminPageRouter);
 app.use("/freeboards", freeBoardsRouter);
 // app.use(e.static(path.join(__dirname, "js")));
 app.use("/showdetail", showDetailRouter);
