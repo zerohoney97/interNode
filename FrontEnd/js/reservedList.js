@@ -44,7 +44,8 @@ window.onload = async () => {
 
             const seatSpan = document.createElement("span");
             const seatArr = JSON.parse(el.reservedList.seat_num);
-            seatSpan.innerText = seatArr[0]+"열 "+ seatArr[1]+"번 좌석";
+            console.log(seatArr);
+            seatSpan.innerText = (parseInt(seatArr[0])+1)+"열 "+ (parseInt(seatArr[1])+1)+"번 좌석";
             // seatSpan.innerText = el.reservedList.x + "열" + el.reservedList.y;
 
             const priceSpan = document.createElement("span");
