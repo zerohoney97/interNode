@@ -163,7 +163,7 @@ const createShow = async () => {
   await Show.create({
     title: "KB국민카드 스타샵 X 2023 인천펜타포트락페스티벌",
     detail:
-      '["펜타포트 공식 셔틀버스 "꽃가마"와 대중교통으로 찾아오실 수 있습니다", "228", "0"]',
+      '["펜타포트 공식 셔틀버스 꽃가마와 대중교통으로 찾아오실 수 있습니다", "228", "0"]',
     img: "show_incheonrock.jpg",
     price: 88000,
     theaters_id: 1,
@@ -229,7 +229,7 @@ const createShowDate = async () => {
     show_id: 1,
   });
   await ShowDateInfo.create({
-    startDate: "2023-03-212",
+    startDate: "2023-03-21",
     endDate: "2023-04-25",
     startTime: "15:00",
     show_id: 2,

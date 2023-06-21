@@ -92,13 +92,15 @@ const getShowList = async () => {
     renderTicketShowList(data);
 
     renderBestShow(data);
-
+    
+    renderSwiper(data);
     // 평점순 공연
     const rateList = await axios.get("/main/rateShowList", {
       withCredentials: true,
     });
 
     renderRateShow(rateList.data);
+
   } catch (error) {
     console.log(error);
   }
@@ -235,4 +237,15 @@ const renderRateShow = (list) => {
 
 const renderCmtShow = (list)=>{
   
+}
+
+//스와이퍼, 오늘의 추천에 링크 걸어주기
+const renderSwiper = (list)=>{
+  const swiperSlide = document.querySelectorAll('swiper-slide');
+  
+  for (let i = 0; i < 7; i++) {
+    const show = list[i];
+    const anchorElement = swiperSlide[i].querySelector('a');
+    anchorElement.setAttribute('href', "/showdetail?id=" + show.id);
+  }
 }
