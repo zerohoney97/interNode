@@ -117,7 +117,7 @@ exports.getUserReservedList = async (req, res) => {
       },
     });
 
-    // 예매내역, 공연 후기 게시글 객체 담은 배열 
+    // 예매내역, 공연 후기 게시글 객체 담은 배열
     const list = reservedList.map((reserved) => {
       let reservedItem = {};
       const board = reviewBoard.find((board) => {
