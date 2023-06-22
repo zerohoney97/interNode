@@ -120,6 +120,7 @@ const createReport = async () => {
   });
 };
 
+
 // 공연 12개 생성
 const createShow = async () => {
   await Show.create({
@@ -294,8 +295,101 @@ const createShowDate = async () => {
   });
 };
 
+// freeboard 2개 
+const createFreeBoard = async()=>{
+  await FreeBoard.create({
+    title:"anything",
+    content:"hello",
+    user_id:2
+  });
+  
+  await FreeBoard.create({
+    title:"nothing",
+    content:"what's up",
+    user_id:3
+  });
 
+  await FreeBoard.create({
+    title:"hello",
+    content:"hi",
+    user_id:2
+  });
 
+  await FreeBoard.create({
+    title:"ao",
+    content:"no",
+    user_id:3
+  });
+
+  await FreeBoard.create({
+    title:"afsd",
+    content:"em",
+    user_id:2
+  });
+
+  await FreeBoard.create({
+    title:"dgdg",
+    content:"sdsfd",
+    user_id:3
+  });
+
+  await FreeBoard.create({
+    title:"asdffds",
+    content:"we",
+    user_id:2
+  });
+
+  await FreeBoard.create({
+    title:"asfdsfd",
+    content:"ngg",
+    user_id:3
+  });
+
+  await FreeBoard.create({
+    title:"adhsghsdg",
+    content:"vxcv",
+    user_id:2
+  });
+
+  await FreeBoard.create({
+    title:"ansd",
+    content:"sfdsfd",
+    user_id:3
+  });
+}
+createFreeBoard();
+
+//comment 2개
+const createComment = async()=>{
+  await Comment.create({
+    content:"alert",
+    user_id:"2",
+    freeboard_id:"2"
+  })
+
+  await Comment.create({
+    content:"a",
+    user_id: "3",
+    freeboard_id:"3"
+  })
+};
+createComment();
+
+// recomment 2개
+const createReComment = async()=>{
+  await Recomment.create({
+    content:"type",
+    user_id:"3",
+    comment_id:"1"
+  });
+
+  await Recomment.create({
+    content:"type2",
+    user_id:"2",
+    comment_id:"2"
+  })
+}
+createReComment();
 
 
 // 주의~~!! 본 정적 데이터는 외래키로 인하여 순서대로 실행 하여함. 만약 순서대로 실행을 안 한다면 테이블을 지우고 다시 하기 바람.
