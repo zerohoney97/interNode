@@ -109,7 +109,7 @@ exports.getUserReservedList = async (req, res) => {
         include: [
           [
             sequelize.literal(
-              "(SELECT COUNT(*) FROM reviewBoardLikes WHERE reviewBoardLikes.reviewboard_id = reviewBoards.id)"
+              "(SELECT COUNT(*) FROM reviewBoardLikes WHERE reviewBoardLikes.reviewboard_id = ReviewBoard.id)"
             ),
             "likes",
           ],
