@@ -99,8 +99,8 @@ window.onload = async () => {
   // 공연 정보 출력하는 부분
   const renderShow = (show) => {
     showTitle.innerText = show.title;
-    showMonth.innerText = reservation_num.split("_")[1].substring(0,2);
-    showDate.innerText = reservation_num.split("_")[1].substring(2,4);
+    showMonth.innerText = reservation_num.split("_")[1].substring(0, 2);
+    showDate.innerText = reservation_num.split("_")[1].substring(2, 4);
   };
 
   function updateSelectedSeatsCount() {
@@ -190,7 +190,7 @@ window.onload = async () => {
       // 추가할 부분. 확인하세요
       // 결제창 출력
       // 결제
-
+      location.href = `/reservation/pay/?x=${x}&y=${y}&reservation_num=${reservation_num}&show_id=${show_id}&user_id=${user_id}`;
       setTimeout(async () => {
         // 결제 완료되면 실행될 코드
         // 지금은 결제 부분 구현되지 않아서 settimeout으로 처리함

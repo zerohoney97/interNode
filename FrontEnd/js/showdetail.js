@@ -533,13 +533,13 @@ window.onload = () => {
           const RedBookBtn = document.getElementById("redbookbtn");
           console.log(RedBookBtn);
           RedBookBtn.onclick = () => {
-            const postNum = window.location.search.slice(-1);
+            const postNum = window.location.search.split("=");
             console.log(postNum);
             console.log(datepicker.value);
             const dateresult = datepicker.value;
             if (dateresult != "") {
               let newdate = dateresult.slice(5).replace("-", "");
-              window.location.href = `/reservation/seats/?reservation_num=${postNum}_${newdate}`;
+              window.location.href = `/reservation/seats/?reservation_num=${postNum[1]}_${newdate}`;
             } else {
               alert("날짜를 선택하고 예매버튼을 눌러주세요");
             }

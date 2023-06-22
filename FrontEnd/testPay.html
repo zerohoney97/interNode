@@ -1,0 +1,70 @@
+<head>
+  <meta charset="utf-8" />
+  <title>결제하기</title>
+  <!-- 토스페이먼츠 결제창 SDK 추가 -->
+  <script src="https://js.tosspayments.com/v1/payment"></script>
+</head>
+<body>
+  <script>
+    function generateRandomString() {
+      const urlString = window.location.href;
+
+      const url = new URL(urlString);
+      const searchParams = new URLSearchParams(url.search);
+
+      const x = searchParams.get("x");
+      const y = searchParams.get("y");
+      const reservationNum = searchParams.get("reservation_num");
+      const showId = searchParams.get("show_id");
+      const userId = searchParams.get("user_id");
+      const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+      const length = Math.floor(Math.random() * 35) + 6; // Random length between 6 and 64
+
+      let result = "";
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(randomIndex);
+      }
+      result +=
+        "-"+x + "-" + y + "-" + reservationNum + "-" + showId + "-" + userId ;
+      return result;
+    }
+
+    const randomString = generateRandomString();
+    localStorage.setItem("orderId", randomString);
+    // ------ 클라이언트 키로 객체 초기화 ------
+    var clientKey = "test_ck_MGjLJoQ1aVZd0Wew1AA8w6KYe2RN";
+    var tossPayments = TossPayments(clientKey);
+    // ------ 결제창 띄우기 ------
+    tossPayments
+      .requestPayment("가상계좌", {
+        // 결제수단 파라미터
+        // 결제 정보 파라미터
+        // 더 많은 결제 정보 파라미터는 결제창 Javascript SDK에서 확인하세요.
+        // https://docs.tosspayments.com/reference/js-sdk
+        amount: 15000,
+        orderId: randomString, // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
+        orderName: "토스 티셔츠 외 2건",
+        customerName: "박토스",
+        successUrl: "http://localhost:8080/reservation/successPay", // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
+        failUrl: "http://localhost:8080/reservation", // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
+        validHours: 24, // 입금 기한
+        cashReceipt: {
+          // 현금영수증 발행
+          type: "소득공제",
+        },
+      })
+      // ------ 결제창을 띄울 수 없는 에러 처리 ------
+      // 메서드 실행에 실패해서 reject 된 에러를 처리하는 블록입니다.
+      // 결제창에서 발생할 수 있는 에러를 확인하세요.
+      // https://docs.tosspayments.com/reference/error-codes#결제창공통-sdk-에러
+      .catch(function (error) {
+        if (error.code === "USER_CANCEL") {
+          // 결제 고객이 결제창을 닫았을 때 에러 처리
+        } else if (error.code === "INVALID_CARD_COMPANY") {
+          // 유효하지 않은 카드 코드에 대한 에러 처리
+        }
+      });
+  </script>
+</body>

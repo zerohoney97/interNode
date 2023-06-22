@@ -1,5 +1,5 @@
 const e = require("express");
-const { sequelize } = require("./models");
+const { sequelize, ReservedList } = require("./models");
 const dot = require("dotenv").config();
 const cors = require("cors");
 const session = require("express-session");
@@ -10,7 +10,6 @@ const mainRouter = require("./routers/main");
 const chatRouter = require("./routers/chat");
 const showDetailRouter = require("./routers/showdetail");
 
-
 const loginRouter = require("./routers/login");
 const freeBoardsRouter = require("./routers/freeBoard");
 const reservationRouter = require("./routers/reservation");
@@ -19,7 +18,9 @@ const mailRouter = require("./routers/mail");
 const { isLoginMiddle } = require("./middleware/isLoginMiddle");
 const adminPageRouter = require("./routers/adminMypage");
 const socketIO = require("socket.io");
-const {initReservationSocket} = require("./controllers/reservationController");
+const {
+  initReservationSocket,
+} = require("./controllers/reservationController");
 const { chattingSocket } = require("./controllers/chatControlloer");
 
 app.use(e.json());
@@ -126,7 +127,7 @@ app.use(e.urlencoded({ extended: false }));
 app.use("/main", mainRouter);
 app.use("/signup", signUpRouter);
 app.use("/chat", chatRouter);
-app.use("/reservation", isLoginMiddle, reservationRouter);
+app.use("/reservation", reservationRouter);
 app.use("/mail", mailRouter);
 app.use("/mypage", isLoginMiddle, mypageRouter);
 app.use("/adminPage", isLoginMiddle, adminPageRouter);
@@ -136,23 +137,20 @@ app.use("/showdetail", showDetailRouter);
 
 app.use("/imgs", e.static(path.join(__dirname, "imgs")));
 
+
+
 const server = app.listen(8080, () => {
   console.log("gogo");
 });
 const io = socketIO(server);
 io.on("connection", (socket) => {
   chattingSocket(socket, io);
-  socket.on('reservation', () => {
+  socket.on("reservation", () => {
     initReservationSocket(socket, io);
   });
 });
 
-
-
-
-
 //----------------
-
 
 // 예매 관련
 // initReservationSocket(server);
