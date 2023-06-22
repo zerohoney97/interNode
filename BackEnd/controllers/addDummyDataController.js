@@ -482,7 +482,6 @@ const createUser = async () => {
     where: { email: "zerohoney97@gmail.com" },
   });
   if (user1 == null) {
-    console.log("1");
     const hash = bcrypt.hashSync("q1w2e3R$", 10);
     await User.create({
       email: "zerohoney97@gmail.com",
@@ -494,7 +493,6 @@ const createUser = async () => {
     where: { email: "2coco97@naver.com" },
   });
   if (user2 == null) {
-    console.log("2");
     const hash = bcrypt.hashSync("q1w2e3R$", 10);
     await User.create({
       email: "2coco97@naver.com",
@@ -502,7 +500,171 @@ const createUser = async () => {
       nickname: "mumu",
     });
   }
+  const user3 = await User.findOne({
+    where: { email: "2coco97003@naver.com" },
+  });
+  if (user3 == null) {
+    const hash = bcrypt.hashSync("q1w2e3R$", 10);
+    await User.create({
+      email: "2coco97003@naver.com",
+      password: hash,
+      nickname: "무무",
+    });
+  }
+  const user4 = await User.findOne({
+    where: { email: "2coco97004@naver.com" },
+  });
+  if (user4 == null) {
+    const hash = bcrypt.hashSync("q1w2e3R$", 10);
+    await User.create({
+      email: "2coco97004@naver.com",
+      password: hash,
+      nickname: "소니",
+    });
+  }
+  const user5 = await User.findOne({
+    where: { email: "2coco97005@naver.com" },
+  });
+  if (user5 == null) {
+    const hash = bcrypt.hashSync("q1w2e3R$", 10);
+    await User.create({
+      email: "2coco97005@naver.com",
+      password: hash,
+      nickname: "삼성",
+    });
+  }
+  const user6 = await User.findOne({
+    where: { email: "2coco97006@naver.com" },
+  });
+  if (user6 == null) {
+    const hash = bcrypt.hashSync("q1w2e3R$", 10);
+    await User.create({
+      email: "2coco97006@naver.com",
+      password: hash,
+      nickname: "커피",
+    });
+  }
+  const user7 = await User.findOne({
+    where: { email: "2coco97007@naver.com" },
+  });
+  if (user7 == null) {
+    const hash = bcrypt.hashSync("q1w2e3R$", 10);
+    await User.create({
+      email: "2coco97007@naver.com",
+      password: hash,
+      nickname: "메가",
+    });
+  }
+  const user8 = await User.findOne({
+    where: { email: "2coco97008@naver.com" },
+  });
+  if (user8 == null) {
+    const hash = bcrypt.hashSync("q1w2e3R$", 10);
+    await User.create({
+      email: "2coco97008@naver.com",
+      password: hash,
+      nickname: "셔츠",
+    });
+  }
+  const user9 = await User.findOne({
+    where: { email: "2coco97009@naver.com" },
+  });
+  if (user9 == null) {
+    const hash = bcrypt.hashSync("q1w2e3R$", 10);
+    await User.create({
+      email: "2coco97009@naver.com",
+      password: hash,
+      nickname: "아메리카노",
+    });
+  }
+  const user10 = await User.findOne({
+    where: { email: "2coco97010@naver.com" },
+  });
+  if (user10 == null) {
+    const hash = bcrypt.hashSync("q1w2e3R$", 10);
+    await User.create({
+      email: "2coco97010@naver.com",
+      password: hash,
+      nickname: "텀블러",
+    });
+  }
 };
+
+// 리뷰보드 생성
+const createReviewBoard = async () => {
+  await ReviewBoard.create({user_id : 2, show_id : 1, content : "재밌었어요!!", rates : 5});
+  await ReviewBoard.create({user_id : 3, show_id : 1, content : "좋았음", rates : 4});
+  await ReviewBoard.create({user_id : 4, show_id : 1, content : "ㄱㅊㄱㅊ", rates : 3});
+  await ReviewBoard.create({user_id : 5, show_id : 1, content : "좋았어요", rates : 4});
+  await ReviewBoard.create({user_id : 6, show_id : 1, content : "무난", rates : 2});
+  await ReviewBoard.create({user_id : 7, show_id : 1, content : "ㅂㄹ", rates : 1});
+  await ReviewBoard.create({user_id : 8, show_id : 1, content : "나쁘지 않았음", rates : 3});
+  await ReviewBoard.create({user_id : 9, show_id : 1, content : "재밌었어요", rates : 5});
+
+  await ReviewBoard.create({user_id : 2, show_id : 2, content : "제 취향은 아니었는데도 좋았어요", rates : 4});
+  await ReviewBoard.create({user_id : 3, show_id : 2, content : "무난무난", rates : 2});
+  await ReviewBoard.create({user_id : 4, show_id : 2, content : "취향아님ㅜㅜ", rates : 1});
+  await ReviewBoard.create({user_id : 5, show_id : 2, content : "좋았어요", rates : 5});
+  await ReviewBoard.create({user_id : 6, show_id : 2, content : "ㅂㄹ", rates : 2});
+  await ReviewBoard.create({user_id : 7, show_id : 2, content : "ㅂㄹ", rates : 1});
+  await ReviewBoard.create({user_id : 8, show_id : 2, content : "취향갈릴듯", rates : 2});
+  await ReviewBoard.create({user_id : 9, show_id : 2, content : "재밌었어요", rates : 5});
+
+  await ReviewBoard.create({user_id : 2, show_id : 3, content : "굿", rates : 4});
+  await ReviewBoard.create({user_id : 3, show_id : 3, content : "좋았어요", rates : 5});
+  await ReviewBoard.create({user_id : 4, show_id : 3, content : "즐거웠어요~", rates : 5});
+  await ReviewBoard.create({user_id : 5, show_id : 3, content : "ㅜㅜ 최고", rates : 5});
+  await ReviewBoard.create({user_id : 6, show_id : 3, content : "재밌었음", rates : 5});
+  await ReviewBoard.create({user_id : 7, show_id : 3, content : "좋았어요", rates : 5});
+  await ReviewBoard.create({user_id : 8, show_id : 3, content : "좋아요", rates : 3});
+  await ReviewBoard.create({user_id : 9, show_id : 3, content : "재밌었어요", rates : 5});
+
+  await ReviewBoard.create({user_id : 2, show_id : 4, content : "힐링", rates : 4});
+  await ReviewBoard.create({user_id : 3, show_id : 4, content : "추천추천", rates : 5});
+  await ReviewBoard.create({user_id : 4, show_id : 4, content : "나쁘지 않았음", rates : 3});
+  await ReviewBoard.create({user_id : 5, show_id : 4, content : "지루했음", rates : 2});
+  await ReviewBoard.create({user_id : 6, show_id : 4, content : "재밌었음", rates : 5});
+  await ReviewBoard.create({user_id : 7, show_id : 4, content : "좋았어요", rates : 4});
+  await ReviewBoard.create({user_id : 8, show_id : 4, content : "좋아요", rates : 3});
+  await ReviewBoard.create({user_id : 9, show_id : 4, content : "재밌었어요", rates : 5});
+
+  await ReviewBoard.create({user_id : 2, show_id : 5, content : "무난~~~", rates : 4});
+  await ReviewBoard.create({user_id : 3, show_id : 5, content : "좋았어요", rates : 4});
+  await ReviewBoard.create({user_id : 4, show_id : 5, content : "즐거웠어요~", rates : 5});
+  await ReviewBoard.create({user_id : 5, show_id : 5, content : "좋아여 추천", rates : 5});
+  await ReviewBoard.create({user_id : 6, show_id : 5, content : "재밌었음", rates : 4});
+  await ReviewBoard.create({user_id : 7, show_id : 5, content : "좋았어요", rates : 4});
+  await ReviewBoard.create({user_id : 8, show_id : 5, content : "좋아요", rates : 3});
+  await ReviewBoard.create({user_id : 9, show_id : 5, content : "재밌었어요", rates : 5});
+}
+
+// 리뷰보드 좋아요 생성
+const createReviewBoardLike = async () => {
+  await ReviewBoardLike.create({reviewboard_id : 1, user_id : 3});
+  await ReviewBoardLike.create({reviewboard_id : 1, user_id : 4});
+  await ReviewBoardLike.create({reviewboard_id : 1, user_id : 8});
+
+  await ReviewBoardLike.create({reviewboard_id : 10, user_id : 7});
+  await ReviewBoardLike.create({reviewboard_id : 10, user_id : 4});
+  await ReviewBoardLike.create({reviewboard_id : 11, user_id : 5});
+  await ReviewBoardLike.create({reviewboard_id : 10, user_id : 8});
+
+  await ReviewBoardLike.create({reviewboard_id : 18, user_id : 7});
+  await ReviewBoardLike.create({reviewboard_id : 19, user_id : 4});
+  await ReviewBoardLike.create({reviewboard_id : 19, user_id : 5});
+  await ReviewBoardLike.create({reviewboard_id : 20, user_id : 8});
+
+  await ReviewBoardLike.create({reviewboard_id : 26, user_id : 7});
+  await ReviewBoardLike.create({reviewboard_id : 26, user_id : 4});
+  await ReviewBoardLike.create({reviewboard_id : 29, user_id : 5});
+  await ReviewBoardLike.create({reviewboard_id : 28, user_id : 8});
+
+  await ReviewBoardLike.create({reviewboard_id : 35, user_id : 7});
+  await ReviewBoardLike.create({reviewboard_id : 35, user_id : 4});
+  await ReviewBoardLike.create({reviewboard_id : 36, user_id : 5});
+  await ReviewBoardLike.create({reviewboard_id : 36, user_id : 8});
+
+}
 
 exports.createAdmin = (req, res) => {
   try {
@@ -576,3 +738,19 @@ exports.createRecomments = (req, res) => {
     console.log(error);
   }
 };
+exports.createReviewBoards = (req, res) => {
+  try {
+    createReviewBoard();
+    res.send("성공");
+  } catch (error) {
+    console.log(error);
+  }
+}
+exports.createReviewBoardLikes = (req, res) => {
+  try {
+    createReviewBoardLike();
+    res.send("성공");
+  } catch (error) {
+    console.log(error);
+  }
+}

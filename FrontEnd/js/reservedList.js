@@ -157,6 +157,7 @@ const createReviewContainer = (el) => {
 
   // 작성자 이미지, 닉네임, 후기 생성 시각, 공연 제목 말고 좋아요 개수 표시
   const writerImg = document.createElement("img");
+  writerImg.classList.add("writer-img");
   writerImg.src = imgPath + "/" + el.reviewBoard.User.img;
 
   const userReviewDetail = document.createElement("div");
