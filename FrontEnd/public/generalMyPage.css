@@ -670,3 +670,35 @@ hr {
     height: 40px;
     margin-right: 4px;
   }
+
+  #showMailCodeInput {
+    width: 120px;
+  }
+
+  #sendMailBtn, #codeBtn {
+    justify-content: center;
+    align-items: center;
+  }
+
+  #changePassword {
+    width: 120px;
+    height: 50px;
+    /* margin: auto; */
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f6f9;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  #codeResultDiv {
+    width: 300px;
+    font-size: 14px;
+  }
+
+  .fileInputDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

@@ -71,7 +71,7 @@ window.onload = async () => {
         showMailCodeInput.style.display = "none";
         codeInput.style.display = "block";
         codeInput.disabled = true;
-        sendMailBtn.style.display = "block";
+        sendMailBtn.style.display = "flex";
     }
 
     // 비밀번호 변경 버튼 클릭(서버에 요청)
@@ -90,6 +90,7 @@ window.onload = async () => {
 
             if (data == "0") {
                 alert("비밀번호 변경 완료");
+                window.location.reload();
             } else {
                 alert("비밀번호 변경 실패");
             }
@@ -102,7 +103,7 @@ window.onload = async () => {
     // 이메일 인증 버튼 클릭(서버에서 메일 보낼 수 있게)
     sendMailBtn.onclick = async () => {
         const email = { email: currentEmail };
-
+        alert("인증코드 전송 시도");
         try {
             const { data } = await axios.post(url+"/mail/sendemail", email, {
                 withCredentials: true,
@@ -111,7 +112,7 @@ window.onload = async () => {
                 alert("인증코드를 보냈습니다.");
                 sendMailBtn.style.display = "none";
                 codeInput.disabled = false;
-                codeBtn.style.display = "block";
+                codeBtn.style.display = "flex";
             } else if (data == "1") {
                 alert("오류");
             } else {
@@ -126,6 +127,7 @@ window.onload = async () => {
     // 인증코드 버튼 클릭(서버에 인증코드 전송 결과 확인)
     codeBtn.onclick = async () => {
         if (codeInput.value == "") {
+            alert("sdjflksdjlfksjd");
             codeResultDiv.innerText = "인증코드를 입력하세요.";
             codeResultDiv.style.display = "block";
             codeResultDiv.style.color = "red";
@@ -149,7 +151,7 @@ window.onload = async () => {
                 // 변경할 비밀번호 입력할 인풋 보여주기
                 passwordInput.style.display = "block";
                 codeResultDiv.style.display = "block";
-                changePassword.style.display = "block";
+                changePassword.style.display = "flex";
 
             } else if (data == "1") {
                 // 인증코드 불일치
@@ -182,10 +184,15 @@ window.onload = async () => {
         }
     }
 
-    // 프로필 수정 버튼 클릭
+    // 프로필 변경 버튼 클릭
     changeProfileImg.onclick = async () => {
 
         try {
+            if (!fileInput.files[0]) {
+                alert("변경할 이미지 파일을 선택해주세요.");
+                return;
+            }
+
             const form = new FormData();
             form.append("img", fileInput.files[0]);
 
@@ -194,11 +201,11 @@ window.onload = async () => {
                 "Content-Type": "multipart/form-data"
             });
 
-            // 수정 성공
+            // 변경 성공
             if (data == "0") {
-                alert("성공");
+                alert("변경했습니다.");
             } else { // 실패
-                alert("실패");
+                alert("오류");
             }
 
         } catch (error) {
