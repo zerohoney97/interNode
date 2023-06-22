@@ -382,7 +382,7 @@ window.onload = () => {
           .get(`/showdetail/reviewboard${show_id}`)
           .then((res) => {
             // innerHTML 에 후기 넣는다
-            const data = res.data;
+            const data = res.data[0];
             console.log(data);
             for (let i = 0; i < data.length; i++) {
               const cmt = data[i];
@@ -405,6 +405,7 @@ window.onload = () => {
 
           <div class="btns">
             <div class="likeBtn" id="likeBtn-${cmt.id}">
+                
                 <img src="${imgPath}/like_empty.png" alt="" />${
                   cmt.ReviewBoardLikes.length
                 }

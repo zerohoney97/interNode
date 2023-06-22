@@ -25,7 +25,8 @@ exports.showDetail = async (req,res)=>{
 
 exports.reviewBoard = async (req,res)=>{
     const show_id =req.query.id
-
+    const {primaryKey} = req.acc_decoded;
+    let result;
     try {
         const review = await ReviewBoard.findAll({
             where : {show_id},
@@ -41,7 +42,8 @@ exports.reviewBoard = async (req,res)=>{
             ]
 
         });
-        res.json(review);
+        result = [review,primaryKey]
+        res.json(result);
 
     } catch (error) {
         console.log(error);
@@ -62,7 +64,7 @@ exports.reviewThumbsUp = async (req,res)=>{
 
         if(result){
             //삭제
-            await ReviewBoardLike.destroy({where : {reviewboard_id : cmt_id}});
+            await ReviewBoardLike.destroy({where : {reviewboard_id : cmt_id, user_id : primaryKey}});
             heart = false;
         }else{
             //추가
