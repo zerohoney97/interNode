@@ -1,5 +1,23 @@
 // 상세 페이지 로드시 데이터 axios로 가져오기
 window.onload = () => {
+  // 별점의 개수를 배열에 저장하는 함수
+  const countRates = (data, ratesArr) => {
+    data.forEach((a) => {
+      console.log(a);
+      if (a.rates == 5) {
+        ratesArr[4] += 1;
+      } else if (a.rates == 4) {
+        ratesArr[3] += 1;
+      } else if (a.rates == 3) {
+        ratesArr[2] += 1;
+      } else if (a.rates == 2) {
+        ratesArr[1] += 1;
+      } else {
+        ratesArr[0] += 1;
+      }
+    });
+  };
+
   const show_id = window.location.search;
   axios
     .get(`/showdetail/detail${show_id}`)
@@ -162,6 +180,7 @@ window.onload = () => {
     </div>
   </div>
   <div class="review_page">
+  <div id="chart"></div>
     <div class="reviewBoardContainer">
       <div class="reserved-container">
 
@@ -381,9 +400,14 @@ window.onload = () => {
         axios
           .get(`/showdetail/reviewboard${show_id}`)
           .then((res) => {
+            // 평점을 담는 배열
+            let ratesArr = [0, 0, 0, 0, 0];
+
             // innerHTML 에 후기 넣는다
             const data = res.data;
             console.log(data);
+            // 평점을 계산해서 ratesArr에 push해주는 함수 실행F
+            countRates(data, ratesArr);
             for (let i = 0; i < data.length; i++) {
               const cmt = data[i];
               const div = document.createElement("div");
@@ -404,8 +428,8 @@ window.onload = () => {
           <div class="btns">
             <div class="likeBtn" id="likeBtn-${cmt.id}">
                 <img src="${imgPath}/like_empty.png" alt="" />${
-                  cmt.ReviewBoardLikes.length
-                }
+                cmt.ReviewBoardLikes.length
+              }
             </div>
             <div class="reportDiv" id = "reportBtn-${cmt.id}">
 
@@ -431,12 +455,10 @@ window.onload = () => {
                   })
                   .then((res) => {
                     // console.log(res.data);
-                    if(res.data[1]){
-
+                    if (res.data[1]) {
                       likeBtn.innerHTML = `<img src="${imgPath}/like.png" alt="" />${res.data[0].length}`;
-                    }else{
+                    } else {
                       likeBtn.innerHTML = `<img src="${imgPath}/like_empty.png" alt="" />${res.data[0].length}`;
-
                     }
                   })
                   .catch((err) => {
@@ -446,6 +468,7 @@ window.onload = () => {
 
               // 신고 클릭 함수
               const reportBtn = document.getElementById(`reportBtn-${cmt.id}`);
+              console.log(ratesArr);
               reportBtn.onclick = () => {
                 axios
                   .get(`/showdetail/report?id=${cmt.id}`, {
@@ -459,6 +482,36 @@ window.onload = () => {
                   });
               };
             }
+
+            //차트를 그려주는 함수의 옵션값 설정
+            var options = {
+              chart: {
+                type: "bar",
+                width: 600,
+              },
+              series: [
+                {
+                  name: "sales",
+                  data: [
+                    ratesArr[0],
+                    ratesArr[1],
+                    ratesArr[2],
+                    ratesArr[3],
+                    ratesArr[4],
+                  ],
+                },
+              ],
+              xaxis: {
+                categories: [1, 2, 3, 4, 5],
+              },
+            };
+
+            let chart = new ApexCharts(
+              document.querySelector("#chart"),
+              options
+            );
+
+            chart.render();
           })
 
           .catch((err) => {
@@ -520,7 +573,8 @@ window.onload = () => {
           if (res.data) {
             if (res.data == "다시 로그인 해주세요") {
               headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
-            } else if (res.data.startsWith("<!DOCTYPE html>")) { // res.redirect 반환받았을때
+            } else if (res.data.startsWith("<!DOCTYPE html>")) {
+              // res.redirect 반환받았을때
               headerUtilLogin.innerHTML = ` <a href="/login">다시 로그인 해주세요</a>`;
             } else {
               headerUtilLogin.innerHTML = ` ${res.data}`;
@@ -554,3 +608,4 @@ window.onload = () => {
     });
 };
 
+// 차트

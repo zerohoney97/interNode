@@ -17,6 +17,7 @@ const mailRouter = require("./routers/mail");
 const dummyRouter = require("./routers/addDummy");
 const { isLoginMiddle } = require("./middleware/isLoginMiddle");
 const adminPageRouter = require("./routers/adminMypage");
+const chartRouter = require("./routers/chart");
 const socketIO = require("socket.io");
 const {
   initReservationSocket,
@@ -132,6 +133,7 @@ app.use("/freeboards", freeBoardsRouter);
 // app.use(e.static(path.join(__dirname, "js")));
 app.use("/showdetail", showDetailRouter);
 app.use("/dummy", dummyRouter);
+app.use("/chart", chartRouter);
 app.use("/imgs", e.static(path.join(__dirname, "imgs")));
 
 const server = app.listen(8080, () => {

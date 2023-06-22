@@ -1,123 +1,117 @@
 /* 페이지 헤더 css */
-body{
-    border: 0;
-    margin: 0;
-    height: 3000px;
+body {
+  border: 0;
+  margin: 0;
+  height: 3000px;
 }
 
-header{
-    width: 100%;
-    height: 16vh;
+header {
+  width: 100%;
+  height: 16vh;
 }
 
-.header_util{
-    height: 3vh;
-    width: 70%;
-    margin: auto;
-    /* border: 1px solid; */
-    display: flex;
-    justify-content: right;
-    color: gray;
-    align-items: center;
+.header_util {
+  height: 3vh;
+  width: 70%;
+  margin: auto;
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: right;
+  color: gray;
+  align-items: center;
 }
 
-.header_util div{
-    padding-left: 5px;
-    padding-right: 5px;
-    border-right: 1px solid ; 
+.header_util div {
+  padding-left: 5px;
+  padding-right: 5px;
+  border-right: 1px solid;
 }
 
-.header_util div:last-child{
-    border-right : 1px solid white
+.header_util div:last-child {
+  border-right: 1px solid white;
 }
 
-.header_inner{
-    width: 70%;
-    margin: auto;
-    height : 9vh;
-    /* border: 1px solid; */
-    display: flex;
+.header_inner {
+  width: 70%;
+  margin: auto;
+  height: 9vh;
+  /* border: 1px solid; */
+  display: flex;
 }
-.logo{
-    width: 200px;
-    height: 50px;
-    margin-top: 2.1vh;
-    background-image: url(http://openimage.interpark.com/ticket-desktop/components/header/interparkTicket_BI2x.png);
-    background-size: cover;
-}
-
-.header_inner h1{
-    margin-top: 25px;
-    margin-left: 15px;
+.logo {
+  width: 200px;
+  height: 50px;
+  margin-top: 2.1vh;
+  background-image: url(http://openimage.interpark.com/ticket-desktop/components/header/interparkTicket_BI2x.png);
+  background-size: cover;
 }
 
-.header_gnb{
-    height: 4vh;
-    width: 70%;
-    margin: auto;
-    display: flex;
+.header_inner h1 {
+  margin-top: 25px;
+  margin-left: 15px;
 }
 
-.header_gnb div{
-    padding-left: 10px;
-    margin-right: 20px;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
+.header_gnb {
+  height: 4vh;
+  width: 70%;
+  margin: auto;
+  display: flex;
 }
 
-.gnb_show{
-    color: red;
+.header_gnb div {
+  padding-left: 10px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
 }
 
-
-
-
+.gnb_show {
+  color: red;
+}
 
 /* 헤더 부분 css 끝 */
 
-
 /* footer부분 */
 
-.common_footer{
-    width: 1903px;
-    height: 210px;
-    border-top: 1px solid;
+.common_footer {
+  width: 1903px;
+  height: 210px;
+  border-top: 1px solid;
 }
 
-.footer_menu{
-    display: flex;
-    width: 1124px;
-    height: 4vh;
-    padding-top: 10.01px;
-    /* border: 1.009px solid; */
-    margin: auto;
+.footer_menu {
+  display: flex;
+  width: 1124px;
+  height: 4vh;
+  padding-top: 10.01px;
+  /* border: 1.009px solid; */
+  margin: auto;
 }
 
-.footer_menu div{
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    padding-right: 29.991px;
-    padding-left : 29.991px;
+.footer_menu div {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  padding-right: 29.991px;
+  padding-left: 29.991px;
 }
 
 .footer_inner {
-    width: 1124px;
-    margin: auto;
-    padding-top: 10.01px;
+  width: 1124px;
+  margin: auto;
+  padding-top: 10.01px;
 }
 
-.footer_inner span{
-    padding-bottom: 10.01px;
+.footer_inner span {
+  padding-bottom: 10.01px;
 }
 
 /* footer 부분 끝 */
 
-
 /* 포스터, 관람정보 부분 */
-.product_info{
-  width: 1124px; 
+.product_info {
+  width: 1124px;
   height: 540px;
   margin: auto;
   margin-top: 60px;
@@ -125,416 +119,415 @@ header{
   justify-content: space-between;
 }
 
-.product_info img,.product_info_img{
-    width: 405px;
-    height: 500px;
-    border-radius: 15px;
+.product_info img,
+.product_info_img {
+  width: 405px;
+  height: 500px;
+  border-radius: 15px;
 }
 
-.product_info_detail{
-    width: 675px;
-    height: 500px;
+.product_info_detail {
+  width: 675px;
+  height: 500px;
 }
 
-.flag_area{
-    width: 60px;
-    height: 20px;
-    background-color: red;
-    color: white;
-    font-size: 13px;
-    padding-left: 7px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+.flag_area {
+  width: 60px;
+  height: 20px;
+  background-color: red;
+  color: white;
+  font-size: 13px;
+  padding-left: 7px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-.product_info_heading{
-    font-size: 26px;
+.product_info_heading {
+  font-size: 26px;
 }
 
-.select_wrap{
-    padding-bottom: 15px;
-    border-bottom: 1px solid;
+.select_wrap {
+  padding-bottom: 15px;
+  border-bottom: 1px solid;
 }
 
-ul,li{
-    list-style: none;
+ul,
+li {
+  list-style: none;
 }
 
-ul{
-    margin: 0;
-    padding: 0;
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 .product_info_text_col1,
-.product_info_text_col1{
-    width: 675px;
-    height: 105px;
+.product_info_text_col1 {
+  width: 675px;
+  height: 105px;
 }
 
-.product_info_text_col1{
-    display: flex;
-    flex-wrap: wrap;
+.product_info_text_col1 {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.product_info_text_col1 li{
-    width: 337px;
-    display: flex;
+.product_info_text_col1 li {
+  width: 337px;
+  display: flex;
 }
-.product_info_text_col1 span{
-    color: #62676C;
-    font-weight: bolder;
-    font-size: 18px;
-}
-
-.product_info_text_col1 div{
-    margin-left: 40px;
+.product_info_text_col1 span {
+  color: #62676c;
+  font-weight: bolder;
+  font-size: 18px;
 }
 
-.product_info_text_col2{
-    display: flex;
+.product_info_text_col1 div {
+  margin-left: 40px;
 }
 
-.product_info_text_col2 li{
-    width: 338px;
-    height: 158px;
-    display: flex;
+.product_info_text_col2 {
+  display: flex;
 }
 
-.product_info_text_col2 span{
-    width: 70px;
-    height: 145px;
-    color: #62676C;
-    font-weight: bold;
-    font-size: 18px;
-
+.product_info_text_col2 li {
+  width: 338px;
+  height: 158px;
+  display: flex;
 }
 
-.price{
-    margin-bottom: 18px;
-    margin-left: 5px;
+.product_info_text_col2 span {
+  width: 70px;
+  height: 145px;
+  color: #62676c;
+  font-weight: bold;
+  font-size: 18px;
 }
 
-.discount{
-    margin-bottom: 18px;
-    margin-left: 42px;
+.price {
+  margin-bottom: 18px;
+  margin-left: 5px;
+}
+
+.discount {
+  margin-bottom: 18px;
+  margin-left: 42px;
 }
 
 /* 포스터, 관람정보 부분 끝 */
 
 /* 날짜,회차 선택(calender) */
-.calender{
-    width: 1120px;
-    height: 305px;
-    border: 1px solid #878d95;;
-    border-radius: 15px;
-    margin: auto;
+.calender {
+  width: 1120px;
+  height: 305px;
+  border: 1px solid #878d95;
+  border-radius: 15px;
+  margin: auto;
 }
 /* 날짜,회차 선택(calender) 끝 */
 
 /* 예매하기 버튼 */
-.bookbtn{
-    width: 1120px;
-    height: 60px;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 50px;
-
-
+.bookbtn {
+  width: 1120px;
+  height: 60px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
-.bookbtn div{
-    width: 270px;
-    height: 56px;
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-    background-color: #fa2828;
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translateX(850px);
+.bookbtn div {
+  width: 270px;
+  height: 56px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #fa2828;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(850px);
 }
 
 /* 예매하기 버튼 끝 */
 
 /* 상세정보 탭 메뉴 */
 
-.tabmenu_wrap{
-    width: 100%;
-    height: 60px;
-    margin-bottom: 20px;
-    position: sticky;
-    top: 100px;
+.tabmenu_wrap {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 100px;
 }
 
-.tabmenu{
-    width: 1124px;
-    height: 50px;
-    margin: auto;
+.tabmenu {
+  width: 1124px;
+  height: 50px;
+  margin: auto;
 }
 
 .tabmenu ul {
-    display: flex;
+  display: flex;
 }
 
-.tabmenu li{
-    border-bottom: 1px solid;
+.tabmenu li {
+  border-bottom: 1px solid;
 }
 
-.tabmenu li:first-child{
-    border: 1px solid;
-    border-bottom: none;
+.tabmenu li:first-child {
+  border: 1px solid;
+  border-bottom: none;
 }
 
-
-
-.tabmenu li button{
-    width: 280px;
-    height: 60px;
-    border: none;
+.tabmenu li button {
+  width: 280px;
+  height: 60px;
+  border: none;
 }
 
 /* 탭 메뉴 css 끝 */
 
 /* 날짜선택부분 */
-.calender{
-    display: flex;
-    align-items: center;
-    position: relative;
+.calender {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-.step1{
-    position: absolute;
-    z-index: 3;
-    top:810px;
-    left: 392px;
-    color: #fa2828;
-    font-size: 22px;
+.step1 {
+  position: absolute;
+  z-index: 3;
+  top: 810px;
+  left: 392px;
+  color: #fa2828;
+  font-size: 22px;
 }
 
-.step2{
-    position: absolute;
-    z-index: 3;
-    top:885px;
-    left: 849px;
-    color: #fa2828;
-    font-size: 22px;
+.step2 {
+  position: absolute;
+  z-index: 3;
+  top: 885px;
+  left: 849px;
+  color: #fa2828;
+  font-size: 22px;
 }
-.calender h3{
-    padding-top: 30px;
-}
-
-.step{
-    flex:none;
+.calender h3 {
+  padding-top: 30px;
 }
 
-.datepicker{
-    width: 445px;
-    height: 272px;
-    display: flex;
+.step {
+  flex: none;
 }
 
-.dateinput{
-    margin-top: 20px;
-    padding-left: 50px;
+.datepicker {
+  width: 445px;
+  height: 272px;
+  display: flex;
 }
 
-
-.timesession{
-    width: 445px;
-    height: 272px;
-    display: flex;
-    justify-content: space-around;
+.dateinput {
+  margin-top: 20px;
+  padding-left: 50px;
 }
 
-.timesession ul{
-    width: 250px;
-    height: 50px;
-    border: 1px solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    margin-top: 15px;
+.timesession {
+  width: 445px;
+  height: 272px;
+  display: flex;
+  justify-content: space-around;
 }
 
-.remainseat{
-    width: 262px;
-    height: 272px;
-    display: flex;
+.timesession ul {
+  width: 250px;
+  height: 50px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 15px;
 }
 
+.remainseat {
+  width: 262px;
+  height: 272px;
+  display: flex;
+}
 
 /* 배너 */
 
-.banner{
-    position: fixed;
-    top: -100px;
-    /* left: 390px; */
-    width: 100%;
-    height: 100px;
-    transition: top 0.3s ease;
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    justify-content: center;
+.banner {
+  position: fixed;
+  top: -100px;
+  /* left: 390px; */
+  width: 100%;
+  height: 100px;
+  transition: top 0.3s ease;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: center;
 }
 
-.banner_img{
-    width: 78px;
-    height: 96px;
+.banner_img {
+  width: 78px;
+  height: 96px;
 }
 
-.banner_img img{
-    width: 78px;
-    height: 96px;
-    border-radius: 10px;
+.banner_img img {
+  width: 78px;
+  height: 96px;
+  border-radius: 10px;
 }
 
-.banner_title{
-    padding-left: 20px;
-    padding-top: 5px;
-    font-size: 20px;
-    font-weight: 600;
+.banner_title {
+  padding-left: 20px;
+  padding-top: 5px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
-.banner_bookbtn{
-    background-color: #fa2828;
-    width: 150px;
-    height: 50px;
-    border-radius: 10px;
-    margin-left: 350px;
-    margin-top: 30px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: 600;
+.banner_bookbtn {
+  background-color: #fa2828;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  margin-left: 350px;
+  margin-top: 30px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
 }
 /* 배너 끝 */
 
 /* 맨 위로 스크롤 버튼 */
 .scroll-to-top-btn {
-    position: fixed;
-    bottom: 50px;
-    right: 300px;
-    display: none;
-    width: 40px;
-    height: 40px;
-    background-color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    font-size: 25px;
-}
-  
-.scroll-to-top-btn:hover{
-    background-color: black;
-    color: white;
+  position: fixed;
+  bottom: 50px;
+  right: 300px;
+  display: none;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 25px;
 }
 
+.scroll-to-top-btn:hover {
+  background-color: black;
+  color: white;
+}
 
 .scroll-to-top-btn.show {
-    display: block;
+  display: block;
 }
 
 /* 탭 페이지 구성 시작 */
 
-
 /* 상세정보 페이지 */
-.detail_page{
-    width: 1124px;
-    /* height: 19000px; */
-    margin: auto;
+.detail_page {
+  width: 1124px;
+  /* height: 19000px; */
+  margin: auto;
 }
 
 /* 상세정보 이미지 2개 사이 붙이기 */
-.bond{
-    margin-top: -4px;
+.bond {
+  margin-top: -4px;
 }
 /* 관람후기 페이지 */
-.review_page{
-    width: 1124px;
-    height: 1200px;
-    border: 1px solid ;
-    margin: auto;
-    display: none;
+.review_page {
+  width: 1124px;
+  height: 1200px;
+  border: 1px solid;
+  margin: auto;
+  display: none;
+  position: relative;
 }
 
 /* 장소정보 페이지 */
-.location_page{
-    width: 1124px;
-    height: 910px;
-    border: 1px solid ;
-    margin: auto;
-    display: none;
+.location_page {
+  width: 1124px;
+  height: 910px;
+  border: 1px solid;
+  margin: auto;
+  display: none;
 }
 
 /* 예매/취소안내 페이지 */
-.notice_page{
-    width: 1124px;
-    height: 1180px;
-    margin: auto;
-    display: none;
+.notice_page {
+  width: 1124px;
+  height: 1180px;
+  margin: auto;
+  display: none;
 }
 
-.notice_inner{
-    width: 1124px;
-    height: 1060px;
-    padding: 16px 20px 0px;
-    box-sizing: border-box;
+.notice_inner {
+  width: 1124px;
+  height: 1060px;
+  padding: 16px 20px 0px;
+  box-sizing: border-box;
 }
-
 
 /* 맨 아래 추천 공연,전시 */
-.detail_showlist{
-
-    width: 1124px;
-    height: 450px;
-    margin: auto;
-    margin-bottom: 50px;
+.detail_showlist {
+  width: 1124px;
+  height: 450px;
+  margin: auto;
+  margin-bottom: 50px;
 }
 
-.detail_showlist ul{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.detail_showlist ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-
-
-.detail_showlist li{
-    width: 200.005px;
-    height: 320.008px;
-    margin-top: 29.991px;
+.detail_showlist li {
+  width: 200.005px;
+  height: 320.008px;
+  margin-top: 29.991px;
 }
 
-.detail_showlist li div{
-    font-size: 18.002px;
-    width: 200.005px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    margin-bottom: 5.005px;
+.detail_showlist li div {
+  font-size: 18.002px;
+  width: 200.005px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 5.005px;
 }
 
-.detail_showlist li span{
-    color: red;
-    font-size: 16.004px;
+.detail_showlist li span {
+  color: red;
+  font-size: 16.004px;
 }
 
-.detail_showlist img{
-    width: 200.005px;
-    height: 249.997px;
-    border-radius: 9.991px;
+.detail_showlist img {
+  width: 200.005px;
+  height: 249.997px;
+  border-radius: 9.991px;
 }
 
 /* 맨 아랫줄 포스터 호버시 효과 넣어주기 */
 
-.detail_showlist li img:hover{
-    transform: scale(1.1);
+.detail_showlist li img:hover {
+  transform: scale(1.1);
+}
+
+/* 차트 관련 */
+#chart {
+  min-height: 415px;
+  left: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
