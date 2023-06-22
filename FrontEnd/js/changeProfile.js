@@ -127,7 +127,6 @@ window.onload = async () => {
     // 인증코드 버튼 클릭(서버에 인증코드 전송 결과 확인)
     codeBtn.onclick = async () => {
         if (codeInput.value == "") {
-            alert("sdjflksdjlfksjd");
             codeResultDiv.innerText = "인증코드를 입력하세요.";
             codeResultDiv.style.display = "block";
             codeResultDiv.style.color = "red";
@@ -136,6 +135,7 @@ window.onload = async () => {
 
         const emailCode = { email: currentEmail, code: codeInput.value };
         try {
+            alert("인증코드 전송 시도");
             const { data } = await axios.post(url+"/mail/checkcode", emailCode, {
                 withCredentials: true,
             });
