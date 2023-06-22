@@ -16,6 +16,8 @@
     <button id="g">자유게시판 생성</button>
     <button id="h">댓글 생성</button>
     <button id="i">대댓글 생성</button>
+    <button id="j">공연 후기 생성</button>
+    <button id="k">공연 후기 좋아요 생성</button>
   </body>
   <script>
     a.onclick = () => {
@@ -101,6 +103,26 @@
     i.onclick = () => {
       axios
         .post("/dummy/i")
+        .then((e) => {
+          console.log("생성완료");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    j.onclick = () => {
+      axios
+        .post("/dummy/j")
+        .then((e) => {
+          console.log("생성완료");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    k.onclick = () => {
+      axios
+        .post("/dummy/k")
         .then((e) => {
           console.log("생성완료");
         })
