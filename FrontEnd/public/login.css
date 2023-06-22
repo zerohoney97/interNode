@@ -64,11 +64,7 @@
   border: 1px solid black;
 }
 
-/* .expired-box .box {
-  align-items: baseline;
-} */
-
-.expired-box .expired {
+.expired-box .expired, .loading-box .loading {
   border-radius: 20px;
   padding: 20px;
   align-items: center;
@@ -84,7 +80,11 @@
   text-decoration: none;
 }
 
-.expired-box .error-img {
+.expired-box .error-img, .loading-box img {
   justify-content: center;
   width: 100px;
+}
+
+.loading-box h2 {
+  color: blue;
 }
