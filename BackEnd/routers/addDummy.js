@@ -8,6 +8,8 @@ const {
   createShowDateInfo,
   createTheaters,
   createUser,
+  createReviewBoards,
+  createReviewBoardLikes
 } = require("../controllers/addDummyDataController");
 const path = require("path");
 
@@ -27,5 +29,7 @@ router.post("/f", createSheets);
 router.post("/g", createFreeBoards);
 router.post("/h", createComments);
 router.post("/i", createRecomments);
+router.post("/j", createReviewBoards);
+router.post("/k", createReviewBoardLikes);
 
 module.exports = router;
