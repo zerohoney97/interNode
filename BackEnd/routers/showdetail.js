@@ -6,7 +6,7 @@ const { isLoginMiddle } = require('../middleware/isLoginMiddle');
 
 
 //디테일 페이지 이동
-router.get('/?',isLoginMiddle,(req,res)=>{
+router.get('/?',(req,res)=>{
     res.sendFile(
         path.join(
             __dirname,
