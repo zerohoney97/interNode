@@ -406,7 +406,7 @@ window.onload = () => {
 
           <div class="btns">
             <div class="likeBtn" id="likeBtn-${cmt.id}">
-                
+
                 <img src="${imgPath}/${likes ? "like.png" : "like_empty.png"}" alt="" />${
                   cmt.ReviewBoardLikes.length
                 }
@@ -544,7 +544,9 @@ window.onload = () => {
               console.log(headerSignUp.innerHTML);
               headerSignUp.innerHTML =
                 '<a href="/freeboards/main"> 자유 게시판 </a>';
-              console.log(headerSignUp.innerHTML);
+              const logOut = document.createElement("div");
+              logOut.innerHTML = '<a href="/login/logout"> 로그아웃 </a>';
+              document.querySelector(".header_util").appendChild(logOut);
             }
           }
           const RedBookBtn = document.getElementById("redbookbtn");

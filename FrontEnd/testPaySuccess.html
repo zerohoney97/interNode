@@ -4,11 +4,39 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>결제 대기 페이지</title>
+    <!-- <link rel="stylesheet" href="/public/login.css">
+    <link rel="stylesheet" href="/public/header.css"> -->
+    <link rel="stylesheet" href="./public/login.css">
+    <link rel="stylesheet" href="./public/header.css">
   </head>
 
   <body>
-    test페이지
+    <header class="common_header">
+      <div class="header_util">
+        <div id="headerUtilLogin"><a href="/login">로그인</a></div>
+        <div id="headerSignUp"><a href="/signup">회원가입</a></div>
+        <div><a href="/chat">고객센터</a></div>
+        <div><a href="/mypage/changeProfile">마이페이지</a></div>
+      </div>
+      <div class="header_inner">
+        <div class="logo"></div>
+        <h1>공연/전시</h1>
+      </div>
+      <div class="header_gnb">
+        <div class="gnb_home"><a href="/main">홈</a></div>
+        <div class="gnb_show">공연</div>
+      </div>
+    </header>
+  <div class="loading-box">
+      <div class="box">
+          <div class="container loading">
+            <img class="loading-img" src="" alt="">
+              <h2>결제 대기</h2>
+              <div>결제 중입니다.</div>
+          </div>
+      </div>
+  </div>
   </body>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
@@ -52,5 +80,9 @@
     setTimeout(() => {
       location.href = "/main";
     }, 1500);
+  </script>
+  <script src="./js/static.js"></script>
+  <script>
+      document.querySelector(".loading-img").src = imgPath + "/" + "front_loading.gif";
   </script>
 </html>

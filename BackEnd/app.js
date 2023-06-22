@@ -9,12 +9,12 @@ const signUpRouter = require("./routers/signUp");
 const mainRouter = require("./routers/main");
 const chatRouter = require("./routers/chat");
 const showDetailRouter = require("./routers/showdetail");
-
 const loginRouter = require("./routers/login");
 const freeBoardsRouter = require("./routers/freeBoard");
 const reservationRouter = require("./routers/reservation");
 const mypageRouter = require("./routers/mypage");
 const mailRouter = require("./routers/mail");
+const dummyRouter = require("./routers/addDummy");
 const { isLoginMiddle } = require("./middleware/isLoginMiddle");
 const adminPageRouter = require("./routers/adminMypage");
 const socketIO = require("socket.io");
@@ -107,9 +107,6 @@ app.use(
 //   }
 // }));
 
-
-
-
 // app.use('/socket.io', e.static(__dirname + '/node_modules/socket.io/client-dist'));
 // app.use(
 //   "/socket.io",
@@ -134,10 +131,8 @@ app.use("/adminPage", isLoginMiddle, adminPageRouter);
 app.use("/freeboards", freeBoardsRouter);
 // app.use(e.static(path.join(__dirname, "js")));
 app.use("/showdetail", showDetailRouter);
-
+app.use("/dummy", dummyRouter);
 app.use("/imgs", e.static(path.join(__dirname, "imgs")));
-
-
 
 const server = app.listen(8080, () => {
   console.log("gogo");
