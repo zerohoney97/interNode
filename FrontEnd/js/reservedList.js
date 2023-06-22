@@ -17,54 +17,77 @@ window.onload = async () => {
         예매 내역
         </h1>`;
 
-        // 나의 예매내역 개수 출력
-        myReservationLength.innerText = data.length;
+    // 나의 예매내역 개수 출력
+    myReservationLength.innerText = data.length;
 
-        // 화면 출력 만약 후기 없으면 등록하는 부분 보여주게
-        data.forEach(el => {
-            const reservedContainer = document.createElement("div");
-            reservedContainer.classList.add("reserved-container");
-            reservedContainer.id = `reserved_container_${el.reservedList.id}`;
-            const showContainter = document.createElement("div");
-            showContainter.classList.add("show-container");
-            const showImg = document.createElement("img");
-            showImg.src = imgPath + "/" + el.reservedList.Show.img;
-            const showDetail = document.createElement("div");
-            showDetail.classList.add("show-detail");
-            const titleSpan = document.createElement("span");
-            titleSpan.innerText = el.reservedList.Show.title;
-            // const detailSpan = document.createElement("span");
-            // detailSpan.innerText = el.reservedList.Show.detail;
+    // 화면 출력 만약 후기 없으면 등록하는 부분 보여주게
+    data.forEach(el => {
+      const reservedContainer = document.createElement("div");
+      reservedContainer.classList.add("reserved-container");
+      reservedContainer.id = `reserved_container_${el.reservedList.id}`;
+      const showContainter = document.createElement("div");
+      showContainter.classList.add("show-container");
 
-            const span1 = document.createElement("span");
-            const showDateArr = el.reservedList.reservation_num.split("_")
-            const month = showDateArr[1].substring(0, 2);
-            const date = showDateArr[1].substring(2, 4);
-            span1.innerText = "2023년 "+ month + "월 " + date + "일";
+      const showImgDetailDiv = document.createElement("div");
 
-            const seatSpan = document.createElement("span");
-            const seatArr = JSON.parse(el.reservedList.seat_num);
-            console.log(seatArr);
-            seatSpan.innerText = (parseInt(seatArr[0])+1)+"열 "+ (parseInt(seatArr[1])+1)+"번 좌석";
-            // seatSpan.innerText = el.reservedList.x + "열" + el.reservedList.y;
+      const showImg = document.createElement("img");
+      showImg.src = imgPath + "/" + el.reservedList.Show.img;
+      const showDetail = document.createElement("div");
+      showDetail.classList.add("show-detail");
+
+      showImgDetailDiv.append(showImg, showDetail);
+
+      const isPayBtn = document.createElement("div");
+      // 결제했으면
+      if (el.reservedList.pay) {
+        isPayBtn.classList.add("pay-btn");
+        isPayBtn.classList.add("pay-true");
+        isPayBtn.innerText = "결제 완료";
+      } else { // 결제하지 않았으면
+        isPayBtn.classList.add("pay-btn");
+        isPayBtn.classList.add("pay-false");
+        isPayBtn.innerText = "결제 전";
+      }
+      const titleSpan = document.createElement("span");
+      titleSpan.innerText = el.reservedList.Show.title;
+      // const detailSpan = document.createElement("span");
+      // detailSpan.innerText = el.reservedList.Show.detail;
+
+      const span1 = document.createElement("span");
+      const showDateArr = el.reservedList.reservation_num.split("_")
+      const month = showDateArr[1].substring(0, 2);
+      const date = showDateArr[1].substring(2, 4);
+      span1.innerText = "2023년 " + month + "월 " + date + "일";
+
+      const seatSpan = document.createElement("span");
+      const seatArr = JSON.parse(el.reservedList.seat_num);
+      console.log(seatArr);
+      seatSpan.innerText = (parseInt(seatArr[0]) + 1) + "열 " + (parseInt(seatArr[1]) + 1) + "번 좌석";
+      // seatSpan.innerText = el.reservedList.x + "열" + el.reservedList.y;
 
       const priceSpan = document.createElement("span");
-      priceSpan.innerText = el.reservedList.Show.price;
+      priceSpan.innerText = el.reservedList.Show.price+"원";
 
-            // showDetail.append(titleSpan, detailSpan, span1, seatSpan, priceSpan);
-            showDetail.append(titleSpan, span1, seatSpan, priceSpan);
-            showContainter.append(showImg, showDetail);
+      // showDetail.append(titleSpan, detailSpan, span1, seatSpan, priceSpan);
+      showDetail.append(titleSpan, span1, seatSpan, priceSpan);
+      // showContainter.append(showImgDetailDiv, isPayBtn);
+      showContainter.append(showImg, showDetail, isPayBtn);
 
       let container;
-      if (el.reviewBoard) {
-        // 후기 있으면
+      if (el.reviewBoard && el.reservedList.pay) {
+        // 후기 있으면, 결제 완료
         container = createReviewContainer(el);
-      } else {
-        // 후기 없으면
+      } else if(!el.reviewBoard && el.reservedList.pay) {
+        // 후기 없으면, 결제 완료
         container = createReviewContainerInput(el, false);
       }
 
-      reservedContainer.append(showContainter, container);
+      if (container) {
+        reservedContainer.append(showContainter, container);
+      } else {
+        reservedContainer.append(showContainter);
+      }
+
       reservedListDiv.append(reservedContainer);
 
       const inputs = document.querySelectorAll(
@@ -86,36 +109,36 @@ window.onload = async () => {
 
   // 내가 쓴 글 버튼 클릭
   myFreeBoard.onclick = () => {
-    window.location.href = "../../freeboard/freeboard.html?page=my";
+    window.location.href = "/freeboards/main?page=my";
   };
 
   // 좋아요한 글 클릭
   likeFreeBoard.onclick = () => {
-    window.location.href = "../../freeboard/freeboard.html?page=likes";
+    window.location.href = "/freeboards/main?page=likes";
   };
 };
 
-// 오른쪽위 선택창 바꿔주는 함수
-axios
-  .get(" /login/view", { withCredentials: true })
-  .then((res) => {
-    console.log(res.data);
-    if (res.data) {
-      if (res.data == "다시 로그인 해주세요") {
-        headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
-      } else if (res.data.startsWith("<!DOCTYPE html>")) { // res.redirect 반환받았을때
-        headerUtilLogin.innerHTML = ` <a href="/login">다시 로그인 해주세요</a>`;
-      } else {
-        headerUtilLogin.innerHTML = ` ${res.data}`;
-        console.log(headerSignUp.innerHTML);
-        headerSignUp.innerHTML = '<a href="/freeboards/main"> 자유 게시판 </a>';
-        console.log(headerSignUp.innerHTML);
-      }
-    }
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// // 오른쪽위 선택창 바꿔주는 함수
+// axios
+//   .get(" /login/view", { withCredentials: true })
+//   .then((res) => {
+//     console.log(res.data);
+//     if (res.data) {
+//       if (res.data == "다시 로그인 해주세요") {
+//         headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
+//       } else if (res.data.startsWith("<!DOCTYPE html>")) { // res.redirect 반환받았을때
+//         headerUtilLogin.innerHTML = ` <a href="/login">다시 로그인 해주세요</a>`;
+//       } else {
+//         headerUtilLogin.innerHTML = ` ${res.data}`;
+//         console.log(headerSignUp.innerHTML);
+//         headerSignUp.innerHTML = '<a href="/freeboards/main"> 자유 게시판 </a>';
+//         console.log(headerSignUp.innerHTML);
+//       }
+//     }
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 
 const createReviewContainer = (el) => {
   const reviewContainer = document.createElement("div");
@@ -366,17 +389,17 @@ const deleteReview = async (e) => {
   // 삭제할 리뷰 아이디
   const reviewBoardId = e.target.id.split("_")[1];
 
-    const { data } = await axios.get(url + "/mypage/deleteReviewBoard/" + reviewBoardId, {
-        withCredentials: true
-    });
-    if (data == "0") {
-        // 삭제 성공
-        alert("삭제되었습니다.");
-        // 새로고침
-        window.location.reload();
-    } else {
-        alert("오류");
-    }
+  const { data } = await axios.get(url + "/mypage/deleteReviewBoard/" + reviewBoardId, {
+    withCredentials: true
+  });
+  if (data == "0") {
+    // 삭제 성공
+    alert("삭제되었습니다.");
+    // 새로고침
+    window.location.reload();
+  } else {
+    alert("오류");
+  }
 }
 
 
