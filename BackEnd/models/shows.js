@@ -32,10 +32,10 @@ class Show extends Sequelize.Model {
 
     static associate(db){
         db.Show.belongsTo(db.Theater,{foreignKey : "theaters_id", targetKey: "id"});
-        db.Show.hasMany(db.ReviewBoard, {foreignKey : "show_id", sourceKey : "id"});
-        db.Show.hasMany(db.ShowDateInfo, {foreignKey : "show_id", sourceKey : "id"});
-        db.Show.hasMany(db.ReservedList, {foreignKey : "show_id", sourceKey : "id"});
-        db.Show.hasMany(db.Sheet, {foreignKey : "show_id", sourceKey : "id"});
+        db.Show.hasMany(db.ReviewBoard, {foreignKey : "show_id", sourceKey : "id",  onDelete: "CASCADE",});
+        db.Show.hasMany(db.ShowDateInfo, {foreignKey : "show_id", sourceKey : "id",  onDelete: "CASCADE",});
+        db.Show.hasMany(db.ReservedList, {foreignKey : "show_id", sourceKey : "id",  onDelete: "CASCADE",});
+        db.Show.hasMany(db.Sheet, {foreignKey : "show_id", sourceKey : "id",  onDelete: "CASCADE",});
     }
 
 }

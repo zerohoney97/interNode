@@ -58,9 +58,7 @@ const getUsers = async () => {
     div.className = "imgsize";
     img.src =
       "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMDFfMjkx%2FMDAxNjM1NzcyNTAyMzM2.cJE1tVC6KDvRbLggbBVEvvTt44ThhLU0wXelkyRh_bgg.ogMtpmeg-v7VIqtsSBpxHCNzt--aP7oHwL3PVm2RgiQg.JPEG.yunalee1997%2F4cc82b04dee244c22d13aee91e4b5e58.jpg&type=sc960_832";
-    p.onclick = () => {
-      chattingroom(index + 1);
-    };
+   
     p.innerHTML = e.nickname;
     div2.className = "border-bottom";
     div.append(img, p);

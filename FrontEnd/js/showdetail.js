@@ -194,7 +194,10 @@ window.onload = () => {
     </div>
   </div>
   <div class="location_page">
-        <div>${data.Theater.name}</div>
+        <div style='display: flex;
+        justify-content: center;'>${data.Theater.name}</div>
+    <div id="map" style="width: 100%; height: 400px"></div>
+
   </div>
   <div class="notice_page">
     <div>
@@ -521,7 +524,35 @@ window.onload = () => {
 
       tabLocation.addEventListener("click", () => {
         showPage(locationPage);
+
         tabBorderLine(tab3);
+
+        // 카카오 api를 이용해 지도를 보여주는 분기점
+        if (data.theaters_id == 1) {
+          let container = document.getElementById("map");
+          let options = {
+            // 강남 예술의 전당
+            center: new kakao.maps.LatLng(
+              37.478779682313025,
+              127.0105680624135
+            ),
+            level: 3,
+          };
+
+          let map = new kakao.maps.Map(container, options);
+        } else {
+          let container = document.getElementById("map");
+          let options = {
+            //   세종 문화회관
+            center: new kakao.maps.LatLng(
+              37.572619284883956,
+              126.97569893208153
+            ),
+            level: 3,
+          };
+
+          let map = new kakao.maps.Map(container, options);
+        }
       });
 
       tabNotice.addEventListener("click", () => {

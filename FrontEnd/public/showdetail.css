@@ -259,6 +259,7 @@ ul {
   margin-bottom: 20px;
   position: sticky;
   top: 100px;
+  z-index: 10;
 }
 
 .tabmenu {
@@ -369,6 +370,7 @@ ul {
   flex-direction: row;
   margin: auto;
   justify-content: center;
+  z-index: 10;
 }
 
 .banner_img {
@@ -446,7 +448,7 @@ ul {
 /* 관람후기 페이지 */
 .review_page {
   width: 1124px;
-  height: 1200px;
+  height: auto;
   border: 1px solid;
   margin: auto;
   display: none;
@@ -456,7 +458,7 @@ ul {
 /* 장소정보 페이지 */
 .location_page {
   width: 1124px;
-  height: 910px;
+  height: auto;
   border: 1px solid;
   margin: auto;
   display: none;

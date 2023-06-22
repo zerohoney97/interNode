@@ -31,6 +31,7 @@ class Comment extends Sequelize.Model {
     db.Comment.hasMany(db.Recomment, {
         foreignKey: "comment_id",
         sourceKey: "id",
+        onDelete: "CASCADE",
       });
   }
 }

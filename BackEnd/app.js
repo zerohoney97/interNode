@@ -147,6 +147,10 @@ io.on("connection", (socket) => {
   });
 });
 
+app.get("/map", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "FrontEnd", "map.html"));
+});
+
 //----------------
 
 // 예매 관련
