@@ -67,7 +67,23 @@ axios
       const updateButton = document.createElement("button");
       updateButton.innerHTML = ` <a href="${url}/adminpage/update/${a.id}" style="color: red">Edit</a>`;
       const deleteButton = document.createElement("button");
-      deleteButton.innerHTML = ` <a href="${url}/adminpage/delete/${a.id}" style="color: red">Delete</a>`;
+      deleteButton.innerHTML = ` <a style="color: red">Delete</a>`;
+
+      deleteButton.onclick = async () => {
+        if(!confirm(a.title+"\n해당 공연을 삭제하시겠습니까?")) {
+          alert("삭제 취소");
+          return;
+        };
+
+        const { data } = await axios.get(`${url}/adminpage/delete/${a.id}`, {
+          withCredentials : true
+        });
+        if (data == "삭제성공") {
+          alert("삭제 성공");
+          window.location.reload();
+        }
+      }
+
       buttons.appendChild(updateButton);
       buttons.appendChild(deleteButton);
       showInfo.appendChild(img);
@@ -106,7 +122,7 @@ goToUserSearch.href = `${url}/adminPage/userSearch`;
 goToUserReport.href = `${url}/adminPage/userReport`;
 // 하이퍼 링크 변경
 
-  
+
 changeHeaderUtil()
 
 function printMonthsAndDays(startDate, endDate) {
@@ -117,7 +133,7 @@ function printMonthsAndDays(startDate, endDate) {
     var month = date1.getMonth() + 1; // Adding 1 because months are zero-based
     var day = date1.getDate();
     console.log(month + '-' + day);
-    
+
     date1.setDate(date1.getDate() + 1); // Move to the next day
   }
 }

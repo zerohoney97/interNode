@@ -223,3 +223,13 @@ exports.noptApplySanction = async (req, res) => {
     console.log(error);
   }
 };
+// 공연 삭제
+exports.deleteShow = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Show.destroy({where : {id}});
+    res.send("삭제성공");
+  } catch (error) {
+    console.log(error);
+  }
+}

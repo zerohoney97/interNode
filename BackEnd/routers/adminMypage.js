@@ -8,6 +8,7 @@ const {
   getAllReportedUsers,
   applySanction,
   noptApplySanction,
+  deleteShow
 } = require("../controllers/adminPageController");
 const upload = require("../middleware/multer");
 
@@ -91,5 +92,8 @@ router.get("/update/:id", (req, res) => {
 
 // 공연 수정
 router.post("/update/:id", upload.single("showImg"), updateShow);
+
+// 공연 삭제
+router.get("/delete/:id", deleteShow);
 
 module.exports = router;
