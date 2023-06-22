@@ -49,6 +49,8 @@ exports.insertPost = async (req, res) => {
 
 exports.selectPost = async (req, res) => {
   const post_id = req.query.id;
+  const {primaryKey} = req.acc_decoded;
+  let result;
   try {
     const post = await FreeBoard.findOne({
       where: { id: post_id },
@@ -62,7 +64,8 @@ exports.selectPost = async (req, res) => {
         },
       ],
     });
-    res.json(post);
+    result = [post,primaryKey]
+    res.json(result);
   } catch (error) {
     console.log(error);
   }

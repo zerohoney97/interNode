@@ -5,13 +5,24 @@ window.onload = () => {
   axios
     .get(`  /freeboards/postdetail${post_id}`)
     .then((res) => {
-      const data = res.data;
-      title.textContent = res.data.title;
-      nickname.textContent = res.data.User.nickname;
-      createdAt.textContent = res.data.createdAt.slice(0, 10);
-      views.textContent = res.data.views;
-      content.textContent = res.data.content;
-      likeBtn.innerHTML = `<img src="${imgPath}/like_empty.png" alt="">${res.data.FreeBoardLikes.length}`;
+      console.log(res.data,"이게 돌아온거");
+      const data = res.data[0];
+      title.textContent = res.data[0].title;
+      nickname.textContent = res.data[0].User.nickname;
+      createdAt.textContent = res.data[0].createdAt.slice(0, 10);
+      views.textContent = res.data[0].views;
+      content.textContent = res.data[0].content;
+      let heartvalue = false;
+      for( let i =0; i<res.data[0].FreeBoardLikes.length;i++){
+        if(res.data[0].FreeBoardLikes[i].user_id === res.data[1]){
+          heartvalue = true;
+        }
+      }
+      if(heartvalue){
+      likeBtn.innerHTML = `<img src="${imgPath}/like.png" alt="">${res.data[0].FreeBoardLikes.length}`;
+      }else{
+        likeBtn.innerHTML = `<img src="${imgPath}/like_empty.png" alt="">${res.data[0].FreeBoardLikes.length}`;
+      }
     })
     .catch((err) => {
       console.log(err);
