@@ -384,10 +384,11 @@ window.onload = () => {
             // innerHTML 에 후기 넣는다
             const data = res.data[0];
             console.log(data);
+            console.log("userID",res.data[1])
             for (let i = 0; i < data.length; i++) {
               const cmt = data[i];
               const div = document.createElement("div");
-
+              const likes = cmt.ReviewBoardLikes[0]?.user_id == res.data[1];
               div.innerHTML = `
               <div class="user-review">
               <img class="userimg" src="${imgPath}/${cmt.User.img}" style="width: 50px; height: 50px" alt="userProfile" />
@@ -406,7 +407,7 @@ window.onload = () => {
           <div class="btns">
             <div class="likeBtn" id="likeBtn-${cmt.id}">
                 
-                <img src="${imgPath}/like_empty.png" alt="" />${
+                <img src="${imgPath}/${likes ? "like.png" : "like_empty.png"}" alt="" />${
                   cmt.ReviewBoardLikes.length
                 }
             </div>
