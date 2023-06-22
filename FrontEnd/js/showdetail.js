@@ -273,7 +273,7 @@ window.onload = () => {
     <div class="detail_showlist_header">
       <h1>추천 공연·전시</h1>
     </div>
-    <ul>
+    <ul class = "showUl">
       <li>
         <img
           src="https://image.toast.com/aaaaab/ticketlink/TKL_3/pcg_0601.jpg"
@@ -552,4 +552,45 @@ window.onload = () => {
     .catch((err) => {
       console.log(err);
     });
+
+    footershows();
 };
+
+const footershows = async ()=>{
+  try {
+    const { data } = await axios.get("/main/showList", {
+      withCredentials: true,
+    });
+    renderTicketShowList(data);
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const renderTicketShowList = (list)=>{
+  const showUl = document.querySelector(".showUl");
+  showUl.innerHTML = "";
+  //5개만 출력
+  for (let index = 5; index < 10; index++) {
+    const show = list[index];
+    const li = document.createElement("li");
+    const img = document.createElement("img");
+    img.src = imgPath + "/" + show.img;
+    const div = document.createElement("div");
+    div.innerText = show.title;
+    const span = document.createElement("span");
+    if (show.ShowDateInfos.length != 0) {
+      span.innerText =
+        show.ShowDateInfos[0].startDate + " ~ " + show.ShowDateInfos[0].endDate;
+    } else {
+      span.innerText = "티켓 시간 정보";
+    }
+    li.append(img, div, span);
+
+    li.onclick = () => {
+      location.href = "/showdetail?id=" + show.id;
+    };
+    showUl.append(li);
+  }
+}
