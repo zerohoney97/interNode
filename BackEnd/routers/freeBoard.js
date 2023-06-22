@@ -23,7 +23,7 @@ router.get("/", viewPostAll);
 router.post("/insertTo", isLoginMiddle, insertPost);
 
 //글 상세조회
-router.get("/postdetail/?", selectPost);
+router.get("/postdetail/?",isLoginMiddle ,selectPost);
 
 //조회수 증가
 router.get('/viewsup/?' , viewsUp);

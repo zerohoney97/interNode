@@ -295,7 +295,7 @@ window.onload = () => {
     <div class="detail_showlist_header">
       <h1>추천 공연·전시</h1>
     </div>
-    <ul>
+    <ul class = "showUl">
       <li>
         <img
           src="https://image.toast.com/aaaaab/ticketlink/TKL_3/pcg_0601.jpg"
@@ -407,32 +407,41 @@ window.onload = () => {
             let ratesArr = [0, 0, 0, 0, 0];
 
             // innerHTML 에 후기 넣는다
-            const data = res.data;
+            const data = res.data[0];
             console.log(data);
             // 평점을 계산해서 ratesArr에 push해주는 함수 실행F
             countRates(data, ratesArr);
+            console.log("userID", res.data[1]);
             for (let i = 0; i < data.length; i++) {
               const cmt = data[i];
               const div = document.createElement("div");
-
+              const likes = cmt.ReviewBoardLikes[0]?.user_id == res.data[1];
               div.innerHTML = `
-          <div class="user-review">
-            <img class="userimg" src="../zerohoneyPublic/resources/chat.png" style="width: 50px; height: 50px" alt="userProfile" />
-            <div class="user-review-detail">
+              <div class="user-review">
+              <img class="userimg" src="${imgPath}/${
+                cmt.User.img
+              }" style="width: 50px; height: 50px" alt="userProfile" />
+              <div class="user-review-detail">
               <div>
                 <span class="nickname">${cmt.User.nickname}</span>
               </div>
               <div>
-                <span class="createdAt">${cmt.createdAt.slice(0, 10)}</span>
+                <span class="createdAt"><span class="star"></span>${cmt.createdAt.slice(
+                  0,
+                  10
+                )}</span>
+
+
               </div>
             </div>
           </div>
 
           <div class="btns">
             <div class="likeBtn" id="likeBtn-${cmt.id}">
-                <img src="${imgPath}/like_empty.png" alt="" />${
-                cmt.ReviewBoardLikes.length
-              }
+
+                <img src="${imgPath}/${
+                likes ? "like.png" : "like_empty.png"
+              }" alt="" />${cmt.ReviewBoardLikes.length}
             </div>
             <div class="reportDiv" id = "reportBtn-${cmt.id}">
 
@@ -448,6 +457,11 @@ window.onload = () => {
         `;
 
               reviewContainer.appendChild(div);
+
+              //별점변경
+              let element = document.querySelectorAll(".star");
+              let reviewname = document.querySelectorAll(".nickname");
+              element[i].style.width = `${cmt.rates * 20}px`;
 
               // 좋아요 클릭 함수
               const likeBtn = document.getElementById(`likeBtn-${cmt.id}`);
@@ -612,7 +626,9 @@ window.onload = () => {
               console.log(headerSignUp.innerHTML);
               headerSignUp.innerHTML =
                 '<a href="/freeboards/main"> 자유 게시판 </a>';
-              console.log(headerSignUp.innerHTML);
+              const logOut = document.createElement("div");
+              logOut.innerHTML = '<a href="/login/logout"> 로그아웃 </a>';
+              document.querySelector(".header_util").appendChild(logOut);
             }
           }
           const RedBookBtn = document.getElementById("redbookbtn");
@@ -637,6 +653,44 @@ window.onload = () => {
     .catch((err) => {
       console.log(err);
     });
+
+  footershows();
 };
 
-// 차트
+const footershows = async () => {
+  try {
+    const { data } = await axios.get("/main/showList", {
+      withCredentials: true,
+    });
+    renderTicketShowList(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const renderTicketShowList = (list) => {
+  const showUl = document.querySelector(".showUl");
+  showUl.innerHTML = "";
+  //5개만 출력
+  for (let index = 5; index < 10; index++) {
+    const show = list[index];
+    const li = document.createElement("li");
+    const img = document.createElement("img");
+    img.src = imgPath + "/" + show.img;
+    const div = document.createElement("div");
+    div.innerText = show.title;
+    const span = document.createElement("span");
+    if (show.ShowDateInfos.length != 0) {
+      span.innerText =
+        show.ShowDateInfos[0].startDate + " ~ " + show.ShowDateInfos[0].endDate;
+    } else {
+      span.innerText = "티켓 시간 정보";
+    }
+    li.append(img, div, span);
+
+    li.onclick = () => {
+      location.href = "/showdetail?id=" + show.id;
+    };
+    showUl.append(li);
+  }
+};

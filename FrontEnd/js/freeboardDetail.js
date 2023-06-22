@@ -5,13 +5,28 @@ window.onload = () => {
   axios
     .get(`  /freeboards/postdetail${post_id}`)
     .then((res) => {
-      const data = res.data;
-      title.textContent = res.data.title;
-      nickname.textContent = res.data.User.nickname;
-      createdAt.textContent = res.data.createdAt.slice(0, 10);
-      views.textContent = res.data.views;
-      content.textContent = res.data.content;
-      likeBtn.innerHTML = `<img src="${imgPath}/like_empty.png" alt="">${res.data.FreeBoardLikes.length}`;
+      console.log(res.data,"이게 돌아온거");
+      const data = res.data[0];
+      title.textContent = res.data[0].title;
+      nickname.textContent = res.data[0].User.nickname;
+      createdAt.textContent = res.data[0].createdAt.slice(0, 10);
+      views.textContent = res.data[0].views;
+      content.textContent = res.data[0].content;
+      let heartvalue = false;
+      if(res.data[1] !== data.user_id){
+        updateBtn.style.display = "none"
+        deleteBtn.style.display = "none"
+      }
+      for( let i =0; i<res.data[0].FreeBoardLikes.length;i++){
+        if(res.data[0].FreeBoardLikes[i].user_id === res.data[1]){
+          heartvalue = true;
+        }
+      }
+      if(heartvalue){
+      likeBtn.innerHTML = `<img src="${imgPath}/like.png" alt="">${res.data[0].FreeBoardLikes.length}`;
+      }else{
+        likeBtn.innerHTML = `<img src="${imgPath}/like_empty.png" alt="">${res.data[0].FreeBoardLikes.length}`;
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -122,11 +137,8 @@ updateBtn.onclick = () => {
   // 수정 페이지에서는 form으로 데이터베이스 변경, 게시글 상세 페이지 redirect
 
 
-  let userNick = headerUtilLogin.textContent;
-  console.log(userNick);
-  console.log(nickname.textContent);
-  console.log(userNick.trim() === nickname.textContent.trim());
-  if (userNick.trim() === nickname.textContent.trim()) {
+
+
     let result = confirm("게시글 수정페이지로 이동합니다")
     if(result){
       const post_id = window.location.search;
@@ -135,15 +147,13 @@ updateBtn.onclick = () => {
       window.location.href = `/freeboards/updatepost${post_id}`;
 
     }
-  }else{
-    alert("게시글 작성자만 수정 가능합니다");
-  }
+
 };
 
 // 게시글 삭제
 deleteBtn.onclick = () => {
-  let userNick = headerUtilLogin.textContent;
-  if (userNick.trim() === nickname.textContent.trim()) {
+
+
     let result =confirm("정말 삭제할까요?")
     if(result){
       const post_id = window.location.search;
@@ -156,9 +166,7 @@ deleteBtn.onclick = () => {
           console.log(err);
         });
     }
-  }else{
-    alert("게시글 작성자만 삭제 가능합니다");
-  }
+
 };
 
 // 좋아요 버튼 구현
