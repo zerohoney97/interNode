@@ -35,7 +35,7 @@ exports.reviewBoard = async (req,res)=>{
                 },
                 {
                     model : User,
-                    attributes : ['nickname']
+                    attributes : ['nickname','img']
                     
                 }
             ]

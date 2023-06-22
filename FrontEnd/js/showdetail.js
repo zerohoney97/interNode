@@ -389,14 +389,16 @@ window.onload = () => {
               const div = document.createElement("div");
 
               div.innerHTML = `
-          <div class="user-review">
-            <img class="userimg" src="../zerohoneyPublic/resources/chat.png" style="width: 50px; height: 50px" alt="userProfile" />
-            <div class="user-review-detail">
+              <div class="user-review">
+              <img class="userimg" src="${imgPath}/${cmt.User.img}" style="width: 50px; height: 50px" alt="userProfile" />
+              <div class="user-review-detail">
               <div>
                 <span class="nickname">${cmt.User.nickname}</span>
               </div>
               <div>
-                <span class="createdAt">${cmt.createdAt.slice(0, 10)}</span>
+                <span class="createdAt"><span class="star"></span>${cmt.createdAt.slice(0, 10)}</span>
+
+
               </div>
             </div>
           </div>
@@ -421,6 +423,18 @@ window.onload = () => {
         `;
 
               reviewContainer.appendChild(div);
+
+              //별점변경
+              let element = document.querySelectorAll('.star');
+              let reviewname = document.querySelectorAll('.nickname');
+              element[i].style.width = `${cmt.rates*20}px`
+
+
+
+
+
+
+
 
               // 좋아요 클릭 함수
               const likeBtn = document.getElementById(`likeBtn-${cmt.id}`);
@@ -458,6 +472,7 @@ window.onload = () => {
                     console.log(err);
                   });
               };
+
             }
           })
 
