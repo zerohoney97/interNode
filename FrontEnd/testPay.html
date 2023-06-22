@@ -6,6 +6,7 @@
 </head>
 <body>
   <script>
+    let ticketPrice;
     function generateRandomString() {
       const urlString = window.location.href;
 
@@ -17,6 +18,8 @@
       const reservationNum = searchParams.get("reservation_num");
       const showId = searchParams.get("show_id");
       const userId = searchParams.get("user_id");
+      ticketPrice = searchParams.get("ticketPrice");
+      console.log(ticketPrice);
       const characters =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
       const length = Math.floor(Math.random() * 35) + 6; // Random length between 6 and 64
@@ -43,7 +46,7 @@
         // 결제 정보 파라미터
         // 더 많은 결제 정보 파라미터는 결제창 Javascript SDK에서 확인하세요.
         // https://docs.tosspayments.com/reference/js-sdk
-        amount: 15000,
+        amount: ticketPrice,
         orderId: randomString, // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
         orderName: "토스 티셔츠 외 2건",
         customerName: "박토스",

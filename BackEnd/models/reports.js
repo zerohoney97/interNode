@@ -24,6 +24,7 @@ class Report extends Sequelize.Model {
     db.Report.belongsTo(db.User, {
       foreignKey: "user_id",
       targetKey: "id",
+      onDelete: "CASCADE"
     });
   }
 }

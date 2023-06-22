@@ -22,11 +22,11 @@ class Comment extends Sequelize.Model {
   static associate(db) {
     db.Comment.belongsTo(db.User, {
       foreignKey: "user_id",
-      targetKey: "id",
+      targetKey: "id", onDelete: "CASCADE"
     });
     db.Comment.belongsTo(db.FreeBoard, {
         foreignKey: "freeboard_id",
-        targetKey: "id",
+        targetKey: "id", onDelete: "CASCADE"
       });
     db.Comment.hasMany(db.Recomment, {
         foreignKey: "comment_id",

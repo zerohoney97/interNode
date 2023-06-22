@@ -21,10 +21,12 @@ class Recomment extends Sequelize.Model {
     db.Recomment.belongsTo(db.Comment, {
       foreignKey: "comment_id",
       targetKey: "id",
+      onDelete: "CASCADE"
     });
     db.Recomment.belongsTo(db.User, {
       foreignKey: "user_id",
       targetKey: "id",
+      onDelete: "CASCADE"
     });
   }
 }

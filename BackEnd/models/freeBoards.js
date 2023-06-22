@@ -28,7 +28,7 @@ class FreeBoard extends Sequelize.Model {
     }
 
     static associate(db){
-        db.FreeBoard.belongsTo(db.User,{foreignKey : "user_id", targetKey: "id"});
+        db.FreeBoard.belongsTo(db.User,{foreignKey : "user_id", targetKey: "id", onDelete: "CASCADE"});
         db.FreeBoard.hasMany(db.Comment, {foreignKey : "freeboard_id", sourceKey : "id",  onDelete: "CASCADE",});
         db.FreeBoard.hasMany(db.FreeBoardLike, {foreignKey : "freeboard_id", sourceKey : "id",  onDelete: "CASCADE",});
     }

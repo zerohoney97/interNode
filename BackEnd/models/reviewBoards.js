@@ -29,11 +29,11 @@ class ReviewBoard extends Sequelize.Model {
   static associate(db) {
     db.ReviewBoard.belongsTo(db.User, {
       foreignKey: "user_id",
-      targetKey: "id",
+      targetKey: "id", onDelete: "CASCADE"
     });
     db.ReviewBoard.belongsTo(db.Show, {
       foreignKey: "show_id",
-      targetKey: "id",
+      targetKey: "id", onDelete: "CASCADE"
     });
     db.ReviewBoard.hasMany(db.ReviewBoardLike, {
       foreignKey: "reviewboard_id",
