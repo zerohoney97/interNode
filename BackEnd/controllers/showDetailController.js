@@ -52,7 +52,8 @@ exports.reviewBoard = async (req,res)=>{
 // 좋아요 버튼 클릭
 exports.reviewThumbsUp = async (req,res)=>{
     const cmt_id = req.query.id;
-    const { primaryKey } = req.acc_decoded 
+    const { primaryKey } = req.acc_decoded;
+    let heart ;
     try {
 
         let result = await ReviewBoardLike.findOne({
@@ -61,20 +62,22 @@ exports.reviewThumbsUp = async (req,res)=>{
 
         if(result){
             //삭제
-            await ReviewBoardLike.destroy({where : {reviewboard_id : cmt_id}})
+            await ReviewBoardLike.destroy({where : {reviewboard_id : cmt_id}});
+            heart = false;
         }else{
             //추가
             await ReviewBoardLike.create({
                 user_id : primaryKey,
                 reviewboard_id : cmt_id
             })
+            heart = true;
         }
         //현재 좋아요 수 리턴
         const likes = await ReviewBoardLike.findAll({
             where : {reviewboard_id : cmt_id}
         })
-
-        res.json(likes);
+        let rs = [likes,heart]
+        res.json(rs);
     } catch (error) {
         console.log(error);
     }

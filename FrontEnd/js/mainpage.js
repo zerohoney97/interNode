@@ -66,16 +66,35 @@ popClose.addEventListener("click", () => {
 let cmt_ranking = document.getElementById("cmt_ranking");
 let rate_ranking = document.getElementById("rate_ranking");
 
-//지역별랭킹 클릭시 function
+
+
+
+//댓글 순 랭킹 클릭시 function
 cmt_ranking.addEventListener("click", () => {
   rate_ranking.style.color = "#a7acb6";
   cmt_ranking.style.color = "black";
+  console.log("?왜안돼")
+  axios.get("/main/cmtShowList", {withCredentials : true})
+  .then((res)=>{
+    console.log(res.data);
+    renderCountShow(res.data);
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
 });
 
-//장르별랭킹 클릭시 function
+//평점순랭킹 클릭시 function
 rate_ranking.addEventListener("click", () => {
   rate_ranking.style.color = "black";
   cmt_ranking.style.color = "#a7acb6";
+  axios.get("/main/rateShowList")
+  .then((res)=>{
+    renderRateShow(res.data);
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
 });
 
 changeHeaderUtil();
@@ -92,13 +111,15 @@ const getShowList = async () => {
     renderTicketShowList(data);
 
     renderBestShow(data);
-
+    
+    renderSwiper(data);
     // 평점순 공연
     const rateList = await axios.get("/main/rateShowList", {
       withCredentials: true,
     });
 
     renderRateShow(rateList.data);
+
   } catch (error) {
     console.log(error);
   }
@@ -236,3 +257,75 @@ const renderRateShow = (list) => {
 const renderCmtShow = (list)=>{
   
 }
+
+//스와이퍼, 오늘의 추천에 링크 걸어주기
+const renderSwiper = (list)=>{
+  const swiperSlide = document.querySelectorAll('swiper-slide');
+  
+  //스와이퍼 
+  for (let i = 0; i < 7; i++) {
+    const show = list[i];
+    const anchorElement = swiperSlide[i].querySelector('a');
+    anchorElement.setAttribute('href', "/showdetail?id=" + show.id);
+  }
+
+  // 오늘의 추천
+  const today = document.getElementById('recLink7');
+  today.href = "/showdetail?id=" + list[7].id;
+}
+
+const renderCountShow = (list)=>{
+  const rankingDiv = document.querySelector(".rankingdiv");
+  rankingDiv.innerHTML = "";
+
+  const ul = document.createElement("ul");
+  // 댓글순 5개만 출력
+  for (let index = 0; index < 5; index++) {
+    const show = list[index];
+
+    const li = document.createElement("li");
+    const imgDiv = document.createElement("div");
+    imgDiv.classList.add("rank_img_wrap");
+    const img = document.createElement("img");
+    img.src = imgPath + "/" + show.img;
+    const num = document.createElement("span");
+    num.classList.add("whitenum");
+    num.innerText = index + 1;
+
+    imgDiv.append(img, num);
+
+    const title = document.createElement("div");
+    title.classList.add("rank_title");
+    title.innerText = show.title;
+
+    const dateSpan = document.createElement("span");
+    dateSpan.classList.add("rank_date");
+
+    if (show.ShowDateInfos.length != 0) {
+      dateSpan.innerText =
+        show.ShowDateInfos[0].startDate + " ~ " + show.ShowDateInfos[0].endDate;
+    } else {
+      dateSpan.innerText = "티켓 시간 정보";
+    }
+
+    const rateSpan = document.createElement("span");
+    if (!show.showRates) {
+      show.showRates = 0;
+    }
+    rateSpan.innerText = "댓글 수 : " + show.reviewCount;
+
+    const br = document.createElement("br");
+
+    li.append(imgDiv, title, dateSpan, br, rateSpan);
+
+    li.onclick = () => {
+      location.href = "/showdetail?id="+show.id;
+    };
+
+    ul.append(li);
+  }
+
+  rankingDiv.append(ul);
+}
+
+

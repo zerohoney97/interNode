@@ -108,7 +108,7 @@ const pagenate = (pagenum) => {
 
     freeboards.innerHTML += `<tr>
             <td class="no">${index + 1}</td>
-            <td class="title"><a href="/freeboards/detailmain?id=${board.id}">${
+            <td class="title"><a href="/freeboards/detailmain?id=${board.id}" onclick="viewCountUp(event)">${
       board.title
     }</a></td>
             <td class="nickname">${board.User.nickname}</td>
@@ -314,3 +314,27 @@ sortview.onclick = () => {
       console.log(err);
     });
 };
+
+// 게시글 클릭시
+function viewCountUp (event){
+  event.preventDefault();
+
+  
+  console.log(event.target.href);
+  let href = event.target.href;
+  const url = new URL(href);
+  const searchParams = new URLSearchParams(url.search);
+  const queryString = searchParams.toString();
+  console.log(queryString);
+  
+  axios
+  .get(`/freeboards/viewsup?${queryString}`)
+  .then((res) => {
+    console.log("조회수 증가")
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+  
+  location.href = href;
+}
