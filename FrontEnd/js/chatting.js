@@ -27,6 +27,7 @@ let selectUser;
 
 // 처음 들어왔을 때 전체 채팅기록을 불러와서 보지 않은 채팅수를 통해 html조작
 const changeMessageCount = () => {
+  console.log('카운트 실행')
   axios
     .get("/chat/getAllChats")
     .then((e) => {
@@ -56,16 +57,20 @@ const getUsers = async () => {
     const p = document.createElement("p");
     div.id = "user" + e.id;
     div.className = "imgsize";
-    img.src =
-      "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMDFfMjkx%2FMDAxNjM1NzcyNTAyMzM2.cJE1tVC6KDvRbLggbBVEvvTt44ThhLU0wXelkyRh_bgg.ogMtpmeg-v7VIqtsSBpxHCNzt--aP7oHwL3PVm2RgiQg.JPEG.yunalee1997%2F4cc82b04dee244c22d13aee91e4b5e58.jpg&type=sc960_832";
-   
+    img.src = `/imgs/${e.img}`;
+
     p.innerHTML = e.nickname;
     div2.className = "border-bottom";
     div.append(img, p);
     popupContent.append(div, div2);
-    div.addEventListener("click", (e) => {
-      console.log(e.target.id);
-      let username = e.target.id;
+    div.addEventListener("click", (a) => {
+      console.log(document.querySelector("#clientName"));
+      document.querySelector(
+        "#clientName"
+      ).innerText = `${e.nickname}님과 상담중입니다.`;
+      // clientName.innerText=`${e.nickname}과 상담중입니다.`
+      console.log(a.target.id);
+      let username = a.target.id;
       let splitIndex = username.search(/\d/); // Find the index where the number starts
       let numberPart = username.substring(splitIndex);
       document.querySelector(".popup-content.chattingroom2").style.display =

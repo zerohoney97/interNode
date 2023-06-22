@@ -24,6 +24,7 @@ exports.getChatLogAdmin = async (req, res) => {
   try {
     const { primaryKey } = req.acc_decoded;
     const { id } = req.query;
+    console.log(id);
     userId = id;
     nowLoginUserId = primaryKey;
     const chatDataArray = await ChatLog.findAll({
@@ -62,6 +63,13 @@ exports.saveChatDataAdmin = async (req, res) => {
     isRead: false,
     receiver: id,
   });
+
+  await ChatLog.update(
+    {
+      isRead: true,
+    },
+    { where: { receiver: id } }
+  );
   res.send("저장 성공");
 };
 
