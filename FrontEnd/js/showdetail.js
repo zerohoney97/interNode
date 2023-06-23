@@ -80,7 +80,7 @@ window.onload = () => {
           </li>
           <li>
             <span>회차</span>
-            <div>
+            <div class="starttime">
               ${data.ShowDateInfos[0].startTime
               .toString()
               .slice(0, 2)}시 ${data.ShowDateInfos[0].startTime
