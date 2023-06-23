@@ -128,7 +128,7 @@ header {
 
 .product_info img,
 .product_info_img {
-  width: 405px;
+  width: 90%;
   height: 500px;
   border-radius: 15px;
 }
