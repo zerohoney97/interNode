@@ -135,7 +135,6 @@ window.onload = async () => {
 
         const emailCode = { email: currentEmail, code: codeInput.value };
         try {
-            alert("인증코드 전송 시도");
             const { data } = await axios.post(url+"/mail/checkcode", emailCode, {
                 withCredentials: true,
             });
