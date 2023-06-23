@@ -37,7 +37,7 @@ class ChatLog extends Sequelize.Model {
    
     static associate(db){
        
-        db.ChatLog.belongsTo(db.User,{foreignKey : "user_id",targetKey : "id"});
+        db.ChatLog.belongsTo(db.User,{foreignKey : "user_id",targetKey : "id", onDelete: "CASCADE"});
     }
 }
 

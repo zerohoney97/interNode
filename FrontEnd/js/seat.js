@@ -187,10 +187,11 @@ window.onload = async () => {
     socket.emit("payment", { x, y, reservation_num, show_id, user_id });
 
     try {
+      console.log(ticketPrice)
       // 추가할 부분. 확인하세요
       // 결제창 출력
       // 결제
-      location.href = `/reservation/pay/?x=${x}&y=${y}&reservation_num=${reservation_num}&show_id=${show_id}&user_id=${user_id}`;
+      location.href = `/reservation/pay/?x=${x}&y=${y}&reservation_num=${reservation_num}&show_id=${show_id}&user_id=${user_id}&ticketPrice=${ticketPrice}`;
       setTimeout(async () => {
         // 결제 완료되면 실행될 코드
         // 지금은 결제 부분 구현되지 않아서 settimeout으로 처리함

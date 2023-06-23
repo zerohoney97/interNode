@@ -1,5 +1,23 @@
 // 상세 페이지 로드시 데이터 axios로 가져오기
 window.onload = () => {
+  // 별점의 개수를 배열에 저장하는 함수
+  const countRates = (data, ratesArr) => {
+    data.forEach((a) => {
+      console.log(a);
+      if (a.rates == 5) {
+        ratesArr[4] += 1;
+      } else if (a.rates == 4) {
+        ratesArr[3] += 1;
+      } else if (a.rates == 3) {
+        ratesArr[2] += 1;
+      } else if (a.rates == 2) {
+        ratesArr[1] += 1;
+      } else {
+        ratesArr[0] += 1;
+      }
+    });
+  };
+
   const show_id = window.location.search;
   axios
     .get(`/showdetail/detail${show_id}`)
@@ -162,6 +180,7 @@ window.onload = () => {
     </div>
   </div>
   <div class="review_page">
+  <div id="chart"></div>
     <div class="reviewBoardContainer">
       <div class="reserved-container">
 
@@ -175,7 +194,10 @@ window.onload = () => {
     </div>
   </div>
   <div class="location_page">
-        <div>${data.Theater.name}</div>
+        <div style='display: flex;
+        justify-content: center;'>${data.Theater.name}</div>
+    <div id="map" style="width: 100%; height: 400px"></div>
+
   </div>
   <div class="notice_page">
     <div>
@@ -381,23 +403,33 @@ window.onload = () => {
         axios
           .get(`/showdetail/reviewboard${show_id}`)
           .then((res) => {
+            // 평점을 담는 배열
+            let ratesArr = [0, 0, 0, 0, 0];
+
             // innerHTML 에 후기 넣는다
             const data = res.data[0];
             console.log(data);
-            console.log("userID",res.data[1])
+            // 평점을 계산해서 ratesArr에 push해주는 함수 실행F
+            countRates(data, ratesArr);
+            console.log("userID", res.data[1]);
             for (let i = 0; i < data.length; i++) {
               const cmt = data[i];
               const div = document.createElement("div");
               const likes = cmt.ReviewBoardLikes[0]?.user_id == res.data[1];
               div.innerHTML = `
               <div class="user-review">
-              <img class="userimg" src="${imgPath}/${cmt.User.img}" style="width: 50px; height: 50px" alt="userProfile" />
+              <img class="userimg" src="${imgPath}/${
+                cmt.User.img
+              }" style="width: 50px; height: 50px" alt="userProfile" />
               <div class="user-review-detail">
               <div>
                 <span class="nickname">${cmt.User.nickname}</span>
               </div>
               <div>
-                <span class="createdAt"><span class="star"></span>${cmt.createdAt.slice(0, 10)}</span>
+                <span class="createdAt"><span class="star"></span>${cmt.createdAt.slice(
+                  0,
+                  10
+                )}</span>
 
 
               </div>
@@ -407,9 +439,9 @@ window.onload = () => {
           <div class="btns">
             <div class="likeBtn" id="likeBtn-${cmt.id}">
 
-                <img src="${imgPath}/${likes ? "like.png" : "like_empty.png"}" alt="" />${
-                  cmt.ReviewBoardLikes.length
-                }
+                <img src="${imgPath}/${
+                likes ? "like.png" : "like_empty.png"
+              }" alt="" />${cmt.ReviewBoardLikes.length}
             </div>
             <div class="reportDiv" id = "reportBtn-${cmt.id}">
 
@@ -427,16 +459,9 @@ window.onload = () => {
               reviewContainer.appendChild(div);
 
               //별점변경
-              let element = document.querySelectorAll('.star');
-              let reviewname = document.querySelectorAll('.nickname');
-              element[i].style.width = `${cmt.rates*20}px`
-
-
-
-
-
-
-
+              let element = document.querySelectorAll(".star");
+              let reviewname = document.querySelectorAll(".nickname");
+              element[i].style.width = `${cmt.rates * 20}px`;
 
               // 좋아요 클릭 함수
               const likeBtn = document.getElementById(`likeBtn-${cmt.id}`);
@@ -447,12 +472,10 @@ window.onload = () => {
                   })
                   .then((res) => {
                     // console.log(res.data);
-                    if(res.data[1]){
-
+                    if (res.data[1]) {
                       likeBtn.innerHTML = `<img src="${imgPath}/like.png" alt="" />${res.data[0].length}`;
-                    }else{
+                    } else {
                       likeBtn.innerHTML = `<img src="${imgPath}/like_empty.png" alt="" />${res.data[0].length}`;
-
                     }
                   })
                   .catch((err) => {
@@ -462,6 +485,7 @@ window.onload = () => {
 
               // 신고 클릭 함수
               const reportBtn = document.getElementById(`reportBtn-${cmt.id}`);
+              console.log(ratesArr);
               reportBtn.onclick = () => {
                 axios
                   .get(`/showdetail/report?id=${cmt.id}`, {
@@ -474,8 +498,37 @@ window.onload = () => {
                     console.log(err);
                   });
               };
-
             }
+
+            //차트를 그려주는 함수의 옵션값 설정
+            var options = {
+              chart: {
+                type: "bar",
+                width: 600,
+              },
+              series: [
+                {
+                  name: "sales",
+                  data: [
+                    ratesArr[0],
+                    ratesArr[1],
+                    ratesArr[2],
+                    ratesArr[3],
+                    ratesArr[4],
+                  ],
+                },
+              ],
+              xaxis: {
+                categories: [1, 2, 3, 4, 5],
+              },
+            };
+
+            let chart = new ApexCharts(
+              document.querySelector("#chart"),
+              options
+            );
+
+            chart.render();
           })
 
           .catch((err) => {
@@ -485,7 +538,35 @@ window.onload = () => {
 
       tabLocation.addEventListener("click", () => {
         showPage(locationPage);
+
         tabBorderLine(tab3);
+
+        // 카카오 api를 이용해 지도를 보여주는 분기점
+        if (data.theaters_id == 1) {
+          let container = document.getElementById("map");
+          let options = {
+            // 강남 예술의 전당
+            center: new kakao.maps.LatLng(
+              37.478779682313025,
+              127.0105680624135
+            ),
+            level: 3,
+          };
+
+          let map = new kakao.maps.Map(container, options);
+        } else {
+          let container = document.getElementById("map");
+          let options = {
+            //   세종 문화회관
+            center: new kakao.maps.LatLng(
+              37.572619284883956,
+              126.97569893208153
+            ),
+            level: 3,
+          };
+
+          let map = new kakao.maps.Map(container, options);
+        }
       });
 
       tabNotice.addEventListener("click", () => {
@@ -537,7 +618,8 @@ window.onload = () => {
           if (res.data) {
             if (res.data == "다시 로그인 해주세요") {
               headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;
-            } else if (res.data.startsWith("<!DOCTYPE html>")) { // res.redirect 반환받았을때
+            } else if (res.data.startsWith("<!DOCTYPE html>")) {
+              // res.redirect 반환받았을때
               headerUtilLogin.innerHTML = ` <a href="/login">다시 로그인 해주세요</a>`;
             } else {
               headerUtilLogin.innerHTML = ` ${res.data}`;
@@ -572,22 +654,21 @@ window.onload = () => {
       console.log(err);
     });
 
-    footershows();
+  footershows();
 };
 
-const footershows = async ()=>{
+const footershows = async () => {
   try {
     const { data } = await axios.get("/main/showList", {
       withCredentials: true,
     });
     renderTicketShowList(data);
-
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-const renderTicketShowList = (list)=>{
+const renderTicketShowList = (list) => {
   const showUl = document.querySelector(".showUl");
   showUl.innerHTML = "";
   //5개만 출력
@@ -612,4 +693,4 @@ const renderTicketShowList = (list)=>{
     };
     showUl.append(li);
   }
-}
+};

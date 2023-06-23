@@ -6,6 +6,7 @@
 </head>
 <body>
   <script>
+    let ticketPrice;
     function generateRandomString() {
       const urlString = window.location.href;
 
@@ -17,6 +18,7 @@
       const reservationNum = searchParams.get("reservation_num");
       const showId = searchParams.get("show_id");
       const userId = searchParams.get("user_id");
+       ticketPrice = searchParams.get("ticketPrice");
       const characters =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
       const length = Math.floor(Math.random() * 35) + 6; // Random length between 6 and 64
@@ -27,15 +29,17 @@
         result += characters.charAt(randomIndex);
       }
       result +=
-        "-"+x + "-" + y + "-" + reservationNum + "-" + showId + "-" + userId ;
+        "-" + x + "-" + y + "-" + reservationNum + "-" + showId + "-" + userId;
       return result;
     }
 
     const randomString = generateRandomString();
     localStorage.setItem("orderId", randomString);
+    let newPrice=Number(ticketPrice)
     // ------ 클라이언트 키로 객체 초기화 ------
     var clientKey = "test_ck_MGjLJoQ1aVZd0Wew1AA8w6KYe2RN";
     var tossPayments = TossPayments(clientKey);
+    console.log(newPrice)
     // ------ 결제창 띄우기 ------
     tossPayments
       .requestPayment("가상계좌", {
@@ -43,12 +47,14 @@
         // 결제 정보 파라미터
         // 더 많은 결제 정보 파라미터는 결제창 Javascript SDK에서 확인하세요.
         // https://docs.tosspayments.com/reference/js-sdk
-        amount: 15000,
+        amount: newPrice,
         orderId: randomString, // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
         orderName: "토스 티셔츠 외 2건",
         customerName: "박토스",
-        successUrl: "http://zerohoney.com/reservation/successPay", // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
-        failUrl: "http://zerohoney.com/reservation", // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
+        successUrl: "http://zerohoney.com/reservation/successPay", // 배포시 밑에 주석하고 이거 해제
+        failUrl: "http://zerohoney.com/reservation", // 배포시 밑에 주석하고 이거 해제
+        // successUrl: `http://localhost:8080/reservation/successPay`, // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
+        // failUrl: "http://localhost:8080/reservation", // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
         validHours: 24, // 입금 기한
         cashReceipt: {
           // 현금영수증 발행

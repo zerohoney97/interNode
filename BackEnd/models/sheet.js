@@ -23,7 +23,7 @@ class Sheet extends Sequelize.Model {
     }
 
     static associate(db){
-        db.Sheet.belongsTo(db.Show,{foreignKey : "show_id", targetKey : "id"});
+        db.Sheet.belongsTo(db.Show,{foreignKey : "show_id", targetKey : "id", onDelete: "CASCADE"});
     }
 }
 

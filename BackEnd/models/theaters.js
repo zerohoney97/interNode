@@ -34,7 +34,7 @@ class Theater extends Sequelize.Model {
 
     static associate(db){
 
-        db.Theater.hasMany(db.Show,{foreignKey : "theaters_id",targetKey : "id"});
+        db.Theater.hasMany(db.Show,{foreignKey : "theaters_id",targetKey : "id",  onDelete: "CASCADE",});
     }
 }
 

@@ -23,6 +23,7 @@ class ShowDateInfo extends Sequelize.Model {
     db.ShowDateInfo.belongsTo(db.Show, {
       foreignKey: "show_id",
       targetKey: "id",
+      onDelete: "CASCADE"
     });
   }
 }

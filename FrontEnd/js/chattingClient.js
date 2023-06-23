@@ -125,7 +125,7 @@ axios
         const clientMessagesSpan = document.createElement("div");
         const clientChatSpan = document.createElement("div");
         clientChatSpan.style.display = "flex";
-        clientChatSpan.style.justifyContent = "flex-start";
+        clientChatSpan.style.justifyContent = "flex-end";
         clientChatSpan.innerText = a.content;
         clientMessagesSpan.appendChild(clientChatSpan);
         messages.appendChild(clientMessagesSpan);
@@ -134,7 +134,7 @@ axios
         const adminChatSpan = document.createElement("div");
         adminChatSpan.innerText = a.content;
         adminChatSpan.style.display = "flex";
-        adminChatSpan.style.justifyContent = "flex-end";
+        adminChatSpan.style.justifyContent = "flex-start";
         adminMessagesSpan.appendChild(adminChatSpan);
         messages.appendChild(adminMessagesSpan);
       }
@@ -194,7 +194,7 @@ socket.on("chat", (content, userId) => {
     const adminMessagesSpan = document.createElement("div");
     const adminChatSpan = document.createElement("div");
     adminChatSpan.style.display = "flex";
-    adminChatSpan.style.justifyContent = "flex-end";
+    adminChatSpan.style.justifyContent = "flex-start";
     adminChatSpan.innerText = content;
     adminMessagesSpan.appendChild(adminChatSpan);
     messages.appendChild(adminMessagesSpan);
@@ -202,7 +202,7 @@ socket.on("chat", (content, userId) => {
     const clientMessagesSpan = document.createElement("div");
     const clientChatSpan = document.createElement("div");
     clientChatSpan.style.display = "flex";
-    clientChatSpan.style.justifyContent = "flex-start";
+    clientChatSpan.style.justifyContent = "flex-end";
     clientChatSpan.innerText = content;
     clientMessagesSpan.appendChild(clientChatSpan);
     messages.appendChild(clientMessagesSpan);

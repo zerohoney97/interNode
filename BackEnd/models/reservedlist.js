@@ -31,8 +31,8 @@ class ReservedList extends Sequelize.Model {
     }
 
     static associate(db){
-        db.ReservedList.belongsTo(db.Show, {foreignKey : "show_id", targetKey : "id"});
-        db.ReservedList.belongsTo(db.User,{foreignKey : "user_id",targetKey : "id"});
+        db.ReservedList.belongsTo(db.Show, {foreignKey : "show_id", targetKey : "id", onDelete: "CASCADE"});
+        db.ReservedList.belongsTo(db.User,{foreignKey : "user_id",targetKey : "id", onDelete: "CASCADE"});
     }
 
 }

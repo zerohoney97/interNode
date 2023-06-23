@@ -16,8 +16,8 @@ class ReviewBoardLike extends Sequelize.Model {
     }
 
     static associate(db){
-        db.ReviewBoardLike.belongsTo(db.ReviewBoard,{foreignKey : "reviewboard_id", targetKey : "id"})
-        db.ReviewBoardLike.belongsTo(db.User,{foreignKey : "user_id", targetKey : "id"})
+        db.ReviewBoardLike.belongsTo(db.ReviewBoard,{foreignKey : "reviewboard_id", targetKey : "id", onDelete: "CASCADE"})
+        db.ReviewBoardLike.belongsTo(db.User,{foreignKey : "user_id", targetKey : "id", onDelete: "CASCADE"})
     }
 
 }
