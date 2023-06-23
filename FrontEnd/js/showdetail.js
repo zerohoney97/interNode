@@ -580,7 +580,7 @@ window.onload = () => {
         var scrollTop =
           window.pageYOffset || document.documentElement.scrollTop;
 
-        if (scrollTop > 1200) {
+        if (scrollTop > 700) {
           // 스크롤 위치가 100px 이상일 때
           banner.style.top = "0"; // 배너를 아래로 내림
         } else {
