@@ -13,6 +13,7 @@ class User extends Sequelize.Model {
         },
         img: {
           type: Sequelize.STRING(60),
+          defaultValue : "default_user.png"
         },
         nickname: {
           type: Sequelize.STRING(20),
