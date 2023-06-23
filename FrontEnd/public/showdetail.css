@@ -2,7 +2,6 @@
 body {
   border: 0;
   margin: 0;
-  height: 3000px;
 }
 
 header {
@@ -75,14 +74,14 @@ header {
 /* footer부분 */
 
 .common_footer {
-  width: 1903px;
+  width: 100%;
   height: 210px;
   border-top: 1px solid;
 }
 
 .footer_menu {
   display: flex;
-  width: 1124px;
+  width: 70%;
   height: 4vh;
   padding-top: 10.01px;
   /* border: 1.009px solid; */
@@ -98,7 +97,7 @@ header {
 }
 
 .footer_inner {
-  width: 1124px;
+  width: 70%;
   margin: auto;
   padding-top: 10.01px;
 }
@@ -111,7 +110,7 @@ header {
 
 /* 포스터, 관람정보 부분 */
 .product_info {
-  width: 1124px;
+  width: 66%;
   height: 540px;
   margin: auto;
   margin-top: 60px;
@@ -192,7 +191,7 @@ ul {
 
 .product_info_text_col2 li {
   width: 338px;
-  height: 158px;
+  height: 50px;
   display: flex;
 }
 
@@ -217,13 +216,13 @@ ul {
 /* 포스터, 관람정보 부분 끝 */
 
 /* 날짜,회차 선택(calender) */
-.calender {
+/* .calender {
   width: 1120px;
   height: 305px;
   border: 1px solid #878d95;
   border-radius: 15px;
   margin: auto;
-}
+} */
 /* 날짜,회차 선택(calender) 끝 */
 
 /* 예매하기 버튼 */
@@ -231,7 +230,7 @@ ul {
   width: 1120px;
   height: 60px;
   margin: auto;
-  margin-top: 30px;
+  margin-top: -100px;
   margin-bottom: 50px;
 }
 
@@ -323,13 +322,11 @@ ul {
 
 .datepicker {
   width: 445px;
-  height: 272px;
-  display: flex;
+  height: 100px;
 }
 
 .dateinput {
   margin-top: 20px;
-  padding-left: 50px;
 }
 
 .timesession {
@@ -449,7 +446,6 @@ ul {
 .review_page {
   width: 1124px;
   height: auto;
-  border: 1px solid;
   margin: auto;
   display: none;
   position: relative;
@@ -459,7 +455,6 @@ ul {
 .location_page {
   width: 1124px;
   height: auto;
-  border: 1px solid;
   margin: auto;
   display: none;
 }
@@ -532,4 +527,25 @@ ul {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+
+.move{
+  height: 200px;
+  position: relative;
+  border-top: 1px solid gray;
+}
+
+.redstep{
+  color: red;
+  font-weight: 700;
+  font-size: 20px;
+  height: 30px;
+}
+
+
+.redstep2{
+  position: absolute;
+  right: 100px;
+  bottom: 10px;
 }

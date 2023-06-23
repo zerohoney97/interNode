@@ -79,41 +79,40 @@ window.onload = () => {
             </div>
           </li>
           <li>
-            <span>할인</span>
+            <span>회차</span>
             <div>
-
+              ${data.ShowDateInfos[0].startTime
+              .toString()
+              .slice(0, 2)}시 ${data.ShowDateInfos[0].startTime
+              .toString()
+              .slice(3, 5)} 분
             </div>
           </li>
         </ul>
+        
       </div>
-    </div>
-  </div>
-
-  <div class="calender">
-    <div class="datepicker">
-      <div>
+      <div class = "move">
+        <div class="datepicker">
+        <div>
+        <span class ="redstep">STEP 1</span>
         <h3>날짜 선택</h3>
-      </div>
-      <div class="dateinput">
+        </div>
+        <div class="dateinput">
         <input type="date" id="datepicker" />
+        <span class ="redstep redstep2">STEP 2</span>
+
       </div>
     </div>
-    <div class="timesession">
-      <h3>회차 선택</h3>
-      <ul>
-        <li>${data.ShowDateInfos[0].startTime
-          .toString()
-          .slice(0, 2)}시 ${data.ShowDateInfos[0].startTime
-        .toString()
-        .slice(3, 5)} 분</li>
-      </ul>
+      </div>
     </div>
+  </div>
+
+ 
 
   </div>
-  <span class="step1" style="color: #fa2828; font-size: 22px;top: 885px;">STEP1</span>
-  <span class="step2">STEP2</span>
-  <div class="bookbtn" >
 
+  <div class="bookbtn" >
+  
   <div id="redbookbtn">예매하기</div>
   </div>
   <div class="banner" id="banner">
@@ -605,7 +604,7 @@ window.onload = () => {
 
       scrollToTopBtn.addEventListener("click", function () {
         window.scrollTo({
-          top: 1000,
+          top: 0,
           behavior: "smooth",
         });
       });
