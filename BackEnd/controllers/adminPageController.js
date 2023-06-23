@@ -137,10 +137,11 @@ exports.updateShow = async (req, res) => {
       theater,
     } = req.body;
     const { filename } = req.file;
-    console.log(theater);
+    console.log(id, "공연 id");
     // 디테일의 첫번째 배열은 상세정보,두번째 배열은 공연시간,세번째 배열은 공연의 등급이다.
     const array = [showContent, showDuration, showGrade];
     const stringArray = JSON.stringify(array);
+    // 공연 업데이트
     await Show.update(
       {
         title: showName,
@@ -152,6 +153,7 @@ exports.updateShow = async (req, res) => {
       { where: { id } }
     );
     console.log(showStartDate, "시작 날짜");
+    // 공연 날짜 업데이트
     await ShowDateInfo.update(
       {
         startDate: showStartDate,
@@ -160,6 +162,43 @@ exports.updateShow = async (req, res) => {
       },
       { where: { id } }
     );
+
+    const show = await Show.findOne({ where: { title: showName } });
+    let dateArr = [];
+    let newDateArr = calculateMonthsAndDays(
+      showStartDate,
+      showEndDate,
+      dateArr
+    );
+    newDateArr.forEach(async (a) => {
+      let monthArr = a.split("-");
+      if (monthArr[0].length < 2) {
+        monthArr[0] = `0${monthArr[0]}`;
+      }
+      if (monthArr[1].length < 2) {
+        monthArr[1] = `0${monthArr[1]}`;
+      }
+      if (theater == 1) {
+        await Sheet.destroy({
+          where: { show_id: show.dataValues.id },
+        });
+        await Sheet.create({
+          reservation_num: `${show.dataValues.id}_${monthArr[0] + monthArr[1]}`,
+          sheets_array: JSON.stringify(gangnam),
+          show_id: show.dataValues.id,
+        });
+      } else {
+        await Sheet.destroy({
+          where: { show_id: show.dataValues.id },
+        });
+        await Sheet.create({
+          reservation_num: `${show.dataValues.id}_${monthArr[0] + monthArr[1]}`,
+          sheets_array: JSON.stringify(sejong),
+          show_id: show.dataValues.id,
+        });
+      }
+    });
+
     res.redirect("/adminPage");
   } catch (error) {
     console.log(error);
@@ -227,9 +266,9 @@ exports.noptApplySanction = async (req, res) => {
 exports.deleteShow = async (req, res) => {
   try {
     const { id } = req.params;
-    await Show.destroy({where : {id}});
+    await Show.destroy({ where: { id } });
     res.send("삭제성공");
   } catch (error) {
     console.log(error);
   }
-}
+};
