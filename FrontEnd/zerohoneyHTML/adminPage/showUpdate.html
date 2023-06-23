@@ -11,7 +11,7 @@
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
-     <!-- admin 채팅 -->
+    <!-- admin 채팅 -->
     <div class="popup-wrap">
       <div class="popup-content chattingRoomBefore">
         <span class="close-btn"></span>
@@ -26,7 +26,7 @@
               alt=""
             />
 
-            <p>인터파크입니다😀</p>
+            <p>인터노드입니다😀</p>
             <p>
               안녕하세요? 국내외 항공권 숙소 여행 최저가 예약부터 뮤지컬 콘서트
               연극 티켓까지 모두 한번에 예약하세요😁
@@ -51,9 +51,8 @@
         </div>
 
         <div class="messages" id="messages">
-
           <div id="clientMessages"></div>
-        <div id="adminMessages"></div>
+          <div id="adminMessages"></div>
         </div>
         <div class="chat-input-container">
           <input
@@ -129,8 +128,9 @@
         </div>
         <div class="show-control-container">
           <!-- 공연 등록을 눌렀을 때 -->
+          <!-- 이미 url에 id가 param으로 있으므로 현재 주소로 보냄 -->
           <form
-            action="/adminpage/update/1"
+            action=""
             method="post"
             class="enroll-show show"
             id="showtab1"

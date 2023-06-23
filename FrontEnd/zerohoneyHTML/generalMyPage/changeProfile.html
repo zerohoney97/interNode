@@ -78,7 +78,7 @@
             <div class="email">
               <div class="email-left">이메일</div>
               <div class="email-right">
-                <span id="email">*******@****.com</span>
+                <span id="email"></span>
                 <!-- <span>이메일 변경</span> -->
               </div>
             </div>
@@ -95,12 +95,16 @@
             <div class="password">
               <div class="password-left">비밀번호</div>
               <div class="password-right">
-                <div><input id="codeInput" type="text" placeholder="인증코드를 입력하세요.">
-                <input id="passwordInput" type="text" placeholder="비밀번호를 입력하세요."></div>
+                <div >
+                  <div><input id="codeInput" type="text" placeholder="인증코드를 입력하세요.">
+                    <input id="passwordInput" type="password" placeholder="비밀번호를 입력하세요."></div>
+                  <div id="codeResultDiv"></div>
+                </div>
+
                 <!-- <span>*******</span> -->
                 <span id="showMailCodeInput">비밀번호 변경</span>
                 <span id="sendMailBtn">이메일 인증</span>
-                <div id="codeResultDiv"></div>
+
                 <span id="codeBtn">인증하기</span>
                 <span id="changePassword">비밀번호 변경</span>
               </div>
@@ -108,7 +112,7 @@
 
             <img
             id="userImg"
-            src="../../freeboard/img/like.png"
+            src="/imgs/default_user.png"
             style="
                 width: 100px;
                 height: 100px;
@@ -119,8 +123,10 @@
                 "
               alt="userProfile"
               />
-            <input type="file" id="fileInput">
-            <div id="changeProfileImg" class="profile">프로필 수정</div>
+              <div class="fileInputDiv">
+                <input type="file" id="fileInput">
+              </div>
+            <div id="changeProfileImg" class="profile">이미지 변경</div>
           </div>
         </div>
 

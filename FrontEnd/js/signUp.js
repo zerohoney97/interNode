@@ -71,6 +71,7 @@ window.onload = async () => {
       alert("이미 인증된 이메일입니다.");
     } else {
       try {
+        alert("인증코드 전송 시도");
         const { data } = await axios.post(url + "/mail/sendemail", email, {
           withCredentials: true,
         });

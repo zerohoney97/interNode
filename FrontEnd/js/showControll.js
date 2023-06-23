@@ -1,3 +1,4 @@
+
 let showRadio = document.querySelectorAll(".show-radio");
 showRadio.forEach((element) => {
   element.addEventListener("change", function (e) {
@@ -39,7 +40,7 @@ function displayImage() {
 showImg.onchange = displayImage;
 
 axios
-  .get(`${url}/adminPage/getShow`)
+  .get(`/adminPage/getShow`)
   .then((e) => {
     console.log(e.data, "데이터 가져옴 /adminPage/getShow");
     const performanceList = document.querySelector(".performance-list");
@@ -65,24 +66,24 @@ axios
       const buttons = document.createElement("div");
       buttons.classList.add("buttons");
       const updateButton = document.createElement("button");
-      updateButton.innerHTML = ` <a href="${url}/adminpage/update/${a.id}" style="color: red">Edit</a>`;
+      updateButton.innerHTML = ` <a href="  /adminpage/update/${a.id}" style="color: red">Edit</a>`;
       const deleteButton = document.createElement("button");
       deleteButton.innerHTML = ` <a style="color: red">Delete</a>`;
 
       deleteButton.onclick = async () => {
-        if(!confirm(a.title+"\n해당 공연을 삭제하시겠습니까?")) {
+        if (!confirm(a.title + "\n해당 공연을 삭제하시겠습니까?")) {
           alert("삭제 취소");
           return;
-        };
+        }
 
-        const { data } = await axios.get(`${url}/adminpage/delete/${a.id}`, {
-          withCredentials : true
+        const { data } = await axios.get(`  /adminpage/delete/${a.id}`, {
+          withCredentials: true,
         });
         if (data == "삭제성공") {
           alert("삭제 성공");
           window.location.reload();
         }
-      }
+      };
 
       buttons.appendChild(updateButton);
       buttons.appendChild(deleteButton);
@@ -117,13 +118,12 @@ document.querySelector(".enroll-show-button").addEventListener("click", (e) => {
 
 // 하이퍼 링크 변경
 
-goToShowControl.href = `${url}/adminPage`;
-goToUserSearch.href = `${url}/adminPage/userSearch`;
-goToUserReport.href = `${url}/adminPage/userReport`;
+goToShowControl.href = `  /adminPage`;
+goToUserSearch.href = `  /adminPage/userSearch`;
+goToUserReport.href = `  /adminPage/userReport`;
 // 하이퍼 링크 변경
 
-
-changeHeaderUtil()
+changeHeaderUtil();
 
 function printMonthsAndDays(startDate, endDate) {
   var date1 = new Date(startDate);
@@ -132,7 +132,7 @@ function printMonthsAndDays(startDate, endDate) {
   while (date1 <= date2) {
     var month = date1.getMonth() + 1; // Adding 1 because months are zero-based
     var day = date1.getDate();
-    console.log(month + '-' + day);
+    console.log(month + "-" + day);
 
     date1.setDate(date1.getDate() + 1); // Move to the next day
   }
@@ -142,3 +142,4 @@ function printMonthsAndDays(startDate, endDate) {
 var startDate = "06-23";
 var endDate = "07-23";
 printMonthsAndDays(startDate, endDate);
+
