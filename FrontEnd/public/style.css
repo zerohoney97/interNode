@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'LeeSeoyun';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -195,6 +202,7 @@ body {
   display: none;
   display: block;
   position: relative;
+  font-family: 'LeeSeoyun';
 }
 
 .popup-content.chattingroom2 {
@@ -202,6 +210,7 @@ body {
   left: 50%;
   top: 50%;
   display: none;
+  font-family: 'LeeSeoyun';
 }
 
 .font-size {
@@ -351,6 +360,7 @@ body {
   transform: translate(-50%, -30%);
   left: 50%;
   top: 50%;
+  font-family: 'LeeSeoyun';
 }
 
 .popup-content.chattingRoomBefore {
@@ -358,6 +368,7 @@ body {
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
+  font-family: 'LeeSeoyun';
 }
 
 .messages {
