@@ -67,8 +67,8 @@
             <label for="check">자동로그인</label>
           </div>
           <div class="left">
-            <input type="checkbox" id="check" />
-            <label for="check">아이디 저장</label>
+            <input type="checkbox" id="reserveId" />
+            <label for="reserveId">아이디 저장</label>
           </div>
         </div>
 
@@ -79,7 +79,7 @@
 
         <div class="border-bottom"></div>
 
-        <div class="pointer">아이디 찾기 | 비밀번호 찾기 | 회원가입</div>
+        <div class="pointer signUpDiv">아이디 찾기 | 비밀번호 찾기 | 회원가입</div>
 
         <br />
         <div class="pointer">휴대폰 번호로 로그인 (광고) ></div>
@@ -129,5 +129,11 @@
     </footer>
   </body>
   <script src="../js/static.js"></script>
+  <script>
+    let signUp = document.querySelector('.signUpDiv');
+    signUp.onclick = ()=>{
+      location.href = "/signup"
+    }
+  </script>
   
 </html>
