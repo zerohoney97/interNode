@@ -3,7 +3,7 @@ class FreeBoard extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             title : {
-                type : Sequelize.STRING(20),
+                type : Sequelize.STRING(40),
                 allowNull : false,
             },
             content : {

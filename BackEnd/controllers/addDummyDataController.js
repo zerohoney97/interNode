@@ -387,62 +387,64 @@ const createSheets = async () => {
 // freeboard 2개
 const createFreeBoard = async () => {
   await FreeBoard.create({
-    title: "anything",
-    content: "hello",
+    title: "안녕하세요",
+    content: "첫글첫글",
     user_id: 2,
   });
 
   await FreeBoard.create({
-    title: "nothing",
-    content: "what's up",
+    title: "솔직히 포레스트가 그정돈가?",
+    content: "1등까진 아닌듯;;",
+    views:5,
     user_id: 3,
   });
 
   await FreeBoard.create({
-    title: "hello",
-    content: "hi",
+    title: "사이트 예쁘네 ㄷㄷ",
+    content: "누가 만듦?",
+    views:6,
     user_id: 2,
   });
 
   await FreeBoard.create({
-    title: "ao",
-    content: "no",
+    title: "공연 추천 점 해주세염",
+    content: "싼걸로 ㄱㄱ",
     user_id: 3,
   });
 
   await FreeBoard.create({
-    title: "afsd",
-    content: "em",
+    title: "이 사이트 좀 거품인듯;;;",
+    content: "언빌리 '버블'",
     user_id: 2,
   });
 
   await FreeBoard.create({
-    title: "dgdg",
-    content: "sdsfd",
+    title: "이 사이트 개발자는 여름에 에어컨을 키지 않는다.",
+    content: "'더 위'가 없기 때문....",
     user_id: 3,
   });
 
   await FreeBoard.create({
-    title: "asdffds",
-    content: "we",
+    title: "이거 제작한 회사 다녀왔는데요...",
+    content: "이무...헌??대리님?? 좀 잘생기신듯...",
     user_id: 2,
   });
 
   await FreeBoard.create({
-    title: "asfdsfd",
-    content: "ngg",
+    title: "롤 할 사람",
+    content: "유도미도미 친추 ㄱㄱ",
     user_id: 3,
   });
 
   await FreeBoard.create({
-    title: "adhsghsdg",
-    content: "vxcv",
+    title: "박창근이 여기 나올 정돈가...?",
+    content: "흠....",
     user_id: 2,
   });
 
   await FreeBoard.create({
-    title: "ansd",
-    content: "sfdsfd",
+    title: "경일 아카데미 저번에 갔었는데...(소름주의)",
+    content: "이순현...교수님??? 좀 잘생기신것 같음;;;",
     user_id: 3,
   });
 };
@@ -450,13 +452,13 @@ const createFreeBoard = async () => {
 //comment 2개
 const createComment = async () => {
   await Comment.create({
-    content: "alert",
+    content: "??병먹금",
     user_id: "2",
     freeboard_id: "2",
   });
 
   await Comment.create({
-    content: "a",
+    content: "이무헌 김아현 박민우 신근호 그들은 신이야!",
     user_id: "3",
     freeboard_id: "3",
   });
@@ -465,13 +467,13 @@ const createComment = async () => {
 // recomment 2개
 const createReComment = async () => {
   await Recomment.create({
-    content: "type",
+    content: "알바네 ㅋㅋㅋ",
     user_id: "3",
     comment_id: "1",
   });
 
   await Recomment.create({
-    content: "type2",
+    content: "얘 여기서도 이러네 ㅋㅋㅋㅋ",
     user_id: "2",
     comment_id: "2",
   });
