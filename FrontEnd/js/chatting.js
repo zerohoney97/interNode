@@ -27,7 +27,7 @@ let selectUser;
 
 // 처음 들어왔을 때 전체 채팅기록을 불러와서 보지 않은 채팅수를 통해 html조작
 const changeMessageCount = () => {
-  console.log('카운트 실행')
+  console.log("카운트 실행");
   axios
     .get("/chat/getAllChats")
     .then((e) => {
@@ -114,6 +114,11 @@ const getUserChatLog = async (id) => {
   // let i = 0;
   // let j = 0;
   // sortChatAdminAndClient(chatArray.data);
+
+  if (messages.innerHTML) {
+    messages.innerHTML = "";
+  }
+
   chatArray.data.forEach((a) => {
     if (a.user_id != 1) {
       const clientMessagesSpan = document.createElement("div");
