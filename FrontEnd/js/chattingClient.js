@@ -118,23 +118,24 @@ axios
     // let i = 0;
     // let j = 0;
 
-      console.log(chatLogs)
-      chatLogs.forEach((a) => {
-      console.log(a)
+    console.log(chatLogs);
+    chatLogs.forEach((a) => {
+      console.log(a);
       if (a.user_id != 1) {
         const clientMessagesSpan = document.createElement("div");
         const clientChatSpan = document.createElement("div");
-        clientChatSpan.style.display = "flex";
-        clientChatSpan.style.justifyContent = "flex-end";
         clientChatSpan.innerText = a.content;
+        clientChatSpan.classList.add("bubble-right-child");
+        clientMessagesSpan.classList.add("bubble-right");
         clientMessagesSpan.appendChild(clientChatSpan);
         messages.appendChild(clientMessagesSpan);
       } else {
         const adminMessagesSpan = document.createElement("div");
         const adminChatSpan = document.createElement("div");
         adminChatSpan.innerText = a.content;
-        adminChatSpan.style.display = "flex";
-        adminChatSpan.style.justifyContent = "flex-start";
+
+        adminChatSpan.classList.add("bubble-left-child");
+        adminMessagesSpan.classList.add("bubble-left");
         adminMessagesSpan.appendChild(adminChatSpan);
         messages.appendChild(adminMessagesSpan);
       }
@@ -193,18 +194,21 @@ socket.on("chat", (content, userId) => {
   if (userId == 1) {
     const adminMessagesSpan = document.createElement("div");
     const adminChatSpan = document.createElement("div");
-    adminChatSpan.style.display = "flex";
-    adminChatSpan.style.justifyContent = "flex-start";
     adminChatSpan.innerText = content;
+
+    adminChatSpan.classList.add("bubble-left-child");
+    adminMessagesSpan.classList.add("bubble-left");
     adminMessagesSpan.appendChild(adminChatSpan);
     messages.appendChild(adminMessagesSpan);
+    messages.scrollTop = messages.scrollHeight;
   } else {
     const clientMessagesSpan = document.createElement("div");
     const clientChatSpan = document.createElement("div");
-    clientChatSpan.style.display = "flex";
-    clientChatSpan.style.justifyContent = "flex-end";
+    clientChatSpan.classList.add("bubble-right-child");
+    clientMessagesSpan.classList.add("bubble-right");
     clientChatSpan.innerText = content;
     clientMessagesSpan.appendChild(clientChatSpan);
     messages.appendChild(clientMessagesSpan);
+    messages.scrollTop = messages.scrollHeight;
   }
 });

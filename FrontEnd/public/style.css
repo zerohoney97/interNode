@@ -374,4 +374,77 @@ body {
   color: red;
 }
 
+.bubble-left {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+  /* background-color: #dff3fd; */
+  /* border-radius: 10px; */
+  overflow: hidden;
+  animation: appearFromLeft 1s ease-in-out forwards;
+  margin: 5px;
+}
+.bubble-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px;
+  /* background-color: rgb(233, 247, 239); */
+  /* border-radius: 10px; */
+  overflow: hidden;
+  animation: appearFromRight 1s ease-in-out forwards;
+  margin: 5px;
+}
+
+.bubble-left-child {
+  width: 50%;
+  min-height: 30px;
+  background-color: #dff3fd;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 3px;
+  padding-left: 10px;
+}
+
+.bubble-right-child {
+  width: 50%;
+  min-height: 30px;
+  background-color: rgb(233, 247, 239);
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 3px;
+  padding-right: 10px;
+}
+
+@keyframes appearFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes appearFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 /* 이사 후의 css */

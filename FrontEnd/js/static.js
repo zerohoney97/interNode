@@ -9,7 +9,6 @@ const changeHeaderUtil = () => {
   axios
     .get("/login/view", { withCredentials: true })
     .then((res) => {
-      console.log(res.data,'로그인이 됐나요?');
       if (res.data) {
         if (res.data == "다시 로그인 해주세요") {
           headerUtilLogin.innerHTML = ` <a href="/login">${res.data}</a>`;

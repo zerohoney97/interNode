@@ -123,17 +123,17 @@ const getUserChatLog = async (id) => {
     if (a.user_id != 1) {
       const clientMessagesSpan = document.createElement("div");
       const clientChatSpan = document.createElement("div");
-      clientChatSpan.style.display = "flex";
-      clientChatSpan.style.justifyContent = "flex-start";
       clientChatSpan.innerText = a.content;
+      clientChatSpan.classList.add("bubble-left-child");
+      clientMessagesSpan.classList.add("bubble-left");
       clientMessagesSpan.appendChild(clientChatSpan);
       messages.appendChild(clientMessagesSpan);
     } else {
       const adminMessagesSpan = document.createElement("div");
       const adminChatSpan = document.createElement("div");
       adminChatSpan.innerText = a.content;
-      adminChatSpan.style.display = "flex";
-      adminChatSpan.style.justifyContent = "flex-end";
+      adminChatSpan.classList.add("bubble-right-child");
+      adminMessagesSpan.classList.add("bubble-right");
       adminMessagesSpan.appendChild(adminChatSpan);
       messages.appendChild(adminMessagesSpan);
     }
@@ -280,19 +280,23 @@ socket.on("chat", (content, userId) => {
   if (userId == 1) {
     const adminMessagesSpan = document.createElement("div");
     const adminChatSpan = document.createElement("div");
-    adminChatSpan.style.display = "flex";
-    adminChatSpan.style.justifyContent = "flex-end";
     adminChatSpan.innerText = content;
+    adminMessagesSpan.classList.add("bubble-right");
+    adminChatSpan.classList.add("bubble-right-child");
     adminMessagesSpan.appendChild(adminChatSpan);
     messages.appendChild(adminMessagesSpan);
+    // 새로운 채팅을 추가해줬을때 밑으로 내려주는 채팅
+    messages.scrollTop = messages.scrollHeight;
   } else {
     const clientMessagesSpan = document.createElement("div");
     const clientChatSpan = document.createElement("div");
-    clientChatSpan.style.display = "flex";
-    clientChatSpan.style.justifyContent = "flex-start";
     clientChatSpan.innerText = content;
+    clientChatSpan.classList.add("bubble-left-child");
+    clientMessagesSpan.classList.add("bubble-left");
     clientMessagesSpan.appendChild(clientChatSpan);
     messages.appendChild(clientMessagesSpan);
+    // 새로운 채팅을 추가해줬을때 밑으로 내려주는 채팅
+    messages.scrollTop = messages.scrollHeight;
   }
 });
 
