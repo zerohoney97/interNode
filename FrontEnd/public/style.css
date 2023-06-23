@@ -1,13 +1,21 @@
 @font-face {
-  font-family: 'LeeSeoyun';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+  font-family: "LeeSeoyun";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
+    format("woff");
   font-weight: normal;
+}
+@font-face {
+  font-family: "TheJamsil5Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2")
+    format("woff2");
+  font-weight: 400;
   font-style: normal;
 }
 
 body {
   margin: 0;
   padding: 0;
+  font-family: "TheJamsil5Bold";
 }
 
 .popup-wrap {
@@ -202,7 +210,7 @@ body {
   display: none;
   display: block;
   position: relative;
-  font-family: 'LeeSeoyun';
+  font-family: "LeeSeoyun";
 }
 
 .popup-content.chattingroom2 {
@@ -210,7 +218,7 @@ body {
   left: 50%;
   top: 50%;
   display: none;
-  font-family: 'LeeSeoyun';
+  font-family: "LeeSeoyun";
 }
 
 .font-size {
@@ -360,7 +368,7 @@ body {
   transform: translate(-50%, -30%);
   left: 50%;
   top: 50%;
-  font-family: 'LeeSeoyun';
+  font-family: "LeeSeoyun";
 }
 
 .popup-content.chattingRoomBefore {
@@ -368,7 +376,7 @@ body {
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
-  font-family: 'LeeSeoyun';
+  font-family: "LeeSeoyun";
 }
 
 .messages {

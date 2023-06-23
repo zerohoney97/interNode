@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'TheJamsil5Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
 hr {
     border: none;
     border-left: 1px dashed gray; /* 여기서 색상은 원하는 회색으로 변경 */
@@ -6,6 +13,7 @@ hr {
   }
   body {
     box-sizing: border-box;
+    font-family: 'TheJamsil5Bold';
   }
   a {
     text-decoration: none;
