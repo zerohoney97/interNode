@@ -588,49 +588,60 @@ const createUser = async () => {
       nickname: "텀블러",
     });
   }
+  const user11 = await User.findOne({
+    where: { email: "2coco97011@naver.com" },
+  });
+  if (user10 == null) {
+    const hash = bcrypt.hashSync("q1w2e3R$", 10);
+    await User.create({
+      email: "2coco97011@naver.com",
+      password: hash,
+      nickname: "자유시간",
+    });
+  }
 };
 
 // 리뷰보드 생성
 const createReviewBoard = async () => {
-  await ReviewBoard.create({user_id : 2, show_id : 1, content : "재밌었어요!!", rates : 5});
-  await ReviewBoard.create({user_id : 3, show_id : 1, content : "좋았음", rates : 4});
-  await ReviewBoard.create({user_id : 4, show_id : 1, content : "ㄱㅊㄱㅊ", rates : 3});
+  await ReviewBoard.create({user_id : 10, show_id : 1, content : "재밌었어요!!", rates : 5});
+  await ReviewBoard.create({user_id : 11, show_id : 1, content : "좋았음", rates : 4});
+  await ReviewBoard.create({user_id : 12, show_id : 1, content : "ㄱㅊㄱㅊ", rates : 3});
   await ReviewBoard.create({user_id : 5, show_id : 1, content : "좋았어요", rates : 4});
   await ReviewBoard.create({user_id : 6, show_id : 1, content : "무난", rates : 2});
   await ReviewBoard.create({user_id : 7, show_id : 1, content : "ㅂㄹ", rates : 1});
   await ReviewBoard.create({user_id : 8, show_id : 1, content : "나쁘지 않았음", rates : 3});
   await ReviewBoard.create({user_id : 9, show_id : 1, content : "재밌었어요", rates : 5});
 
-  await ReviewBoard.create({user_id : 2, show_id : 2, content : "제 취향은 아니었는데도 좋았어요", rates : 4});
-  await ReviewBoard.create({user_id : 3, show_id : 2, content : "무난무난", rates : 2});
-  await ReviewBoard.create({user_id : 4, show_id : 2, content : "취향아님ㅜㅜ", rates : 1});
+  await ReviewBoard.create({user_id : 10, show_id : 2, content : "제 취향은 아니었는데도 좋았어요", rates : 4});
+  await ReviewBoard.create({user_id : 11, show_id : 2, content : "무난무난", rates : 2});
+  await ReviewBoard.create({user_id : 12, show_id : 2, content : "취향아님ㅜㅜ", rates : 1});
   await ReviewBoard.create({user_id : 5, show_id : 2, content : "좋았어요", rates : 5});
   await ReviewBoard.create({user_id : 6, show_id : 2, content : "ㅂㄹ", rates : 2});
   await ReviewBoard.create({user_id : 7, show_id : 2, content : "ㅂㄹ", rates : 1});
   await ReviewBoard.create({user_id : 8, show_id : 2, content : "취향갈릴듯", rates : 2});
   await ReviewBoard.create({user_id : 9, show_id : 2, content : "재밌었어요", rates : 5});
 
-  await ReviewBoard.create({user_id : 2, show_id : 3, content : "굿", rates : 4});
-  await ReviewBoard.create({user_id : 3, show_id : 3, content : "좋았어요", rates : 5});
-  await ReviewBoard.create({user_id : 4, show_id : 3, content : "즐거웠어요~", rates : 5});
+  await ReviewBoard.create({user_id : 10, show_id : 3, content : "굿", rates : 4});
+  await ReviewBoard.create({user_id : 11, show_id : 3, content : "좋았어요", rates : 5});
+  await ReviewBoard.create({user_id : 12, show_id : 3, content : "즐거웠어요~", rates : 5});
   await ReviewBoard.create({user_id : 5, show_id : 3, content : "ㅜㅜ 최고", rates : 5});
   await ReviewBoard.create({user_id : 6, show_id : 3, content : "재밌었음", rates : 5});
   await ReviewBoard.create({user_id : 7, show_id : 3, content : "좋았어요", rates : 5});
   await ReviewBoard.create({user_id : 8, show_id : 3, content : "좋아요", rates : 3});
   await ReviewBoard.create({user_id : 9, show_id : 3, content : "재밌었어요", rates : 5});
 
-  await ReviewBoard.create({user_id : 2, show_id : 4, content : "힐링", rates : 4});
-  await ReviewBoard.create({user_id : 3, show_id : 4, content : "추천추천", rates : 5});
-  await ReviewBoard.create({user_id : 4, show_id : 4, content : "나쁘지 않았음", rates : 3});
+  await ReviewBoard.create({user_id : 10, show_id : 4, content : "힐링", rates : 4});
+  await ReviewBoard.create({user_id : 11, show_id : 4, content : "추천추천", rates : 5});
+  await ReviewBoard.create({user_id : 12, show_id : 4, content : "나쁘지 않았음", rates : 3});
   await ReviewBoard.create({user_id : 5, show_id : 4, content : "지루했음", rates : 2});
   await ReviewBoard.create({user_id : 6, show_id : 4, content : "재밌었음", rates : 5});
   await ReviewBoard.create({user_id : 7, show_id : 4, content : "좋았어요", rates : 4});
   await ReviewBoard.create({user_id : 8, show_id : 4, content : "좋아요", rates : 3});
   await ReviewBoard.create({user_id : 9, show_id : 4, content : "재밌었어요", rates : 5});
 
-  await ReviewBoard.create({user_id : 2, show_id : 5, content : "무난~~~", rates : 4});
-  await ReviewBoard.create({user_id : 3, show_id : 5, content : "좋았어요", rates : 4});
-  await ReviewBoard.create({user_id : 4, show_id : 5, content : "즐거웠어요~", rates : 5});
+  await ReviewBoard.create({user_id : 10, show_id : 5, content : "무난~~~", rates : 4});
+  await ReviewBoard.create({user_id : 11, show_id : 5, content : "좋았어요", rates : 4});
+  await ReviewBoard.create({user_id : 12, show_id : 5, content : "즐거웠어요~", rates : 5});
   await ReviewBoard.create({user_id : 5, show_id : 5, content : "좋아여 추천", rates : 5});
   await ReviewBoard.create({user_id : 6, show_id : 5, content : "재밌었음", rates : 4});
   await ReviewBoard.create({user_id : 7, show_id : 5, content : "좋았어요", rates : 4});
