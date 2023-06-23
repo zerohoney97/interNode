@@ -92,15 +92,27 @@ window.onload = () => {
         
       </div>
       <div class = "move">
-        <div class="datepicker">
-        <div>
-        <span class ="redstep">STEP 1</span>
-        <h3>날짜 선택</h3>
-        </div>
-        <div class="dateinput">
-        <input type="date" id="datepicker" />
-        <span class ="redstep redstep2">STEP 2</span>
+      <div class='firstBox'> 
+      
+      
+      <div class="datepicker">
+      </div>
+      <span class ="redstep">STEP 1</span>
+      <h3>날짜 선택</h3>
+      <div class="dateinput">
+      <input type="date" id="datepicker" />
+     
+      </div>
 
+      </div>
+      <div class='secondBox'>
+      
+      <span class ="redstep redstep2">STEP 2</span>
+      <div class="bookbtn" >
+
+      <div id="redbookbtn">예매하기</div>
+      </div>
+      </div>
       </div>
     </div>
       </div>
@@ -111,10 +123,7 @@ window.onload = () => {
 
   </div>
 
-  <div class="bookbtn" >
   
-  <div id="redbookbtn">예매하기</div>
-  </div>
   <div class="banner" id="banner">
     <div class="banner_img">
       <img

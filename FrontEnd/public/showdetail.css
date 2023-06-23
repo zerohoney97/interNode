@@ -129,7 +129,6 @@ header {
 .product_info img,
 .product_info_img {
   width: 90%;
-  height: 500px;
   border-radius: 15px;
 }
 
@@ -235,10 +234,7 @@ ul {
 
 /* 예매하기 버튼 */
 .bookbtn {
-  width: 1120px;
-  height: 60px;
   margin: auto;
-  margin-top: -100px;
   margin-bottom: 50px;
 }
 
@@ -253,7 +249,6 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateX(850px);
 }
 
 /* 예매하기 버튼 끝 */
@@ -329,8 +324,6 @@ ul {
 }
 
 .datepicker {
-  width: 445px;
-  height: 100px;
 }
 
 .dateinput {
@@ -539,9 +532,13 @@ ul {
 
 
 .move{
-  height: 200px;
-  position: relative;
-  border-top: 1px solid gray;
+  width: 100%;
+    height: 250px;
+    position: relative;
+    border-top: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .redstep{
@@ -553,7 +550,6 @@ ul {
 
 
 .redstep2{
-  position: absolute;
   right: 100px;
   bottom: 10px;
 }
