@@ -140,6 +140,8 @@ textarea.commentContent {
 .recommentContent {
     width: 800px;
     margin-top: 22px;
+    min-height : 50px;
+
 }
 
 .btns {
