@@ -433,7 +433,7 @@ li {
 .recommend {
   width: 100%;
   height: 450.002px;
-  margin-top: 149.994px;
+  margin-top: 250.994px;
   box-sizing: border-box;
   background-color: #218ee6;
   position: relative;
@@ -443,7 +443,7 @@ li {
   width: 70%;
   height: 49.992px;
   margin: auto;
-  transform: translateY(109.993px);
+  transform: translateY(-50px);
   font-size: 16.004px;
 }
 
