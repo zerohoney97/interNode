@@ -141,6 +141,7 @@ window.onload = async () => {
             if (data == "0") {
                 // 인증코드 일치
                 emailCheckPass = true;
+                codeResultDiv.style.display = "flex";
                 codeResultDiv.innerText = "인증되었습니다.";
                 codeResultDiv.style.color = "blue";
 
@@ -155,6 +156,7 @@ window.onload = async () => {
             } else if (data == "1") {
                 // 인증코드 불일치
                 emailCheckPass = false;
+                codeResultDiv.style.display = "flex";
                 codeResultDiv.innerText = "인증코드가 틀렸습니다.";
                 codeResultDiv.style.color = "red";
 
