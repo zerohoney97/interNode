@@ -136,6 +136,7 @@ window.onload = async () => {
           // 이미 선택된 좌석인 경우, 선택 취소
           this.classList.remove("selected");
           selectedSeats.splice(selectedSeats.indexOf(this), 1);
+          selectedSeats[0] = null;
           // } else if (selectedSeats.length < 2) {
         } else if (!selectedSeats[0]) {
           const x = this.getAttribute("x");
