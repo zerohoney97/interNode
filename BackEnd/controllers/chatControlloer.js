@@ -92,9 +92,9 @@ exports.chattingSocket = (socket, io) => {
       // Handle the joinRoom event logic here
     });
     // 유저의 메시지
-    socket.on("chat2", (content) => {
-      console.log("유저 메세지 전송 어드민에게", content, userId);
-      io.to(parseInt(userId)).emit("chat", content, userId);
+    socket.on("chat2", (content,userKey) => {
+      console.log("유저 메세지 전송 어드민에게", content, userKey);
+      io.to(parseInt(userKey)).emit("chat", content, userKey);
       // Handle the joinRoom event logic here
     });
   } catch (error) {

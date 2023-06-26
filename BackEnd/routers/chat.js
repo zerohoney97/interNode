@@ -11,6 +11,7 @@ const {
 // /chat/create
 router.post("/create", isLoginMiddle, async (req, res) => {
   const { chat } = req.body;
+  const { acc_decoded } = req;
   const { primaryKey } = req.acc_decoded;
   // { data: { user_id : isLoginMiddleUserId, message,receiver,isRead } }
   //    const user_id = req.body.data.user_id;
@@ -26,7 +27,7 @@ router.post("/create", isLoginMiddle, async (req, res) => {
     isRead: false,
     receiver: primaryKey,
   });
-  res.send("primaryKey");
+  res.json(acc_decoded);
 });
 
 router.get("/Users", isLoginMiddle, async (req, res) => {

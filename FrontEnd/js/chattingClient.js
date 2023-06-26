@@ -29,13 +29,13 @@ document.querySelector(".chat-send-botton").addEventListener("click", () => {
     .post("/chat/create", { chat: chatId1.value })
     .then((e) => {
       console.log(e);
+      socket.emit("chat2", chatId1.value, e.data.primaryKey);
       chatId1.value = "";
     })
     .catch((err) => {
       console.log(err);
     });
   // 채팅 보내주는 소켓
-  socket.emit("chat2", chatId1.value);
 });
 
 // // 유저
