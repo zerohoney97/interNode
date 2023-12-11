@@ -4,6 +4,7 @@ const { isLoginMiddle } = require("../middleware/isLoginMiddle");
 const { showList, rateShowList, cmtShowList } = require("../controllers/mainController");
 
 router.get("/", (req, res) => {
+  console.log('들어옴')
   res.sendFile(
     path.join(__dirname, "..", "..", "FrontEnd", "mainpage", "mainpage.html")
   );
